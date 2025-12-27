@@ -72,44 +72,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 1,
     },
     {
       url: `${baseUrl}/articles`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/events`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/test`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
     },
     {
       url: `${baseUrl}/knowledge-base`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
     },
     {
       url: `${baseUrl}/black-friday`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
     },
   ]
 
@@ -118,8 +104,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articlePages = articles.map((article) => ({
     url: `${baseUrl}/articles/${article.slug}`,
     lastModified: new Date(article.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
   }))
 
   // Events
@@ -127,8 +111,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const eventPages = events.map((event) => ({
     url: `${baseUrl}/events/${event.year}/${event.slug}`,
     lastModified: new Date(event.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
   }))
 
   // Tests
@@ -136,8 +118,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const testPages = tests.map((test) => ({
     url: `${baseUrl}/test/${test.slug}`,
     lastModified: new Date(test.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
   }))
 
   return [...staticPages, ...articlePages, ...eventPages, ...testPages]
