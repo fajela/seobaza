@@ -70,9 +70,9 @@ export async function generateMetadata({
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: frontmatter.title,
+          width: 640,
+          height: 640,
+          alt: "SEO BAZA logo",
         },
       ],
     },

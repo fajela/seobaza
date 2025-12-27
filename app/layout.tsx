@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://seobaza.com.ua/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "SEO BAZA - українська SEO-спільнота",
+        width: 640,
+        height: 640,
+        alt: "SEO BAZA logo",
       },
     ],
   },
