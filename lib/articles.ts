@@ -10,7 +10,9 @@ export interface ArticleMetadata {
   description: string;
   image?: string;
   author: string;
+  authorLink?: string;
   editor?: string;
+  editorLink?: string;
   date: string;
   tags: string[];
   slug: string;
@@ -40,7 +42,9 @@ export function getArticleBySlug(slug: string): Article {
     description: data.description,
     image: data.image,
     author: data.author,
+    authorLink: data.authorLink,
     editor: data.editor,
+    editorLink: data.editorLink,
     date: data.date,
     tags: data.tags || [],
     content,

@@ -69,6 +69,7 @@ export async function generateMetadata({
             width: 1200,
             height: 630,
             alt: article.h1 || article.title,
+            type: "image/jpeg",
           },
         ],
       },
@@ -77,6 +78,12 @@ export async function generateMetadata({
         title: article.title,
         description: article.description,
         images: [ogImage],
+      },
+      other: {
+        "og:image": ogImage,
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:type": "image/jpeg",
       },
     };
   } catch {
@@ -135,7 +142,13 @@ export default async function ArticlePage({
             {h1Title}
           </h1>
           <div className="flex flex-wrap items-center gap-3 text-muted-foreground mb-4">
-            <span className="font-medium">{article.author}</span>
+            {article.authorLink ? (
+              <a href={article.authorLink} target="_blank" rel="noopener noreferrer" className="font-medium hover:text-accent transition-colors">
+                {article.author}
+              </a>
+            ) : (
+              <span className="font-medium">{article.author}</span>
+            )}
             <span>•</span>
             <time dateTime={article.date}>
               {new Date(article.date).toLocaleDateString("uk-UA", {
@@ -147,7 +160,15 @@ export default async function ArticlePage({
             {article.editor && (
               <>
                 <span>•</span>
-                <span>Редактор по SEO: {article.editor}</span>
+                <span>
+                  Редактор по SEO: {article.editorLink ? (
+                    <a href={article.editorLink} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                      {article.editor}
+                    </a>
+                  ) : (
+                    article.editor
+                  )}
+                </span>
               </>
             )}
           </div>
