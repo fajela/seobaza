@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     siteName: "SEO BAZA",
     images: [
       {
-        url: "https://seobaza.com.ua/seobaza.png",
+        url: "https://seobaza.com.ua/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SEO BAZA logo",
+        alt: "SEO BAZA - українська SEO-спільнота",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "SEO BAZA - українська SEO-спільнота",
     description:
       "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
-    images: ["https://seobaza.com.ua/seobaza.png"],
+    images: ["https://seobaza.com.ua/og-image.png"],
   },
   alternates: {
     canonical: "https://seobaza.com.ua/",

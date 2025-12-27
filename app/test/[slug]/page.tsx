@@ -34,22 +34,44 @@ export async function generateMetadata({
 
   if (!test) {
     return {
-      title: "Тест не знайдено",
+      title: "Тест не знайдено - SEO BAZA",
     };
   }
 
   const { frontmatter } = test;
+  const url = `https://seobaza.com.ua/test/${slug}`;
+  const ogImage = "https://seobaza.com.ua/og-image.png";
 
   return {
     title: `${frontmatter.title} - SEO BAZA`,
     description: frontmatter.description || frontmatter.title,
     authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description || frontmatter.title,
+      url: url,
+      siteName: "SEO BAZA",
+      locale: "uk_UA",
       type: "article",
       publishedTime: frontmatter.date,
       authors: frontmatter.author ? [frontmatter.author] : undefined,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: frontmatter.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontmatter.title,
+      description: frontmatter.description || frontmatter.title,
+      images: [ogImage],
     },
   };
 }
