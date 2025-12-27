@@ -194,7 +194,6 @@ export default async function ArticlePage({
                 remarkPlugins: [remarkGfm],
                 rehypePlugins: [
                   rehypeSlug,
-                  [rehypeAutolinkHeadings, { behavior: 'wrap' }],
                 ],
               },
             }}
