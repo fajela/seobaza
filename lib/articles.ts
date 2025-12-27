@@ -6,8 +6,11 @@ const articlesDirectory = path.join(process.cwd(), "content/articles");
 
 export interface ArticleMetadata {
   title: string;
+  h1?: string;
   description: string;
+  image?: string;
   author: string;
+  editor?: string;
   date: string;
   tags: string[];
   slug: string;
@@ -33,8 +36,11 @@ export function getArticleBySlug(slug: string): Article {
   return {
     slug: realSlug,
     title: data.title,
+    h1: data.h1,
     description: data.description,
+    image: data.image,
     author: data.author,
+    editor: data.editor,
     date: data.date,
     tags: data.tags || [],
     content,
