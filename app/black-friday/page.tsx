@@ -12,9 +12,9 @@ export const metadata = {
     url: "https://seobaza.com.ua/events/2025/black-friday-2025",
     images: [
       {
-        url: "https://seobaza.com.ua/black-friday/black-friday-2025.png",
-        width: 1200,
-        height: 630,
+        url: "https://seobaza.com.ua/black-friday-2025.png",
+        width: 1376,
+        height: 768,
         alt: "Black Friday 2025 SEO Baza",
       },
     ],
@@ -26,7 +26,7 @@ export const metadata = {
     title: "Чорна п'ятниця в українському SEO 2025 | SEO Baza",
     description:
       "Найкращі знижки від українських SEO компаній. Знижки до -90%!",
-    images: ["https://seobaza.com.ua/black-friday/black-friday-2025.png"],
+    images: ["https://seobaza.com.ua/black-friday-2025.png"],
   },
 };
 
