@@ -44,6 +44,18 @@ export function Navigation() {
               Статті
             </NavLink>
             <NavLink
+              href="/category"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Категорії
+            </NavLink>
+            <NavLink
+              href="/news"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Новини
+            </NavLink>
+            <NavLink
               href="/knowledge-base"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
@@ -60,6 +72,12 @@ export function Navigation() {
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
               Події
+            </NavLink>
+            <NavLink
+              href="/about"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Про нас
             </NavLink>
             <NavLink
               href="/contact"
@@ -124,6 +142,20 @@ export function Navigation() {
                 Статті
               </NavLink>
               <NavLink
+                href="/category"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Категорії
+              </NavLink>
+              <NavLink
+                href="/news"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Новини
+              </NavLink>
+              <NavLink
                 href="/knowledge-base"
                 className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
@@ -143,6 +175,13 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Події
+              </NavLink>
+              <NavLink
+                href="/about"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Про нас
               </NavLink>
               <NavLink
                 href="/contact"

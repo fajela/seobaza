@@ -35,7 +35,7 @@ export function TelegramWidget() {
         <a
           href="https://t.me/SEOBAZA/1256"
           target="_blank"
-          rel="noopener noreferrer"
+
           className="block text-center p-8 bg-secondary rounded-lg hover:bg-muted transition-colors"
         >
           Переглянути пост в Telegram

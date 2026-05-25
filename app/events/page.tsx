@@ -6,6 +6,7 @@ import matter from "gray-matter";
 export const metadata = {
   title: "Події - SEO BAZA",
   description: "SEOшні та околоSEOшні події від української спільноти",
+  alternates: { canonical: "https://seobaza.com.ua/events" },
 };
 
 async function getEvents() {
@@ -78,7 +79,7 @@ export default async function EventsPage() {
               <a
                 href="https://t.me/SEOBAZA"
                 target="_blank"
-                rel="noopener noreferrer"
+
                 className="text-primary hover:text-accent underline transition-colors"
               >
                 Telegram каналі
@@ -142,7 +143,7 @@ export default async function EventsPage() {
             <a
               href="https://t.me/fajela"
               target="_blank"
-              rel="noopener noreferrer"
+
               className="text-primary hover:text-accent underline transition-colors"
             >
               @fajela

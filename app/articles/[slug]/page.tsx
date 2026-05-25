@@ -1,14 +1,19 @@
 import { notFound } from "next/navigation";
-import { getAllArticles, getArticleBySlug } from "@/lib/articles";
+import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/articles";
+import { getAuthorSlugByName } from "@/lib/authors";
+import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
+import { TelegramComments } from "@/components/telegram-comments";
+import { MdxImg } from "@/components/mdx-img";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { slug } from "github-slugger";
 
-// Custom slug function with transliteration
+const mdxComponents = { img: MdxImg };
+
+// Custom slug function with transliteration (kept for potential future use)
 function customSlugger(text: string): string {
   const translitMap: { [key: string]: string } = {
     'а': 'a', 'б': 'b', 'в': 'v', 'г': 'h', 'ґ': 'g', 'д': 'd', 'е': 'e', 'є': 'ie',
@@ -21,7 +26,6 @@ function customSlugger(text: string): string {
     'У': 'U', 'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts', 'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch', 'Ь': '',
     'Ю': 'Iu', 'Я': 'Ia'
   };
-
   let transliterated = text.split('').map(char => translitMap[char] || char).join('');
   return slug(transliterated);
 }
@@ -107,6 +111,8 @@ export default async function ArticlePage({
     notFound();
   }
 
+  const relatedArticles = getRelatedArticles(slug, 3);
+
   // Use h1 from frontmatter or extract from content
   const h1Title = article.h1 || article.title;
   const h1Match = article.content.match(/^#\s+(.+)$/m);
@@ -114,41 +120,137 @@ export default async function ArticlePage({
     ? article.content.replace(/^#\s+.+$/m, '').trim()
     : article.content;
 
+  const pageUrl = `https://seobaza.com.ua/articles/${slug}`;
+  const articleAuthorSlug = getAuthorSlugByName(article.author);
+  const articleAuthorUrl = articleAuthorSlug
+    ? `https://seobaza.com.ua/authors/${articleAuthorSlug}`
+    : undefined;
+  const articleOgImage = article.image
+    ? `https://seobaza.com.ua${article.image}`
+    : "https://seobaza.com.ua/og-image.png";
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <article className="max-w-3xl mx-auto">
-        <Link
-          href="/articles"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
+      <article
+        className="max-w-3xl mx-auto"
+        {...{ vocab: "https://schema.org/", typeof: "Article", resource: pageUrl }}
+      >
+        <span className="hidden" property="mainEntityOfPage" content={pageUrl} />
+        <span className="hidden" property="datePublished" content={article.date} />
+        <span className="hidden" property="dateModified" content={article.date} />
+        <span className="hidden" property="image" content={articleOgImage} />
+        <span className="hidden" property="inLanguage" content="uk-UA" />
+        <div
+          className="hidden"
+          {...{ property: "publisher", typeof: "Organization", resource: "https://seobaza.com.ua/" }}
         >
-          <svg
-            className="w-4 h-4 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <span property="name" content="SEO BAZA" />
+          <span property="url" content="https://seobaza.com.ua/" />
+          <div {...{ property: "logo", typeof: "ImageObject" }}>
+            <span property="url" content="https://seobaza.com.ua/seobaza.png" />
+          </div>
+        </div>
+
+        {/* Breadcrumbs — microdata BreadcrumbList */}
+        <nav
+          className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8"
+          itemScope
+          itemType="https://schema.org/BreadcrumbList"
+        >
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <Link href="/articles" className="hover:text-accent transition-colors">
+              <span itemProp="name">Статті</span>
+            </Link>
+            <link itemProp="item" href="https://seobaza.com.ua/articles" />
+            <meta itemProp="position" content="1" />
+          </span>
+          {article.category && (
+            <>
+              <span>/</span>
+              <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link
+                  href={`/category/${article.category}`}
+                  className="hover:text-accent transition-colors"
+                >
+                  <span itemProp="name">{getCategoryDisplayName(article.category)}</span>
+                </Link>
+                <link itemProp="item" href={`https://seobaza.com.ua/category/${article.category}`} />
+                <meta itemProp="position" content="2" />
+              </span>
+            </>
+          )}
+          <span>/</span>
+          <span
+            itemProp="itemListElement"
+            itemScope
+            itemType="https://schema.org/ListItem"
+            className="text-foreground truncate max-w-[240px]"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Назад до статей
-        </Link>
+            <span itemProp="name">{article.title}</span>
+            <link itemProp="item" href={pageUrl} />
+            <meta itemProp="position" content={article.category ? "3" : "2"} />
+          </span>
+        </nav>
 
         <header className="mb-8">
-          <h1 className="text-4xl sm:text-5xl font-display mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+          {/* Category badge */}
+          {article.category && (
+            <Link
+              href={`/category/${article.category}`}
+              className="inline-block mb-4 px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
+            >
+              {getCategoryDisplayName(article.category)}
+            </Link>
+          )}
+
+          <h1
+            property="headline name"
+            className="text-4xl sm:text-5xl font-display mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
+          >
             {h1Title}
           </h1>
+
+          <span className="hidden" property="description" content={article.description} />
+
+          {/* Hidden Person definition — no <a> inside this typeof scope */}
+          <div
+            className="hidden"
+            {...{
+              property: "author",
+              typeof: "Person",
+              resource: articleAuthorUrl ?? `https://seobaza.com.ua/#${article.author.replace(/\s+/g, "-")}`,
+            }}
+          >
+            <span property="name" content={article.author} />
+            {articleAuthorUrl && <span property="url" content={articleAuthorUrl} />}
+          </div>
+
+          {/* Visible byline — plain UI, no RDFa attributes */}
           <div className="flex flex-wrap items-center gap-3 text-muted-foreground mb-4">
-            {article.authorLink ? (
-              <a href={article.authorLink} target="_blank" rel="noopener noreferrer" className="font-medium hover:text-accent transition-colors">
-                {article.author}
-              </a>
-            ) : (
-              <span className="font-medium">{article.author}</span>
-            )}
+            {(() => {
+              if (articleAuthorSlug) {
+                return (
+                  <Link
+                    href={`/authors/${articleAuthorSlug}`}
+                    className="font-medium hover:text-accent transition-colors"
+                  >
+                    {article.author}
+                  </Link>
+                );
+              }
+              if (article.authorLink) {
+                return (
+                  <a
+                    href={article.authorLink}
+                    target="_blank"
+                    className="font-medium hover:text-accent transition-colors"
+                  >
+                    {article.author}
+                  </a>
+                );
+              }
+              return <span className="font-medium">{article.author}</span>;
+            })()}
             <span>•</span>
             <time dateTime={article.date}>
               {new Date(article.date).toLocaleDateString("uk-UA", {
@@ -157,38 +259,63 @@ export default async function ArticlePage({
                 day: "numeric",
               })}
             </time>
+            {article.readingTime && (
+              <>
+                <span>•</span>
+                <span>{article.readingTime} хв читання</span>
+              </>
+            )}
             {article.editor && (
               <>
                 <span>•</span>
                 <span>
-                  Редактор по SEO: {article.editorLink ? (
-                    <a href={article.editorLink} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                      {article.editor}
-                    </a>
-                  ) : (
-                    article.editor
-                  )}
+                  Редактор по SEO:{" "}
+                  {(() => {
+                    const editorSlug = getAuthorSlugByName(article.editor!);
+                    if (editorSlug) {
+                      return (
+                        <Link href={`/authors/${editorSlug}`} className="hover:text-accent transition-colors">
+                          {article.editor}
+                        </Link>
+                      );
+                    }
+                    if (article.editorLink) {
+                      return (
+                        <a
+                          href={article.editorLink}
+                          target="_blank"
+                          className="hover:text-accent transition-colors"
+                        >
+                          {article.editor}
+                        </a>
+                      );
+                    }
+                    return article.editor;
+                  })()}
                 </span>
               </>
             )}
           </div>
+
           {article.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {article.tags.map((tag) => (
-                <span
+                <Link
                   key={tag}
-                  className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full"
+                  href={`/tags/${tag}`}
+                  className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                 >
-                  {tag}
-                </span>
+                  {getTagDisplayName(tag)}
+                </Link>
               ))}
             </div>
           )}
         </header>
 
-        <div className="prose prose-lg dark:prose-invert max-w-none">
+        <div className="prose prose-lg dark:prose-invert max-w-none" property="articleBody">
           <MDXRemote
             source={contentWithoutH1}
+            components={mdxComponents}
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],
@@ -200,6 +327,55 @@ export default async function ArticlePage({
           />
         </div>
       </article>
+
+      {/* Telegram comments — OUTSIDE the article RDFa scope so
+          doesn't leak into the Article schema */}
+      {article.telegramMessageId && (
+        <div className="max-w-3xl mx-auto">
+          <TelegramComments
+            channel="SEOBAZA"
+            postId={article.telegramMessageId}
+            fallbackUrl={article.sourceUrl}
+          />
+        </div>
+      )}
+
+      {/* Related articles */}
+      {relatedArticles.length > 0 && (
+        <div className="max-w-3xl mx-auto mt-16 pt-12 border-t border-border">
+          <h2 className="text-2xl font-display mb-6">Схожі статті</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((related) => (
+              <Link
+                key={related.slug}
+                href={`/articles/${related.slug}`}
+                className="block group"
+              >
+                <div className="h-full bg-secondary/30 rounded-xl p-4 border border-border transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10">
+                  <h3 className="text-sm font-display mb-2 group-hover:text-accent transition-colors line-clamp-3">
+                    {related.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <time dateTime={related.date}>
+                      {new Date(related.date).toLocaleDateString("uk-UA", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                    {related.readingTime && (
+                      <>
+                        <span>·</span>
+                        <span>{related.readingTime} хв</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

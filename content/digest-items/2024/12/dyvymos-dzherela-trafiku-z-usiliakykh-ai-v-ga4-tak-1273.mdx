@@ -1,0 +1,35 @@
+---
+title: "Дивимось джерела трафіку з усіляких AI в GA4 так"
+h1: "Дивимось джерела трафіку з усіляких AI в GA4 так"
+description: "1. Йдемо в Explore і створюємо новий звіт з нуля. 2. В Dimensions додаємо Session source / medium 3. В Metrics додаємо Sessions, Engaged sessions, Key…"
+author: "Олеся Коробка"
+date: "2024-12-04"
+tags: ["ai-search", "ai-industry", "llms", "tools", "google"]
+category: "industry-news"
+type: "news"
+status: "digest-only"
+sourceUrl: "/news/2024/12/seo-novyny-hruden-2024#msg-1273"
+telegramMessageId: 1273
+image: "/telegram-photos/1273/photo_656@04-12-2024_00-56-08.jpg"
+---
+
+![Дивимось джерела трафіку з усіляких AI в GA4 так](/telegram-photos/1273/photo_656@04-12-2024_00-56-08.jpg)
+
+1. Йдемо в Explore і створюємо новий звіт з нуля.
+
+2. В Dimensions додаємо Session source / medium
+
+3. В Metrics додаємо Sessions, Engaged sessions, Key events
+
+4. В Segments створюємо новий сегмент таким чином:
+  - -  Include sessions when -&gt; Session source -&gt; matches regex
+  - -  Вставляємо подібний:
+`.*chatgpt.com.*|.*perplexity.*|.*edgepilot.*|.*edgeservices.*|.*copilot.microsoft.com.*|.*openai.com.*|.*gemini.google.com.*|.*nimble.ai.*|.*iask.ai.*|.*claude.ai.*|.*aitastic.app.*|.*bnngpt.com.*|.*writesonic.com.*|.*copy.ai.*|.*chat-gpt.org.*|.*chat.mistral.ai.*|.*exa.ai.*|.*waldo.*|.*iask.ai.*`
+
+5. Клікаємо двічі по сесіям і отримуємо графік.
+
+6. В Breakdowns додаємо Session source / medium
+
+7. Візуалізуємо, як подобається, зберігаємо сегмент, зберігаємо канал.
+
+Усі деталі розкладено [в цьому відео](https://www.youtube.com/watch?v=fpo1_E9UizI).

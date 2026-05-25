@@ -1,0 +1,20 @@
+---
+title: "Як автоматизувати генерацію описів продуктів для eCommerce за допомогою OpenAI GPT3, розповідає…"
+h1: "Як автоматизувати генерацію описів продуктів для eCommerce за допомогою OpenAI GPT3, розповідає…"
+description: "1. В Google Sheet → Extensions → App Script 2. Вставте цей код: / * Генерує текст за допомогою моделі GPT3 від OpenAI * @param {string} prompt Запит до…"
+author: "Олеся Коробка"
+date: "2023-01-02"
+tags: ["ai-industry", "google", "ecommerce"]
+category: "industry-news"
+type: "news"
+status: "published"
+sourceUrl: "/news/2023/01/iak-avtomatyzuvaty-heneratsiiu-opysiv-produktiv-dlia-ecommer-0100"
+telegramMessageId: 100
+---
+
+1. В Google Sheet → Extensions → App Script
+
+2. Вставте цей код:
+`/** * Генерує текст за допомогою моделі GPT3 від OpenAI * @param {string} prompt Запит до моделі GPT-3 * @param {string} cell Клітинка, з якої додати текст до запиту * @param {number} [maxWords=10] Максимальна кількість слів для формування відповіді * @return {string} Згенерований текст * @customfunction */function runOpenAI(prompt, cell, maxWords) {const API_KEY = "YOUR API KEY";maxTokens = 150if (maxWords){maxTokens = maxWords * 0.75}model = "text-davinci-003"prompt = prompt+cell+":",temperature= 0 // Set up the request body with the given parameters const requestBody = { "model": model, "prompt": prompt, "temperature": temperature, "max_tokens": maxTokens }; console.log(requestBody) // Set up the request options with the required headers const requestOptions = { "method": "POST", "headers": { "Content-Type": "application/json", "Authorization": "Bearer "+API_KEY }, "payload": JSON.stringify(requestBody) }; // Send the request to the GPT-3 API endpoint for completions const response = UrlFetchApp.fetch("https://api.openai.com/v1/completions", requestOptions); console.log(response.getContentText())  // Get the response body as a JSON object const responseBody = JSON.parse(response.getContentText()); let answer= responseBody.choices[0].text // Return the generated text from the response return answer}`3. Замініть `YOUR API KEY` в коді на ваш ключ. Знайти його можна [в своїй адмінці OpenAI](https://beta.openai.com/account/api-keys). І збережіть код, поверніться до своєї таблиці.
+
+4. За допомогою команди `“=runOpenAI()”` створюйте потрібні вам запити. Наприклад, `“=runOpenAI("write a 100 word product description that is light hearted and funny",F2)”`.

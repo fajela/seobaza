@@ -6,6 +6,7 @@ import matter from "gray-matter";
 export const metadata = {
   title: "Тести SEO BAZA - Експерименти та дослідження",
   description: "SEO експерименти та тести від української спільноти",
+  alternates: { canonical: "https://seobaza.com.ua/test" },
 };
 
 async function getTests() {
@@ -45,8 +46,7 @@ export default async function TestPage() {
           SEO BAZA тестує
         </h1>
         <p className="text-lg text-muted-foreground mb-12">
-          Поки що у нас тільки три тести, але їх може стати більше. А може і не
-          стати 😊
+          Експерименти, гіпотези та практичні перевірки від спільноти.
         </p>
 
         <div className="grid gap-6">
@@ -79,7 +79,7 @@ export default async function TestPage() {
             <a
               href="https://t.me/fajela"
               target="_blank"
-              rel="noopener noreferrer"
+
               className="text-primary hover:text-accent underline transition-colors"
             >
               @fajela

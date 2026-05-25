@@ -197,7 +197,7 @@ export default function BlackFridayPage() {
             <a
               href="https://t.me/fajela"
               target="_blank"
-              rel="noopener noreferrer"
+
               className="text-primary hover:text-accent underline transition-colors"
             >
               @fajela

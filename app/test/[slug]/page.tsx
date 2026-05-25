@@ -3,8 +3,11 @@ import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { MdxImg } from "@/components/mdx-img";
 import type { Metadata } from "next";
 import Link from "next/link";
+
+const mdxComponents = { img: MdxImg };
 
 interface TestPageProps {
   params: Promise<{ slug: string }>;
@@ -101,28 +104,36 @@ export default async function TestPage({ params }: TestPageProps) {
 
   const { frontmatter, content } = test;
 
+  const testUrl = `https://seobaza.com.ua/test/${slug}`;
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <article className="max-w-3xl mx-auto">
-        <Link
-          href="/test"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
+        {/* Breadcrumbs — microdata BreadcrumbList */}
+        <nav
+          className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8"
+          itemScope
+          itemType="https://schema.org/BreadcrumbList"
         >
-          <svg
-            className="w-4 h-4 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <Link href="/test" className="hover:text-accent transition-colors">
+              <span itemProp="name">Тести</span>
+            </Link>
+            <link itemProp="item" href="https://seobaza.com.ua/test" />
+            <meta itemProp="position" content="1" />
+          </span>
+          <span>/</span>
+          <span
+            itemProp="itemListElement"
+            itemScope
+            itemType="https://schema.org/ListItem"
+            className="text-foreground truncate max-w-[240px]"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Назад до тестів
-        </Link>
+            <span itemProp="name">{frontmatter.title}</span>
+            <link itemProp="item" href={testUrl} />
+            <meta itemProp="position" content="2" />
+          </span>
+        </nav>
 
         <header className="mb-8">
           <h1 className="text-4xl sm:text-5xl font-display mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -160,7 +171,7 @@ export default async function TestPage({ params }: TestPageProps) {
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
-          <MDXRemote source={content} />
+          <MDXRemote source={content} components={mdxComponents} />
         </div>
       </article>
     </div>

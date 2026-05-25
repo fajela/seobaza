@@ -3,6 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "База знань - SEO BAZA",
   description: "Корисні матеріали, гайди та документи для SEO-спеціалістів",
+  alternates: { canonical: "https://seobaza.com.ua/knowledge-base" },
 };
 
 interface KnowledgeItem {
@@ -99,7 +100,7 @@ export default function KnowledgeBasePage() {
                     <a
                       href={item.url}
                       target="_blank"
-                      rel="noopener noreferrer"
+
                       className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors"
                     >
                       Відкрити PDF
@@ -121,7 +122,7 @@ export default function KnowledgeBasePage() {
                     <a
                       href={item.url}
                       target="_blank"
-                      rel="noopener noreferrer"
+
                       className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors"
                     >
                       Перейти
@@ -176,7 +177,7 @@ export default function KnowledgeBasePage() {
             <a
               href="https://t.me/fajela"
               target="_blank"
-              rel="noopener noreferrer"
+
               className="text-primary hover:text-accent underline transition-colors"
             >
               @fajela

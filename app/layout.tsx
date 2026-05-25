@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Open_Sans, Proza_Libre } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -22,8 +23,8 @@ export const metadata: Metadata = {
   description:
     "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом. І найкращою в світі спільнотою!",
   keywords: ["SEO", "Ukrainian SEO", "SEO community", "SEO Ukraine", "digital marketing"],
-  authors: [{ name: "Olesia Korobka", url: "https://olesiakorobka.com" }],
-  creator: "Olesia Korobka",
+  authors: [{ name: "Олеся Коробка", url: "https://olesiakorobka.com" }],
+  creator: "Олеся Коробка",
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },
@@ -90,29 +91,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": ["WebSite", "Organization"],
-              name: "SEO BAZA",
-              url: "https://seobaza.com.ua/",
-              description:
-                "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
-              logo: "https://seobaza.com.ua/seobaza.png",
-              sameAs: [
-                "https://www.youtube.com/c/SEOBAZA",
-                "https://t.me/SEOBAZA",
-              ],
-              creator: {
-                "@type": "Person",
-                name: "Olesia Korobka",
-                url: "https://olesiakorobka.com",
-              },
-            }),
-          }}
-        />
+        {/* WebSite + Organization JSON-LD lives on the homepage only, see app/page.tsx */}
       </head>
       <body
         className={`${openSans.variable} ${prozaLibre.variable} antialiased min-h-screen flex flex-col`}
@@ -128,11 +107,36 @@ export default function RootLayout({
           <main className="flex-1 pt-16">{children}</main>
           <footer className="border-t border-border bg-muted/30 transition-theme">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              {/* Footer link rows — keeps /tags, /authors, /sitemap-page reachable
+                  from every page so crawlers don't see them as orphans. */}
+              <nav
+                aria-label="Footer"
+                className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground mb-6"
+              >
+                <Link href="/about" className="hover:text-accent transition-colors">
+                  Про нас
+                </Link>
+                <Link href="/contact" className="hover:text-accent transition-colors">
+                  Контакт
+                </Link>
+                <Link href="/category" className="hover:text-accent transition-colors">
+                  Категорії
+                </Link>
+                <Link href="/tags" className="hover:text-accent transition-colors">
+                  Теги
+                </Link>
+                <Link href="/authors" className="hover:text-accent transition-colors">
+                  Автори
+                </Link>
+                <Link href="/sitemap-page" className="hover:text-accent transition-colors">
+                  Карта сайту
+                </Link>
+              </nav>
               <div className="text-center">
-                <h2 className="text-xl font-display mb-4">Ми в соцмережах</h2>
+                <h2 className="text-xl font-display mb-4">SEO BAZA в соцмережах</h2>
                 <div className="flex justify-center space-x-6 mb-6">
                   <a
-                    rel="external noopener"
+
                     href="https://www.youtube.com/c/SEOBAZA"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
@@ -147,7 +151,7 @@ export default function RootLayout({
                     </svg>
                   </a>
                   <a
-                    rel="external noopener"
+
                     href="https://t.me/SEOBAZA"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
@@ -168,19 +172,6 @@ export default function RootLayout({
                     ♥
                   </span>{" "}
                   для української SEO-спільноти
-                  <span
-                    property="dc:creator"
-                    className="hidden"
-                    itemProp="creator"
-                    itemScope
-                    itemType="https://schema.org/Person"
-                  >
-                    <link
-                      itemProp="url"
-                      href="https://olesiakorobka.com"
-                    />
-                    <meta itemProp="name" content="Olesia Korobka" />
-                  </span>
                 </p>
               </div>
             </div>

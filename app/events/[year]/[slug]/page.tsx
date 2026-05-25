@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { MdxImg } from "@/components/mdx-img";
 import type { Metadata } from "next";
+
+const mdxComponents = { img: MdxImg };
 
 interface EventPageProps {
   params: Promise<{
@@ -125,10 +129,43 @@ export default async function EventPage({ params }: EventPageProps) {
 
   const { frontmatter, content } = event;
 
+  const eventUrl = `https://seobaza.com.ua/events/${year}/${slug}`;
+
   return (
     <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl">
+      {/* Breadcrumbs — microdata BreadcrumbList */}
+      <nav
+        className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8"
+        itemScope
+        itemType="https://schema.org/BreadcrumbList"
+      >
+        <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+          <Link href="/events" className="hover:text-accent transition-colors">
+            <span itemProp="name">Події</span>
+          </Link>
+          <link itemProp="item" href="https://seobaza.com.ua/events" />
+          <meta itemProp="position" content="1" />
+        </span>
+        <span>/</span>
+        <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+          <span itemProp="name">{year}</span>
+          <link itemProp="item" href={`https://seobaza.com.ua/events/${year}`} />
+          <meta itemProp="position" content="2" />
+        </span>
+        <span>/</span>
+        <span
+          itemProp="itemListElement"
+          itemScope
+          itemType="https://schema.org/ListItem"
+          className="text-foreground truncate max-w-[240px]"
+        >
+          <span itemProp="name">{frontmatter.title}</span>
+          <link itemProp="item" href={eventUrl} />
+          <meta itemProp="position" content="3" />
+        </span>
+      </nav>
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <MDXRemote source={content} />
+        <MDXRemote source={content} components={mdxComponents} />
       </div>
     </article>
   );

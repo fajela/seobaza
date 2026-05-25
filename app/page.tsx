@@ -4,6 +4,32 @@ import { TelegramWidget } from "@/components/telegram-widget";
 export default function Home() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Sitewide WebSite + Organization JSON-LD — only on the homepage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": ["WebSite", "Organization"],
+            "@id": "https://seobaza.com.ua/",
+            name: "SEO BAZA",
+            url: "https://seobaza.com.ua/",
+            description:
+              "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
+            logo: "https://seobaza.com.ua/seobaza.png",
+            sameAs: [
+              "https://www.youtube.com/c/SEOBAZA",
+              "https://t.me/SEOBAZA",
+            ],
+            creator: {
+              "@type": "Person",
+              name: "Олеся Коробка",
+              alternateName: "Olesia Korobka",
+              url: "https://olesiakorobka.com",
+            },
+          }),
+        }}
+      />
       {/* Hero Section */}
       <section className="mb-16 animate-fade-in">
         <div className="max-w-4xl mx-auto text-center">
@@ -73,7 +99,7 @@ export default function Home() {
                 <a
                   href="https://www.youtube.com/@SEOBAZA"
                   target="_blank"
-                  rel="noopener noreferrer"
+
                   className="text-primary hover:text-accent underline transition-colors"
                 >
                   відео-каналом
@@ -82,7 +108,7 @@ export default function Home() {
                 <a
                   href="https://t.me/SEOBAZA"
                   target="_blank"
-                  rel="noopener noreferrer"
+
                   className="text-primary hover:text-accent underline transition-colors"
                 >
                   телеграм-каналом
@@ -141,7 +167,7 @@ export default function Home() {
               <a
                 href="https://t.me/fajela"
                 target="_blank"
-                rel="noopener noreferrer"
+
                 className="text-primary hover:text-accent underline transition-colors"
               >
                 @fajela
@@ -150,6 +176,21 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Creator microdata — homepage only. The WebSite/Organization in
+          layout.tsx is the publisher; this declares the human creator. */}
+      <span
+        className="hidden"
+        itemProp="creator"
+        itemScope
+        itemType="https://schema.org/Person"
+      >
+        <link itemProp="url" href="https://olesiakorobka.com" />
+        <link itemProp="sameAs" href="https://seobaza.com.ua/authors/olesia-korobka" />
+        <meta itemProp="name" content="Олеся Коробка" />
+        <meta itemProp="alternateName" content="Olesia Korobka" />
+        <meta itemProp="jobTitle" content="Засновниця SEO BAZA" />
+      </span>
     </div>
   );
 }
