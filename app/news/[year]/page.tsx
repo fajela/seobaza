@@ -14,10 +14,14 @@ export async function generateMetadata({
   params: Promise<{ year: string }>;
 }): Promise<Metadata> {
   const { year } = await params;
+  const url = `https://seobaza.com.ua/news/${year}`;
+  const title = `SEO новини ${year} — SEO BAZA`;
+  const description = `Усі SEO-новини за ${year} рік від спільноти SEO BAZA.`;
   return {
-    title: `SEO новини ${year} — SEO BAZA`,
-    description: `Усі SEO-новини за ${year} рік від спільноти SEO BAZA.`,
-    alternates: { canonical: `https://seobaza.com.ua/news/${year}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url, siteName: "SEO BAZA", locale: "uk_UA", type: "website" },
   };
 }
 

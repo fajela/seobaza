@@ -2,13 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllAuthors } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Автори — SEO BAZA",
   description: "Автори матеріалів SEO BAZA — SEO-спеціалісти та експерти українського ком'юніті.",
-  alternates: { canonical: "https://seobaza.com.ua/authors" },
-};
+  path: "/authors",
+});
 
 export default function AuthorsPage() {
   const authors = getAllAuthors();

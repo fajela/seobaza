@@ -2,12 +2,13 @@ import Link from "next/link";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "Події - SEO BAZA",
   description: "SEOшні та околоSEOшні події від української спільноти",
-  alternates: { canonical: "https://seobaza.com.ua/events" },
-};
+  path: "/events",
+});
 
 async function getEvents() {
   const eventsPath = path.join(process.cwd(), "content", "events");

@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { getAllNews, getNewsYears } from "@/lib/news";
 import { CATEGORIES, getCategoryDisplayName } from "@/lib/taxonomy";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "SEO новини — SEO BAZA",
   description:
     "Архів SEO-новин від спільноти SEO BAZA: оновлення Google, тренди AI та події SEO-індустрії.",
-  alternates: { canonical: "https://seobaza.com.ua/news" },
-};
+  path: "/news",
+});
 
 export default function NewsPage() {
   const allNews = getAllNews();

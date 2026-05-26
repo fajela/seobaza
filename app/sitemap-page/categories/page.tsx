@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { getAllCategoriesWithCounts } from "@/lib/articles";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Категорії — Карта сайту — SEO BAZA",
   description: "Пілар-категорії SEO на SEO BAZA.",
-  alternates: { canonical: "https://seobaza.com.ua/sitemap-page/categories" },
-};
+  path: "/sitemap-page/categories",
+});
 
 function pluralizeCats(n: number) {
   if (n === 1) return "категорія";

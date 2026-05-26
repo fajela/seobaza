@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { getAllNews, getNewsYears, getMonthsForYear } from "@/lib/news";
 import { ukMonthName } from "@/lib/months";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Новини — Карта сайту — SEO BAZA",
   description: "Усі індивідуальні новинні дописи SEO BAZA, згруповані за роком і місяцем.",
-  alternates: { canonical: "https://seobaza.com.ua/sitemap-page/news" },
-};
+  path: "/sitemap-page/news",
+});
 
 function pluralizeNews(n: number) {
   if (n === 1) return "допис";

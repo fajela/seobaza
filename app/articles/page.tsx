@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { getAllArticles } from "@/lib/articles";
 import { CATEGORIES, getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Статті — SEO BAZA",
   description: "Навчальні матеріали та статті від української SEO-спільноти",
-  alternates: { canonical: "https://seobaza.com.ua/articles" },
-};
+  path: "/articles",
+});
 
 export default async function ArticlesPage() {
   const articles = getAllArticles();

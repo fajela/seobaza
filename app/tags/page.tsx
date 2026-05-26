@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { getAllTagsWithCounts } from "@/lib/articles";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Теги — SEO BAZA",
   description:
     "Всі теги статей SEO BAZA: знайдіть матеріали за темами Core Web Vitals, E-E-A-T, лінкбілдинг, AI Overviews та іншими ключовими напрямами SEO.",
-  alternates: {
-    canonical: "https://seobaza.com.ua/tags",
-  },
-};
+  path: "/tags",
+});
 
 export default function TagsPage() {
   const tags = getAllTagsWithCounts();

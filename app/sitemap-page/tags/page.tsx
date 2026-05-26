@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { getAllTagsWithCounts } from "@/lib/articles";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Теги — Карта сайту — SEO BAZA",
   description: "Усі теги статей і новин SEO BAZA.",
-  alternates: { canonical: "https://seobaza.com.ua/sitemap-page/tags" },
-};
+  path: "/sitemap-page/tags",
+});
 
 function pluralizeTags(n: number) {
   if (n === 1) return "тег";

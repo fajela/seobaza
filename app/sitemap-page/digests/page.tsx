@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { getAllNews, getNewsYears } from "@/lib/news";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Місячні дайджести — Карта сайту — SEO BAZA",
   description: "Усі місячні дайджести SEO BAZA — підбірки новин за кожен місяць.",
-  alternates: { canonical: "https://seobaza.com.ua/sitemap-page/digests" },
-};
+  path: "/sitemap-page/digests",
+});
 
 function pluralizeDigests(n: number) {
   if (n === 1) return "дайджест";

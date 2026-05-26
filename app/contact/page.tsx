@@ -1,8 +1,10 @@
-export const metadata = {
+import { pageMeta } from "@/lib/page-metadata";
+
+export const metadata = pageMeta({
   title: "Контакти - SEO BAZA",
   description: "Зв'яжіться з нами через Telegram",
-  alternates: { canonical: "https://seobaza.com.ua/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

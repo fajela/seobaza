@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "База знань - SEO BAZA",
   description: "Корисні матеріали, гайди та документи для SEO-спеціалістів",
-  alternates: { canonical: "https://seobaza.com.ua/knowledge-base" },
-};
+  path: "/knowledge-base",
+});
 
 interface KnowledgeItem {
   title: string;

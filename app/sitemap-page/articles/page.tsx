@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { getAllArticles } from "@/lib/articles";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Статті — Карта сайту — SEO BAZA",
   description: "Список усіх вічнозелених статей на SEO BAZA.",
-  alternates: { canonical: "https://seobaza.com.ua/sitemap-page/articles" },
-};
+  path: "/sitemap-page/articles",
+});
 
 function pluralizeArticles(n: number) {
   if (n === 1) return "стаття";

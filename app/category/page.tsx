@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { getAllCategoriesWithCounts } from "@/lib/articles";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Категорії — SEO BAZA",
   description:
     "Всі категорії матеріалів про SEO від української спільноти: лінкбілдинг, технічне SEO, AI та SEO, оновлення алгоритмів і багато іншого.",
-  alternates: {
-    canonical: "https://seobaza.com.ua/category",
-  },
-};
+  path: "/category",
+});
 
 export default function CategoriesPage() {
   const categories = getAllCategoriesWithCounts();

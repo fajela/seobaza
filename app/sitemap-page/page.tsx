@@ -2,13 +2,13 @@ import Link from "next/link";
 import { getAllArticles, getAllCategoriesWithCounts, getAllTagsWithCounts } from "@/lib/articles";
 import { getAllNews } from "@/lib/news";
 import { getAllAuthors } from "@/lib/authors";
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Карта сайту — SEO BAZA",
   description: "Повна карта сайту SEO BAZA: статті, новини, дайджести, теги, категорії, автори.",
-  alternates: { canonical: "https://seobaza.com.ua/sitemap-page" },
-};
+  path: "/sitemap-page",
+});
 
 export default function SitemapIndexPage() {
   const articles   = getAllArticles();
