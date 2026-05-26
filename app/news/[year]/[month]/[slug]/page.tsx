@@ -265,7 +265,6 @@ export default async function NewsPostPage({
           <TelegramComments
             channel="SEOBAZA"
             postId={item.telegramMessageId}
-            fallbackUrl={item.sourceUrl}
           />
         )}
 

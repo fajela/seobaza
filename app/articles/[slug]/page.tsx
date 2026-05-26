@@ -335,7 +335,6 @@ export default async function ArticlePage({
           <TelegramComments
             channel="SEOBAZA"
             postId={article.telegramMessageId}
-            fallbackUrl={article.sourceUrl}
           />
         </div>
       )}

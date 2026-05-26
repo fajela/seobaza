@@ -1,10 +1,8 @@
 interface Props {
   /** Telegram channel username (e.g. "SEOBAZA") */
   channel: string;
-  /** Channel post ID */
+  /** Channel post ID (the Telegram message id) */
   postId: number;
-  /** Pre-built Telegram URL; if not supplied we build one from channel + postId */
-  fallbackUrl?: string;
 }
 
 /**
@@ -16,8 +14,11 @@ interface Props {
  * proper server-side fetcher that hits messages.getDiscussionMessage +
  * messages.getReplies and stores comments locally, just link out to Telegram.
  */
-export function TelegramComments({ channel, postId, fallbackUrl }: Props) {
-  const url = fallbackUrl ?? `https://t.me/${channel}/${postId}`;
+export function TelegramComments({ channel, postId }: Props) {
+  // Always link to the real Telegram post. Do NOT use the post's `sourceUrl`
+  // frontmatter — that was rewritten to an internal /news/... path during the
+  // cross-reference pass and would loop back to this page.
+  const url = `https://t.me/${channel}/${postId}`;
   return (
     <section className="mt-12 pt-8 border-t border-border">
       <a
