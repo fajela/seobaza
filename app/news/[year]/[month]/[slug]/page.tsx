@@ -4,6 +4,7 @@ import { getNewsPostPaths, getNewsBySlug, getRelatedNews, getOtherPostsInSameMon
 import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { ukMonthName, digestUrl } from "@/lib/months";
+import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg } from "@/components/mdx-img";
 import type { Metadata } from "next";
@@ -26,9 +27,7 @@ export async function generateMetadata({
   try {
     const item = getNewsBySlug(year, slug, month);
     const url = `https://seobaza.com.ua/news/${year}/${month}/${slug}`;
-    const ogImage = item.image
-      ? `https://seobaza.com.ua${item.image}`
-      : "https://seobaza.com.ua/og-image.png";
+    const og = buildOgImage(item.image, item.h1 || item.title);
     return {
       title: `${item.title} — SEO BAZA`,
       description: item.description,
@@ -41,16 +40,17 @@ export async function generateMetadata({
         locale: "uk_UA",
         type: "article",
         publishedTime: item.date,
+        modifiedTime: item.date,
         authors: [item.author],
-        images: [{ url: ogImage, width: 1200, height: 630, alt: item.title }],
+        images: [{ url: og.url, width: og.width, height: og.height, alt: og.alt, type: og.type }],
         tags: item.tags,
-        section: item.category,
+        section: getCategoryDisplayName(item.category),
       },
       twitter: {
         card: "summary_large_image",
         title: item.title,
         description: item.description,
-        images: [ogImage],
+        images: [{ url: og.url, alt: og.alt }],
       },
     };
   } catch {

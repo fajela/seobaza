@@ -4,6 +4,7 @@ import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg } from "@/components/mdx-img";
+import { buildOgImage } from "@/lib/og-image";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
@@ -47,9 +48,7 @@ export async function generateMetadata({
   try {
     const article = getArticleBySlug(slug);
     const url = `https://seobaza.com.ua/articles/${slug}`;
-    const ogImage = article.image
-      ? `https://seobaza.com.ua${article.image}`
-      : "https://seobaza.com.ua/og-image.png";
+    const og = buildOgImage(article.image, article.h1 || article.title);
 
     return {
       title: `${article.title} - SEO BAZA`,
@@ -66,14 +65,17 @@ export async function generateMetadata({
         locale: "uk_UA",
         type: "article",
         publishedTime: article.date,
+        modifiedTime: article.date,
         authors: [article.author],
+        section: article.category ? getCategoryDisplayName(article.category) : undefined,
+        tags: article.tags,
         images: [
           {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: article.h1 || article.title,
-            type: "image/jpeg",
+            url: og.url,
+            width: og.width,
+            height: og.height,
+            alt: og.alt,
+            type: og.type,
           },
         ],
       },
@@ -81,13 +83,7 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: article.title,
         description: article.description,
-        images: [ogImage],
-      },
-      other: {
-        "og:image": ogImage,
-        "og:image:width": "1200",
-        "og:image:height": "630",
-        "og:image:type": "image/jpeg",
+        images: [{ url: og.url, alt: og.alt }],
       },
     };
   } catch {
