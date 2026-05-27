@@ -78,7 +78,7 @@ export default function Home() {
           </div>
 
           <p className="mt-6 text-sm text-muted-foreground">
-            Спільнота з 2022 · 600+ матеріалів · новини, гайди та місячні дайджести
+            Українська SEO-спільнота · 600+ матеріалів · новини, гайди та місячні дайджести
           </p>
         </div>
       </section>
