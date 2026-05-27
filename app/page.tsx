@@ -1,7 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import { TelegramWidget } from "@/components/telegram-widget";
+import { getAllNews } from "@/lib/news";
+import { getAllArticles } from "@/lib/articles";
+import { getCategoryDisplayName } from "@/lib/taxonomy";
 
 export default function Home() {
+  // Newest content to surface on the homepage (both fetchers return date-desc).
+  const latestNews = getAllNews().filter((n) => n.type === "news").slice(0, 6);
+  // Exclude the scaffold/example article from the homepage feature.
+  const latestArticles = getAllArticles()
+    .filter((a) => a.slug !== "example-article")
+    .slice(0, 3);
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Sitewide WebSite + Organization JSON-LD — only on the homepage */}
@@ -43,8 +54,151 @@ export default function Home() {
             Українська SEO-спільнота з найкращими спеціалістами, навчальними
             матеріалами та підтримкою
           </p>
+
+          {/* CTA buttons — immediate paths into the content */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/articles"
+              className="px-5 py-2.5 rounded-lg bg-accent text-background font-medium hover:bg-accent/90 transition-colors"
+            >
+              Читати статті
+            </Link>
+            <Link
+              href="/news"
+              className="px-5 py-2.5 rounded-lg border border-border font-medium hover:border-accent/50 hover:text-accent transition-colors"
+            >
+              Останні новини
+            </Link>
+            <Link
+              href="/category"
+              className="px-5 py-2.5 rounded-lg border border-border font-medium hover:border-accent/50 hover:text-accent transition-colors"
+            >
+              Категорії
+            </Link>
+          </div>
+
+          <p className="mt-6 text-sm text-muted-foreground">
+            Спільнота з 2022 · 600+ матеріалів · новини, гайди та місячні дайджести
+          </p>
         </div>
       </section>
+
+      {/* Latest news */}
+      {latestNews.length > 0 && (
+        <section className="mb-16">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-display">Останні новини</h2>
+            <Link href="/news" className="text-sm text-primary hover:text-accent transition-colors">
+              Усі новини →
+            </Link>
+          </div>
+          <div
+            className="grid gap-3"
+            itemScope
+            itemType="https://schema.org/ItemList"
+          >
+            <meta itemProp="numberOfItems" content={String(latestNews.length)} />
+            {latestNews.map((item, i) => {
+              const url = item.month
+                ? `/news/${item.year}/${item.month}/${item.slug}`
+                : `/news/${item.year}/${item.slug}`;
+              return (
+                <div
+                  key={item.slug}
+                  itemProp="itemListElement"
+                  itemScope
+                  itemType="https://schema.org/ListItem"
+                >
+                  <meta itemProp="position" content={String(i + 1)} />
+                  <link itemProp="url" href={`https://seobaza.com.ua${url}`} />
+                  <Link href={url} className="block group">
+                    <div className="flex items-start gap-4 p-4 rounded-xl border border-border bg-secondary/20 hover:border-accent/50 hover:bg-secondary/40 transition-all">
+                      <div className="flex-1 min-w-0">
+                        {item.category && (
+                          <span className="inline-block mb-1 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                            {getCategoryDisplayName(item.category)}
+                          </span>
+                        )}
+                        <h3
+                          itemProp="name"
+                          className="font-medium group-hover:text-accent transition-colors line-clamp-2"
+                        >
+                          {item.title}
+                        </h3>
+                        <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-muted-foreground">
+                          <time dateTime={item.date}>
+                            {new Date(item.date).toLocaleDateString("uk-UA", {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            })}
+                          </time>
+                          {item.readingTime && (
+                            <>
+                              <span>·</span>
+                              <span>{item.readingTime} хв</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* Latest articles */}
+      {latestArticles.length > 0 && (
+        <section className="mb-16">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-display">Свіжі статті</h2>
+            <Link href="/articles" className="text-sm text-primary hover:text-accent transition-colors">
+              Усі статті →
+            </Link>
+          </div>
+          <div
+            className="grid sm:grid-cols-3 gap-4"
+            itemScope
+            itemType="https://schema.org/ItemList"
+          >
+            <meta itemProp="numberOfItems" content={String(latestArticles.length)} />
+            {latestArticles.map((article, i) => (
+              <div
+                key={article.slug}
+                itemProp="itemListElement"
+                itemScope
+                itemType="https://schema.org/ListItem"
+              >
+                <meta itemProp="position" content={String(i + 1)} />
+                <link itemProp="url" href={`https://seobaza.com.ua/articles/${article.slug}`} />
+                <Link href={`/articles/${article.slug}`} className="block group h-full">
+                  <div className="h-full p-5 rounded-xl border border-border bg-secondary/20 hover:border-accent/50 hover:bg-secondary/40 transition-all">
+                    {article.category && (
+                      <span className="inline-block mb-2 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                        {getCategoryDisplayName(article.category)}
+                      </span>
+                    )}
+                    <h3
+                      itemProp="name"
+                      className="font-display text-lg mb-2 group-hover:text-accent transition-colors line-clamp-3"
+                    >
+                      {article.title}
+                    </h3>
+                    {article.description && (
+                      <p className="text-sm text-muted-foreground line-clamp-3">
+                        {article.description}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Telegram Section */}
       <section className="mb-16">
@@ -67,7 +221,7 @@ export default function Home() {
             SEO BAZA також є в YouTube
           </h2>
           <p className="text-center text-lg mb-6 text-muted-foreground">
-            SEO 2025
+            Доповіді, розбори та інтерв'ю від спільноти
           </p>
           <div className="aspect-video max-w-3xl mx-auto rounded-xl overflow-hidden shadow-xl">
             <iframe
@@ -80,6 +234,15 @@ export default function Home() {
               allowFullScreen
               className="w-full h-full"
             />
+          </div>
+          <div className="text-center mt-6">
+            <a
+              href="https://www.youtube.com/@SEOBAZA"
+              target="_blank"
+              className="text-sm text-primary hover:text-accent underline transition-colors"
+            >
+              Переглянути всі відео на каналі →
+            </a>
           </div>
         </div>
       </section>
