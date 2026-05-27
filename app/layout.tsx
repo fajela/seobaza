@@ -4,6 +4,7 @@ import { Open_Sans, Proza_Libre } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
+import { Analytics } from "@/components/analytics";
 
 const openSans = Open_Sans({
   subsets: ["latin", "cyrillic"],
@@ -97,6 +98,7 @@ export default function RootLayout({
         className={`${openSans.variable} ${prozaLibre.variable} antialiased min-h-screen flex flex-col`}
         vocab="https://schema.org/"
       >
+        <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
