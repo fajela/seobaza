@@ -3,7 +3,7 @@ import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/arti
 import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { TelegramComments } from "@/components/telegram-comments";
-import { MdxImg } from "@/components/mdx-img";
+import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { buildOgImage } from "@/lib/og-image";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -12,7 +12,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { slug } from "github-slugger";
 
-const mdxComponents = { img: MdxImg };
+const mdxComponents = { img: MdxImg, a: MdxLink };
 
 // Custom slug function with transliteration (kept for potential future use)
 function customSlugger(text: string): string {

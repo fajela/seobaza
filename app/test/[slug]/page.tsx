@@ -3,11 +3,11 @@ import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { MdxImg } from "@/components/mdx-img";
+import { MdxImg, MdxLink } from "@/components/mdx-img";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const mdxComponents = { img: MdxImg };
+const mdxComponents = { img: MdxImg, a: MdxLink };
 
 interface TestPageProps {
   params: Promise<{ slug: string }>;

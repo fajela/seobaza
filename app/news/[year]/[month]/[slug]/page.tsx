@@ -6,13 +6,13 @@ import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { ukMonthName, digestUrl } from "@/lib/months";
 import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
-import { MdxImg } from "@/components/mdx-img";
+import { MdxImg, MdxLink } from "@/components/mdx-img";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 
-const mdxComponents = { img: MdxImg };
+const mdxComponents = { img: MdxImg, a: MdxLink };
 
 export async function generateStaticParams() {
   return getNewsPostPaths();

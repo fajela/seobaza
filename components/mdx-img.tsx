@@ -4,6 +4,31 @@ import path from "path";
 import fs from "fs";
 
 /**
+ * Drop-in replacement for the default MDX `<a>` element.
+ * External links (http/https) open in a new tab with rel="noopener noreferrer".
+ * Internal links (/path) behave normally.
+ */
+export function MdxLink({
+  href,
+  children,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  const isExternal = href?.startsWith("http://") || href?.startsWith("https://");
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  );
+}
+
+/**
  * Drop-in replacement for the default MDX `<img>` element.
  *
  * - Reads dimensions from disk at build time for local images
