@@ -265,17 +265,30 @@ export function getRelatedNews(
   if (!current) return [];
 
   const currentTags = new Set(current.tags ?? []);
+  const currentTime = new Date(current.date).getTime();
 
   const scored = all
     .filter((n) => n.slug !== currentSlug)
-    .map((n) => ({
-      item: n,
-      sharedTagCount: (n.tags ?? []).filter((t) => currentTags.has(t)).length,
-    }))
+    .map((n) => {
+      const sharedTagCount = (n.tags ?? []).filter((t) =>
+        currentTags.has(t)
+      ).length;
+      // Recency decay so old posts that happen to share every tag don't
+      // outrank fresher, slightly-less-overlapping news. Half-weight at ~60
+      // days from the current post's date.
+      const ageDays =
+        Math.abs(currentTime - new Date(n.date).getTime()) /
+        (1000 * 60 * 60 * 24);
+      return {
+        item: n,
+        sharedTagCount,
+        score: sharedTagCount / (1 + ageDays / 60),
+      };
+    })
     .filter((s) => s.sharedTagCount > 0)
     .sort(
       (a, b) =>
-        b.sharedTagCount - a.sharedTagCount ||
+        b.score - a.score ||
         new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
     );
 
