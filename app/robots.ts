@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/*?_rsc=',
     },
     sitemap: 'https://seobaza.com.ua/sitemap.xml',
   }
