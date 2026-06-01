@@ -2,6 +2,15 @@ import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1645",
+        destination: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1646",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
