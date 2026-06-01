@@ -113,13 +113,8 @@ export default async function TagPage({
         </nav>
 
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 text-sm font-medium bg-accent/10 text-accent rounded-full">
-              {displayName}
-            </span>
-          </div>
           <h1 className="text-4xl sm:text-5xl font-display mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-            Статті за тегом
+            Статті за тегом «{displayName}»
           </h1>
           {items.length > 0 && (
             <p className="text-muted-foreground">
