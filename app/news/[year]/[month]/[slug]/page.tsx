@@ -84,8 +84,43 @@ export default async function NewsPostPage({
   const authorUrl = authorSlug ? `https://seobaza.com.ua/authors/${authorSlug}` : undefined;
   const ogImage = item.image ? `https://seobaza.com.ua${item.image}` : "https://seobaza.com.ua/og-image.png";
 
+  // JSON-LD NewsArticle — Google reliably reads JSON-LD for rich results
+  // (RDFa support is spotty). Same @id as the RDFa block below, so they merge
+  // into one entity in the schema graph rather than duplicating.
+  const newsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "@id": pageUrl,
+    mainEntityOfPage: pageUrl,
+    headline: h1Title,
+    description: item.description,
+    image: [ogImage],
+    datePublished: isoDate(item.date),
+    dateModified: isoDate(item.date),
+    inLanguage: "uk-UA",
+    author: {
+      "@type": "Person",
+      name: item.author,
+      ...(authorUrl ? { url: authorUrl } : {}),
+      ...(item.author === "Олеся Коробка" ? { alternateName: "Olesia Korobka" } : {}),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SEO BAZA",
+      url: "https://seobaza.com.ua/",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://seobaza.com.ua/seobaza.png",
+      },
+    },
+  };
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsJsonLd) }}
+      />
       <article
         className="max-w-3xl mx-auto"
         {...{ vocab: "https://schema.org/", typeof: "NewsArticle", resource: pageUrl }}
