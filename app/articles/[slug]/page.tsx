@@ -5,6 +5,7 @@ import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { buildOgImage } from "@/lib/og-image";
+import { isoDate } from "@/lib/schema-rdfa";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
@@ -132,8 +133,8 @@ export default async function ArticlePage({
         {...{ vocab: "https://schema.org/", typeof: "Article", resource: pageUrl }}
       >
         <span className="hidden" property="mainEntityOfPage" content={pageUrl} />
-        <span className="hidden" property="datePublished" content={article.date} />
-        <span className="hidden" property="dateModified" content={article.date} />
+        <span className="hidden" property="datePublished" content={isoDate(article.date)} />
+        <span className="hidden" property="dateModified" content={isoDate(article.date)} />
         <span className="hidden" property="image" content={articleOgImage} />
         <span className="hidden" property="inLanguage" content="uk-UA" />
         <div

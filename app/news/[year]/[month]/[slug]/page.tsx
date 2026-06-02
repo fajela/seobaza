@@ -4,6 +4,7 @@ import { getNewsPostPaths, getNewsBySlug, getRelatedNews, getOtherPostsInSameMon
 import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { ukMonthName, digestUrl } from "@/lib/months";
+import { isoDate } from "@/lib/schema-rdfa";
 import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
@@ -90,8 +91,8 @@ export default async function NewsPostPage({
         {...{ vocab: "https://schema.org/", typeof: "NewsArticle", resource: pageUrl }}
       >
         <span className="hidden" property="mainEntityOfPage" content={pageUrl} />
-        <span className="hidden" property="datePublished" content={item.date} />
-        <span className="hidden" property="dateModified" content={item.date} />
+        <span className="hidden" property="datePublished" content={isoDate(item.date)} />
+        <span className="hidden" property="dateModified" content={isoDate(item.date)} />
         <span className="hidden" property="image" content={ogImage} />
         <span className="hidden" property="inLanguage" content="uk-UA" />
         <div
