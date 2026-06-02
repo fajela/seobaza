@@ -1,0 +1,33 @@
+---
+title: "Microsoft запустив Web IQ: пошуковик для AI-агентів"
+h1: "Microsoft запустив Web IQ: пошуковик для AI-агентів"
+description: "На Microsoft Build Satya Nadella анонсував Web IQ: набір API для граундингу AI-агентів на базі Bing. Copilot і ChatGPT вже на ньому."
+author: "Олеся Коробка"
+date: "2026-06-02"
+tags: ["ai", "llms", "industry", "tools", "technical-seo"]
+category: "industry-news"
+type: "news"
+status: "published"
+sourceUrl: "/news/2026/06/microsoft-zapustyv-web-iq-poshukivnyk-dlia-ai-ahentiv-1651"
+telegramMessageId: 1651
+image: "/images/news/web-iq.png"
+---
+
+Microsoft запустив [пошуковик для AI-агентів Web IQ](https://blogs.bing.com/cmsctx/pv/fa68b46d-1542-458e-bf01-f578848fcdef/culture/en-US/wg/c91f7f9f-4e47-41ab-ae48-87b525fd7ea6/h/e144d329decb4b83192eb25076b9661499c79bba09626f7e5f8b228ca5c69db1/-/search/june-2026/announcing-microsoft-web-iq). Про це Satya Nadella оголосив під час [головної доповіді Microsoft Build](https://www.youtube.com/watch?v=5-BQsmVOk_g). Детальніше суть сформулював Jordi Ribas, президент пошуку і AI в Microsoft, [у своєму пості про Web IQ](https://www.linkedin.com/posts/jordirib1_as-satya-shared-in-todays-keynote-at-build-share-7467631398128947200-5pjD/).
+
+Пошук робили для людей, але прогнозується, що агенти генеруватимуть у **1000 разів** більше запитів. Тому потрібен зручніший пошук на API для граундингу, пристосований до AI-систем. Такий пошук оптимізований під якість, зменшення затримки, економію токенів.
+
+Web IQ побудований на базі Bing global index, але повністю перепроектований під агентські навантаження. Ключова різниця з Bing: повертає не документи, а [пасажі](/news/2023/10/iak-pratsiuie-sge-i-do-choho-tut-rag-poshukovo-dopovnena-hen-0722) — конкретні уривки з максимальною щільністю інформації.
+
+![Архітектура Web IQ](/images/news/web-iq.png)
+*Скріншот з [офіційного блогу Microsoft про Web IQ](https://blogs.bing.com/cmsctx/pv/fa68b46d-1542-458e-bf01-f578848fcdef/culture/en-US/wg/c91f7f9f-4e47-41ab-ae48-87b525fd7ea6/h/e144d329decb4b83192eb25076b9661499c79bba09626f7e5f8b228ca5c69db1/-/search/june-2026/announcing-microsoft-web-iq)*
+
+Технічні деталі:
+- Harrier — [ембеддінгова модель](/articles/pro-embedinhy-abo-vbudovuvannia-dlia-seoshnykiv-prostymy-slo-0578) нового пошуку, зараз №1 у галузевому лідерборді. Відповідає за семантичний пошук.
+- DiskANN — система для nearest-neighbor пошуку у великих векторних просторах без зниження швидкості.
+- Затримка: sub-165ms p95, у **2.5×** швидше за наступного конкурента — хто саме, не уточнюється.
+- Якість вимірюється метрикою GDSAT — grounding satisfaction. Усі цифри є внутрішніми бенчмарками Microsoft. Незалежних перевірок немає.
+
+На Web IQ вже перейшли Copilot і ChatGPT.
+
+Видавці матимуть контроль над тим, як їхній контент потрапляє в граундинг: Web IQ обіцяє поважати robots.txt і налаштування доступу до контенту. Microsoft також залучена до розробки нових стандартів через IETF. Деталей реалізації поки немає.
