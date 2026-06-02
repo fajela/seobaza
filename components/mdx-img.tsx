@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { imageSize } from "image-size";
 import path from "path";
 import fs from "fs";
@@ -31,12 +30,10 @@ export function MdxLink({
 /**
  * Drop-in replacement for the default MDX `<img>` element.
  *
- * - Reads dimensions from disk at build time for local images
- *   so Next.js can serve responsive WebP/AVIF with correct aspect ratio
- *   and prevent layout shift (CLS).
- * - Falls back to plain `<img>` for remote URLs or files we can't measure.
- * - All images are lazy-loaded; the per-page `image:` frontmatter (hero)
- *   stays a separate `<Image priority />` rendered by the page template.
+ * Renders a plain native `<img>` with the original `src` (no Next.js image
+ * optimizer / `/_next/image?...` rewriting). For local images we read the
+ * dimensions from disk at build time and set width/height so the browser
+ * reserves space and avoids layout shift (CLS) — the URL stays clean.
  */
 export function MdxImg({
   src,
@@ -49,50 +46,32 @@ export function MdxImg({
 }) {
   if (!src) return null;
 
-  // Remote / data URLs → fall back to native img (Next/Image needs config per host)
-  if (!src.startsWith("/")) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return (
-      <img
-        src={src}
-        alt={alt || ""}
-        title={title}
-        loading="lazy"
-        decoding="async"
-        className="rounded-lg"
-      />
-    );
+  // Local images: read intrinsic dimensions so we can set width/height
+  // (prevents CLS) while keeping the clean /images/... URL.
+  let width: number | undefined;
+  let height: number | undefined;
+  if (src.startsWith("/")) {
+    try {
+      const filePath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
+      const dim = imageSize(fs.readFileSync(filePath));
+      width = dim.width;
+      height = dim.height;
+    } catch {
+      // unmeasurable — fall through with no dimensions
+    }
   }
 
-  try {
-    const filePath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
-    const buf = fs.readFileSync(filePath);
-    const dim = imageSize(buf);
-    if (!dim.width || !dim.height) throw new Error("no dimensions");
-
-    return (
-      <Image
-        src={src}
-        alt={alt || ""}
-        title={title}
-        width={dim.width}
-        height={dim.height}
-        sizes="(max-width: 768px) 100vw, 768px"
-        loading="lazy"
-        className="rounded-lg h-auto w-full"
-      />
-    );
-  } catch {
-    // eslint-disable-next-line @next/next/no-img-element
-    return (
-      <img
-        src={src}
-        alt={alt || ""}
-        title={title}
-        loading="lazy"
-        decoding="async"
-        className="rounded-lg"
-      />
-    );
-  }
+  // eslint-disable-next-line @next/next/no-img-element
+  return (
+    <img
+      src={src}
+      alt={alt || ""}
+      title={title}
+      width={width}
+      height={height}
+      loading="lazy"
+      decoding="async"
+      className="rounded-lg h-auto w-full"
+    />
+  );
 }
