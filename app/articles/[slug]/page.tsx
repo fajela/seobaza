@@ -126,43 +126,8 @@ export default async function ArticlePage({
     ? `https://seobaza.com.ua${article.image}`
     : "https://seobaza.com.ua/og-image.png";
 
-  // JSON-LD Article — Google reliably reads JSON-LD for rich results (RDFa
-  // support is spotty). Same @id as the RDFa block below, so they merge into
-  // one entity rather than duplicating.
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "@id": pageUrl,
-    mainEntityOfPage: pageUrl,
-    headline: h1Title,
-    description: article.description,
-    image: [articleOgImage],
-    datePublished: isoDate(article.date),
-    dateModified: isoDate(article.date),
-    inLanguage: "uk-UA",
-    author: {
-      "@type": "Person",
-      name: article.author,
-      ...(articleAuthorUrl ? { url: articleAuthorUrl } : {}),
-      ...(article.author === "Олеся Коробка" ? { alternateName: "Olesia Korobka" } : {}),
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "SEO BAZA",
-      url: "https://seobaza.com.ua/",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://seobaza.com.ua/seobaza.png",
-      },
-    },
-  };
-
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
       <article
         className="max-w-3xl mx-auto"
         {...{ vocab: "https://schema.org/", typeof: "Article", resource: pageUrl }}
