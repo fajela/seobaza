@@ -30,11 +30,14 @@ export function MdxLink({
 /**
  * Drop-in replacement for the default MDX `<img>` element.
  *
- * Renders a plain native `<img>` with the original `src` (no Next.js image
- * optimizer / `/_next/image?...` rewriting). For local images we read the
- * dimensions from disk at build time and set width/height so the browser
- * reserves space and avoids layout shift (CLS) — the URL stays clean.
+ * Keeps the clean original URL in `src` (no `/_next/image?...` rewriting of
+ * the fallback) while still serving responsive variants via `srcset` through
+ * the Next.js image optimizer. For local images we read the dimensions from
+ * disk at build time and set width/height to avoid layout shift (CLS).
  */
+// Next.js default deviceSizes — the widths next/image emits in srcset.
+const DEVICE_SIZES = [640, 750, 828, 1080, 1200, 1920, 2048, 3840];
+
 export function MdxImg({
   src,
   alt,
@@ -46,25 +49,37 @@ export function MdxImg({
 }) {
   if (!src) return null;
 
-  // Local images: read intrinsic dimensions so we can set width/height
-  // (prevents CLS) while keeping the clean /images/... URL.
+  // Remote / data URLs → plain img, untouched.
+  if (!src.startsWith("/")) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return (
+      <img src={src} alt={alt || ""} title={title} loading="lazy" decoding="async" className="rounded-lg" />
+    );
+  }
+
+  // Local image: read intrinsic dimensions (prevents CLS).
   let width: number | undefined;
   let height: number | undefined;
-  if (src.startsWith("/")) {
-    try {
-      const filePath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
-      const dim = imageSize(fs.readFileSync(filePath));
-      width = dim.width;
-      height = dim.height;
-    } catch {
-      // unmeasurable — fall through with no dimensions
-    }
+  try {
+    const filePath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
+    const dim = imageSize(fs.readFileSync(filePath));
+    width = dim.width;
+    height = dim.height;
+  } catch {
+    // unmeasurable — fall through with no dimensions
   }
+
+  // Responsive srcset via the optimizer, but the fallback src stays clean.
+  const srcSet = DEVICE_SIZES.map(
+    (w) => `/_next/image?url=${encodeURIComponent(src)}&w=${w}&q=75 ${w}w`
+  ).join(", ");
 
   // eslint-disable-next-line @next/next/no-img-element
   return (
     <img
       src={src}
+      srcSet={srcSet}
+      sizes="(max-width: 768px) 100vw, 768px"
       alt={alt || ""}
       title={title}
       width={width}
