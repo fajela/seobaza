@@ -96,7 +96,6 @@ export default function RootLayout({
       </head>
       <body
         className={`${openSans.variable} ${prozaLibre.variable} antialiased min-h-screen flex flex-col`}
-        vocab="https://schema.org/"
       >
         <Analytics />
         <ThemeProvider

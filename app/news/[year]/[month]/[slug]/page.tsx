@@ -88,21 +88,26 @@ export default async function NewsPostPage({
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <article
         className="max-w-3xl mx-auto"
-        {...{ vocab: "https://schema.org/", typeof: "NewsArticle", resource: pageUrl }}
+        itemScope
+        itemType="https://schema.org/NewsArticle"
+        itemID={pageUrl}
       >
-        <span className="hidden" property="mainEntityOfPage" content={pageUrl} />
-        <span className="hidden" property="datePublished" content={isoDate(item.date)} />
-        <span className="hidden" property="dateModified" content={isoDate(item.date)} />
-        <span className="hidden" property="image" content={ogImage} />
-        <span className="hidden" property="inLanguage" content="uk-UA" />
+        <meta itemProp="mainEntityOfPage" content={pageUrl} />
+        <meta itemProp="datePublished" content={isoDate(item.date)} />
+        <meta itemProp="dateModified" content={isoDate(item.date)} />
+        <meta itemProp="image" content={ogImage} />
+        <meta itemProp="inLanguage" content="uk-UA" />
         <div
           className="hidden"
-          {...{ property: "publisher", typeof: "Organization", resource: "https://seobaza.com.ua/" }}
+          itemProp="publisher"
+          itemScope
+          itemType="https://schema.org/Organization"
+          itemID="https://seobaza.com.ua/"
         >
-          <span property="name" content="SEO BAZA" />
-          <span property="url" content="https://seobaza.com.ua/" />
-          <div {...{ property: "logo", typeof: "ImageObject" }}>
-            <span property="url" content="https://seobaza.com.ua/seobaza.png" />
+          <meta itemProp="name" content="SEO BAZA" />
+          <link itemProp="url" href="https://seobaza.com.ua/" />
+          <div itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
+            <link itemProp="url" href="https://seobaza.com.ua/seobaza.png" />
           </div>
         </div>
 
@@ -160,30 +165,27 @@ export default async function NewsPostPage({
           )}
 
           <h1
-            property="headline name"
+            itemProp="headline name"
             className="text-4xl sm:text-5xl font-display mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
           >
             {h1Title}
           </h1>
 
-          <span className="hidden" property="description" content={item.description} />
+          <meta itemProp="description" content={item.description} />
 
-          {/* Hidden Person definition — no <a> inside this typeof scope, so
-              RDFa parsers can't be tricked by relative hrefs into creating
-              a phantom Unspecified Type entity. */}
+          {/* Hidden Person (author) — microdata item nested via itemProp. */}
           <div
             className="hidden"
-            {...{
-              property: "author",
-              typeof: "Person",
-              resource: authorUrl ?? `https://seobaza.com.ua/#${item.author.replace(/\s+/g, "-")}`,
-            }}
+            itemProp="author"
+            itemScope
+            itemType="https://schema.org/Person"
+            {...(authorUrl ? { itemID: authorUrl } : {})}
           >
-            <span property="name" content={item.author} />
-            {item.author && item.author !== "Олеся Коробка" ? null : (
-              <span property="alternateName" content="Olesia Korobka" />
+            <meta itemProp="name" content={item.author} />
+            {(!item.author || item.author === "Олеся Коробка") && (
+              <meta itemProp="alternateName" content="Olesia Korobka" />
             )}
-            {authorUrl && <span property="url" content={authorUrl} />}
+            {authorUrl && <link itemProp="url" href={authorUrl} />}
           </div>
 
           {/* Visible byline — plain UI, no RDFa attributes */}
@@ -243,7 +245,7 @@ export default async function NewsPostPage({
           )}
         </header>
 
-        <div className="prose prose-lg dark:prose-invert max-w-none" property="articleBody">
+        <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
           <MDXRemote
             source={item.content}
             components={mdxComponents}

@@ -130,21 +130,26 @@ export default async function ArticlePage({
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <article
         className="max-w-3xl mx-auto"
-        {...{ vocab: "https://schema.org/", typeof: "Article", resource: pageUrl }}
+        itemScope
+        itemType="https://schema.org/Article"
+        itemID={pageUrl}
       >
-        <span className="hidden" property="mainEntityOfPage" content={pageUrl} />
-        <span className="hidden" property="datePublished" content={isoDate(article.date)} />
-        <span className="hidden" property="dateModified" content={isoDate(article.date)} />
-        <span className="hidden" property="image" content={articleOgImage} />
-        <span className="hidden" property="inLanguage" content="uk-UA" />
+        <meta itemProp="mainEntityOfPage" content={pageUrl} />
+        <meta itemProp="datePublished" content={isoDate(article.date)} />
+        <meta itemProp="dateModified" content={isoDate(article.date)} />
+        <meta itemProp="image" content={articleOgImage} />
+        <meta itemProp="inLanguage" content="uk-UA" />
         <div
           className="hidden"
-          {...{ property: "publisher", typeof: "Organization", resource: "https://seobaza.com.ua/" }}
+          itemProp="publisher"
+          itemScope
+          itemType="https://schema.org/Organization"
+          itemID="https://seobaza.com.ua/"
         >
-          <span property="name" content="SEO BAZA" />
-          <span property="url" content="https://seobaza.com.ua/" />
-          <div {...{ property: "logo", typeof: "ImageObject" }}>
-            <span property="url" content="https://seobaza.com.ua/seobaza.png" />
+          <meta itemProp="name" content="SEO BAZA" />
+          <link itemProp="url" href="https://seobaza.com.ua/" />
+          <div itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
+            <link itemProp="url" href="https://seobaza.com.ua/seobaza.png" />
           </div>
         </div>
 
@@ -201,25 +206,24 @@ export default async function ArticlePage({
           )}
 
           <h1
-            property="headline name"
+            itemProp="headline name"
             className="text-4xl sm:text-5xl font-display mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
           >
             {h1Title}
           </h1>
 
-          <span className="hidden" property="description" content={article.description} />
+          <meta itemProp="description" content={article.description} />
 
-          {/* Hidden Person definition — no <a> inside this typeof scope */}
+          {/* Hidden Person (author) — microdata item nested via itemProp. */}
           <div
             className="hidden"
-            {...{
-              property: "author",
-              typeof: "Person",
-              resource: articleAuthorUrl ?? `https://seobaza.com.ua/#${article.author.replace(/\s+/g, "-")}`,
-            }}
+            itemProp="author"
+            itemScope
+            itemType="https://schema.org/Person"
+            {...(articleAuthorUrl ? { itemID: articleAuthorUrl } : {})}
           >
-            <span property="name" content={article.author} />
-            {articleAuthorUrl && <span property="url" content={articleAuthorUrl} />}
+            <meta itemProp="name" content={article.author} />
+            {articleAuthorUrl && <link itemProp="url" href={articleAuthorUrl} />}
           </div>
 
           {/* Visible byline — plain UI, no RDFa attributes */}
@@ -309,7 +313,7 @@ export default async function ArticlePage({
           )}
         </header>
 
-        <div className="prose prose-lg dark:prose-invert max-w-none" property="articleBody">
+        <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
           <MDXRemote
             source={contentWithoutH1}
             components={mdxComponents}
