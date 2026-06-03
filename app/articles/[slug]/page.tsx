@@ -132,7 +132,6 @@ export default async function ArticlePage({
         className="max-w-3xl mx-auto"
         itemScope
         itemType="https://schema.org/Article"
-        itemID={pageUrl}
       >
         <meta itemProp="mainEntityOfPage" content={pageUrl} />
         <meta itemProp="datePublished" content={isoDate(article.date)} />

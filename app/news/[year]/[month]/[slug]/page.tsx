@@ -90,7 +90,6 @@ export default async function NewsPostPage({
         className="max-w-3xl mx-auto"
         itemScope
         itemType="https://schema.org/NewsArticle"
-        itemID={pageUrl}
       >
         <meta itemProp="mainEntityOfPage" content={pageUrl} />
         <meta itemProp="datePublished" content={isoDate(item.date)} />
