@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import {
   getAuthorSlugs,
   getAuthorBySlug,
@@ -100,15 +99,15 @@ export default async function AuthorPage({
         <div className="flex flex-col sm:flex-row gap-6 mb-10 p-6 rounded-xl border border-border bg-secondary/20">
           {/* Avatar — uses author.image when set; falls back to the initial letter */}
           {author.image ? (
-            <Image
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
               src={author.image}
               alt={author.name}
               property="image"
               width={96}
               height={96}
-              sizes="96px"
+              fetchPriority="high"
               className="w-24 h-24 rounded-full object-cover shrink-0 border border-border"
-              priority
             />
           ) : (
             <div className="w-24 h-24 rounded-full bg-accent/20 flex items-center justify-center text-accent font-display text-3xl shrink-0">

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { TelegramWidget } from "@/components/telegram-widget";
 import { getAllNews } from "@/lib/news";
@@ -282,14 +281,14 @@ export default function Home() {
             </div>
             <div className="flex justify-center md:justify-end">
               <div className="relative w-48 h-48 rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300">
-                <Image
-                  property="logo"
-                  src="https://seobaza.com.ua/seobaza.png"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/seobaza.png"
                   alt="SEO Baza logo"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 192px, 192px"
-                  priority
+                  width={192}
+                  height={192}
+                  fetchPriority="high"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>

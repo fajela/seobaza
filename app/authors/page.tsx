@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getAllAuthors } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { pageMeta } from "@/lib/page-metadata";
@@ -43,14 +42,15 @@ export default function AuthorsPage() {
                   <div className="flex items-center gap-4 mb-4">
                     {/* Avatar — photo if available, else initial */}
                     {author.image ? (
-                      <Image
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
                         src={author.image}
                         alt={author.name}
                         width={56}
                         height={56}
-                        sizes="56px"
-                        className="w-14 h-14 rounded-full object-cover shrink-0 border border-border"
                         loading="lazy"
+                        decoding="async"
+                        className="w-14 h-14 rounded-full object-cover shrink-0 border border-border"
                       />
                     ) : (
                       <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center text-accent font-display text-xl shrink-0">
