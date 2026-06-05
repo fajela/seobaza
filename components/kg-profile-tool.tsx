@@ -72,7 +72,7 @@ function parseItem(item: {
 export function KgProfileTool() {
   const [mode, setMode] = useState<"name" | "kgmid">("name");
   const [query, setQuery] = useState("");
-  const [kgmidInput, setKgmidInput] = useState("");
+  const [kgmidInput, setKgmidInput] = useState("/g/11f2bzkqxz");
   const [results, setResults] = useState<KgEntity[]>([]);
   const [directUrl, setDirectUrl] = useState("");
   const [loading, setLoading] = useState(false);
