@@ -4,6 +4,7 @@ import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
+import { KgProfileTool } from "@/components/kg-profile-tool";
 import { buildOgImage } from "@/lib/og-image";
 import { isoDate } from "@/lib/schema-rdfa";
 import type { Metadata } from "next";
@@ -13,7 +14,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { slug } from "github-slugger";
 
-const mdxComponents = { img: MdxImg, a: MdxLink };
+const mdxComponents = { img: MdxImg, a: MdxLink, KgProfileTool };
 
 // Custom slug function with transliteration (kept for potential future use)
 function customSlugger(text: string): string {

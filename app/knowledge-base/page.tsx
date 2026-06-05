@@ -17,6 +17,14 @@ interface KnowledgeItem {
 
 const knowledgeItems: KnowledgeItem[] = [
   {
+    title: "Як відкрити Google Search Profiles через Knowledge Graph ID",
+    description:
+      "Інтерактивний інструмент: знайдіть свою сутність у Графі знань Google і згенеруйте пряме посилання на свій Search Profile з будь-якої країни",
+    url: "/knowledge-base/iak-vidkryty-google-search-profiles-cherez-knowledge-graph-id",
+    type: "internal",
+    tags: ["Google", "Knowledge Graph", "Search Profiles", "Інструмент"],
+  },
+  {
     title: "Указівки для асесорів якості пошуку Google (українською)",
     description:
       "Скорочена версія Search Quality Rater Guidelines - документ, який використовують асесори Google для оцінки якості результатів пошуку",
@@ -78,7 +86,19 @@ export default function KnowledgeBasePage() {
                 {/* Content */}
                 <div className="flex-1">
                   <h2 className="text-xl font-display mb-2 group-hover:text-accent transition-colors">
-                    {item.title}
+                    {item.type === "internal" ? (
+                      <Link href={item.url} className="hover:text-accent transition-colors">
+                        {item.title}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        className="hover:text-accent transition-colors"
+                      >
+                        {item.title}
+                      </a>
+                    )}
                   </h2>
                   <p className="text-muted-foreground mb-4">
                     {item.description}

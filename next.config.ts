@@ -11,6 +11,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    // Заборона вбудовування сайту в чужі iframe (захист від clickjacking і від
+    // piggyback на referrer-обмежений Google API-ключ через сторонній iframe).
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
