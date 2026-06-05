@@ -6,6 +6,7 @@ import { getTagDisplayName } from "@/lib/taxonomy";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { KgProfileTool } from "@/components/kg-profile-tool";
 import { TelegramComments } from "@/components/telegram-comments";
+import { NewsletterForm } from "@/components/newsletter-form";
 import { buildOgImage } from "@/lib/og-image";
 import { isoDate } from "@/lib/schema-rdfa";
 import type { Metadata } from "next";
@@ -247,6 +248,11 @@ export default async function KnowledgeBaseArticlePage({
           />
         </div>
       </article>
+
+      {/* Newsletter signup */}
+      <div className="max-w-3xl mx-auto mt-16">
+        <NewsletterForm />
+      </div>
 
       {/* Telegram comments — OUTSIDE the article RDFa scope */}
       {article.telegramMessageId && (

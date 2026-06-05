@@ -85,6 +85,12 @@ export function Navigation() {
             >
               Контакт
             </NavLink>
+            <NavLink
+              href="/newsletter"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Розсилка
+            </NavLink>
             <ThemeToggle />
           </div>
 
@@ -189,6 +195,13 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Контакт
+              </NavLink>
+              <NavLink
+                href="/newsletter"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Розсилка
               </NavLink>
             </div>
           </div>

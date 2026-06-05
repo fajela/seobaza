@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Analytics } from "@/components/analytics";
+import { NewsletterForm } from "@/components/newsletter-form";
 
 const openSans = Open_Sans({
   subsets: ["latin", "cyrillic"],
@@ -108,12 +109,20 @@ export default function RootLayout({
           <main className="flex-1 pt-16">{children}</main>
           <footer className="border-t border-border bg-muted/30 transition-theme">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              {/* Newsletter signup */}
+              <div className="max-w-xl mx-auto mb-10 pb-8 border-b border-border">
+                <NewsletterForm variant="compact" />
+              </div>
+
               {/* Footer link rows — keeps /tags, /authors, /sitemap-page reachable
                   from every page so crawlers don't see them as orphans. */}
               <nav
                 aria-label="Footer"
                 className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground mb-6"
               >
+                <Link href="/newsletter" className="hover:text-accent transition-colors">
+                  Розсилка
+                </Link>
                 <Link href="/about" className="hover:text-accent transition-colors">
                   Про нас
                 </Link>

@@ -5,6 +5,7 @@ import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { KgProfileTool } from "@/components/kg-profile-tool";
+import { NewsletterForm } from "@/components/newsletter-form";
 import { buildOgImage } from "@/lib/og-image";
 import { isoDate } from "@/lib/schema-rdfa";
 import type { Metadata } from "next";
@@ -328,6 +329,11 @@ export default async function ArticlePage({
           />
         </div>
       </article>
+
+      {/* Newsletter signup */}
+      <div className="max-w-3xl mx-auto mt-16">
+        <NewsletterForm />
+      </div>
 
       {/* Telegram comments — OUTSIDE the article RDFa scope so
           doesn't leak into the Article schema */}
