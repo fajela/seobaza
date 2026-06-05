@@ -102,6 +102,7 @@ export default async function AuthorPage({
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={author.image}
+              srcSet={`/_next/image?url=${encodeURIComponent(author.image)}&w=96&q=75 1x, /_next/image?url=${encodeURIComponent(author.image)}&w=256&q=75 2x`}
               alt={author.name}
               property="image"
               width={96}

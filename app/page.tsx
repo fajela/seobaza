@@ -284,6 +284,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/seobaza.png"
+                  srcSet="/_next/image?url=%2Fseobaza.png&w=256&q=75 1x, /_next/image?url=%2Fseobaza.png&w=384&q=75 2x"
                   alt="SEO Baza logo"
                   width={192}
                   height={192}

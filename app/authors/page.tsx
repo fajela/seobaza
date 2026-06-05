@@ -45,6 +45,7 @@ export default function AuthorsPage() {
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img
                         src={author.image}
+                        srcSet={`/_next/image?url=${encodeURIComponent(author.image)}&w=64&q=75 1x, /_next/image?url=${encodeURIComponent(author.image)}&w=128&q=75 2x`}
                         alt={author.name}
                         width={56}
                         height={56}
