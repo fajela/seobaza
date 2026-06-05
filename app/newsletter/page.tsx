@@ -17,13 +17,22 @@ export default function NewsletterPage() {
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           Найважливіше зі світу SEO, прямо на вашу пошту. Те саме, що ми пишемо
-          в Telegram, тільки в зручному форматі листа і без поспіху.
+          в{" "}
+          <a
+            href="https://t.me/SEOBAZA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            Telegram
+          </a>
+          , тільки в зручному форматі листа і без поспіху раз на тиждень.
         </p>
 
         <ul className="mb-10 space-y-2 text-foreground">
           <li className="flex gap-3">
             <span className="text-accent">→</span>
-            <span>Розбори оновлень Google, AI-пошуку та LLM без води і паніки</span>
+            <span>Розбори оновлень Google, AI-пошуку та LLM</span>
           </li>
           <li className="flex gap-3">
             <span className="text-accent">→</span>
@@ -31,7 +40,7 @@ export default function NewsletterPage() {
           </li>
           <li className="flex gap-3">
             <span className="text-accent">→</span>
-            <span>Чесний скептичний погляд, а не переказ офіційних заяв Google</span>
+            <span>Новини, тренди, анонси, навчальні матеріали</span>
           </li>
         </ul>
 
