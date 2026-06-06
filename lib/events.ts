@@ -210,13 +210,19 @@ export function eventToJsonLd(event: EventMeta): Record<string, unknown> {
       }))
     : undefined;
 
+  // Own events default their organizer url to the site; external organizers only
+  // get a url if one was explicitly supplied.
+  const orgUrl = event.organizerUrl || (event.isPartner ? undefined : SITE);
+
   return {
     "@context": "https://schema.org",
     "@type": "Event",
     name: event.title,
     description: event.description,
     startDate: event.date,
-    ...(event.endDate ? { endDate: event.endDate } : {}),
+    // Always emit endDate (Google recommends it). Single-day events end the day
+    // they start, so default to the start date when no explicit endDate is set.
+    endDate: event.endDate || event.date,
     eventAttendanceMode: attendanceMode(event.format),
     eventStatus:
       event.status === "cancelled"
@@ -232,7 +238,9 @@ export function eventToJsonLd(event: EventMeta): Record<string, unknown> {
     organizer: {
       "@type": event.organizerType,
       name: event.organizer,
-      url: event.organizerUrl || SITE,
+      // Our own events link to the site; external organizers get a url ONLY if
+      // explicitly provided (we don't auto-link / promote third parties).
+      ...(orgUrl ? { url: orgUrl } : {}),
     },
   };
 }
