@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import { getAllArticles, getAllTagSlugs } from "./articles";
 import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
+import { getLatestDealsEvent } from "./events";
 import { CATEGORIES } from "./taxonomy";
 
 export const BASE = "https://seobaza.com.ua";
@@ -79,8 +80,9 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/knowledge-base`,          lastModified: now },
     { url: `${BASE}/about`,                   lastModified: now },
     { url: `${BASE}/contact`,                 lastModified: now },
-    // /black-friday is a soft alias whose canonical points to /events/2025/black-friday-2025.
-    // Don't list it in the sitemap — let the canonical do its job.
+    // /black-friday is the evergreen "general" Black Friday page and the canonical
+    // target for the current year's archive page — so it belongs in the sitemap.
+    { url: `${BASE}/black-friday`,            lastModified: now, changeFrequency: "yearly" },
     { url: `${BASE}/sitemap-page`,            lastModified: now },
     { url: `${BASE}/sitemap-page/articles`,   lastModified: now },
     { url: `${BASE}/sitemap-page/news`,       lastModified: now },
@@ -90,10 +92,18 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/sitemap-page/authors`,    lastModified: now },
   ];
 
-  const eventPages: Entry[] = events.map((e) => ({
-    url: `${BASE}/events/${e.year}/${e.slug}`,
-    lastModified: e.date ? new Date(e.date) : now,
-  }));
+  // The current year's Black Friday page canonicals to /black-friday, so keep it
+  // out of the sitemap (don't advertise a non-canonical URL). Past years stay.
+  const latestDeals = getLatestDealsEvent();
+  const eventPages: Entry[] = events
+    .filter(
+      (e) =>
+        !(latestDeals && e.year === latestDeals.year && e.slug === latestDeals.slug)
+    )
+    .map((e) => ({
+      url: `${BASE}/events/${e.year}/${e.slug}`,
+      lastModified: e.date ? new Date(e.date) : now,
+    }));
 
   const testPages: Entry[] = tests.map((t) => ({
     url: `${BASE}/test/${t.slug}`,

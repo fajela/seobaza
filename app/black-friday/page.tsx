@@ -3,13 +3,16 @@ export const metadata = {
   description:
     "Найкращі знижки та пропозиції від українських SEO компаній на Чорну п'ятницю 2025: Serpstat, Luxeo, HyperHost, Shared.Domains, Insert.link та інші. Знижки до -90% на SEO інструменти та сервіси.",
   alternates: {
-    canonical: "https://seobaza.com.ua/events/2025/black-friday-2025",
+    // Evergreen "general" page — self-canonical. The current year's archive
+    // page (/events/<year>/black-friday-<year>) canonicals HERE while it is the
+    // active season; when a new year is added it stops doing so automatically.
+    canonical: "https://seobaza.com.ua/black-friday",
   },
   openGraph: {
     title: "Чорна п'ятниця в українському SEO 2025 | SEO Baza",
     description:
       "Найкращі знижки та пропозиції від українських SEO компаній на Чорну п'ятницю 2025",
-    url: "https://seobaza.com.ua/events/2025/black-friday-2025",
+    url: "https://seobaza.com.ua/black-friday",
     images: [
       {
         url: "https://seobaza.com.ua/black-friday-2025.png",

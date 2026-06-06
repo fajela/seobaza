@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
         destination: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1646",
         permanent: true,
       },
+      {
+        // Convenience alias → evergreen Black Friday page. Server-side 308, so the
+        // browser never renders /events/black-friday (no 404, zero layout shift).
+        // The SEO canonical still lives on /black-friday.
+        source: "/events/black-friday",
+        destination: "/black-friday",
+        permanent: true,
+      },
     ];
   },
   async headers() {

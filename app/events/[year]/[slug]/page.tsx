@@ -5,6 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
+import { normalizeEvent, eventToJsonLd, getLatestDealsEvent } from "@/lib/events";
 import type { Metadata } from "next";
 
 const mdxComponents = { img: MdxImg, a: MdxLink };
@@ -55,12 +56,24 @@ export async function generateMetadata({
   const url = `https://seobaza.com.ua/events/${year}/${slug}`;
   const ogImage = "https://seobaza.com.ua/og-image.png";
 
+  // Black Friday strategy: while a year page is the CURRENT (latest) deals page
+  // it canonicals to the evergreen /black-friday hub. Older years are
+  // self-canonical archives — this flips automatically once a newer year exists.
+  const latestDeals = getLatestDealsEvent();
+  const isCurrentDeals =
+    frontmatter.type === "deals" &&
+    latestDeals?.year === year &&
+    latestDeals?.slug === slug;
+  const canonical = isCurrentDeals
+    ? "https://seobaza.com.ua/black-friday"
+    : url;
+
   return {
     title: `${frontmatter.title} - SEO BAZA`,
     description: frontmatter.description || frontmatter.title,
     authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
     alternates: {
-      canonical: url,
+      canonical,
     },
     openGraph: {
       title: frontmatter.title,
@@ -131,8 +144,19 @@ export default async function EventPage({ params }: EventPageProps) {
 
   const eventUrl = `https://seobaza.com.ua/events/${year}/${slug}`;
 
+  // Emit schema.org/Event for real events. Deals pages keep their inline
+  // SaleEvent microdata in the MDX, so skip them here to avoid double markup.
+  const meta = normalizeEvent(year, slug, frontmatter);
+  const eventJsonLd = meta.type !== "deals" ? eventToJsonLd(meta) : null;
+
   return (
     <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl">
+      {eventJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+        />
+      )}
       {/* Breadcrumbs — microdata BreadcrumbList */}
       <nav
         className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8"
