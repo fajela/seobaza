@@ -114,14 +114,28 @@ export interface SplitEvents {
 /**
  * Real events (meetups, conferences, webinars …) split into upcoming/past.
  * Deals (Black Friday) are excluded — they live in their own seasonal hub.
+ *
+ * Ordering rule: SEO Baza's OWN events (isPartner === false) always come first,
+ * external/partner events below them; within each group, by date (upcoming
+ * soonest-first, past newest-first).
  */
 export function getSplitEvents(): SplitEvents {
   const real = getAllEvents().filter((e) => e.type !== "deals");
 
-  const upcoming = real
-    .filter((e) => !isPastEvent(e))
-    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
-  const past = real.filter((e) => isPastEvent(e)); // already newest-first
+  const cmp =
+    (dir: "asc" | "desc") => (a: EventMeta, b: EventMeta) => {
+      // SEO Baza events first.
+      const pa = a.isPartner ? 1 : 0;
+      const pb = b.isPartner ? 1 : 0;
+      if (pa !== pb) return pa - pb;
+      // Then by date.
+      if (a.date === b.date) return 0;
+      const earlier = a.date < b.date ? -1 : 1;
+      return dir === "asc" ? earlier : -earlier;
+    };
+
+  const upcoming = real.filter((e) => !isPastEvent(e)).sort(cmp("asc"));
+  const past = real.filter((e) => isPastEvent(e)).sort(cmp("desc"));
 
   return { upcoming, past };
 }

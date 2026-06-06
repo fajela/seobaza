@@ -14,9 +14,9 @@ export default function EventsPage() {
   const deals = getLatestDealsEvent();
   const all = [...upcoming, ...past];
 
-  // Banner shows the soonest upcoming event; falls back to the Black Friday
-  // hub when nothing is upcoming.
-  const nextEvent = upcoming[0];
+  // Banner features only SEO Baza's OWN soonest upcoming event (we don't promote
+  // external events here); falls back to the Black Friday hub when there is none.
+  const nextEvent = upcoming.find((e) => !e.isPartner);
 
   const jsonLd = {
     "@context": "https://schema.org",
