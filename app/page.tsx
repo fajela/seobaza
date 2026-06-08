@@ -30,6 +30,8 @@ export default function Home() {
             sameAs: [
               "https://www.youtube.com/c/SEOBAZA",
               "https://t.me/SEOBAZA",
+              "https://www.linkedin.com/company/seo-baza/",
+              "https://www.facebook.com/groups/seobaza/",
             ],
             creator: {
               "@type": "Person",
