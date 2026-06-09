@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Reclassified from /articles to /news (it's a news item, NewsArticle schema).
+        source: "/articles/google-pochav-indeksuvaty-profili-vydavtsiv-publisher-profiles",
+        destination: "/news/2026/06/google-tykho-buduie-profili-vydavtsiv-i-vony-pochaly-potraplia-1660",
+        permanent: true,
+      },
+      {
         // Convenience alias → evergreen Black Friday page. Server-side 308, so the
         // browser never renders /events/black-friday (no 404, zero layout shift).
         // The SEO canonical still lives on /black-friday.
