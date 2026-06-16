@@ -1,12 +1,44 @@
 import Link from "next/link";
 import { TelegramWidget } from "@/components/telegram-widget";
+import { PostCover } from "@/components/post-cover";
+import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
 import { getAllNews } from "@/lib/news";
 import { getAllArticles } from "@/lib/articles";
+import { getAllAuthors } from "@/lib/authors";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
 
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString("uk-UA", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+const newsUrl = (item: { year: string; month?: string; slug: string }) =>
+  item.month
+    ? `/news/${item.year}/${item.month}/${item.slug}`
+    : `/news/${item.year}/${item.slug}`;
+
 export default function Home() {
+  // Map author display names → on-site page + avatar so cards can show a byline.
+  const authorIndex = new Map<string, { slug: string; image?: string }>();
+  for (const a of getAllAuthors()) {
+    authorIndex.set(a.name.toLowerCase(), { slug: a.slug, image: a.image });
+    if (a.alternateName) {
+      authorIndex.set(a.alternateName.toLowerCase(), { slug: a.slug, image: a.image });
+    }
+  }
+  const resolveAuthor = (name?: string): BylineAuthor => {
+    const display = name?.trim() || "SEO BAZA";
+    const match = authorIndex.get(display.toLowerCase());
+    return { name: display, slug: match?.slug, image: match?.image };
+  };
+
   // Newest content to surface on the homepage (both fetchers return date-desc).
-  const latestNews = getAllNews().filter((n) => n.type === "news").slice(0, 6);
+  const latestNews = getAllNews().filter((n) => n.type === "news").slice(0, 7);
+  const leadStory = latestNews[0];
+  const secondaryStories = latestNews.slice(1, 5);
+  const moreNews = latestNews.slice(5, 7);
   // Exclude the scaffold/example article from the homepage feature.
   const latestArticles = getAllArticles()
     .filter((a) => a.slug !== "example-article")
@@ -42,12 +74,12 @@ export default function Home() {
           }),
         }}
       />
-      {/* Hero Section */}
-      <section className="mb-16 animate-fade-in">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Hero Section — compact brand band */}
+      <section className="mb-12 animate-fade-in">
+        <div className="max-w-3xl mx-auto text-center">
           <h1
             property="name"
-            className="text-4xl sm:text-5xl md:text-6xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
+            className="text-4xl sm:text-5xl md:text-6xl font-display mb-5 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
           >
             SEO BAZA
           </h1>
@@ -57,7 +89,7 @@ export default function Home() {
           </p>
 
           {/* CTA buttons — immediate paths into the content */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Link
               href="/articles"
               className="px-5 py-2.5 rounded-lg bg-accent text-background font-medium hover:bg-accent/90 transition-colors"
@@ -84,8 +116,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest news */}
-      {latestNews.length > 0 && (
+      {/* Featured news — magazine layout: one lead story + secondary list */}
+      {leadStory && (
         <section className="mb-16">
           <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
             <h2 className="text-2xl sm:text-3xl font-display">Останні новини</h2>
@@ -93,47 +125,103 @@ export default function Home() {
               Усі новини →
             </Link>
           </div>
+
           <div
-            className="grid gap-3"
+            className="grid gap-6 lg:grid-cols-2"
             itemScope
             itemType="https://schema.org/ItemList"
           >
-            <meta itemProp="numberOfItems" content={String(latestNews.length)} />
-            {latestNews.map((item, i) => {
-              const url = item.month
-                ? `/news/${item.year}/${item.month}/${item.slug}`
-                : `/news/${item.year}/${item.slug}`;
-              return (
+            <meta
+              itemProp="numberOfItems"
+              content={String(1 + secondaryStories.length)}
+            />
+
+            {/* Lead story — large cover */}
+            <div
+              itemProp="itemListElement"
+              itemScope
+              itemType="https://schema.org/ListItem"
+            >
+              <meta itemProp="position" content="1" />
+              <link itemProp="url" href={`https://seobaza.com.ua${newsUrl(leadStory)}`} />
+              <Link href={newsUrl(leadStory)} className="group block h-full">
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-secondary/20 transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10">
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <PostCover
+                      src={leadStory.image}
+                      alt={leadStory.title}
+                      label={leadStory.category ? getCategoryDisplayName(leadStory.category) : undefined}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                      className="transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    {leadStory.category && (
+                      <span className="mb-2 inline-block w-fit rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                        {getCategoryDisplayName(leadStory.category)}
+                      </span>
+                    )}
+                    <h3
+                      itemProp="name"
+                      className="font-display text-xl sm:text-2xl leading-snug transition-colors group-hover:text-accent line-clamp-3"
+                    >
+                      {leadStory.title}
+                    </h3>
+                    {leadStory.description && (
+                      <p className="mt-3 text-muted-foreground line-clamp-2">
+                        {leadStory.description}
+                      </p>
+                    )}
+                    <div className="mt-4">
+                      <AuthorByline
+                        author={resolveAuthor(leadStory.author)}
+                        date={leadStory.date}
+                        readingTime={leadStory.readingTime}
+                        linkAuthor={false}
+                      />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            </div>
+
+            {/* Secondary stories — compact rows with thumbnail */}
+            <div className="grid content-start gap-3">
+              {secondaryStories.map((item, i) => (
                 <div
                   key={item.slug}
                   itemProp="itemListElement"
                   itemScope
                   itemType="https://schema.org/ListItem"
                 >
-                  <meta itemProp="position" content={String(i + 1)} />
-                  <link itemProp="url" href={`https://seobaza.com.ua${url}`} />
-                  <Link href={url} className="block group">
-                    <div className="flex items-start gap-4 p-4 rounded-xl border border-border bg-secondary/20 hover:border-accent/50 hover:bg-secondary/40 transition-all">
-                      <div className="flex-1 min-w-0">
+                  <meta itemProp="position" content={String(i + 2)} />
+                  <link itemProp="url" href={`https://seobaza.com.ua${newsUrl(item)}`} />
+                  <Link href={newsUrl(item)} className="group block">
+                    <article className="flex items-stretch gap-4 overflow-hidden rounded-xl border border-border bg-secondary/20 p-3 transition-all hover:border-accent/50 hover:bg-secondary/40">
+                      <div className="relative aspect-square w-24 shrink-0 overflow-hidden rounded-lg sm:w-28">
+                        <PostCover
+                          src={item.image}
+                          alt={item.title}
+                          label={item.category ? getCategoryDisplayName(item.category) : undefined}
+                          sizes="120px"
+                          className="transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex min-w-0 flex-1 flex-col justify-center">
                         {item.category && (
-                          <span className="inline-block mb-1 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                          <span className="mb-1 text-xs font-medium text-primary">
                             {getCategoryDisplayName(item.category)}
                           </span>
                         )}
                         <h3
                           itemProp="name"
-                          className="font-medium group-hover:text-accent transition-colors line-clamp-2"
+                          className="font-medium leading-snug transition-colors group-hover:text-accent line-clamp-2"
                         >
                           {item.title}
                         </h3>
-                        <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-muted-foreground">
-                          <time dateTime={item.date}>
-                            {new Date(item.date).toLocaleDateString("uk-UA", {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            })}
-                          </time>
+                        <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                          <time dateTime={item.date}>{formatDate(item.date)}</time>
                           {item.readingTime && (
                             <>
                               <span>·</span>
@@ -142,12 +230,30 @@ export default function Home() {
                           )}
                         </div>
                       </div>
-                    </div>
+                    </article>
                   </Link>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
+
+          {/* Extra headlines — text strip under the featured grid */}
+          {moreNews.length > 0 && (
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {moreNews.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={newsUrl(item)}
+                  className="group flex items-baseline gap-2 rounded-lg border border-border/60 bg-secondary/10 px-4 py-3 transition-all hover:border-accent/50 hover:bg-secondary/30"
+                >
+                  <span className="mt-0.5 text-accent">›</span>
+                  <span className="font-medium leading-snug transition-colors group-hover:text-accent line-clamp-2">
+                    {item.title}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
@@ -175,25 +281,44 @@ export default function Home() {
               >
                 <meta itemProp="position" content={String(i + 1)} />
                 <link itemProp="url" href={`https://seobaza.com.ua/articles/${article.slug}`} />
-                <Link href={`/articles/${article.slug}`} className="block group h-full">
-                  <div className="h-full p-5 rounded-xl border border-border bg-secondary/20 hover:border-accent/50 hover:bg-secondary/40 transition-all">
-                    {article.category && (
-                      <span className="inline-block mb-2 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
-                        {getCategoryDisplayName(article.category)}
-                      </span>
-                    )}
-                    <h3
-                      itemProp="name"
-                      className="font-display text-lg mb-2 group-hover:text-accent transition-colors line-clamp-3"
-                    >
-                      {article.title}
-                    </h3>
-                    {article.description && (
-                      <p className="text-sm text-muted-foreground line-clamp-3">
-                        {article.description}
-                      </p>
-                    )}
-                  </div>
+                <Link href={`/articles/${article.slug}`} className="group block h-full">
+                  <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-secondary/20 transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10">
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <PostCover
+                        src={article.image}
+                        alt={article.title}
+                        label={article.category ? getCategoryDisplayName(article.category) : undefined}
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-5">
+                      {article.category && (
+                        <span className="mb-2 inline-block w-fit rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                          {getCategoryDisplayName(article.category)}
+                        </span>
+                      )}
+                      <h3
+                        itemProp="name"
+                        className="mb-2 font-display text-lg leading-snug transition-colors group-hover:text-accent line-clamp-3"
+                      >
+                        {article.title}
+                      </h3>
+                      {article.description && (
+                        <p className="text-sm text-muted-foreground line-clamp-3">
+                          {article.description}
+                        </p>
+                      )}
+                      <div className="mt-auto pt-4">
+                        <AuthorByline
+                          author={resolveAuthor(article.author)}
+                          date={article.date}
+                          readingTime={article.readingTime}
+                          linkAuthor={false}
+                        />
+                      </div>
+                    </div>
+                  </article>
                 </Link>
               </div>
             ))}
@@ -201,49 +326,65 @@ export default function Home() {
         </section>
       )}
 
-      {/* Telegram Section */}
+      {/* Community band — Telegram + YouTube side by side */}
       <section className="mb-16">
-        <div className="bg-secondary/30 rounded-2xl p-8 border border-border transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
-          <h2 className="text-2xl sm:text-3xl font-display mb-6 text-center">
-            Найбільша активність у SEO BAZA — в Телеграмі
-          </h2>
-          <div className="flex justify-center">
-            <div className="w-full max-w-2xl">
-              <TelegramWidget />
+        <h2 className="text-2xl sm:text-3xl font-display mb-6 text-center">
+          Спільнота SEO BAZA
+        </h2>
+        <div className="grid gap-6 lg:grid-cols-2 items-start">
+          {/* Telegram */}
+          <div className="flex h-full flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
+            <h3 className="text-xl font-display mb-1">
+              Найактивніше — в Телеграмі
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Щоденні новини, обговорення та анонси спільноти
+            </p>
+            <div className="flex-1 flex justify-center">
+              <div className="w-full max-w-xl">
+                <TelegramWidget />
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <a
+                href="https://t.me/SEOBAZA"
+                target="_blank"
+                className="text-sm text-primary hover:text-accent underline transition-colors"
+              >
+                Підписатися в Telegram →
+              </a>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* YouTube Section */}
-      <section className="mb-16">
-        <div className="bg-secondary/30 rounded-2xl p-8 border border-border transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
-          <h2 className="text-2xl sm:text-3xl font-display mb-4 text-center">
-            SEO BAZA також є в YouTube
-          </h2>
-          <p className="text-center text-lg mb-6 text-muted-foreground">
-            Доповіді, розбори та інтерв'ю від спільноти
-          </p>
-          <div className="aspect-video max-w-3xl mx-auto rounded-xl overflow-hidden shadow-xl">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/h42FByRSnSI?si=1fbkdZ2bz8rjOa0T"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="w-full h-full"
-            />
-          </div>
-          <div className="text-center mt-6">
-            <a
-              href="https://www.youtube.com/@SEOBAZA"
-              target="_blank"
-              className="text-sm text-primary hover:text-accent underline transition-colors"
-            >
-              Переглянути всі відео на каналі →
-            </a>
+          {/* YouTube */}
+          <div className="flex h-full flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
+            <h3 className="text-xl font-display mb-1">
+              SEO BAZA на YouTube
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Доповіді, розбори та інтерв&apos;ю від спільноти
+            </p>
+            <div className="aspect-video w-full rounded-xl overflow-hidden shadow-xl">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/h42FByRSnSI?si=1fbkdZ2bz8rjOa0T"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            <div className="mt-auto pt-4 text-center">
+              <a
+                href="https://www.youtube.com/@SEOBAZA"
+                target="_blank"
+                className="text-sm text-primary hover:text-accent underline transition-colors"
+              >
+                Переглянути всі відео на каналі →
+              </a>
+            </div>
           </div>
         </div>
       </section>
