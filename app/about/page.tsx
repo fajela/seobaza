@@ -59,6 +59,10 @@ const aboutJsonLd = {
     sameAs: [
       "https://www.youtube.com/c/SEOBAZA",
       "https://t.me/SEOBAZA",
+      "https://www.linkedin.com/company/seo-baza/",
+      "https://www.facebook.com/groups/seobaza/",
+      "https://www.instagram.com/seobaza/",
+      "https://www.threads.com/@seobaza",
     ],
     founder: {
       "@type": "Person",

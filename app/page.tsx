@@ -64,6 +64,8 @@ export default function Home() {
               "https://t.me/SEOBAZA",
               "https://www.linkedin.com/company/seo-baza/",
               "https://www.facebook.com/groups/seobaza/",
+              "https://www.instagram.com/seobaza/",
+              "https://www.threads.com/@seobaza",
             ],
             creator: {
               "@type": "Person",
