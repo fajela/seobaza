@@ -127,6 +127,9 @@ export default function RootLayout({
                 <Link href="/contact" className="hover:text-accent transition-colors">
                   Контакт
                 </Link>
+                <Link href="/sponsors" className="hover:text-accent transition-colors">
+                  Спонсорам
+                </Link>
                 <Link href="/category" className="hover:text-accent transition-colors">
                   Категорії
                 </Link>

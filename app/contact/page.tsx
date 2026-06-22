@@ -19,7 +19,10 @@ export default function ContactPage() {
             Події, партнерства та спонсорство
           </h2>
           <p className="text-muted-foreground mb-6">
-            Хочете додати свою подію в наш календар, стати партнером чи спонсором? Пишіть Bronso
+            Хочете додати свою подію в наш календар, стати партнером чи спонсором? Пишіть Bronso.{" "}
+            <a href="/sponsors" className="text-primary hover:text-accent underline transition-colors">
+              Формати й ціни
+            </a>
           </p>
           <a
             href="https://t.me/TheBronso"

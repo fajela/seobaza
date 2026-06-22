@@ -73,12 +73,26 @@ export function Navigation() {
             >
               Події
             </NavLink>
-            <NavLink
-              href="/about"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Про нас
-            </NavLink>
+            <div className="relative group">
+              <NavLink
+                href="/about"
+                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+              >
+                Про нас
+              </NavLink>
+              {/* Підменю: показується при наведенні. pt-2 тримає місток,
+                  щоб курсор не втрачав ховер дорогою до пунктів. */}
+              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
+                <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
+                  <NavLink
+                    href="/sponsors"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    Спонсорам
+                  </NavLink>
+                </div>
+              </div>
+            </div>
             <NavLink
               href="/contact"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
@@ -188,6 +202,13 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Про нас
+              </NavLink>
+              <NavLink
+                href="/sponsors"
+                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Спонсорам
               </NavLink>
               <NavLink
                 href="/contact"
