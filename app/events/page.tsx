@@ -103,18 +103,18 @@ export default function EventsPage() {
 
         <div className="mt-12 p-6 bg-muted/30 rounded-xl border border-border">
           <h2 className="text-lg font-display mb-3">
-            Хочете організувати подію?
+            Додайте свою подію
           </h2>
           <p className="text-muted-foreground">
             Напишіть{" "}
             <a
-              href="https://t.me/fajela"
+              href="https://t.me/TheBronso"
               target="_blank"
               className="text-primary hover:text-accent underline transition-colors"
             >
-              @fajela
+              @TheBronso
             </a>{" "}
-            в Telegram, і ми обговоримо деталі
+            в Telegram, і ми додамо її в календар
           </p>
         </div>
       </div>
