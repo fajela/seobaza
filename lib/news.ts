@@ -17,7 +17,12 @@ export interface NewsMetadata {
   description: string;
   author: string;
   authorLink?: string;
+  coAuthor?: string; // optional second author (name must match a content/authors/*.mdx)
   date: string;
+  // Date the article was last edited (YYYY-MM-DD or full ISO). Set manually in
+  // frontmatter when a post is updated. Feeds NewsArticle `dateModified`; `date`
+  // remains the original publish date.
+  updatedAt?: string;
   tags: string[];
   category: CategorySlug;
   type: ArticleType;
@@ -114,7 +119,9 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     description: data.description ?? "",
     author: data.author ?? "SEO BAZA",
     authorLink: data.authorLink,
+    coAuthor: data.coAuthor,
     date: data.date ? String(data.date) : `${year}-01-01`,
+    updatedAt: data.updatedAt ? String(data.updatedAt) : undefined,
     tags: data.tags ?? [],
     category: data.category ?? "community-and-news",
     type: data.type ?? "digest",

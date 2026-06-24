@@ -28,6 +28,8 @@ export async function generateMetadata({
   try {
     const item = getNewsBySlug(year, slug, month);
     const url = `https://seobaza.com.ua/news/${year}/${month}/${slug}`;
+    const published = isoDate(item.date);
+    const modified = isoDate(item.updatedAt || item.date);
     const og = buildOgImage(item.image, item.h1 || item.title);
     return {
       title: `${item.title} — SEO BAZA`,
@@ -40,8 +42,8 @@ export async function generateMetadata({
         siteName: "SEO BAZA",
         locale: "uk_UA",
         type: "article",
-        publishedTime: isoDate(item.date),
-        modifiedTime: isoDate(item.date),
+        publishedTime: published,
+        modifiedTime: modified,
         authors: [item.author],
         images: [{ url: og.url, width: og.width, height: og.height, alt: og.alt, type: og.type }],
         tags: item.tags,
@@ -82,6 +84,7 @@ export default async function NewsPostPage({
   const pageUrl = `https://seobaza.com.ua/news/${year}/${month}/${slug}`;
   const authorSlug = getAuthorSlugByName(item.author);
   const authorUrl = authorSlug ? `https://seobaza.com.ua/authors/${authorSlug}` : undefined;
+  const coAuthorSlug = item.coAuthor ? getAuthorSlugByName(item.coAuthor) : null;
   const ogImage = item.image ? `https://seobaza.com.ua${item.image}` : "https://seobaza.com.ua/og-image.png";
 
   return (
@@ -93,7 +96,7 @@ export default async function NewsPostPage({
       >
         <meta itemProp="mainEntityOfPage" content={pageUrl} />
         <meta itemProp="datePublished" content={isoDate(item.date)} />
-        <meta itemProp="dateModified" content={isoDate(item.date)} />
+        <meta itemProp="dateModified" content={isoDate(item.updatedAt || item.date)} />
         <meta itemProp="image" content={ogImage} />
         <meta itemProp="inLanguage" content="uk-UA" />
         <div
@@ -187,6 +190,27 @@ export default async function NewsPostPage({
             {authorUrl && <link itemProp="url" href={authorUrl} />}
           </div>
 
+          {/* Hidden Person (co-author), when present */}
+          {item.coAuthor && (
+            <div
+              className="hidden"
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+              {...(coAuthorSlug
+                ? { itemID: `https://seobaza.com.ua/authors/${coAuthorSlug}` }
+                : {})}
+            >
+              <meta itemProp="name" content={item.coAuthor} />
+              {coAuthorSlug && (
+                <link
+                  itemProp="url"
+                  href={`https://seobaza.com.ua/authors/${coAuthorSlug}`}
+                />
+              )}
+            </div>
+          )}
+
           {/* Visible byline — plain UI, no RDFa attributes */}
           <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground mb-4">
             {(() => {
@@ -213,6 +237,21 @@ export default async function NewsPostPage({
               }
               return <span className="font-medium">{item.author}</span>;
             })()}
+            {item.coAuthor && (
+              <>
+                <span aria-hidden>і</span>
+                {coAuthorSlug ? (
+                  <Link
+                    href={`/authors/${coAuthorSlug}`}
+                    className="font-medium hover:text-accent transition-colors"
+                  >
+                    {item.coAuthor}
+                  </Link>
+                ) : (
+                  <span className="font-medium">{item.coAuthor}</span>
+                )}
+              </>
+            )}
             <span>·</span>
             <time dateTime={item.date}>
               {new Date(item.date).toLocaleDateString("uk-UA", {
