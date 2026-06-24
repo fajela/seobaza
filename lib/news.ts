@@ -182,9 +182,11 @@ export function getNewsByAuthorName(
   authorName: string,
   includeDrafts = false
 ): NewsMetadata[] {
+  const target = authorName.toLowerCase();
   return getAllNews(includeDrafts).filter(
     (item) =>
-      item.author.toLowerCase() === authorName.toLowerCase()
+      item.author.toLowerCase() === target ||
+      item.coAuthor?.toLowerCase() === target
   );
 }
 
