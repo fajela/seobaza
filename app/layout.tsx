@@ -142,15 +142,6 @@ export default function RootLayout({
                 <Link href="/sitemap-page" className="hover:text-accent transition-colors">
                   Карта сайту
                 </Link>
-                <Link href="/transparency" className="hover:text-accent transition-colors">
-                  Прозорість
-                </Link>
-                <Link href="/privacy" className="hover:text-accent transition-colors">
-                  Конфіденційність
-                </Link>
-                <Link href="/terms" className="hover:text-accent transition-colors">
-                  Умови
-                </Link>
               </nav>
               <div className="text-center">
                 <h2 className="text-xl font-display mb-4">SEO BAZA в соцмережах</h2>
@@ -249,6 +240,20 @@ export default function RootLayout({
                   </span>{" "}
                   для української SEO-спільноти
                 </p>
+                <nav
+                  aria-label="Правова інформація"
+                  className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground mt-6"
+                >
+                  <Link href="/transparency" className="hover:text-accent transition-colors">
+                    Прозорість
+                  </Link>
+                  <Link href="/privacy" className="hover:text-accent transition-colors">
+                    Конфіденційність
+                  </Link>
+                  <Link href="/terms" className="hover:text-accent transition-colors">
+                    Умови
+                  </Link>
+                </nav>
               </div>
             </div>
           </footer>
