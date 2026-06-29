@@ -80,6 +80,9 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/knowledge-base`,          lastModified: now },
     { url: `${BASE}/about`,                   lastModified: now },
     { url: `${BASE}/contact`,                 lastModified: now },
+    { url: `${BASE}/transparency`,            lastModified: now, changeFrequency: "yearly" },
+    { url: `${BASE}/privacy`,                 lastModified: now, changeFrequency: "yearly" },
+    { url: `${BASE}/terms`,                   lastModified: now, changeFrequency: "yearly" },
     // /black-friday is the evergreen "general" Black Friday page and the canonical
     // target for the current year's archive page — so it belongs in the sitemap.
     { url: `${BASE}/black-friday`,            lastModified: now, changeFrequency: "yearly" },
@@ -136,6 +139,37 @@ export function buildNews(): Entry[] {
         : `${BASE}/news/${n.year}/${n.slug}`,
       lastModified: new Date(n.date),
       changeFrequency: "yearly" as const,
+    }));
+}
+
+/**
+ * Google News sitemap entries. Per Google's spec a News sitemap must contain
+ * ONLY articles published in the last 2 days — older URLs are ignored. So this
+ * is a separate file from the full `sitemap-news.xml` archive (which keeps every
+ * news URL for regular indexing).
+ */
+export interface NewsSitemapEntry {
+  url: string;
+  title: string;
+  publicationDate: string; // ISO 8601, with time when known
+}
+
+const NEWS_WINDOW_MS = 48 * 60 * 60 * 1000;
+export const PUBLICATION_NAME = "SEO BAZA";
+export const PUBLICATION_LANGUAGE = "uk";
+
+export function buildGoogleNews(): NewsSitemapEntry[] {
+  const now = Date.now();
+  return getAllNews()
+    .filter((n) => n.type !== "digest")
+    .map((n) => ({ n, time: new Date(n.date).getTime() }))
+    .filter(({ time }) => Number.isFinite(time) && now - time <= NEWS_WINDOW_MS)
+    .map(({ n }) => ({
+      url: n.month
+        ? `${BASE}/news/${n.year}/${n.month}/${n.slug}`
+        : `${BASE}/news/${n.year}/${n.slug}`,
+      title: n.title,
+      publicationDate: new Date(n.date).toISOString(),
     }));
 }
 
@@ -206,12 +240,38 @@ ${items}
 </urlset>`;
 }
 
+export function entriesToNewsUrlset(entries: NewsSitemapEntry[]): string {
+  const escape = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const items = entries
+    .map(
+      (e) => `  <url>
+    <loc>${escape(e.url)}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>${escape(PUBLICATION_NAME)}</news:name>
+        <news:language>${PUBLICATION_LANGUAGE}</news:language>
+      </news:publication>
+      <news:publication_date>${e.publicationDate}</news:publication_date>
+      <news:title>${escape(e.title)}</news:title>
+    </news:news>
+  </url>`
+    )
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+${items}
+</urlset>`;
+}
+
 export function buildIndex(): string {
   const now = new Date().toISOString();
   const subs = [
     "sitemap-pages.xml",
     "sitemap-articles.xml",
     "sitemap-news.xml",
+    "sitemap-google-news.xml",
     "sitemap-digests.xml",
     "sitemap-taxonomy.xml",
   ];
