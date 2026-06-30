@@ -92,21 +92,20 @@ export default function Home() {
         }}
       />
       {/* Hero Section — compact brand band */}
-      <section className="mb-12 animate-fade-in">
+      <section className="mb-10 animate-fade-in">
         <div className="max-w-3xl mx-auto text-center">
           <h1
             property="name"
-            className="text-4xl sm:text-5xl md:text-6xl font-display mb-5 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
+            className="text-4xl sm:text-5xl md:text-6xl font-display mb-3 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
           >
             SEO BAZA
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Українська SEO-спільнота з найкращими спеціалістами, навчальними
-            матеріалами та підтримкою
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Українське SEO-ком'юніті · 600+ матеріалів · новини, гайди та місячні дайджести
           </p>
 
           {/* CTA buttons — immediate paths into the content */}
-          <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link
               href="/articles"
               className="px-5 py-2.5 rounded-lg bg-accent text-background font-medium hover:bg-accent/90 transition-colors"
@@ -119,17 +118,7 @@ export default function Home() {
             >
               Останні новини
             </Link>
-            <Link
-              href="/category"
-              className="px-5 py-2.5 rounded-lg border border-border font-medium hover:border-accent/50 hover:text-accent transition-colors"
-            >
-              Категорії
-            </Link>
           </div>
-
-          <p className="mt-6 text-sm text-muted-foreground">
-            Українське SEO-ком'юніті · 600+ матеріалів · новини, гайди та місячні дайджести
-          </p>
         </div>
       </section>
 

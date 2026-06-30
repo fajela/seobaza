@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Analytics } from "@/components/analytics";
 import { FooterNewsletter } from "@/components/footer-newsletter";
+import { AnnouncementBar } from "@/components/announcement-bar";
+import { StickyNewsletter } from "@/components/sticky-newsletter";
 
 const openSans = Open_Sans({
   subsets: ["latin", "cyrillic"],
@@ -106,7 +108,11 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <Navigation />
-          <main className="flex-1 pt-16">{children}</main>
+          <main className="flex-1 pt-16">
+            <AnnouncementBar />
+            {children}
+          </main>
+          <StickyNewsletter />
           <footer className="border-t border-border bg-muted/30 transition-theme">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
               {/* Newsletter signup (hidden on pages that already have a form) */}
