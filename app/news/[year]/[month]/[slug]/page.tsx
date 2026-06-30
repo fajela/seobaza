@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Script from "next/script";
 import { getNewsPostPaths, getNewsBySlug, getRelatedNews, getOtherPostsInSameMonth } from "@/lib/news";
 import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
@@ -87,8 +88,32 @@ export default async function NewsPostPage({
   const coAuthorSlug = item.coAuthor ? getAuthorSlugByName(item.coAuthor) : null;
   const ogImage = item.image ? `https://seobaza.com.ua${item.image}` : "https://seobaza.com.ua/og-image.png";
 
+  // Reader Revenue Manager (Subscribe with Google) — увімкнено ТІЛЬКИ на цій одній
+  // новині для перевірки. swg-basic.js автоматично додає NewsArticle + isPartOf
+  // Product JSON-LD, тож тримаємо його лише на сторінках статей, не на листингах.
+  const showRrm = slug === "chatgpt-gpt-5-5-obsiah-tsytuvan-znovu-roste";
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {showRrm && (
+        <>
+          <Script
+            id="swg-basic"
+            src="https://news.google.com/swg/js/v1/swg-basic.js"
+            strategy="afterInteractive"
+          />
+          <Script id="swg-basic-init" strategy="afterInteractive">
+            {`(self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
+              basicSubscriptions.init({
+                type: "NewsArticle",
+                isPartOfType: ["Product"],
+                isPartOfProductId: "CAowmIPOCw:openaccess",
+                clientOptions: { theme: "light", lang: "uk" },
+              });
+            });`}
+          </Script>
+        </>
+      )}
       <article
         className="max-w-3xl mx-auto"
         itemScope
