@@ -37,42 +37,51 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <NavLink
-              href="/articles"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Статті
-            </NavLink>
-            <NavLink
-              href="/category"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Категорії
-            </NavLink>
-            <NavLink
-              href="/news"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Новини
-            </NavLink>
-            <NavLink
-              href="/knowledge-base"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              База знань
-            </NavLink>
-            <NavLink
-              href="/test"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Тести
-            </NavLink>
+            {/* Новини + Категорії */}
+            <div className="relative group">
+              <NavLink
+                href="/news"
+                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+              >
+                Новини
+              </NavLink>
+              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
+                <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
+                  <NavLink
+                    href="/category"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    Категорії
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+            {/* Статті + База знань */}
+            <div className="relative group">
+              <NavLink
+                href="/articles"
+                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+              >
+                Статті
+              </NavLink>
+              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
+                <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
+                  <NavLink
+                    href="/knowledge-base"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    База знань
+                  </NavLink>
+                </div>
+              </div>
+            </div>
             <NavLink
               href="/events"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
               Події
             </NavLink>
+            {/* Про нас + Спонсорам, Контакт, Розсилка */}
             <div className="relative group">
               <NavLink
                 href="/about"
@@ -80,7 +89,7 @@ export function Navigation() {
               >
                 Про нас
               </NavLink>
-              {/* Підменю: показується при наведенні. pt-2 тримає місток,
+              {/* Підменю: показується при наведенні. pt-3 тримає місток,
                   щоб курсор не втрачав ховер дорогою до пунктів. */}
               <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
                 <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
@@ -90,21 +99,21 @@ export function Navigation() {
                   >
                     Спонсорам
                   </NavLink>
+                  <NavLink
+                    href="/contact"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    Контакт
+                  </NavLink>
+                  <NavLink
+                    href="/newsletter"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    Розсилка
+                  </NavLink>
                 </div>
               </div>
             </div>
-            <NavLink
-              href="/contact"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Контакт
-            </NavLink>
-            <NavLink
-              href="/newsletter"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Розсилка
-            </NavLink>
             <ThemeToggle />
           </div>
 
@@ -155,20 +164,6 @@ export function Navigation() {
           <div className="md:hidden pb-4 animate-slide-in-right">
             <div className="flex flex-col space-y-3">
               <NavLink
-                href="/articles"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Статті
-              </NavLink>
-              <NavLink
-                href="/category"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Категорії
-              </NavLink>
-              <NavLink
                 href="/news"
                 className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
@@ -176,18 +171,25 @@ export function Navigation() {
                 Новини
               </NavLink>
               <NavLink
-                href="/knowledge-base"
+                href="/category"
+                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Категорії
+              </NavLink>
+              <NavLink
+                href="/articles"
                 className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Статті
+              </NavLink>
+              <NavLink
+                href="/knowledge-base"
+                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 База знань
-              </NavLink>
-              <NavLink
-                href="/test"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Тести
               </NavLink>
               <NavLink
                 href="/events"
@@ -212,14 +214,14 @@ export function Navigation() {
               </NavLink>
               <NavLink
                 href="/contact"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Контакт
               </NavLink>
               <NavLink
                 href="/newsletter"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Розсилка
