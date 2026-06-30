@@ -136,3 +136,11 @@
   height: 0.4rem;
   top: 0.75em;
 }
+
+/* Telegram post embed ships an iframe with a fixed min-width (~370px) that
+   overflows narrow phones and forces horizontal page scroll. Let it shrink. */
+iframe[id^="telegram-post"] {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}

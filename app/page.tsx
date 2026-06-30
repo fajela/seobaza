@@ -406,7 +406,7 @@ export default function Home() {
         </h2>
         <div className="grid gap-6 lg:grid-cols-2 items-start">
           {/* Telegram */}
-          <div className="flex h-full flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
+          <div className="flex h-full min-w-0 flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
             <h3 className="text-xl font-display mb-1">
               Найактивніше — в Телеграмі
             </h3>
@@ -430,7 +430,7 @@ export default function Home() {
           </div>
 
           {/* YouTube */}
-          <div className="flex h-full flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
+          <div className="flex h-full min-w-0 flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
             <h3 className="text-xl font-display mb-1">
               SEO BAZA на YouTube
             </h3>
