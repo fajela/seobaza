@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Гайди живуть у Базі знань, а не як категорія серед статей/новин.
+        source: "/category/guides",
+        destination: "/knowledge-base",
+        permanent: true,
+      },
+      {
         source: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1645",
         destination: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1646",
         permanent: true,

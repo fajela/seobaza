@@ -10,7 +10,8 @@ export const metadata = pageMeta({
 });
 
 export default function CategoriesPage() {
-  const categories = getAllCategoriesWithCounts();
+  // "Гайди" живуть у /knowledge-base, тож не показуємо їх як категорію тут.
+  const categories = getAllCategoriesWithCounts().filter((c) => c.slug !== "guides");
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">

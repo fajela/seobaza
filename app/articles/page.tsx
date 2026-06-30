@@ -10,7 +10,9 @@ export const metadata = pageMeta({
 });
 
 export default async function ArticlesPage() {
-  const articles = getAllArticles();
+  // Guides live in /knowledge-base, not in the articles feed (avoids the same
+  // guide showing both here and under the "Гайди" category).
+  const articles = getAllArticles().filter((a) => a.category !== "guides");
 
   // Count articles per category for the navigation pills.
   // These pills LINK to /category/[slug] — that's the canonical filtered listing.
