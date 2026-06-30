@@ -17,6 +17,14 @@ interface KnowledgeItem {
 
 const knowledgeItems: KnowledgeItem[] = [
   {
+    title: "Що таке Reader Revenue Manager і як його налаштувати",
+    description:
+      "Безкоштовний інструмент Google для донатів, підписки й платного доступу просто на сайті: що це, які CTA вміє, скільки бере Google, і як ми підключили його до SEO BAZA",
+    url: "/knowledge-base/reader-revenue-manager-donaty-na-saiti",
+    type: "internal",
+    tags: ["Google", "Монетизація", "Донати", "RRM"],
+  },
+  {
     title: "Як відкрити Google Search Profiles через Knowledge Graph ID",
     description:
       "Інтерактивний інструмент: знайдіть свою сутність у Графі знань Google і згенеруйте пряме посилання на свій Search Profile з будь-якої країни",
