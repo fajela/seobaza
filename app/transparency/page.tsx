@@ -8,7 +8,7 @@ export const metadata = pageMeta({
   path: "/transparency",
 });
 
-const UPDATED = "29 червня 2026";
+const UPDATED = "30 червня 2026";
 
 export default function TransparencyPage() {
   return (
@@ -50,8 +50,9 @@ export default function TransparencyPage() {
             <h2 className="text-2xl font-display mb-3">Як ми заробляємо</h2>
             <p>SEO BAZA фінансується за рахунок:</p>
             <ul className="list-disc pl-6 space-y-2 mt-2">
+              <li>власних коштів засновниці;</li>
               <li>спонсорства новин і відео;</li>
-              <li>розміщення вакансій та анонсів подій;</li>
+              <li>розміщення вакансій;</li>
               <li>партнерств із релевантними для спільноти компаніями.</li>
             </ul>
             <p className="mt-3">
