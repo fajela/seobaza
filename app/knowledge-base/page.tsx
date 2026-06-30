@@ -69,12 +69,26 @@ export default function KnowledgeBasePage() {
           Корисні матеріали, гайди та документи для SEO-спеціалістів
         </p>
 
-        <div className="grid gap-6">
-          {knowledgeItems.map((item, index) => (
+        <div
+          className="grid gap-6"
+          itemScope
+          itemType="https://schema.org/ItemList"
+        >
+          <meta itemProp="numberOfItems" content={String(knowledgeItems.length)} />
+          {knowledgeItems.map((item, index) => {
+            const href = item.url.startsWith("http")
+              ? item.url
+              : `https://seobaza.com.ua${item.url}`;
+            return (
             <article
               key={index}
+              itemProp="itemListElement"
+              itemScope
+              itemType="https://schema.org/ListItem"
               className="bg-secondary/30 rounded-xl p-6 border border-border transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 group"
             >
+              <meta itemProp="position" content={String(index + 1)} />
+              <link itemProp="url" href={href} />
               <div className="flex items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
@@ -111,7 +125,7 @@ export default function KnowledgeBasePage() {
 
                 {/* Content */}
                 <div className="flex-1">
-                  <h2 className="text-xl font-display mb-2 group-hover:text-accent transition-colors">
+                  <h2 itemProp="name" className="text-xl font-display mb-2 group-hover:text-accent transition-colors">
                     {item.type === "internal" ? (
                       <Link href={item.url} className="hover:text-accent transition-colors">
                         {item.title}
@@ -211,7 +225,8 @@ export default function KnowledgeBasePage() {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
         {/* Call to action */}
