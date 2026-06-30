@@ -1,5 +1,7 @@
 import Link from "next/link";
+import path from "path";
 import { pageMeta } from "@/lib/page-metadata";
+import { getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
 
 export const metadata = pageMeta({
   title: "База знань - SEO BAZA",
@@ -15,23 +17,8 @@ interface KnowledgeItem {
   tags: string[];
 }
 
-const knowledgeItems: KnowledgeItem[] = [
-  {
-    title: "Що таке Reader Revenue Manager і як його налаштувати",
-    description:
-      "Безкоштовний інструмент Google для донатів, підписки й платного доступу просто на сайті: що це, які CTA вміє, скільки бере Google, і як ми підключили його до SEO BAZA",
-    url: "/knowledge-base/reader-revenue-manager-donaty-na-saiti",
-    type: "internal",
-    tags: ["Google", "Монетизація", "Донати", "RRM"],
-  },
-  {
-    title: "Як відкрити Google Search Profiles через Knowledge Graph ID",
-    description:
-      "Інтерактивний інструмент: знайдіть свою сутність у Графі знань Google і згенеруйте пряме посилання на свій Search Profile з будь-якої країни",
-    url: "/knowledge-base/iak-vidkryty-google-search-profiles-cherez-knowledge-graph-id",
-    type: "internal",
-    tags: ["Google", "Knowledge Graph", "Search Profiles", "Інструмент"],
-  },
+// Static (non-mdx) entries — e.g. PDFs that don't live in content/knowledge-base.
+const staticItems: KnowledgeItem[] = [
   {
     title: "Указівки для асесорів якості пошуку Google (українською)",
     description:
@@ -42,7 +29,38 @@ const knowledgeItems: KnowledgeItem[] = [
   },
 ];
 
+const kbDirectory = path.join(process.cwd(), "content/knowledge-base");
+
+// Auto-built from every published .mdx in content/knowledge-base (newest first),
+// then the static entries. New guides appear here automatically, no manual edit.
+function getKnowledgeItems(): KnowledgeItem[] {
+  const articles = getArticleSlugs(kbDirectory)
+    .map((slug) => {
+      try {
+        return getArticleBySlug(slug, kbDirectory);
+      } catch {
+        return null;
+      }
+    })
+    .filter((a): a is Article => a !== null && a.status !== "draft");
+
+  articles.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const mdxItems: KnowledgeItem[] = articles.map((a) => ({
+    title: a.h1 ?? a.title,
+    description: a.description,
+    url: `/knowledge-base/${a.slug}`,
+    type: "internal",
+    tags: a.tags ?? [],
+  }));
+
+  return [...mdxItems, ...staticItems];
+}
+
 export default function KnowledgeBasePage() {
+  const knowledgeItems = getKnowledgeItems();
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-4xl mx-auto">
