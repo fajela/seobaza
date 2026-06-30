@@ -32,7 +32,7 @@ export function StickyNewsletter() {
       <div className="container mx-auto flex items-center justify-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <p className="text-sm text-foreground">
           <span className="hidden sm:inline">📬 </span>
-          Новини SEO українською раз на тиждень. Без спаму.
+          Новини SEO українською раз на тиждень.
         </p>
         <Link
           href="/newsletter"
