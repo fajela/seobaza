@@ -1,4 +1,5 @@
 import { pageMeta } from "@/lib/page-metadata";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
   title: "Політика конфіденційності — SEO BAZA",
@@ -13,6 +14,7 @@ export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <article className="max-w-3xl mx-auto">
+        <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Політика конфіденційності", href: "/privacy" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-3 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
           Політика конфіденційності
         </h1>

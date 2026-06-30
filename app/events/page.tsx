@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getSplitEvents, getLatestDealsEvent, eventToJsonLd } from "@/lib/events";
 import { EventsList } from "@/components/events-list";
 import { pageMeta } from "@/lib/page-metadata";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
   title: "Події - SEO BAZA",
@@ -38,6 +39,7 @@ export default function EventsPage() {
       />
 
       <div className="max-w-4xl mx-auto">
+        <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Події", href: "/events" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
           SEOшні та навколоSEOшні події
         </h1>

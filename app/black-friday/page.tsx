@@ -1,3 +1,5 @@
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
 export const metadata = {
   title: "💥 Чорна п'ятниця в українському SEO 2025 | SEO Baza",
   description:
@@ -110,6 +112,7 @@ export default function BlackFridayPage() {
       vocab="https://schema.org/"
     >
       <div className="max-w-4xl mx-auto">
+        <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Black Friday", href: "/black-friday" }]} />
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 text-center bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
           💥 Чорна п'ятниця 2025: пропозиції українських SEO компаній
         </h1>

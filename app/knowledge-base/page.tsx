@@ -2,6 +2,7 @@ import Link from "next/link";
 import path from "path";
 import { pageMeta } from "@/lib/page-metadata";
 import { getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
   title: "База знань - SEO BAZA",
@@ -64,6 +65,7 @@ export default function KnowledgeBasePage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-4xl mx-auto">
+        <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "База знань", href: "/knowledge-base" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">База знань</h1>
         <p className="text-lg text-muted-foreground mb-12">
           Корисні матеріали, гайди та документи для SEO-спеціалістів
