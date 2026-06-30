@@ -122,6 +122,12 @@ RRM доступний у понад 40 країнах, і Україна сер
 - Якщо підключити скрипт глобально, на всі сторінки, цей `NewsArticle` зʼявиться і на листингах: категоріях, базі знань, головній. А листинг це `ItemList`, а не стаття, тож позначати його як `NewsArticle` неправильно. Ми спершу так і зробили й отримали зайвий `NewsArticle` на кожній сторінці.
 - Schema.org-валідатор підсвічує `isPartOf → Product` як помилку, бо `Product` не є валідною ціллю для `isPartOf` у словнику schema.org. Це закладено в самій розмітці RRM: Google приймає її у власному Rich Results Test, а строгий schema.org, ні. На сторінці статті це очікувано, на листингу, зайве.
 
+![Schema.org-валідатор показує два NewsArticle: чистий власний і доданий swg з помилкою isPartOf → Product](/images/articles/bad-schema-from-rrp.png)
+
+Те, що насправді важить, це чи приймає розмітку Google. У Rich Results Test та сама сторінка дає **2 valid items**, Articles і Breadcrumbs, без помилок і придатна для розширених результатів.
+
+![Google Rich Results Test: 2 valid items, Articles і Breadcrumbs, без помилок](/images/articles/rich-results-test-rrp.png)
+
 Висновок: вантаж `swg-basic.js` **тільки на сторінках статей і новин**, а листинги й службові сторінки лишай зі своєю розміткою `ItemList` та `BreadcrumbList`. Ми так і зробили: тримаємо RRM лише на статтях.
 
 ## Підводні камені
