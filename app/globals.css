@@ -144,3 +144,9 @@ iframe[id^="telegram-post"] {
   width: 100% !important;
   max-width: 100% !important;
 }
+
+/* Safety net: never allow horizontal page scroll on mobile. clip (not hidden)
+   so it doesn't create a scroll container or break position: sticky/fixed. */
+html {
+  overflow-x: clip;
+}

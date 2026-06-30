@@ -29,10 +29,9 @@ export function StickyNewsletter() {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur-lg">
-      <div className="container mx-auto flex items-center justify-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <p className="text-sm text-foreground">
-          <span className="hidden sm:inline">📬 </span>
-          Новини SEO українською раз на тиждень.
+      <div className="container mx-auto flex items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
+        <p className="min-w-0 flex-1 truncate text-sm text-foreground">
+          📬 Новини SEO українською раз на тиждень.
         </p>
         <Link
           href="/newsletter"
