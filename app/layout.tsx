@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { Open_Sans, Proza_Libre } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -100,22 +99,6 @@ export default function RootLayout({
         className={`${openSans.variable} ${prozaLibre.variable} antialiased min-h-screen flex flex-col`}
       >
         <Analytics />
-        {/* Google Reader Revenue Manager (Subscribe with Google) — newsletter/підписка */}
-        <Script
-          id="swg-basic"
-          src="https://news.google.com/swg/js/v1/swg-basic.js"
-          strategy="afterInteractive"
-        />
-        <Script id="swg-basic-init" strategy="afterInteractive">
-          {`(self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
-            basicSubscriptions.init({
-              type: "NewsArticle",
-              isPartOfType: ["Product"],
-              isPartOfProductId: "CAowmIPOCw:openaccess",
-              clientOptions: { theme: "light", lang: "uk" },
-            });
-          });`}
-        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
