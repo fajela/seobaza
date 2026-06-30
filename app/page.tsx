@@ -3,7 +3,8 @@ import { TelegramWidget } from "@/components/telegram-widget";
 import { PostCover } from "@/components/post-cover";
 import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
 import { getAllNews } from "@/lib/news";
-import { getAllArticles } from "@/lib/articles";
+import path from "path";
+import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
 import { getAllAuthors } from "@/lib/authors";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
 
@@ -42,6 +43,20 @@ export default function Home() {
   // Exclude the scaffold/example article from the homepage feature.
   const latestArticles = getAllArticles()
     .filter((a) => a.slug !== "example-article")
+    .slice(0, 3);
+
+  // 3 latest knowledge-base guides (same card treatment as articles).
+  const kbDir = path.join(process.cwd(), "content/knowledge-base");
+  const latestKnowledgeBase = getArticleSlugs(kbDir)
+    .map((slug) => {
+      try {
+        return getArticleBySlug(slug, kbDir);
+      } catch {
+        return null;
+      }
+    })
+    .filter((a): a is Article => a !== null && a.status !== "draft")
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 
   return (
@@ -316,6 +331,72 @@ export default function Home() {
                           author={resolveAuthor(article.author)}
                           date={article.date}
                           readingTime={article.readingTime}
+                          linkAuthor={false}
+                        />
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {latestKnowledgeBase.length > 0 && (
+        <section className="mb-16">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+            <h2 className="text-2xl sm:text-3xl font-display">База знань</h2>
+            <Link href="/knowledge-base" className="text-sm text-primary hover:text-accent transition-colors">
+              Уся база знань →
+            </Link>
+          </div>
+          <div
+            className="grid sm:grid-cols-3 gap-4"
+            itemScope
+            itemType="https://schema.org/ItemList"
+          >
+            <meta itemProp="numberOfItems" content={String(latestKnowledgeBase.length)} />
+            {latestKnowledgeBase.map((item, i) => (
+              <div
+                key={item.slug}
+                itemProp="itemListElement"
+                itemScope
+                itemType="https://schema.org/ListItem"
+              >
+                <meta itemProp="position" content={String(i + 1)} />
+                <link itemProp="url" href={`https://seobaza.com.ua/knowledge-base/${item.slug}`} />
+                <Link href={`/knowledge-base/${item.slug}`} className="group block h-full">
+                  <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-secondary/20 transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10">
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <PostCover
+                        src={item.image}
+                        alt={item.title}
+                        label="Гайд"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-5">
+                      <span className="mb-2 inline-block w-fit rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                        Гайд
+                      </span>
+                      <h3
+                        itemProp="name"
+                        className="mb-2 font-display text-lg leading-snug transition-colors group-hover:text-accent line-clamp-3"
+                      >
+                        {item.title}
+                      </h3>
+                      {item.description && (
+                        <p className="text-sm text-muted-foreground line-clamp-3">
+                          {item.description}
+                        </p>
+                      )}
+                      <div className="mt-auto pt-4">
+                        <AuthorByline
+                          author={resolveAuthor(item.author)}
+                          date={item.date}
+                          readingTime={item.readingTime}
                           linkAuthor={false}
                         />
                       </div>
