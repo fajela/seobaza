@@ -59,10 +59,6 @@ export default function Home() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 
-  // Hero brand band is kept in code but not shown on the page for now.
-  // Flip to true to bring it back.
-  const showHero = false;
-
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Sitewide WebSite + Organization JSON-LD — only on the homepage */}
@@ -95,9 +91,9 @@ export default function Home() {
           }),
         }}
       />
-      {/* Hero Section — compact brand band (kept in code, hidden via showHero) */}
-      {showHero && (
-      <section className="mb-10 animate-fade-in">
+      {/* Hero Section — present in the page but visually hidden (display:none).
+          Kept in the DOM so the h1 and brand copy stay for crawlers. */}
+      <section className="hidden mb-10 animate-fade-in" aria-hidden="true">
         <div className="max-w-3xl mx-auto text-center">
           <h1
             property="name"
@@ -126,7 +122,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      )}
 
       {/* Featured news — magazine layout: one lead story + secondary list */}
       {leadStory && (
