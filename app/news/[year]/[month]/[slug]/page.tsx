@@ -4,7 +4,7 @@ import Script from "next/script";
 import { getNewsPostPaths, getNewsBySlug, getRelatedNews, getOtherPostsInSameMonth } from "@/lib/news";
 import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
-import { ukMonthName, digestUrl } from "@/lib/months";
+import { ukMonthName } from "@/lib/months";
 import { isoDate } from "@/lib/schema-rdfa";
 import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
@@ -78,7 +78,10 @@ export default async function NewsPostPage({
 
   const h1Title = item.h1 || item.title;
   const monthName = ukMonthName(month);
-  const digestHref = digestUrl(year, month);
+  // "Всі новини місяця" → the month archive (always exists), NOT the monthly
+  // digest post (seo-novyny-<month>-<year>), which is created only late in the
+  // month and 404s for every post published before it exists.
+  const monthArchiveHref = `/news/${year}/${month}`;
   const relatedNews = getRelatedNews(slug, 3);
   const monthSiblings = getOtherPostsInSameMonth(year, month, slug, 6);
 
@@ -408,7 +411,7 @@ export default async function NewsPostPage({
         {/* Back navigation */}
         <div className="mt-12 pt-8 border-t border-border">
           <Link
-            href={digestHref}
+            href={monthArchiveHref}
             className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors"
           >
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

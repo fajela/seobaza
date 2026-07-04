@@ -49,10 +49,3 @@ export const UK_MONTH_SLUG: Record<string, string> = {
 export function ukMonthName(mm: string): string {
   return UK_MONTH_NAMES[mm] ?? mm;
 }
-
-/** Build the URL of the monthly digest post (regular post inside the month folder). */
-export function digestUrl(year: string, mm: string): string {
-  const slug = UK_MONTH_SLUG[mm];
-  if (!slug) return `/news/${year}`;
-  return `/news/${year}/${mm}/seo-novyny-${slug}-${year}`;
-}

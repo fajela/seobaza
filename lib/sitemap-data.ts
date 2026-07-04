@@ -10,8 +10,14 @@ import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
 import { getLatestDealsEvent } from "./events";
 import { CATEGORIES } from "./taxonomy";
+import { REDIRECT_SOURCES } from "./redirects";
 
 export const BASE = "https://seobaza.com.ua";
+
+/** Drop any entry whose path is a redirect source — a sitemap lists only 200 URLs. */
+function dropRedirects<T extends { url: string }>(entries: T[]): T[] {
+  return entries.filter((e) => !REDIRECT_SOURCES.has(e.url.replace(BASE, "")));
+}
 
 export interface Entry {
   url: string;
@@ -222,7 +228,7 @@ export function buildTaxonomy(): Entry[] {
 export function entriesToUrlset(entries: Entry[]): string {
   const escape = (s: string) =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const items = entries
+  const items = dropRedirects(entries)
     .map((e) => {
       const parts = [`    <loc>${escape(e.url)}</loc>`];
       if (e.lastModified) {
@@ -243,7 +249,7 @@ ${items}
 export function entriesToNewsUrlset(entries: NewsSitemapEntry[]): string {
   const escape = (s: string) =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const items = entries
+  const items = dropRedirects(entries)
     .map(
       (e) => `  <url>
     <loc>${escape(e.url)}</loc>
