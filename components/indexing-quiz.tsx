@@ -34,7 +34,7 @@ const FACTORS: Factor[] = [
   { uk: "Структуровані дані", en: "Structured Data", isSignal: false },
   { uk: "XML-карта сайту", en: "XML Sitemap", isSignal: false },
   { uk: "HTTPS / Безпечний сайт", en: "HTTPS / Secure Site", isSignal: true },
-  { uk: "Можливість індексації", en: "Crawlability", isSignal: false },
+  { uk: "Можливість сканування", en: "Crawlability", isSignal: false },
   { uk: "Основні показники вебсайту", en: "Core Web Vitals", isSignal: true },
   { uk: "Dofollow-посилання", en: "Dofollow Links", isSignal: true },
   { uk: "Швидкість зростання кількості посилань", en: "Link Velocity", isSignal: false },
@@ -47,7 +47,7 @@ const FACTORS: Factor[] = [
   { uk: "Актуальність та свіжість контенту", en: "Content Recency & Freshness", isSignal: true },
   { uk: "Ключове слово в тегу H1", en: "Keyword in H1 Tag", isSignal: false },
   {
-    uk: "Досвід, експертність, авторитетність, достовірність",
+    uk: "EEAT: Досвід, експертність, авторитетність, достовірність",
     en: "E-E-A-T",
     isSignal: false,
   },
