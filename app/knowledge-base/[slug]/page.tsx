@@ -5,6 +5,7 @@ import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { KgProfileTool } from "@/components/kg-profile-tool";
+import { IndexingQuiz } from "@/components/indexing-quiz";
 import { SoaaDashboard } from "@/components/soaa-dashboard";
 import { TelegramComments } from "@/components/telegram-comments";
 import { NewsletterForm } from "@/components/newsletter-form";
@@ -16,7 +17,7 @@ import Link from "next/link";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-const mdxComponents = { img: MdxImg, a: MdxLink, KgProfileTool, SoaaDashboard };
+const mdxComponents = { img: MdxImg, a: MdxLink, KgProfileTool, IndexingQuiz, SoaaDashboard };
 
 const kbDirectory = path.join(process.cwd(), "content/knowledge-base");
 
