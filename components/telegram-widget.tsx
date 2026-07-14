@@ -33,7 +33,7 @@ export function TelegramWidget() {
       <div ref={containerRef} />
       <noscript>
         <a
-          href="https://t.me/SEOBAZA/1256"
+          href="https://telegram.me/SEOBAZA/1256"
           target="_blank"
 
           className="block text-center p-8 bg-secondary rounded-lg hover:bg-muted transition-colors"

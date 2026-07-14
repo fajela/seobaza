@@ -58,7 +58,7 @@ const aboutJsonLd = {
     inLanguage: "uk-UA",
     sameAs: [
       "https://www.youtube.com/c/SEOBAZA",
-      "https://t.me/SEOBAZA",
+      "https://telegram.me/SEOBAZA",
       "https://www.linkedin.com/company/seo-baza/",
       "https://www.facebook.com/groups/seobaza/",
       "https://www.instagram.com/seobaza/",
@@ -72,7 +72,7 @@ const aboutJsonLd = {
       url: "https://olesiakorobka.com/",
       jobTitle: "Засновниця SEO BAZA",
       sameAs: [
-        "https://t.me/Fajela",
+        "https://telegram.me/Fajela",
         "https://www.linkedin.com/in/okorobka/",
         "https://fajela.com/about-olesia-korobka/",
       ],
@@ -88,7 +88,7 @@ const aboutJsonLd = {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "general",
-      url: "https://t.me/fajela",
+      url: "https://telegram.me/fajela",
       availableLanguage: ["uk", "en"],
     },
   },
@@ -172,7 +172,7 @@ export default function AboutPage() {
             <li>
               <strong>Telegram-канал:</strong>{" "}
               <a
-                href="https://t.me/SEOBAZA"
+                href="https://telegram.me/SEOBAZA"
                 target="_blank"
 
               >
@@ -183,7 +183,7 @@ export default function AboutPage() {
             <li>
               <strong>Чат спільноти:</strong>{" "}
               <a
-                href="https://t.me/seobazachat"
+                href="https://telegram.me/seobazachat"
                 target="_blank"
 
               >

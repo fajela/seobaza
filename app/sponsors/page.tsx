@@ -140,7 +140,7 @@ export default function SponsorsPage() {
             Напишіть Bronso, і ми підберемо формат під ваші задачі
           </p>
           <a
-            href="https://t.me/TheBronso"
+            href="https://telegram.me/TheBronso"
             target="_blank"
             className="inline-flex items-center gap-3 text-xl font-bold text-primary hover:text-accent transition-colors"
           >

@@ -21,7 +21,7 @@ export default function NewsletterPage() {
           Найважливіше зі світу SEO, прямо на вашу пошту. Те саме, що ми пишемо
           в{" "}
           <a
-            href="https://t.me/SEOBAZA"
+            href="https://telegram.me/SEOBAZA"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline"

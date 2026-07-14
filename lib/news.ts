@@ -33,7 +33,7 @@ export interface NewsMetadata {
   // (e.g. "/news/2026/04/slug-1564"), NOT the Telegram URL. The cross-reference
   // pass in telegram_to_mdx.py rewrites Telegram links to internal ones, and
   // sourceUrl gets rewritten too. Do NOT use it to link out to Telegram — build
-  // the Telegram URL from telegramMessageId instead (https://t.me/SEOBAZA/{id}),
+  // the Telegram URL from telegramMessageId instead (https://telegram.me/SEOBAZA/{id}),
   // as <TelegramComments> does.
   sourceUrl?: string;
   telegramMessageId?: number; // Telegram message id — source of truth for t.me links

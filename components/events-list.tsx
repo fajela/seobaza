@@ -189,7 +189,7 @@ export function EventsList({
           <p className="text-sm text-muted-foreground">
             Слідкуйте за оновленнями в{" "}
             <a
-              href="https://t.me/SEOBAZA"
+              href="https://telegram.me/SEOBAZA"
               target="_blank"
               className="text-primary hover:text-accent underline transition-colors"
             >

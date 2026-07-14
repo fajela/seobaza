@@ -170,7 +170,7 @@ export default function RootLayout({
                   </a>
                   <a
 
-                    href="https://t.me/SEOBAZA"
+                    href="https://telegram.me/SEOBAZA"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="Telegram"
