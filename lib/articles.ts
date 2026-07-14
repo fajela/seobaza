@@ -36,7 +36,7 @@ export interface ArticleMetadata {
   featured?: boolean;
   // NOTE: sourceUrl usually holds an INTERNAL site path (rewritten by the
   // cross-reference pass), not the Telegram URL. For t.me links build from
-  // telegramMessageId (https://telegram.me/SEOBAZA/{id}) — see <TelegramComments>.
+  // telegramMessageId (https://t.me/SEOBAZA/{id}) — see <TelegramComments>.
   sourceUrl?: string;
   telegramMessageId?: number;
   // Computed (not in frontmatter)

@@ -18,7 +18,7 @@ export function TelegramComments({ channel, postId }: Props) {
   // Always link to the real Telegram post. Do NOT use the post's `sourceUrl`
   // frontmatter — that was rewritten to an internal /news/... path during the
   // cross-reference pass and would loop back to this page.
-  const url = `https://telegram.me/${channel}/${postId}`;
+  const url = `https://t.me/${channel}/${postId}`;
   return (
     <section className="mt-12 pt-8 border-t border-border">
       <a

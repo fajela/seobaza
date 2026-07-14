@@ -128,8 +128,8 @@ seobaza-new/
 - 📚 Детальна документація: `README.md`
 - 🚀 Deployment guide: `DEPLOYMENT.md`
 - 📊 Порівняння версій: `IMPROVEMENTS.md`
-- 💬 Telegram: [@fajela](https://telegram.me/fajela)
-- 👥 Спільнота: [SEOBAZA](https://telegram.me/SEOBAZA)
+- 💬 Telegram: [@fajela](https://t.me/fajela)
+- 👥 Спільнота: [SEOBAZA](https://t.me/SEOBAZA)
 
 ## 🎉 Готово!
 

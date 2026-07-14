@@ -239,8 +239,8 @@ const yourFont = Your_Font({
 
 1. Перегляньте [Next.js документацію](https://nextjs.org/docs)
 2. Перегляньте [Tailwind CSS документацію](https://tailwindcss.com/docs)
-3. Зверніться до SEO BAZA спільноти в Telegram: [@SEOBAZA](https://telegram.me/SEOBAZA)
-4. Напишіть [@fajela](https://telegram.me/fajela)
+3. Зверніться до SEO BAZA спільноти в Telegram: [@SEOBAZA](https://t.me/SEOBAZA)
+4. Напишіть [@fajela](https://t.me/fajela)
 
 ## 🎯 Наступні кроки
 

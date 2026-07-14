@@ -201,7 +201,7 @@ export default function BlackFridayPage() {
           <p className="text-muted-foreground mb-4">
             Напишіть{" "}
             <a
-              href="https://telegram.me/TheBronso"
+              href="https://t.me/TheBronso"
               target="_blank"
 
               className="text-primary hover:text-accent underline transition-colors"

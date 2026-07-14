@@ -80,7 +80,7 @@ export default async function TestPage() {
           <p className="text-center text-muted-foreground">
             Є ідея для тесту? Напишіть{" "}
             <a
-              href="https://telegram.me/fajela"
+              href="https://t.me/fajela"
               target="_blank"
 
               className="text-primary hover:text-accent underline transition-colors"

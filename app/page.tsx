@@ -76,7 +76,7 @@ export default function Home() {
             logo: "https://seobaza.com.ua/seobaza.png",
             sameAs: [
               "https://www.youtube.com/c/SEOBAZA",
-              "https://telegram.me/SEOBAZA",
+              "https://t.me/SEOBAZA",
               "https://www.linkedin.com/company/seo-baza/",
               "https://www.facebook.com/groups/seobaza/",
               "https://www.instagram.com/seobaza/",
@@ -420,7 +420,7 @@ export default function Home() {
             </div>
             <div className="mt-4 text-center">
               <a
-                href="https://telegram.me/SEOBAZA"
+                href="https://t.me/SEOBAZA"
                 target="_blank"
                 className="text-sm text-primary hover:text-accent underline transition-colors"
               >
@@ -484,7 +484,7 @@ export default function Home() {
                 </a>{" "}
                 і{" "}
                 <a
-                  href="https://telegram.me/SEOBAZA"
+                  href="https://t.me/SEOBAZA"
                   target="_blank"
 
                   className="text-primary hover:text-accent underline transition-colors"
@@ -544,7 +544,7 @@ export default function Home() {
             <p className="text-muted-foreground">
               Пишіть мені в тг{" "}
               <a
-                href="https://telegram.me/fajela"
+                href="https://t.me/fajela"
                 target="_blank"
 
                 className="text-primary hover:text-accent underline transition-colors"

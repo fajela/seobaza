@@ -239,7 +239,7 @@ export default function KnowledgeBasePage() {
           <p className="text-muted-foreground">
             Якщо у вас є корисні матеріали для спільноти, напишіть{" "}
             <a
-              href="https://telegram.me/fajela"
+              href="https://t.me/fajela"
               target="_blank"
 
               className="text-primary hover:text-accent underline transition-colors"
