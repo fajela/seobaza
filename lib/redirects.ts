@@ -48,10 +48,15 @@ export const REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
-    // Jobs restructured to /jobs/[company]/[position] shortly after launch;
-    // the flat slug was briefly live (and tested in Rich Results).
+    // Jobs restructured to /jobs/[company]/[position-YYYY-MM] shortly after
+    // launch; both earlier slug shapes were briefly live.
     source: "/jobs/seo-aeo-geo-specialist-whitelobby",
-    destination: "/jobs/whitelobby/seo-aeo-geo-specialist",
+    destination: "/jobs/whitelobby/seo-aeo-geo-specialist-2026-07",
+    permanent: true,
+  },
+  {
+    source: "/jobs/whitelobby/seo-aeo-geo-specialist",
+    destination: "/jobs/whitelobby/seo-aeo-geo-specialist-2026-07",
     permanent: true,
   },
 ];

@@ -2,8 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { promises as fs } from "fs";
 import path from "path";
+import Image from "next/image";
 import {
   getAllJobs,
+  getCompanyInfo,
   isClosedJob,
   jobPath,
   EMPLOYMENT_TYPE_LABELS,
@@ -62,8 +64,9 @@ export default async function CompanyJobsPage({ params }: CompanyPageProps) {
     notFound();
   }
 
-  const name = jobs[0].company;
-  const companyUrl = jobs[0].companyUrl;
+  const info = getCompanyInfo(company);
+  const name = info?.name ?? jobs[0].company;
+  const companyUrl = info?.url ?? jobs[0].companyUrl;
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -75,11 +78,25 @@ export default async function CompanyJobsPage({ params }: CompanyPageProps) {
             { name: name, href: `/jobs/${company}` },
           ]}
         />
-        <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          Вакансії {name}
-        </h1>
+        <div className="flex items-start gap-5 mb-6">
+          {info?.logo && (
+            <Image
+              src={info.logo}
+              alt={`Логотип компанії ${name}, роботодавця з відкритими SEO вакансіями`}
+              width={72}
+              height={72}
+              className="rounded-xl shrink-0"
+            />
+          )}
+          <h1 className="text-4xl sm:text-5xl font-display bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            Вакансії {name}
+          </h1>
+        </div>
+        {info?.description && (
+          <p className="text-lg text-muted-foreground mb-4">{info.description}</p>
+        )}
         {companyUrl && (
-          <p className="text-lg text-muted-foreground mb-10">
+          <p className="text-muted-foreground mb-10">
             Сайт компанії:{" "}
             <a
               href={companyUrl}

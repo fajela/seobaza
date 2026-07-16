@@ -143,6 +143,45 @@ export function isClosedJob(job: JobMeta): boolean {
   return !!job.validThrough && job.validThrough < today();
 }
 
+export interface CompanyInfo {
+  slug: string;
+  name: string;
+  url?: string;
+  logo?: string;
+  description?: string;
+}
+
+/**
+ * Company profile for the /jobs/[company] hub. Lives in
+ * content/jobs/[company]/company.md (frontmatter only; .md so the .mdx job
+ * reader never picks it up). Falls back to the newest job's company fields.
+ */
+export function getCompanyInfo(companySlug: string): CompanyInfo | null {
+  const dir = path.join(jobsDirectory, companySlug);
+  if (!fs.existsSync(dir)) return null;
+
+  let data: Record<string, unknown> = {};
+  const infoPath = path.join(dir, "company.md");
+  if (fs.existsSync(infoPath)) {
+    try {
+      data = matter(fs.readFileSync(infoPath, "utf8")).data;
+    } catch {
+      // fall back to job frontmatter below
+    }
+  }
+
+  const first = getAllJobs().find((j) => j.companySlug === companySlug);
+  if (!Object.keys(data).length && !first) return null;
+
+  return {
+    slug: companySlug,
+    name: (data.name as string) ?? first?.company ?? companySlug,
+    url: (data.url as string) ?? first?.companyUrl,
+    logo: (data.logo as string) ?? first?.companyLogo,
+    description: (data.description as string) ?? undefined,
+  };
+}
+
 export interface SplitJobs {
   active: JobMeta[];
   closedJobs: JobMeta[];
