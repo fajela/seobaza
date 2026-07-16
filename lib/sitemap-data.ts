@@ -9,6 +9,7 @@ import { getAllArticles, getAllTagSlugs } from "./articles";
 import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
 import { getLatestDealsEvent } from "./events";
+import { getAllJobs } from "./jobs";
 import { CATEGORIES } from "./taxonomy";
 import { REDIRECT_SOURCES } from "./redirects";
 
@@ -82,6 +83,7 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/tags`,                    lastModified: now, changeFrequency: "weekly" },
     { url: `${BASE}/authors`,                 lastModified: now },
     { url: `${BASE}/events`,                  lastModified: now },
+    { url: `${BASE}/jobs`,                    lastModified: now, changeFrequency: "weekly" },
     { url: `${BASE}/test`,                    lastModified: now },
     { url: `${BASE}/knowledge-base`,          lastModified: now },
     { url: `${BASE}/about`,                   lastModified: now },
@@ -125,7 +127,14 @@ export async function buildPages(): Promise<Entry[]> {
     changeFrequency: "weekly" as const,
   }));
 
-  return [...staticPages, ...eventPages, ...testPages, ...authorPages];
+  // Job pages stay in the sitemap after closing too — the page still exists
+  // (it renders a "closed" notice and drops the JobPosting markup).
+  const jobPages: Entry[] = getAllJobs().map((j) => ({
+    url: `${BASE}/jobs/${j.slug}`,
+    lastModified: j.datePosted ? new Date(j.datePosted) : now,
+  }));
+
+  return [...staticPages, ...eventPages, ...jobPages, ...testPages, ...authorPages];
 }
 
 export function buildArticles(): Entry[] {

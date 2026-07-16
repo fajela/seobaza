@@ -137,6 +137,9 @@ export default function RootLayout({
                 <Link href="/sponsors" className="hover:text-accent transition-colors">
                   Спонсорам
                 </Link>
+                <Link href="/jobs" className="hover:text-accent transition-colors">
+                  Вакансії
+                </Link>
                 <Link href="/category" className="hover:text-accent transition-colors">
                   Категорії
                 </Link>
