@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getSplitJobs, isClosedJob, EMPLOYMENT_TYPE_LABELS } from "@/lib/jobs";
+import { getSplitJobs, isClosedJob, jobPath, EMPLOYMENT_TYPE_LABELS } from "@/lib/jobs";
 import type { JobMeta } from "@/lib/jobs";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -32,7 +32,7 @@ function JobCard({ job }: { job: JobMeta }) {
 
   return (
     <Link
-      href={`/jobs/${job.slug}`}
+      href={jobPath(job)}
       className={`block group rounded-xl p-6 border transition-all ${
         closed
           ? "border-border bg-muted/20 opacity-70 hover:opacity-100"
@@ -82,7 +82,7 @@ export default function JobsPage() {
     itemListElement: active.map((job, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `https://seobaza.com.ua/jobs/${job.slug}`,
+      url: `https://seobaza.com.ua${jobPath(job)}`,
     })),
   };
 

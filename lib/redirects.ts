@@ -47,6 +47,13 @@ export const REDIRECTS: Redirect[] = [
     destination: "/black-friday",
     permanent: true,
   },
+  {
+    // Jobs restructured to /jobs/[company]/[position] shortly after launch;
+    // the flat slug was briefly live (and tested in Rich Results).
+    source: "/jobs/seo-aeo-geo-specialist-whitelobby",
+    destination: "/jobs/whitelobby/seo-aeo-geo-specialist",
+    permanent: true,
+  },
 ];
 
 /** Exact redirect source paths — used to filter sitemap entries. */

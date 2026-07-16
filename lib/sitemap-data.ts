@@ -9,7 +9,7 @@ import { getAllArticles, getAllTagSlugs } from "./articles";
 import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
 import { getLatestDealsEvent } from "./events";
-import { getAllJobs } from "./jobs";
+import { getAllJobs, jobPath } from "./jobs";
 import { CATEGORIES } from "./taxonomy";
 import { REDIRECT_SOURCES } from "./redirects";
 
@@ -129,10 +129,19 @@ export async function buildPages(): Promise<Entry[]> {
 
   // Job pages stay in the sitemap after closing too — the page still exists
   // (it renders a "closed" notice and drops the JobPosting markup).
-  const jobPages: Entry[] = getAllJobs().map((j) => ({
-    url: `${BASE}/jobs/${j.slug}`,
+  const jobs = getAllJobs();
+  const jobPages: Entry[] = jobs.map((j) => ({
+    url: `${BASE}${jobPath(j)}`,
     lastModified: j.datePosted ? new Date(j.datePosted) : now,
   }));
+  const jobCompanyPages: Entry[] = [...new Set(jobs.map((j) => j.companySlug))].map(
+    (companySlug) => ({
+      url: `${BASE}/jobs/${companySlug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+    })
+  );
+  jobPages.push(...jobCompanyPages);
 
   return [...staticPages, ...eventPages, ...jobPages, ...testPages, ...authorPages];
 }

@@ -27,6 +27,8 @@ export const EMPLOYMENT_TYPE_LABELS: Record<EmploymentType, string> = {
 };
 
 export interface JobMeta {
+  /** Company folder name in content/jobs/ — first URL segment. */
+  companySlug: string;
   slug: string;
   /** Job title only — no company name, location or dates (Google requirement). */
   title: string;
@@ -67,8 +69,13 @@ function toIsoDate(value: unknown): string {
   return String(value).slice(0, 10);
 }
 
-export function normalizeJob(slug: string, data: Record<string, unknown>): JobMeta {
+export function normalizeJob(
+  companySlug: string,
+  slug: string,
+  data: Record<string, unknown>
+): JobMeta {
   return {
+    companySlug,
     slug,
     title: (data.title as string) ?? "Вакансія",
     company: (data.company as string) ?? "",
@@ -95,18 +102,28 @@ export function normalizeJob(slug: string, data: Record<string, unknown>): JobMe
   };
 }
 
+/** URL pattern: /jobs/[companySlug]/[slug]. */
+export function jobPath(job: Pick<JobMeta, "companySlug" | "slug">): string {
+  return `/jobs/${job.companySlug}/${job.slug}`;
+}
+
 export function getAllJobs(): JobMeta[] {
   const jobs: JobMeta[] = [];
   if (!fs.existsSync(jobsDirectory)) return jobs;
 
-  for (const file of fs.readdirSync(jobsDirectory)) {
-    if (!file.endsWith(".mdx")) continue;
-    try {
-      const raw = fs.readFileSync(path.join(jobsDirectory, file), "utf8");
-      const { data } = matter(raw);
-      jobs.push(normalizeJob(file.replace(/\.mdx$/, ""), data));
-    } catch {
-      // skip unreadable files
+  for (const company of fs.readdirSync(jobsDirectory)) {
+    const companyPath = path.join(jobsDirectory, company);
+    if (!fs.statSync(companyPath).isDirectory()) continue;
+
+    for (const file of fs.readdirSync(companyPath)) {
+      if (!file.endsWith(".mdx")) continue;
+      try {
+        const raw = fs.readFileSync(path.join(companyPath, file), "utf8");
+        const { data } = matter(raw);
+        jobs.push(normalizeJob(company, file.replace(/\.mdx$/, ""), data));
+      } catch {
+        // skip unreadable files
+      }
     }
   }
 

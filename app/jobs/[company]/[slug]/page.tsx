@@ -16,30 +16,36 @@ import type { Metadata } from "next";
 const mdxComponents = { img: MdxImg, a: MdxLink };
 
 interface JobPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ company: string; slug: string }>;
 }
 
-async function getJob(slug: string) {
+async function getJob(company: string, slug: string) {
   try {
-    const filePath = path.join(process.cwd(), "content", "jobs", `${slug}.mdx`);
+    const filePath = path.join(
+      process.cwd(),
+      "content",
+      "jobs",
+      company,
+      `${slug}.mdx`
+    );
     const fileContent = await fs.readFile(filePath, "utf8");
     const { data, content } = matter(fileContent);
-    return { meta: normalizeJob(slug, data), content: content.trim() };
+    return { meta: normalizeJob(company, slug, data), content: content.trim() };
   } catch {
     return null;
   }
 }
 
 export async function generateMetadata({ params }: JobPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const job = await getJob(slug);
+  const { company, slug } = await params;
+  const job = await getJob(company, slug);
 
   if (!job) {
     return { title: "Вакансію не знайдено - SEO BAZA" };
   }
 
   const { meta } = job;
-  const url = `https://seobaza.com.ua/jobs/${slug}`;
+  const url = `https://seobaza.com.ua/jobs/${company}/${slug}`;
   const ogImage = "https://seobaza.com.ua/og-image.png";
   const title = `${meta.title}: вакансія в ${meta.company} - SEO BAZA`;
 
@@ -68,11 +74,18 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 
 export async function generateStaticParams() {
   const jobsPath = path.join(process.cwd(), "content", "jobs");
+  const params: Array<{ company: string; slug: string }> = [];
   try {
-    const files = await fs.readdir(jobsPath);
-    return files
-      .filter((f) => f.endsWith(".mdx"))
-      .map((f) => ({ slug: f.replace(".mdx", "") }));
+    for (const company of await fs.readdir(jobsPath)) {
+      const companyPath = path.join(jobsPath, company);
+      const stat = await fs.stat(companyPath);
+      if (!stat.isDirectory()) continue;
+      const files = await fs.readdir(companyPath);
+      for (const f of files.filter((x) => x.endsWith(".mdx"))) {
+        params.push({ company, slug: f.replace(".mdx", "") });
+      }
+    }
+    return params;
   } catch {
     return [];
   }
@@ -90,8 +103,8 @@ function formatUkrDate(iso: string): string {
 }
 
 export default async function JobPage({ params }: JobPageProps) {
-  const { slug } = await params;
-  const job = await getJob(slug);
+  const { company, slug } = await params;
+  const job = await getJob(company, slug);
 
   if (!job) {
     notFound();
@@ -161,7 +174,8 @@ export default async function JobPage({ params }: JobPageProps) {
         items={[
           { name: "Головна", href: "/" },
           { name: "Вакансії", href: "/jobs" },
-          { name: meta.title, href: `/jobs/${slug}` },
+          { name: meta.company, href: `/jobs/${company}` },
+          { name: meta.title, href: `/jobs/${company}/${slug}` },
         ]}
       />
 
