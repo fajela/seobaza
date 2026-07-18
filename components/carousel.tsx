@@ -14,14 +14,14 @@ export function Carousel({ srcs, alt = "" }: { srcs: string; alt?: string }) {
 
   return (
     <figure className="my-6">
-      <div className="relative overflow-hidden rounded-lg">
+      <div className="relative mx-auto w-fit max-w-full overflow-hidden rounded-lg">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={list[i]}
           alt={`${alt} ${i + 1} з ${n}`.trim()}
           loading="lazy"
           decoding="async"
-          className="block h-auto w-full"
+          className="mx-auto block h-auto max-h-[80vh] w-auto max-w-full"
         />
         {n > 1 && (
           <>
