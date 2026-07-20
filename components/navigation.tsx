@@ -56,25 +56,24 @@ export function Navigation() {
                 </div>
               </div>
             </div>
-            {/* Статті + База знань */}
-            <div className="relative group">
-              <NavLink
-                href="/articles"
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-              >
-                Статті
-              </NavLink>
-              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
-                <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
-                  <NavLink
-                    href="/knowledge-base"
-                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
-                  >
-                    База знань
-                  </NavLink>
-                </div>
-              </div>
-            </div>
+            <NavLink
+              href="/articles"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Статті
+            </NavLink>
+            <NavLink
+              href="/knowledge-base"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              База знань
+            </NavLink>
+            <NavLink
+              href="/kg"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Граф знань
+            </NavLink>
             <NavLink
               href="/events"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
@@ -192,10 +191,17 @@ export function Navigation() {
               </NavLink>
               <NavLink
                 href="/knowledge-base"
-                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 База знань
+              </NavLink>
+              <NavLink
+                href="/kg"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Граф знань
               </NavLink>
               <NavLink
                 href="/events"
