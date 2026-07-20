@@ -70,7 +70,9 @@ export default async function KgPersonPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    "@id": personUrl,
+    "@id": `${personUrl}#profilepage`,
+    url: personUrl,
+    name: person.name,
     mainEntity: {
       "@type": "Person",
       "@id": `${personUrl}#person`,
@@ -102,18 +104,23 @@ export default async function KgPersonPage({
   return (
     <div
       className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
-      {...{ vocab: "https://schema.org/", typeof: "ProfilePage", resource: personUrl }}
+      itemScope
+      itemType="https://schema.org/ProfilePage"
+      itemID={`${personUrl}#profilepage`}
     >
       <div
         className="max-w-4xl mx-auto"
-        {...{ property: "mainEntity", typeof: "Person", resource: personUrl }}
+        itemProp="mainEntity"
+        itemScope
+        itemType="https://schema.org/Person"
+        itemID={`${personUrl}#person`}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <span className="hidden" property="url" content={personUrl} />
-        <span className="hidden" property="identifier" content={person.kgId} />
+        <meta itemProp="url" content={personUrl} />
+        <meta itemProp="identifier" content={person.kgId} />
 
         {/* Breadcrumbs — microdata BreadcrumbList */}
         <nav
@@ -140,35 +147,35 @@ export default async function KgPersonPage({
             keeps it visually on the left) — heading first in code, image under it. */}
         <div className="flex flex-col sm:flex-row gap-6 mb-10 p-6 rounded-xl border border-border bg-secondary/20">
           <div className="flex-1">
-            <h1 className="text-3xl font-display mb-1" property="name">
+            <h1 className="text-3xl font-display mb-1" itemProp="name">
               {person.name}
             </h1>
             {person.alternateName && (
-              <span className="hidden" property="alternateName" content={person.alternateName} />
+              <meta itemProp="alternateName" content={person.alternateName} />
             )}
             <p className="text-muted-foreground mb-3">
-              <span property="jobTitle">{person.role}</span>
+              <span itemProp="jobTitle">{person.role}</span>
               {person.company && (
-                <span {...{ property: "worksFor", typeof: "Organization" }}>
+                <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization">
                   {" · "}
                   {person.companyUrl ? (
                     <a
                       href={person.companyUrl}
                       target="_blank"
-                      property="url"
+                      itemProp="url"
                       className="hover:text-accent transition-colors"
                     >
-                      <span property="name">{person.company}</span>
+                      <span itemProp="name">{person.company}</span>
                     </a>
                   ) : (
-                    <span property="name">{person.company}</span>
+                    <span itemProp="name">{person.company}</span>
                   )}
                 </span>
               )}
               {person.city && (
-                <span {...{ property: "homeLocation", typeof: "Place" }}>
+                <span itemProp="homeLocation" itemScope itemType="https://schema.org/Place">
                   {" · "}
-                  <span property="name">{person.city}</span>
+                  <span itemProp="name">{person.city}</span>
                 </span>
               )}
             </p>
@@ -188,7 +195,7 @@ export default async function KgPersonPage({
                 {person.topics?.filter((t) => !person.expertise.some((tag) => getTagDisplayName(tag).toLowerCase() === t.toLowerCase())).map((t) => (
                   <span
                     key={t}
-                    property="knowsAbout"
+                    itemProp="knowsAbout"
                     className="px-3 py-1 text-sm bg-muted text-muted-foreground rounded-full"
                   >
                     {t}
@@ -197,7 +204,7 @@ export default async function KgPersonPage({
               </div>
             )}
             {person.expertise.map((tag) => (
-              <span key={tag} className="hidden" property="knowsAbout" content={getTagDisplayName(tag)} />
+              <meta key={tag} itemProp="knowsAbout" content={getTagDisplayName(tag)} />
             ))}
           </div>
 
@@ -207,7 +214,7 @@ export default async function KgPersonPage({
               src={person.image}
               srcSet={`/_next/image?url=${encodeURIComponent(person.image)}&w=96&q=75 1x, /_next/image?url=${encodeURIComponent(person.image)}&w=256&q=75 2x`}
               alt={person.name}
-              property="image"
+              itemProp="image"
               width={96}
               height={96}
               fetchPriority="high"
@@ -221,7 +228,7 @@ export default async function KgPersonPage({
         </div>
 
         {/* Lead bio, below the header like on entity pages */}
-        <p className="text-lg leading-relaxed mb-10" property="description">
+        <p className="text-lg leading-relaxed mb-10" itemProp="description">
           {person.bio}
         </p>
 
@@ -286,7 +293,7 @@ export default async function KgPersonPage({
                   href={url}
                   target="_blank"
                   rel="noopener"
-                  {...{ about: personUrl, property: "sameAs" }}
+                  itemProp="sameAs"
                   className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
                 >
                   {profileLabel(url)}
