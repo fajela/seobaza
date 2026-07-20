@@ -5,10 +5,11 @@ import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
+import { Speakers } from "@/components/speakers";
 import { normalizeEvent, eventToJsonLd, getLatestDealsEvent } from "@/lib/events";
 import type { Metadata } from "next";
 
-const mdxComponents = { img: MdxImg, a: MdxLink };
+const mdxComponents = { img: MdxImg, a: MdxLink, Speakers };
 
 interface EventPageProps {
   params: Promise<{
