@@ -57,6 +57,48 @@ export default async function KgPersonPage({
 
   const personUrl = `https://seobaza.com.ua/kg/person/${id}`;
 
+  const sameAsUrls = [
+    person.telegram,
+    person.linkedin,
+    person.twitter,
+    person.instagram,
+    person.facebook,
+    person.website,
+    ...(person.sameAs ?? []),
+  ].filter((u): u is string => Boolean(u));
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": personUrl,
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${personUrl}#person`,
+      name: person.name,
+      ...(person.alternateName ? { alternateName: person.alternateName } : {}),
+      identifier: person.kgId,
+      url: personUrl,
+      jobTitle: person.role,
+      description: person.bio,
+      ...(person.image ? { image: `https://seobaza.com.ua${person.image}` } : {}),
+      ...(person.city ? { homeLocation: { "@type": "Place", name: person.city } } : {}),
+      ...(person.company
+        ? {
+            worksFor: {
+              "@type": "Organization",
+              name: person.company,
+              ...(person.companyUrl ? { url: person.companyUrl } : {}),
+            },
+          }
+        : {}),
+      knowsAbout: [
+        ...person.expertise.map((tag) => getTagDisplayName(tag)),
+        ...(person.topics ?? []),
+      ],
+      ...(sameAsUrls.length > 0 ? { sameAs: sameAsUrls } : {}),
+    },
+  };
+
   return (
     <div
       className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
@@ -66,6 +108,10 @@ export default async function KgPersonPage({
         className="max-w-4xl mx-auto"
         {...{ property: "mainEntity", typeof: "Person", resource: personUrl }}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <span className="hidden" property="url" content={personUrl} />
         <span className="hidden" property="identifier" content={person.kgId} />
 
