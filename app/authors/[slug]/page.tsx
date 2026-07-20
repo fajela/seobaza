@@ -7,7 +7,13 @@ import {
   getNewsByAuthorName,
 } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
+import { MdxImg, MdxLink } from "@/components/mdx-img";
 import type { Metadata } from "next";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+
+const mdxComponents = { img: MdxImg, a: MdxLink };
 
 export async function generateStaticParams() {
   return getAuthorSlugs().map((slug) => ({ slug }));
@@ -96,26 +102,8 @@ export default async function AuthorPage({
         </nav>
 
         {/* Profile header */}
+        {/* Header: h1 first in the DOM, avatar after it (order-first keeps it visually left) */}
         <div className="flex flex-col sm:flex-row gap-6 mb-10 p-6 rounded-xl border border-border bg-secondary/20">
-          {/* Avatar — uses author.image when set; falls back to the initial letter */}
-          {author.image ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={author.image}
-              srcSet={`/_next/image?url=${encodeURIComponent(author.image)}&w=96&q=75 1x, /_next/image?url=${encodeURIComponent(author.image)}&w=256&q=75 2x`}
-              alt={author.name}
-              property="image"
-              width={96}
-              height={96}
-              fetchPriority="high"
-              className="w-24 h-24 rounded-full object-cover shrink-0 border border-border"
-            />
-          ) : (
-            <div className="w-24 h-24 rounded-full bg-accent/20 flex items-center justify-center text-accent font-display text-3xl shrink-0">
-              {author.name.charAt(0)}
-            </div>
-          )}
-
           <div className="flex-1">
             <h1 className="text-3xl font-display mb-1" property="name">
               {author.name}
@@ -123,7 +111,32 @@ export default async function AuthorPage({
             {author.alternateName && (
               <span className="hidden" property="alternateName" content={author.alternateName} />
             )}
-            <p className="text-muted-foreground mb-3" property="jobTitle">{author.role}</p>
+            <p className="text-muted-foreground mb-3">
+              <span property="jobTitle">{author.role}</span>
+              {author.company && (
+                <span {...{ property: "worksFor", typeof: "Organization" }}>
+                  {" · "}
+                  {author.companyUrl ? (
+                    <a
+                      href={author.companyUrl}
+                      target="_blank"
+                      property="url"
+                      className="hover:text-accent transition-colors"
+                    >
+                      <span property="name">{author.company}</span>
+                    </a>
+                  ) : (
+                    <span property="name">{author.company}</span>
+                  )}
+                </span>
+              )}
+              {author.city && (
+                <span {...{ property: "homeLocation", typeof: "Place" }}>
+                  {" · "}
+                  <span property="name">{author.city}</span>
+                </span>
+              )}
+            </p>
 
             {/* Social links — each is property="sameAs" for the Person */}
             <div className="flex flex-wrap gap-3 mb-4">
@@ -166,6 +179,32 @@ export default async function AuthorPage({
                   X / Twitter
                 </a>
               )}
+              {author.instagram && (
+                <a
+                  href={author.instagram}
+                  target="_blank"
+                  property="sameAs"
+                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                  </svg>
+                  Instagram
+                </a>
+              )}
+              {author.facebook && (
+                <a
+                  href={author.facebook}
+                  target="_blank"
+                  property="sameAs"
+                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  Facebook
+                </a>
+              )}
               {author.website && (
                 <a
                   href={author.website}
@@ -202,12 +241,33 @@ export default async function AuthorPage({
             {author.expertise.map((tag) => (
               <span key={tag} className="hidden" property="knowsAbout" content={getTagDisplayName(tag)} />
             ))}
-            <span className="hidden" property="worksFor" content="SEO BAZA" />
+            {!author.company && (
+              <span className="hidden" property="worksFor" content="SEO BAZA" />
+            )}
           </div>
+
+          {/* Avatar — uses author.image when set; falls back to the initial letter */}
+          {author.image ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={author.image}
+              srcSet={`/_next/image?url=${encodeURIComponent(author.image)}&w=96&q=75 1x, /_next/image?url=${encodeURIComponent(author.image)}&w=256&q=75 2x`}
+              alt={author.name}
+              property="image"
+              width={96}
+              height={96}
+              fetchPriority="high"
+              className="order-first w-24 h-24 rounded-full object-cover shrink-0 border border-border"
+            />
+          ) : (
+            <div className="order-first w-24 h-24 rounded-full bg-accent/20 flex items-center justify-center text-accent font-display text-3xl shrink-0">
+              {author.name.charAt(0)}
+            </div>
+          )}
         </div>
 
-        {/* Expertise */}
-        {author.expertise.length > 0 && (
+        {/* Expertise: linked tag chips + free-form knowsAbout topics */}
+        {(author.expertise.length > 0 || (author.topics?.length ?? 0) > 0) && (
           <div className="mb-10">
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-3">
               Напрями
@@ -222,9 +282,89 @@ export default async function AuthorPage({
                   {getTagDisplayName(tag)}
                 </Link>
               ))}
+              {author.topics?.filter((t) => !author.expertise.some((tag) => getTagDisplayName(tag).toLowerCase() === t.toLowerCase())).map((t) => (
+                <span
+                  key={t}
+                  {...{ about: authorUrl, property: "knowsAbout" }}
+                  className="px-3 py-1.5 text-sm bg-muted text-muted-foreground rounded-full"
+                >
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
         )}
+
+        {/* Extended MDX bio: key facts, notable work, talks */}
+        {author.content.trim().length > 0 && (
+          <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
+            <MDXRemote
+              source={author.content}
+              components={mdxComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [rehypeSlug],
+                },
+              }}
+            />
+          </div>
+        )}
+
+        {/* All profiles: socials + speaker pages, mentor profiles, catalogs */}
+        {(() => {
+          const allProfiles = [
+            author.telegram,
+            author.linkedin,
+            author.twitter,
+            author.instagram,
+            author.facebook,
+            author.website,
+            ...(author.sameAs ?? []),
+          ].filter((u): u is string => Boolean(u));
+          const profileLabel = (url: string): string => {
+            const host = url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
+            const known: Record<string, string> = {
+              "t.me": "Telegram",
+              "linkedin.com": "LinkedIn",
+              "instagram.com": "Instagram",
+              "facebook.com": "Facebook",
+              "x.com": "X",
+              "twitter.com": "X",
+              "youtube.com": "YouTube",
+              "nazahid.com": "НаЗахід",
+              "conference.collaborator.pro": "Collaborator Conference",
+              "collaborator.pro": "Collaborator",
+              "prjctr.com": "Projector",
+              "theways.io": "TheWays",
+              "flyerone.vc": "Flyer One Ventures",
+              "affcatalog.com": "AFFCatalog",
+            };
+            return known[host] ?? host;
+          };
+          return allProfiles.length > 0 ? (
+          <div className="mb-12">
+            <h2 className="text-xl font-bold mb-4">Профілі та згадки</h2>
+            <div className="flex flex-wrap gap-2">
+              {allProfiles.map((url) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noopener"
+                  {...{ about: authorUrl, property: "sameAs" }}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  {profileLabel(url)}
+                  <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M7 7h10v10" />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+          ) : null;
+        })()}
 
         {/* Stats */}
         {totalCount > 0 && (

@@ -42,12 +42,31 @@ export function MdxImg({
   src,
   alt,
   title,
+  width: explicitWidth,
 }: {
   src?: string;
   alt?: string;
   title?: string;
+  width?: number | string;
 }) {
   if (!src) return null;
+
+  // Explicit width (via <img width=...> in MDX) → fixed-size image, not full-bleed.
+  if (explicitWidth) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        srcSet={`/_next/image?url=${encodeURIComponent(src)}&w=640&q=75 1x, /_next/image?url=${encodeURIComponent(src)}&w=1080&q=75 2x`}
+        alt={alt || ""}
+        title={title}
+        width={explicitWidth}
+        loading="lazy"
+        decoding="async"
+        className="rounded-lg h-auto max-w-full"
+      />
+    );
+  }
 
   // Remote / data URLs → plain img, untouched.
   if (!src.startsWith("/")) {

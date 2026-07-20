@@ -18,8 +18,15 @@ export interface AuthorMetadata {
   telegram?: string;
   linkedin?: string;
   twitter?: string;
+  instagram?: string;
+  facebook?: string;
   website?: string; // personal website / blog
   fajelaAbout?: string; // Fajela consultancy "about" page
+  company?: string; // worksFor organization (defaults to SEO BAZA when absent)
+  companyUrl?: string;
+  city?: string;
+  topics?: string[]; // free-form expertise topics, rendered as knowsAbout chips
+  sameAs?: string[]; // extra profile/mention URLs beyond the header socials
   expertise: string[]; // category slugs
 }
 
@@ -52,8 +59,15 @@ export function getAuthorBySlug(slug: string): Author {
     telegram: data.telegram,
     linkedin: data.linkedin,
     twitter: data.twitter,
+    instagram: data.instagram,
+    facebook: data.facebook,
     website: data.website,
     fajelaAbout: data.fajelaAbout,
+    company: data.company,
+    companyUrl: data.companyUrl,
+    city: data.city,
+    topics: data.topics,
+    sameAs: data.sameAs,
     expertise: data.expertise ?? [],
     content,
   };

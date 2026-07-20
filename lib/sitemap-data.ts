@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import { getAllArticles, getAllTagSlugs } from "./articles";
 import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
+import { getAllKgPeople } from "./kg";
 import { getLatestDealsEvent } from "./events";
 import { getAllJobs, jobPath } from "./jobs";
 import { CATEGORIES } from "./taxonomy";
@@ -127,6 +128,16 @@ export async function buildPages(): Promise<Entry[]> {
     changeFrequency: "weekly" as const,
   }));
 
+  const kgPersonPages: Entry[] = [
+    { url: `${BASE}/kg`, lastModified: now, changeFrequency: "weekly" as const },
+    { url: `${BASE}/kg/person`, lastModified: now, changeFrequency: "weekly" as const },
+    ...getAllKgPeople().map((p) => ({
+      url: `${BASE}/kg/person/${p.kgId}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+    })),
+  ];
+
   // Job pages stay in the sitemap after closing too — the page still exists
   // (it renders a "closed" notice and drops the JobPosting markup).
   const jobs = getAllJobs();
@@ -143,7 +154,7 @@ export async function buildPages(): Promise<Entry[]> {
   );
   jobPages.push(...jobCompanyPages);
 
-  return [...staticPages, ...eventPages, ...jobPages, ...testPages, ...authorPages];
+  return [...staticPages, ...eventPages, ...jobPages, ...testPages, ...authorPages, ...kgPersonPages];
 }
 
 export function buildArticles(): Entry[] {
