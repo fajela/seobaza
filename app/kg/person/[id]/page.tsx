@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getKgPersonIds, getKgPersonById } from "@/lib/kg";
 import { getTagDisplayName } from "@/lib/taxonomy";
+import { buildOgImage } from "@/lib/og-image";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -23,6 +24,7 @@ export async function generateMetadata({
   try {
     const person = getKgPersonById(id);
     const title = `${person.name}: ${person.role}${person.company ? ` ${person.company}` : ""} | SEO BAZA`;
+    const og = buildOgImage(person.image, person.name);
     return {
       title,
       description: person.bio,
@@ -34,6 +36,13 @@ export async function generateMetadata({
         siteName: "SEO BAZA",
         locale: "uk_UA",
         type: "profile",
+        images: [{ url: og.url, width: og.width, height: og.height, alt: og.alt, type: og.type }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description: person.bio,
+        images: [{ url: og.url, alt: og.alt }],
       },
     };
   } catch {
@@ -57,50 +66,6 @@ export default async function KgPersonPage({
 
   const personUrl = `https://seobaza.com.ua/kg/person/${id}`;
 
-  const sameAsUrls = [
-    person.telegram,
-    person.linkedin,
-    person.twitter,
-    person.instagram,
-    person.facebook,
-    person.website,
-    ...(person.sameAs ?? []),
-  ].filter((u): u is string => Boolean(u));
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "@id": `${personUrl}#profilepage`,
-    url: personUrl,
-    name: person.name,
-    mainEntity: {
-      "@type": "Person",
-      "@id": `${personUrl}#person`,
-      name: person.name,
-      ...(person.alternateName ? { alternateName: person.alternateName } : {}),
-      identifier: person.kgId,
-      url: personUrl,
-      jobTitle: person.role,
-      description: person.bio,
-      ...(person.image ? { image: `https://seobaza.com.ua${person.image}` } : {}),
-      ...(person.city ? { homeLocation: { "@type": "Place", name: person.city } } : {}),
-      ...(person.company
-        ? {
-            worksFor: {
-              "@type": "Organization",
-              name: person.company,
-              ...(person.companyUrl ? { url: person.companyUrl } : {}),
-            },
-          }
-        : {}),
-      knowsAbout: [
-        ...person.expertise.map((tag) => getTagDisplayName(tag)),
-        ...(person.topics ?? []),
-      ],
-      ...(sameAsUrls.length > 0 ? { sameAs: sameAsUrls } : {}),
-    },
-  };
-
   return (
     <div
       className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
@@ -115,10 +80,6 @@ export default async function KgPersonPage({
         itemType="https://schema.org/Person"
         itemID={`${personUrl}#person`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         <meta itemProp="url" content={personUrl} />
         <meta itemProp="identifier" content={person.kgId} />
 

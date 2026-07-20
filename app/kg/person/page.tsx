@@ -1,12 +1,30 @@
 import Link from "next/link";
 import { getAllKgPeople } from "@/lib/kg";
+import { buildOgImage } from "@/lib/og-image";
 import type { Metadata } from "next";
+
+const ogPeople = buildOgImage(undefined, "Люди в графі знань SEO Baza");
 
 export const metadata: Metadata = {
   title: "Граф знань SEO Baza: люди української SEO-спільноти",
   description:
     "Люди з графа знань SEO Baza: спікери мітапів та експерти української SEO-спільноти. Профілі з виступами, роботами і посиланнями. Знайомтесь зі спільнотою.",
   alternates: { canonical: "https://seobaza.com.ua/kg/person" },
+  openGraph: {
+    title: "Граф знань SEO Baza: люди української SEO-спільноти",
+    description:
+      "Люди з графа знань SEO Baza: спікери мітапів та експерти української SEO-спільноти. Профілі з виступами, роботами і посиланнями.",
+    url: "https://seobaza.com.ua/kg/person",
+    siteName: "SEO BAZA",
+    locale: "uk_UA",
+    type: "website",
+    images: [{ url: ogPeople.url, width: ogPeople.width, height: ogPeople.height, alt: ogPeople.alt, type: ogPeople.type }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Граф знань SEO Baza: люди української SEO-спільноти",
+    images: [{ url: ogPeople.url, alt: ogPeople.alt }],
+  },
 };
 
 export default function KgPeopleIndexPage() {
