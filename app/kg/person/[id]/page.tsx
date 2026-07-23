@@ -223,6 +223,8 @@ export default async function KgPersonPage({
           const profileLabel = (url: string): string => {
             const exact: Record<string, string> = {
               "https://collaborator.pro/ua/blog/seo-women": "Добірка SEO-спеціалісток України",
+              "https://t.me/seoideas": "Канал SEO Ideas",
+              "https://www.youtube.com/@shozashum": "Подкаст Що за Шум",
             };
             if (exact[url]) return exact[url];
             const host = url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
