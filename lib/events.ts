@@ -187,10 +187,12 @@ export function eventToJsonLd(event: EventMeta): Record<string, unknown> {
 
   // Ticket offer — explicit price, or a $0 offer for free events.
   let offers: Record<string, unknown> | undefined;
+  // Where to buy/register: the event's own site first, then a registration form.
+  const offerUrl = event.website || event.registrationUrl || pageUrl;
   if (event.isFree) {
     offers = {
       "@type": "Offer",
-      url: event.registrationUrl || url,
+      url: offerUrl,
       price: "0",
       priceCurrency: event.priceCurrency || "UAH",
       availability: "https://schema.org/InStock",
@@ -198,7 +200,7 @@ export function eventToJsonLd(event: EventMeta): Record<string, unknown> {
   } else if (event.price) {
     offers = {
       "@type": "Offer",
-      url: event.registrationUrl || url,
+      url: offerUrl,
       price: event.price,
       priceCurrency: event.priceCurrency || "USD",
       availability: "https://schema.org/InStock",
