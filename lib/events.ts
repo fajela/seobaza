@@ -51,6 +51,7 @@ export function normalizeEvent(
     postalCode: (data.postalCode as string) ?? undefined,
     language: (data.language as string) ?? "uk",
     registrationUrl: (data.registrationUrl as string) ?? undefined,
+    website: (data.website as string) ?? undefined,
     status: (data.status as EventMeta["status"]) ?? "active",
     cover: (data.cover as string) ?? undefined,
     image: (data.image as string) ?? undefined,
@@ -162,7 +163,9 @@ function absUrl(maybePath?: string): string | undefined {
 
 /** schema.org/Event JSON-LD object — drives Google event rich results. */
 export function eventToJsonLd(event: EventMeta): Record<string, unknown> {
-  const url = `${SITE}/events/${event.year}/${event.slug}`;
+  const pageUrl = `${SITE}/events/${event.year}/${event.slug}`;
+  // Prefer the event's own official site for schema.org/Event url when present.
+  const url = event.website || pageUrl;
 
   const location =
     event.format === "online"

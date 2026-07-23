@@ -50,6 +50,8 @@ export interface EventMeta {
   postalCode?: string;
   language: string;
   registrationUrl?: string;
+  /** Official standalone site of the event, if it has one. */
+  website?: string;
   /** "active" | "cancelled". Past/upcoming is derived from dates, not this. */
   status: "active" | "cancelled";
   cover?: string;
