@@ -59,6 +59,14 @@ export const REDIRECTS: Redirect[] = [
     destination: "/jobs/whitelobby/seo-aeo-geo-specialist-2026-07",
     permanent: true,
   },
+  {
+    // Дубль у таксономії: частина матеріалів мала тег technical-seo замість
+    // канонічного technical, тож сторінка тегу існувала й індексувалася.
+    // Теги зведені до technical, стара сторінка більше не генерується.
+    source: "/tags/technical-seo",
+    destination: "/tags/technical",
+    permanent: true,
+  },
 ];
 
 /** Exact redirect source paths — used to filter sitemap entries. */
