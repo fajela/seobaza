@@ -1,0 +1,13 @@
+﻿
+> seobaza@1.0.0 dev
+> next dev
+
+▲ Next.js 16.1.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.5.0.2:3000
+- Environments: .env.local
+
+✓ Starting...
+✓ Ready in 4.6s
+ GET /knowledge-base/obsidian-dlia-seo 200 in 4.1s (compile: 2.6s, generate-params: 1814ms, render: 1512ms)
+ GET /knowledge-base/obsidian-dlia-seo 200 in 317ms (compile: 32ms, generate-params: 16ms, render: 285ms)
