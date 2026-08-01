@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "check:news": "node scripts/check-news-slugs.mjs",
+    "check:og": "node scripts/check-og.mjs",
     "prebuild": "node scripts/check-news-slugs.mjs",
     "build": "next build",
     "start": "next start",
