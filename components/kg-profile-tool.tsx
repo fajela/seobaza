@@ -246,9 +246,15 @@ export function KgProfileTool() {
                             {t}
                           </span>
                         ))}
-                        <code className="text-xs text-muted-foreground">
-                          {e.kgmid}
-                        </code>
+                        <a
+                          href={`https://www.google.com/search?kgmid=${encodeURIComponent(e.kgmid)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Відкрити сутність у Google"
+                          className="text-xs text-muted-foreground hover:text-accent transition-colors"
+                        >
+                          <code className="text-xs">{e.kgmid}</code> ↗
+                        </a>
                       </div>
                       {e.description && (
                         <p className="line-clamp-2 text-sm text-muted-foreground">
