@@ -11,7 +11,11 @@ const authorsDirectory = path.join(process.cwd(), "content/authors");
 export interface AuthorMetadata {
   slug: string;
   name: string;
-  alternateName?: string; // e.g. English transliteration for a Ukrainian-named author
+  // English (or otherwise Latin-script) spelling of the name. An array when the
+  // person is findable under more than one form — Google matches entities by
+  // name string, so every form they actually use needs to be stated.
+  alternateName?: string | string[];
+  googleKgId?: string; // Google Knowledge Graph MID, e.g. "/g/11f3pg5hw6"
   role: string;
   bio: string;
   image?: string;
@@ -34,6 +38,71 @@ export interface Author extends AuthorMetadata {
   content: string; // optional extended MDX bio
 }
 
+/** Normalize `alternateName` (string, array or absent) to a list. */
+export function altNames(value?: string | string[]): string[] {
+  if (!value) return [];
+  return (Array.isArray(value) ? value : [value]).filter(Boolean);
+}
+
+/** Canonical Google Knowledge Graph entity URI for a MID like "/g/11f3pg5hw6". */
+export function googleKgUrl(mid: string): string {
+  return `https://g.co/kg${mid}`;
+}
+
+/**
+ * Absolute form of a site-relative path, for markup values. Microdata hands
+ * consumers the raw attribute, so a relative `src` leaves them resolving it
+ * themselves — structured data values are always absolute.
+ */
+export function absoluteUrl(pathOrUrl: string): string {
+  return pathOrUrl.startsWith("/")
+    ? `https://seobaza.com.ua${pathOrUrl}`
+    : pathOrUrl;
+}
+
+interface PersonLinks {
+  telegram?: string;
+  linkedin?: string;
+  twitter?: string;
+  instagram?: string;
+  facebook?: string;
+  website?: string;
+  fajelaAbout?: string;
+  sameAs?: string[];
+  googleKgId?: string;
+}
+
+/**
+ * Profiles shown to readers as chips, in display order, duplicates dropped.
+ * Only real profiles a person would want clicked.
+ */
+export function profileUrls(person: PersonLinks): string[] {
+  const urls = [
+    person.telegram,
+    person.linkedin,
+    person.twitter,
+    person.instagram,
+    person.facebook,
+    person.website,
+    ...(person.sameAs ?? []),
+  ].filter((u): u is string => Boolean(u));
+  return [...new Set(urls)];
+}
+
+/**
+ * sameAs values that belong in the markup but NOT on the page: the Google
+ * Knowledge Graph entity URI and the Fajela about page. Returned without
+ * anything already rendered as a visible chip, so no URL is a sameAs twice.
+ */
+export function hiddenSameAs(person: PersonLinks): string[] {
+  const shown = new Set(profileUrls(person));
+  const urls = [
+    person.fajelaAbout,
+    person.googleKgId ? googleKgUrl(person.googleKgId) : undefined,
+  ].filter((u): u is string => Boolean(u));
+  return [...new Set(urls)].filter((u) => !shown.has(u));
+}
+
 // ─── Read helpers ─────────────────────────────────────────────────────────────
 
 export function getAuthorSlugs(): string[] {
@@ -53,6 +122,7 @@ export function getAuthorBySlug(slug: string): Author {
     slug,
     name: data.name,
     alternateName: data.alternateName,
+    googleKgId: data.googleKgId,
     role: data.role ?? "",
     bio: data.bio ?? "",
     image: data.image,
@@ -107,7 +177,7 @@ export function getAuthorSlugByName(authorName: string): string | null {
   const target = authorName.trim().toLowerCase();
   for (const author of getAllAuthors()) {
     if (author.name.toLowerCase() === target) return author.slug;
-    if (author.alternateName && author.alternateName.toLowerCase() === target) {
+    if (altNames(author.alternateName).some((n) => n.toLowerCase() === target)) {
       return author.slug;
     }
   }

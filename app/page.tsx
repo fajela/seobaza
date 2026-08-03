@@ -5,7 +5,7 @@ import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
 import { getAllNews } from "@/lib/news";
 import path from "path";
 import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
-import { getAllAuthors } from "@/lib/authors";
+import { getAllAuthors, altNames } from "@/lib/authors";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
 
 const formatDate = (date: string) =>
@@ -25,8 +25,8 @@ export default function Home() {
   const authorIndex = new Map<string, { slug: string; image?: string }>();
   for (const a of getAllAuthors()) {
     authorIndex.set(a.name.toLowerCase(), { slug: a.slug, image: a.image });
-    if (a.alternateName) {
-      authorIndex.set(a.alternateName.toLowerCase(), { slug: a.slug, image: a.image });
+    for (const alt of altNames(a.alternateName)) {
+      authorIndex.set(alt.toLowerCase(), { slug: a.slug, image: a.image });
     }
   }
   const resolveAuthor = (name?: string): BylineAuthor => {

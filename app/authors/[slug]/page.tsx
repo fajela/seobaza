@@ -5,6 +5,10 @@ import {
   getAuthorBySlug,
   getArticlesByAuthorName,
   getNewsByAuthorName,
+  altNames,
+  absoluteUrl,
+  profileUrls,
+  hiddenSameAs,
 } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
@@ -68,17 +72,35 @@ export default async function AuthorPage({
   const totalCount = articles.length + newsItems.length + digests.length;
 
   const authorUrl = `https://seobaza.com.ua/authors/${slug}`;
+  const latinNames = altNames(author.alternateName);
 
   return (
     <div
       className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
-      {...{ vocab: "https://schema.org/", typeof: "ProfilePage", resource: authorUrl }}
+      itemScope
+      itemType="https://schema.org/ProfilePage"
+      itemID={`${authorUrl}#profilepage`}
     >
       <div
         className="max-w-4xl mx-auto"
-        {...{ property: "mainEntity", typeof: "Person", resource: authorUrl }}
+        itemProp="mainEntity"
+        itemScope
+        itemType="https://schema.org/Person"
+        itemID={`${authorUrl}#person`}
       >
-        <span className="hidden" property="url" content={authorUrl} />
+        <meta itemProp="url" content={authorUrl} />
+        {/* Google Knowledge Graph MID: ties this page to the entity Google
+            already holds, so both spellings of the name resolve to one thing. */}
+        {author.googleKgId && (
+          <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
+            <meta itemProp="propertyID" content="Google Knowledge Graph ID" />
+            <meta itemProp="value" content={author.googleKgId} />
+          </span>
+        )}
+        {/* sameAs values that belong in the markup only, never as a chip. */}
+        {hiddenSameAs(author).map((url) => (
+          <link key={url} itemProp="sameAs" href={url} />
+        ))}
 
         {/* Breadcrumbs — microdata BreadcrumbList */}
         <nav
@@ -105,46 +127,53 @@ export default async function AuthorPage({
         {/* Header: h1 first in the DOM, avatar after it (order-first keeps it visually left) */}
         <div className="flex flex-col sm:flex-row gap-6 mb-10 p-6 rounded-xl border border-border bg-secondary/20">
           <div className="flex-1">
-            <h1 className="text-3xl font-display mb-1" property="name">
+            <h1 className="text-3xl font-display mb-1" itemProp="name">
               {author.name}
             </h1>
-            {author.alternateName && (
-              <span className="hidden" property="alternateName" content={author.alternateName} />
+            {latinNames.length > 0 && (
+              <p className="text-muted-foreground mb-1">
+                {latinNames.map((n, i) => (
+                  <span key={n}>
+                    {i > 0 && ", "}
+                    <span itemProp="alternateName">{n}</span>
+                  </span>
+                ))}
+              </p>
             )}
             <p className="text-muted-foreground mb-3">
-              <span property="jobTitle">{author.role}</span>
+              <span itemProp="jobTitle">{author.role}</span>
               {author.company && (
-                <span {...{ property: "worksFor", typeof: "Organization" }}>
+                <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization">
                   {" · "}
                   {author.companyUrl ? (
                     <a
                       href={author.companyUrl}
                       target="_blank"
-                      property="url"
+                      itemProp="url"
                       className="hover:text-accent transition-colors"
                     >
-                      <span property="name">{author.company}</span>
+                      <span itemProp="name">{author.company}</span>
                     </a>
                   ) : (
-                    <span property="name">{author.company}</span>
+                    <span itemProp="name">{author.company}</span>
                   )}
                 </span>
               )}
               {author.city && (
-                <span {...{ property: "homeLocation", typeof: "Place" }}>
+                <span itemProp="homeLocation" itemScope itemType="https://schema.org/Place">
                   {" · "}
-                  <span property="name">{author.city}</span>
+                  <span itemProp="name">{author.city}</span>
                 </span>
               )}
             </p>
 
-            {/* Social links — each is property="sameAs" for the Person */}
+            {/* Social links — visual only. The markup lives in the deduped
+                profile list below, so one URL is never a sameAs twice. */}
             <div className="flex flex-wrap gap-3 mb-4">
               {author.telegram && (
                 <a
                   href={author.telegram}
                   target="_blank"
-                  property="sameAs"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -157,7 +186,6 @@ export default async function AuthorPage({
                 <a
                   href={author.linkedin}
                   target="_blank"
-                  property="sameAs"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -170,7 +198,6 @@ export default async function AuthorPage({
                 <a
                   href={author.twitter}
                   target="_blank"
-                  property="sameAs"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -183,7 +210,6 @@ export default async function AuthorPage({
                 <a
                   href={author.instagram}
                   target="_blank"
-                  property="sameAs"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -196,7 +222,6 @@ export default async function AuthorPage({
                 <a
                   href={author.facebook}
                   target="_blank"
-                  property="sameAs"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -209,7 +234,6 @@ export default async function AuthorPage({
                 <a
                   href={author.website}
                   target="_blank"
-                  property="sameAs url"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -223,7 +247,6 @@ export default async function AuthorPage({
                 <a
                   href={author.fajelaAbout}
                   target="_blank"
-                  property="sameAs"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -236,24 +259,25 @@ export default async function AuthorPage({
             </div>
 
             {/* Bio */}
-            <p className="text-muted-foreground" property="description">{author.bio}</p>
+            <p className="text-muted-foreground" itemProp="description">{author.bio}</p>
             {/* knowsAbout — topics the author is expert in (uses tag slugs) */}
             {author.expertise.map((tag) => (
-              <span key={tag} className="hidden" property="knowsAbout" content={getTagDisplayName(tag)} />
+              <meta key={tag} itemProp="knowsAbout" content={getTagDisplayName(tag)} />
             ))}
             {!author.company && (
-              <span className="hidden" property="worksFor" content="SEO BAZA" />
+              <meta itemProp="worksFor" content="SEO BAZA" />
             )}
           </div>
 
-          {/* Avatar — uses author.image when set; falls back to the initial letter */}
+          {/* Avatar — uses author.image when set; falls back to the initial letter.
+              The markup value goes out separately, as an absolute URL. */}
+          {author.image && <link itemProp="image" href={absoluteUrl(author.image)} />}
           {author.image ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={author.image}
               srcSet={`/_next/image?url=${encodeURIComponent(author.image)}&w=96&q=75 1x, /_next/image?url=${encodeURIComponent(author.image)}&w=256&q=75 2x`}
               alt={author.name}
-              property="image"
               width={96}
               height={96}
               fetchPriority="high"
@@ -285,7 +309,7 @@ export default async function AuthorPage({
               {author.topics?.filter((t) => !author.expertise.some((tag) => getTagDisplayName(tag).toLowerCase() === t.toLowerCase())).map((t) => (
                 <span
                   key={t}
-                  {...{ about: authorUrl, property: "knowsAbout" }}
+                  itemProp="knowsAbout"
                   className="px-3 py-1.5 text-sm bg-muted text-muted-foreground rounded-full"
                 >
                   {t}
@@ -313,15 +337,7 @@ export default async function AuthorPage({
 
         {/* All profiles: socials + speaker pages, mentor profiles, catalogs */}
         {(() => {
-          const allProfiles = [
-            author.telegram,
-            author.linkedin,
-            author.twitter,
-            author.instagram,
-            author.facebook,
-            author.website,
-            ...(author.sameAs ?? []),
-          ].filter((u): u is string => Boolean(u));
+          const allProfiles = profileUrls(author);
           const profileLabel = (url: string): string => {
             const host = url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
             const known: Record<string, string> = {
@@ -339,6 +355,8 @@ export default async function AuthorPage({
               "theways.io": "TheWays",
               "flyerone.vc": "Flyer One Ventures",
               "affcatalog.com": "AFFCatalog",
+              "fajela.com": "Fajela",
+              "bsky.app": "Bluesky",
             };
             return known[host] ?? host;
           };
@@ -352,7 +370,7 @@ export default async function AuthorPage({
                   href={url}
                   target="_blank"
                   rel="noopener"
-                  {...{ about: authorUrl, property: "sameAs" }}
+                  itemProp="sameAs"
                   className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
                 >
                   {profileLabel(url)}

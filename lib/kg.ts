@@ -29,6 +29,7 @@ function readPersonFile(filename: string): KgPerson {
     slug: filename.replace(".mdx", ""),
     name: data.name,
     alternateName: data.alternateName,
+    googleKgId: data.googleKgId,
     role: data.role ?? "",
     bio: data.bio ?? "",
     image: data.image,

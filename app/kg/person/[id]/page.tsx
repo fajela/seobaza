@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getKgPersonIds, getKgPersonById } from "@/lib/kg";
+import { altNames, absoluteUrl, profileUrls, hiddenSameAs } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { buildOgImage } from "@/lib/og-image";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
@@ -65,6 +66,7 @@ export default async function KgPersonPage({
   }
 
   const personUrl = `https://seobaza.com.ua/kg/person/${id}`;
+  const latinNames = altNames(person.alternateName);
 
   return (
     <div
@@ -81,7 +83,22 @@ export default async function KgPersonPage({
         itemID={`${personUrl}#person`}
       >
         <meta itemProp="url" content={personUrl} />
-        <meta itemProp="identifier" content={person.kgId} />
+        <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
+          <meta itemProp="propertyID" content="SEO Baza KG ID" />
+          <meta itemProp="value" content={person.kgId} />
+        </span>
+        {/* Google Knowledge Graph MID: ties this page to the entity Google
+            already holds, so the Ukrainian and English names resolve to one thing. */}
+        {person.googleKgId && (
+          <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
+            <meta itemProp="propertyID" content="Google Knowledge Graph ID" />
+            <meta itemProp="value" content={person.googleKgId} />
+          </span>
+        )}
+        {/* sameAs values that belong in the markup only, never as a chip. */}
+        {hiddenSameAs(person).map((url) => (
+          <link key={url} itemProp="sameAs" href={url} />
+        ))}
 
         {/* Breadcrumbs — microdata BreadcrumbList */}
         <nav
@@ -111,8 +128,15 @@ export default async function KgPersonPage({
             <h1 className="text-3xl font-display mb-1" itemProp="name">
               {person.name}
             </h1>
-            {person.alternateName && (
-              <meta itemProp="alternateName" content={person.alternateName} />
+            {latinNames.length > 0 && (
+              <p className="text-muted-foreground mb-1">
+                {latinNames.map((n, i) => (
+                  <span key={n}>
+                    {i > 0 && ", "}
+                    <span itemProp="alternateName">{n}</span>
+                  </span>
+                ))}
+              </p>
             )}
             <p className="text-muted-foreground mb-3">
               <span itemProp="jobTitle">{person.role}</span>
@@ -169,13 +193,13 @@ export default async function KgPersonPage({
             ))}
           </div>
 
+          {person.image && <link itemProp="image" href={absoluteUrl(person.image)} />}
           {person.image ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={person.image}
               srcSet={`/_next/image?url=${encodeURIComponent(person.image)}&w=96&q=75 1x, /_next/image?url=${encodeURIComponent(person.image)}&w=256&q=75 2x`}
               alt={person.name}
-              itemProp="image"
               width={96}
               height={96}
               fetchPriority="high"
@@ -211,15 +235,7 @@ export default async function KgPersonPage({
 
         {/* All profiles: socials + speaker pages, mentor profiles, catalogs */}
         {(() => {
-          const allProfiles = [
-            person.telegram,
-            person.linkedin,
-            person.twitter,
-            person.instagram,
-            person.facebook,
-            person.website,
-            ...(person.sameAs ?? []),
-          ].filter((u): u is string => Boolean(u));
+          const allProfiles = profileUrls(person);
           const profileLabel = (url: string): string => {
             const exact: Record<string, string> = {
               "https://collaborator.pro/ua/blog/seo-women": "Добірка SEO-спеціалісток України",
@@ -243,6 +259,8 @@ export default async function KgPersonPage({
               "theways.io": "TheWays",
               "flyerone.vc": "Flyer One Ventures",
               "affcatalog.com": "AFFCatalog",
+              "fajela.com": "Fajela",
+              "bsky.app": "Bluesky",
             };
             return known[host] ?? host;
           };
