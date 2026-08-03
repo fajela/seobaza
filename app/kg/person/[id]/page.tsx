@@ -246,6 +246,7 @@ export default async function KgPersonPage({
             const host = url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0];
             const known: Record<string, string> = {
               "t.me": "Telegram",
+              "profile.google.com": "Профіль у Google",
               "linkedin.com": "LinkedIn",
               "instagram.com": "Instagram",
               "facebook.com": "Facebook",
