@@ -105,7 +105,10 @@ export function MdxImg({
       height={height}
       loading="lazy"
       decoding="async"
-      className="rounded-lg h-auto w-full"
+      // Wide images fill the column as before. Tall ones (schemes, screenshots
+      // of full pages) are capped at 85vh so they fit on screen without being
+      // redrawn — the intrinsic width/height keep the aspect ratio.
+      className="rounded-lg mx-auto h-auto w-auto max-w-full max-h-[85vh]"
     />
   );
 }
