@@ -6,6 +6,7 @@ export const metadata = pageMeta({
   description:
     "Хто стоїть за SEO BAZA, як ми заробляємо, як працює редакція, звідки беремо факти й де нас виправити. Прозорість видання.",
   path: "/transparency",
+  altPath: "/en/transparency",
 });
 
 const UPDATED = "30 червня 2026";

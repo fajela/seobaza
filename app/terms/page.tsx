@@ -6,6 +6,7 @@ export const metadata = pageMeta({
   description:
     "Умови використання сайту SEO BAZA: правила доступу до контенту, авторські права, розсилка, відповідальність та контакти.",
   path: "/terms",
+  altPath: "/en/terms",
 });
 
 const UPDATED = "29 червня 2026";

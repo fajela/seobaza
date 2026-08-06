@@ -92,6 +92,12 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/transparency`,            lastModified: now, changeFrequency: "yearly" },
     { url: `${BASE}/privacy`,                 lastModified: now, changeFrequency: "yearly" },
     { url: `${BASE}/terms`,                   lastModified: now, changeFrequency: "yearly" },
+    // English versions for Google — the Ukrainian pages stay primary (x-default).
+    { url: `${BASE}/en`,                      lastModified: now, changeFrequency: "monthly" },
+    { url: `${BASE}/en/about`,                lastModified: now, changeFrequency: "yearly" },
+    { url: `${BASE}/en/transparency`,         lastModified: now, changeFrequency: "yearly" },
+    { url: `${BASE}/en/privacy`,              lastModified: now, changeFrequency: "yearly" },
+    { url: `${BASE}/en/terms`,                lastModified: now, changeFrequency: "yearly" },
     // /black-friday is the evergreen "general" Black Friday page and the canonical
     // target for the current year's archive page — so it belongs in the sitemap.
     { url: `${BASE}/black-friday`,            lastModified: now, changeFrequency: "yearly" },

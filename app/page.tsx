@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { TelegramWidget } from "@/components/telegram-widget";
 import { PostCover } from "@/components/post-cover";
 import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
@@ -7,6 +8,19 @@ import path from "path";
 import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
 import { getAllAuthors, altNames } from "@/lib/authors";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
+
+// Everything else (title, OG, …) is inherited from app/layout.tsx; this only
+// adds the hreflang pair with the English homepage at /en.
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://seobaza.com.ua/",
+    languages: {
+      uk: "https://seobaza.com.ua/",
+      en: "https://seobaza.com.ua/en",
+      "x-default": "https://seobaza.com.ua/",
+    },
+  },
+};
 
 const formatDate = (date: string) =>
   new Date(date).toLocaleDateString("uk-UA", {

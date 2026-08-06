@@ -5,7 +5,14 @@ export const metadata: Metadata = {
   title: "Про SEO BAZA — українська SEO-спільнота",
   description:
     "SEO BAZA — українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали.",
-  alternates: { canonical: "https://seobaza.com.ua/about" },
+  alternates: {
+    canonical: "https://seobaza.com.ua/about",
+    languages: {
+      uk: "https://seobaza.com.ua/about",
+      en: "https://seobaza.com.ua/en/about",
+      "x-default": "https://seobaza.com.ua/about",
+    },
+  },
   openGraph: {
     title: "Про SEO BAZA",
     description: "Українська спільнота SEO-фахівців.",

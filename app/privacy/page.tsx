@@ -6,6 +6,7 @@ export const metadata = pageMeta({
   description:
     "Як SEO BAZA збирає, використовує та захищає ваші дані: розсилка, аналітика, файли cookie, Google Reader Revenue Manager та ваші права.",
   path: "/privacy",
+  altPath: "/en/privacy",
 });
 
 const UPDATED = "29 червня 2026";
