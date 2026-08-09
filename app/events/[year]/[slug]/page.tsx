@@ -55,7 +55,10 @@ export async function generateMetadata({
 
   const { frontmatter } = event;
   const url = `https://seobaza.com.ua/events/${year}/${slug}`;
-  const ogImage = "https://seobaza.com.ua/og-image.png";
+  const hasOwnImage = Boolean(frontmatter.image);
+  const ogImage = hasOwnImage
+    ? `https://seobaza.com.ua${frontmatter.image}`
+    : "https://seobaza.com.ua/og-image.png";
 
   // Black Friday strategy: while a year page is the CURRENT (latest) deals page
   // it canonicals to the evergreen /black-friday hub. Older years are
@@ -86,12 +89,19 @@ export async function generateMetadata({
       publishedTime: frontmatter.date,
       authors: frontmatter.author ? [frontmatter.author] : undefined,
       images: [
-        {
-          url: ogImage,
-          width: 640,
-          height: 640,
-          alt: "SEO BAZA logo",
-        },
+        hasOwnImage
+          ? {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: frontmatter.title,
+            }
+          : {
+              url: ogImage,
+              width: 640,
+              height: 640,
+              alt: "SEO BAZA logo",
+            },
       ],
     },
     twitter: {
