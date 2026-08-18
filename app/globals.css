@@ -129,6 +129,14 @@
   border-radius: 9999px;
   background-color: #22c55e; /* tailwind green-500 — matches Telegram bullet hue */
 }
+/* Small images meant to sit inside a line of text (e.g. a meme after a phrase).
+   Prose makes every image a block with big vertical margins, which breaks that. */
+.prose img[data-inline] {
+  display: inline-block;
+  margin: 0 0 0 0.4rem;
+  vertical-align: middle;
+}
+
 /* Nested lists get a smaller, dimmer marker so they're visually subordinate */
 .prose ul ul > li::before {
   background-color: #86efac; /* green-300 */
