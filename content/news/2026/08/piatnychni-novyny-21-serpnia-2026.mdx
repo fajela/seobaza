@@ -1,0 +1,104 @@
+---
+title: "П'ятничні новини ✨ — 21 серпня 2026"
+h1: "П'ятничні новини ✨ — 21 серпня 2026"
+description: "Reddit майже зник з цитат ChatGPT, Google змінили парсинг JSON-LD, а AI Overviews зрізали трафік Wikipedia на 15%. Читайте, що ще сталося за тиждень."
+author: "Олеся Коробка"
+date: "2026-08-21"
+tags: ["ai-search", "google", "chatgpt", "llms", "industry"]
+category: "industry-news"
+type: "news"
+status: "published"
+sourceUrl: "/news/2026/08/piatnychni-novyny-21-serpnia-2026"
+image: "/images/news/2026/08/piatnychni-21-serpnia-2026-featured.jpg"
+---
+
+Цього тижня почався і вже закінчився [серпневий спам-апдейт Google](https://status.search.google.com/products/rGHU1u87FJnkP6W2GwMi/history): стартував 18 серпня і за офіційним дашбордом тривав **2 дні і 16 годин**. Це третій спам-апдейт року після березневого і червневого, нових спам-політик Google не анонсували.
+
+Reddit майже зник з відповідей ChatGPT, Google перестали виправляти подвійне екранування в JSON-LD, а AI Overviews зрізали трафік Wikipedia на **15%**. Девака зібрав 700 користувачів плагіна, k2aff виклав добірку матеріалів для прокачки на роки вперед, а українська гра SEO or Die вийшла на фестиваль у Steam.
+
+<video src="/videos/news/2026/08/piatnychni-21-serpnia-2026-mem.mp4" controls playsInline preload="metadata" width="420" />
+
+
+## Головні новини тижня
+
+З 8 серпня дефолтна модель у ChatGPT GPT-5.6, і Tomek Rudzki з Peec AI [порахував, хто програв за десять днів роллауту](https://www.linkedin.com/posts/tomekrudzki_since-8th-august-the-default-model-for-chatgpt-share-7495535966993051650-Kdst/): цитування Reddit впали на **88%**, arXiv на 84%, YouTube на 78%. У Google AI Overviews, AI Mode, Perplexity і Grok видимість Reddit при цьому не змінилась. Klaas Foppen з Promptwatch [знайшов механізм](https://promptwatch.com/blog/chatgpt-stop-citing-reddit): 8 серпня запити з оператором site: стрибнули з 0.37% до **16.8%** усіх пошуків ChatGPT, а такі запити цілять в офіційні сайти й документацію, тож частка Reddit у цитатах за тиждень впала з 3.83% до 0.52% і перетекла в документацію вендорів та сторінки брендів. Suganthan Mohanadasan [бачить у власному трафіку](https://www.linkedin.com/posts/suganthan-mohanadasan_over-the-past-few-days-several-llm-visibility-share-7496478455165952000-iHWR/), що Reddit при цьому лишився в роботі: в одному тесті ChatGPT витягнув **84** Reddit-треди для однієї відповіді і не процитував жодного, а в перехопленому запиті reddit.com стоїть у таргетингу з вікном 365 днів і назвами шести вже відібраних брендів усередині. Reddit годує вердикти, цитати збирають сторінки вендорів. Порада будьте в Reddit-тредах з [дослідження про те, як ChatGPT обирає бренди](/news/2026/08/piatnychni-novyny-14-serpnia-2026-1750), постаріла за тиждень.
+
+![Графік падіння частки Reddit у цитатах ChatGPT Search у серпні 2026](/images/news/2026/08/gpt-5-6-reddit-tsytaty.jpg)
+
+Google [змінили екстракцію JSON-LD](https://www.linkedin.com/posts/to-bring-our-parser-up-to-json-and-other-share-7496492350370713600-jxi2/) і тепер розкодовують HTML-сутності лише один раз. Подвійне екранування більше не виправляється автоматично: `Research &amp;amp; Development` раніше Google читав як `Research & Development`, тепер отримає `Research &amp; Development`. У structured data варто перевірити `&amp;amp;`, `&amp;quot;`, `&amp;lt;` і числові сутності, а в коді перейти на стандартні JSON-екранування або Unicode-послідовності виду `&`. Дякуємо [каналу seoideas за сигнал](https://t.me/seoideas/1178).
+
+![Приклад подвійного екранування HTML-сутностей у JSON-LD розмітці](/images/news/2026/08/google-json-ld-podviine-ekranuvannia.jpg)
+
+Дослідники з University of Washington [оцінили причинний вплив AI Overviews на трафік Wikipedia](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6164926). AIO запускались поетапно і спершу англійською, тож вони порівняли ті самі статті англійською проти версій мовами, де AIO ще не було. На **161 382** парах стаття-мова експозиція AIO знижує денний трафік англійських статей приблизно на **15%**. Найбільше падають статті про культуру, найменше STEM: коротка синтезована відповідь найкраще замінює сторінку там, де людині був потрібен один факт.
+
+![Графік відносного падіння відвідувань англійської Wikipedia після запуску AI Overviews](/images/news/2026/08/wikipedia-trafik-ai-overviews.jpg)
+
+## Новини українських SEOшників
+
+- Плагін DevakaTools [використовують уже понад **700** спеціалістів](https://t.me/devakatalk/6133). Девака просить поділитись, як саме і як часто ви ним користуєтесь, а хто хотів і не пробував, [плагін у Chrome WebStore](https://chromewebstore.google.com/detail/devaka-tools-%E2%80%94-seo-pro-ex/mciiiobohemepnafmkihbohkjhogjhia).
+
+- У Gemini [з'явився перемикач вотермарки на медіаконтенті](https://t.me/seoporn/263), по кліку на шестерню внизу бокової панелі. Прибирає видиму вотермарку із зображень і відео, метадані не чіпає. Як влаштовані невидимі помітки в текстах, ми розбирали у [статті про вотермарки Claude](/news/2026/08/anthropic-dodaiut-votermarky-do-tekstiv-claude).
+
+- Дмитро Сохач [розібрав тезу про mentions у 3 рази важливіші за backlinks](https://t.me/amazonpartnerka/345), яку всі повторюють з посиланням на [дослідження Ahrefs](https://ahrefs.com/blog/ai-overview-brand-correlation/). Трійка виходить з порівняння згадок з raw backlink count, найслабшою посилальною метрикою в дослідженні, а вся вибірка Ahrefs складалась із доменів DR 40+, у яких посилальні профілі і так сильні. Це як міряти вплив зросту на результативність серед самих гравців NBA. Своє питання його команда перевірила на **137 508** цитуваннях через DataForSEO API: якщо в одному лістиклі стоять два бренди, той, що з посиланням, ChatGPT називає у 52% випадків проти 23% без посилання, AI Overview у 48% проти 19%, разом приблизно **2.4 раза**. Причинність не доведена, залінковані бренди часто і є головними рекомендаціями лістикла, але зв'язок сильний.
+
+- Автор каналу vibeandseo робить гру [SEO or Die](https://store.steampowered.com/app/4735670/SEO_or_Die/), і вона [бере участь в Ukrainian Games Festival 2026 у Steam](https://t.me/vibeandseo/56). Додавайте у wishlist.
+
+- k2aff [виклав добірку матеріалів, які вплинули на нього за 10 років у SEO](https://t.me/k2aff/95): критичне мислення як головний скіл, Школа SEO Артема Пилипця, довідка Google з патентом Information retrieval based on historical data як обов'язковим читанням, розбори PageRank, доповіді SEMPRO і класиків українського SEO, Matt Diggity про посилання і серія про NavBoost. Є там і доповідь Олесі [про лінкбілдінг і граф знань](https://www.youtube.com/watch?v=ODzQcnKhCyo). Збирав для джунів, але і досвідченим є що передивитись.
+
+- Стартував [Traffic Bureau, новий український афіліатський канал](https://t.me/Traffic_Bureau/5): SEO, рев'юшники, монобренди, кластерні сайти, майже 6 років в афіліації. Починали 2020-го із сайтів після роботи і бюджету 4000 грн на місяць, рік не бачили грошей. Обіцяють ділитись досвідом і помилками.
+
+## Видимість в AI-пошуку
+
+- Suganthan Mohanadasan [класифікував фрагменти AI-розмов у звичайному звіті запитів GSC](https://www.linkedin.com/posts/suganthan-mohanadasan_yes-go-on-that-query-is-sitting-ugcPost-7493599499609767937-Q42B/). Generative AI-звіт не дає ні даних запитів, ні API, а звичайний звіт збирав уламки розмов увесь час. У 16 місяцях даних свого сайту він знайшов **1 127** фрагментів і розклав їх на 7 кошиків, від реплік типу yes, go on до синтетичних промптів тулів AI-видимості. Класифікатор доданий у його безкоштовний [GSC MCP з відкритим кодом](https://github.com/Suganthan-Mohanadasan/Suganthans-GSC-MCP), повний метод у [статті на suganthan.com](https://suganthan.com/blog/ai-mode-queries-search-console/). Самі репліки в GSC ми показували у [випуску 7 серпня](/news/2026/08/piatnychni-novyny-7-serpnia-2026-1733).
+
+- Glenn Gabe [зібрав воркфлоу під ту саму задачу](https://www.gsqi.com/marketing-blog/how-to-find-ai-mode-queries-gsc/): Analytics Edge вивантажує всі комбінації запит-сторінка з GSC повз ліміт 1000 рядків в інтерфейсі, Claude Cowork розбирає таблицю і позначає запити, схожі на AI Mode взаємодії. У нього Claude за хвилини перебрав **50 тисяч** запитів. У знайдених AI Mode запитів нуль кліків, а частина з них узагалі від автоматизованих тулів, тож результати треба валідувати руками.
+
+- Graphite [розібрали рандомність відповідей LLM](https://graphite.io/five-percent/research/demystifying-randomness-in-ai): 200 порівняльних промптів по 400 прогонів на GPT-5.2 і Gemini 3 Flash. Відповіді різні через імовірнісний вибір токенів, але розподіли стабільні: **10 прогонів** дають середню похибку видимості бренду 5.6%, і 98.6% промптів вкладаються в похибку до 10%. Тож мінімум 10 прогонів на промпт, трекінг щотижня і перевірка статзначущості перед висновками. Ми у [дослідженні про перевірку ліцензій казино в ChatGPT](https://whitelobby.com/research/chatgpt-casino-license-checks) з тієї ж причини робили 81 прогін.
+
+- Gianluca Fiorelli [зібрав, що AI-краулери реально читають на сайтах](https://www.advancedwebranking.com/blog/what-ai-search-crawlers-read), за логами: аналіз Vercel і MERJ на 569 млн запитів GPTBot, тест Andre Alpar з секретними URL і аналіз Dan Petrovic на 883 262 сніпетах. ChatGPT, Claude і Gemini не виконують JavaScript при живому завантаженні сторінки, тож критичний контент має віддаватись у сирому HTML. На один запит модель бере приблизно **2 000 слів** шматками по 15, розмітка schema при живому завантаженні ігнорується, і **87%** цитат ChatGPT збігаються з видачею Bing. Perplexity в тесті заявляв, що не має доступу до сторінки, яку його краулер щойно завантажив, звідси і назва матеріалу: вірте логам.
+
+- За звітом TollBit за перше півріччя 2026, ChatGPT-User [заходив на заборонені в robots.txt сторінки](https://www.searchenginejournal.com/openai-says-robots-txt-may-not-apply-to-chatgpts-fetch-bot/585864/) майже половини європейських сайтів, які його явно заблокували. Позиція OpenAI в документації: сторінку запитала людина, тож правила robots.txt можуть не застосовуватись. За видимість у пошуку ChatGPT відповідає окремий OAI-SearchBot, тож хто блокує обох, віддав видимість і лишив собі контроль, який не працює. Cloudflare тим часом переносять рішення на рівень мережі: з 15 вересня нові домени за замовчуванням блокуватимуть краулери тренування і агентів на сторінках з рекламою.
+
+## Локальне SEO і AI
+
+- Dan Hinckley [знайшов у мережевому трафіку ChatGPT поле rank_score для локального бізнесу](https://t.me/sneex_seo/1131). На запит про адвокатів у Лос-Анджелесі ChatGPT зібрав пул із 13 компаній і рекомендував 7. Скор залежить від запиту, той самий бізнес отримує різні значення, і високий скор нічого не гарантує: компанія з 4.891 у відповідь не потрапила, а бізнеси з 3.875 і 3.717 потрапили. З 13 кандидатів 8 прийшли через Yelp-фід, і **6 із 7** рекомендованих теж, тож зовнішні бізнес-профілі варто тримати в порядку: категорія, назва, адреса і телефон, рейтинг, відгуки, фото. Структуру полів документує [Scrapeless](https://docs.scrapeless.com/en/llm-chat-scraper/scrapers/chatgpt/), переказ українською [у Sneex](https://t.me/sneex_seo/1131).
+
+- GMBapi [на річних даних тисяч профілів у США, ЄС і Британії](https://www.linkedin.com/feed/update/urn:li:share:7493660090793734144/) показують, що дзвінки локальному бізнесу падають при стабільних позиціях: у другому кварталі в США дзвінки **мінус 11.9%**, кліки на сайт мінус 12.5%, зате маршрути **плюс 21.1%** і покази в мобільних Maps плюс 30.4%. Люди проходять весь шлях всередині Maps з Ask Maps і відгуками. Claudia Tomina [додає з даних SOCi](https://www.linkedin.com/posts/claudia-tomina_if-your-clients-are-asking-why-calls-are-share-7494031660171165697-FBfe/): бізнеси з рейтингом близько 3.4 і відповідями менш як на 5% відгуків AI-платформи не понижували, вони їх виключали повністю. [Повний розбір на сайті GMBapi](https://gmbapi.com/news/local-seo-2026-ai-packs-vanishing-calls/).
+
+![Графік GMBapi: дзвінки і кліки падають, запити маршрутів ростуть](/images/news/2026/08/gmbapi-lokalni-dzvinky.jpg)
+
+## Що нового в Google
+
+- Google почали показувати AI-згенеровані картинки в AI Overviews і [зупинили експеримент після скандалу](https://www.seroundtable.com/ai-generated-images-google-ai-overviews-41872.html). Автори кулінарного блогу Inspired Taste побачили в AIO на запит про власний рецепт AI-мультики з кроками приготування, тоді як у їхній статті ціла секція з відео про те, як безпечно різати гарбуз. Robby Stein з Google відповів, що це був маленький експеримент, який більше не запускають, і що це не липнева функція Nano Banana, яка генерує картинки лише на явний запит. Про [генерацію зображень в AI Overviews без джерела й посилання](/news/2026/07/piatnychni-novyny-17-lypnia-2026-1710) ми писали в липні.
+
+![AI-згенеровані ілюстрації кроків рецепта в Google AI Overviews](/images/news/2026/08/ai-overviews-ai-kartynky.jpg)
+
+- Roger Montti [розібрав пейпер Google про те, чому LLM не пригадують факти](https://www.searchenginejournal.com/google-subject-object-entity-order-affects-ai-answers/586089/). Найсильніші моделі, у тестах це Gemini-3-Pro і GPT-5, мають закодованими **95-98%** тестованих фактів, але не можуть напряму пригадати 26-34% з них. Якщо факт у тренувальних текстах зустрічався в порядку Oasis зіграли перший концерт у клубі Boardwalk, то на питання, відповіддю на яке є Oasis, модель відповідає гірше, хоча у варіантах на вибір факт упізнає. Перефразування питання майже не впливає, впливає саме зворотний порядок сутностей. SEO-інтуїція від Montti, не з пейпера: писати сутності в тому порядку, в якому їх найчастіше питають.
+
+- Cyrus Shepard [стисло виклав три головні групи сигналів ранжування Google](https://www.linkedin.com/posts/cyrusshepard_googles-biggest-ranking-buckets-according-share-7495215202469105665-3Vij/) за свідченнями з антимонопольного суду: Topicality, тобто релевантність запиту через ABC-сигнали (Anchors, Body, Clicks), Navboost на 13 місяцях клікових даних і Quality, він же Q\*, авторитет сайту з коригуваннями типу Panda і Helpful Content. За його оцінкою, ці три групи дають 80-90% видимості в Google. Ми ці сигнали детально розбирали в [серії про суд DOJ проти Google](/news/2025/05/doj-sud-nad-zlodiianniamy-google-sezon-2-seriia-1-1370).
+
+![Схема трьох головних груп сигналів ранжування Google за матеріалами антимонопольного суду](/images/news/2026/08/cyrus-shepard-ranking-vidra.jpg)
+
+- У Google Trends Explore [нові інтерактивні мапи і регіональна розбивка](https://trends.google.com/explore), розкочується поступово. Місяць тому Trends уже [розширили порівняння термінів на 220%](/news/2026/08/piatnychni-novyny-7-serpnia-2026-1733).
+
+![Анімація нових інтерактивних мап у Google Trends Explore](/images/news/2026/08/google-trends-explore-mapy.gif)
+
+## Google Discover
+
+- Google рідко пояснюють, як працює Discover, але Damien Andell [знайшов опис у їхній вакансії](https://www.linkedin.com/posts/damien-andell-778b59293_google-rarely-explains-how-discover-works-ugcPost-7495751157643067392-ASvE/) для команди Discover Ranking: retrieval, prediction, ranking, embedding. У [новій статті 1492.vision](https://1492.vision/research/discover-prediction-embedding-en) він мапить ці слова на два роки вимірів реальних фідів: скори картки зводяться до двох осей, зупинишся чи ні і клікнеш-прочитаєш чи ні, а кожен користувач представлений кількома профілями одночасно. За рівного потенціалу теми напрацьована прихильність читача до джерела розганяє показ приблизно у **8 разів** сильніше за кнопку Follow. Це інтерпретації на власних вимірах, не підтвердження Google.
+
+- Він же помітив [нове прев'ю профілів у Discover](https://www.linkedin.com/posts/damien-andell-778b59293_google-is-testing-a-new-preview-for-search-ugcPost-7496152530561777665-h5S1/), де Google сам розтягує аватар на повнокадровий банер, і [вперше зафіксував нативний Snapchat-профіль пошуку](https://www.linkedin.com/posts/damien-andell-778b59293_weve-just-seen-a-native-snapchat-search-share-7496270625255124992-6vqU/). У кожного видавця є профіль під кожну соцплатформу, і Google уже [зливає їх в один об'єднаний профіль креатора](https://x.com/AndellDam/status/2066827232064967026) з TikTok, X, Facebook, YouTube, Instagram і Threads на одній сторінці.
+
+## Ще з цікавого
+
+- Alexander Hanff, privacy-експерт з пулу експертів EDPB, [виміряв на 144 власних постах, що LinkedIn показує пости із зовнішніми лінками меншій аудиторії](https://www.linkedin.com/posts/alexanderhanff_content-platform-unlawful-share-7495099875085185024-0Luk/): медіана **мінус 19.4%** проти нативних, стеля мінус 55.2%, і лінки на власний блог душаться сильніше за лінки на великі медіа. Він вважає це порушенням DMA, DSA і правил конкуренції ЄС.
+
+- Harry Clarkson-Bennett [написав великий гайд з аудиту сайтів видавців у 2026](https://www.leadershipinseo.com/p/how-to-audit-publisher-websites): чотири пілари, технічка, контент, EEAT і консистентність сутностей, з пріоритезацією через масштаб, вплив і зусилля. З цифр: до 86% кліків Google ідуть з discovery-поверхонь, а бренди з сильними профілями відгуків отримують 75% цитувань в AI проти 1% без них.
+
+- Richard Baxter [оновив безкоштовний SEO Audit MCP для Claude](https://www.linkedin.com/feed/update/urn:li:share:7496265309939679232/): GSC, власний краул, DataForSEO і Majestic зливаються в один пріоритезований аудит зі збереженням сирих даних.
+
+- Charles Floate [виклав свій рейтинг найприбутковіших ніш у SEO на 2026](https://www.linkedin.com/posts/charlesfloate_best-niches-in-seo-in-2026-everyones-share-7478706141661655040-IG-C/): вихід з таймшеру з лідами по $200-500, списання податкових боргів, медичний туризм, фінансування обладнання для бізнесу, громадянство і золоті візи з чеками $10-50k, догляд за літніми людьми. Патерн один: висока цінність транзакції, несексуальна тема, слабкий консенсус у видачі. Усі цифри його заявки. Його [реверс-інжиніринг AI Overviews](/news/2026/07/piatnychni-novyny-17-lypnia-2026-1710) ми давали в липні.
+
+## Цікаве на вихідні
+
+- Google і уряд Британії [запускають Operation Blue Skies](https://blog.google/innovation-and-ai/models-and-research/google-research/blue-skies/), перший державний трайал уникнення конденсаційних слідів літаків на масштабі цілого океанічного повітряного простору над Північною Атлантикою. Конденсаційні сліди дають приблизно **третину** всього кліматичного впливу авіації. Програма на 30 місяців і приблизно 10 000 рейсів на рік: AI-модель від Google прогнозує, де сліди утворяться, і допомагає їх облітати.
