@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Analytics } from "@/components/analytics";
 import { FooterNewsletter } from "@/components/footer-newsletter";
-import { AnnouncementBar } from "@/components/announcement-bar";
 import { StickyNewsletter } from "@/components/sticky-newsletter";
 import { GooglePreferredSource } from "@/components/google-preferred-source";
 
@@ -110,7 +109,6 @@ export default function RootLayout({
         >
           <Navigation />
           <main className="flex-1 pt-16">
-            <AnnouncementBar />
             {children}
           </main>
           <StickyNewsletter />
