@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 // Bump the id when the announced thing changes — a new id shows the bar again
 // to everyone, even those who dismissed the previous one.
-const STORAGE_KEY = "announcement-dismissed:boost360-2026";
+const STORAGE_KEY = "announcement-dismissed:newsletter-2026";
 
 /**
  * Slim, dismissible announcement strip under the header. Promotes the current
@@ -25,11 +25,11 @@ export function AnnouncementBar() {
   return (
     <div className="relative bg-primary text-background">
       <Link
-        href="/events/2026/boost360-seo-edition-2026"
+        href="/newsletter"
         className="block px-10 py-2 text-center text-sm font-medium hover:underline"
       >
-        🇺🇦 Boost360° SEO Edition · благодійна онлайн-конференція · 16 вересня 2026.{" "}
-        <span className="whitespace-nowrap">Деталі →</span>
+        💌 Поштова розсилка SEO-новин, раз на тиждень найголовніше.{" "}
+        <span className="whitespace-nowrap">Підписатися →</span>
       </Link>
       <button
         type="button"

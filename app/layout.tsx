@@ -4,6 +4,7 @@ import { Open_Sans, Proza_Libre } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
+import { AnnouncementBar } from "@/components/announcement-bar";
 import { Analytics } from "@/components/analytics";
 import { FooterNewsletter } from "@/components/footer-newsletter";
 import { StickyNewsletter } from "@/components/sticky-newsletter";
@@ -109,6 +110,7 @@ export default function RootLayout({
         >
           <Navigation />
           <main className="flex-1 pt-16">
+            <AnnouncementBar />
             {children}
           </main>
           <StickyNewsletter />
