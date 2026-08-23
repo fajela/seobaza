@@ -40,7 +40,7 @@ export default function KgIndexPage() {
           ідентифікатор і джерело факту.
         </p>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
           <Link href="/kg/person" className="block group">
             <div className="p-6 rounded-xl border border-border bg-secondary/20 group-hover:border-accent/50 group-hover:bg-secondary/40 transition-all">
               <h2 className="font-display text-xl mb-1 group-hover:text-accent transition-colors">
@@ -51,9 +51,19 @@ export default function KgIndexPage() {
               </p>
             </div>
           </Link>
+          <Link href="/events" className="block group">
+            <div className="p-6 rounded-xl border border-border bg-secondary/20 group-hover:border-accent/50 group-hover:bg-secondary/40 transition-all">
+              <h2 className="font-display text-xl mb-1 group-hover:text-accent transition-colors">
+                Події
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Мітапи і конференції спільноти зі сторінками на сайті
+              </p>
+            </div>
+          </Link>
           <div className="p-6 rounded-xl border border-dashed border-border bg-secondary/10">
             <h2 className="font-display text-xl mb-1 text-muted-foreground">
-              Компанії та події
+              Компанії
             </h2>
             <p className="text-sm text-muted-foreground">
               Уже в графі, сторінки скоро
