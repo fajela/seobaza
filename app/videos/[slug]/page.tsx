@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
+import { SponsorBanner } from "@/components/sponsor-banner";
 import {
   getAllVideos,
   getVideoBySlug,
@@ -11,7 +12,7 @@ import {
   type VideoSpeaker,
 } from "@/lib/videos";
 
-const mdxComponents = { img: MdxImg, a: MdxLink };
+const mdxComponents = { img: MdxImg, a: MdxLink, SponsorBanner };
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -136,7 +137,7 @@ export default async function VideoPage({ params }: VideoPageProps) {
       <p className="text-muted-foreground mb-6">
         {[
           formatDate(video.date),
-          formatDuration(video.duration),
+          video.duration > 0 ? formatDuration(video.duration) : "",
           video.type === "live" ? "стрім" : "відео",
         ]
           .filter(Boolean)
@@ -144,14 +145,25 @@ export default async function VideoPage({ params }: VideoPageProps) {
       </p>
 
       <div className="aspect-video w-full rounded-xl overflow-hidden border border-border mb-8">
-        <iframe
-          className="w-full h-full"
-          src={`https://www.youtube.com/embed/${video.videoId}`}
-          title={video.title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
+        {video.videoId ? (
+          <iframe
+            className="w-full h-full"
+            src={`https://www.youtube.com/embed/${video.videoId}`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        ) : (
+          video.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={video.image}
+              alt={video.title}
+              className="w-full h-full object-cover"
+            />
+          )
+        )}
       </div>
 
       {(video.speakers.length > 0 || video.host) && (

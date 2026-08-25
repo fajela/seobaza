@@ -128,9 +128,13 @@ export function videoToJsonLd(video: VideoMeta): Record<string, unknown> {
       ? `${SITE}${video.image}`
       : `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
     uploadDate: video.date,
-    duration: isoDuration(video.duration),
-    contentUrl: `https://www.youtube.com/watch?v=${video.videoId}`,
-    embedUrl: `https://www.youtube.com/embed/${video.videoId}`,
+    ...(video.duration > 0 ? { duration: isoDuration(video.duration) } : {}),
+    ...(video.videoId
+      ? {
+          contentUrl: `https://www.youtube.com/watch?v=${video.videoId}`,
+          embedUrl: `https://www.youtube.com/embed/${video.videoId}`,
+        }
+      : {}),
     url: pageUrl,
     inLanguage: "uk",
     ...(people.length
