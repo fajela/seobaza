@@ -14,7 +14,7 @@ export function LiveBannerLarge() {
       target="_blank"
       rel="noopener"
       aria-label="Живий стрім RAG для SEO сьогодні о 18:30, дивитися на YouTube"
-      className="group relative block mb-8 rounded-2xl overflow-hidden border border-border shadow-lg hover:shadow-xl hover:border-accent/50 transition-all duration-300"
+      className="group relative block mb-8 max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border shadow-lg hover:shadow-xl hover:border-accent/50 transition-all duration-300"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
