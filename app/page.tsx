@@ -8,6 +8,7 @@ import path from "path";
 import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
 import { getAllAuthors, altNames } from "@/lib/authors";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
+import { LiveBanner } from "@/components/live-banner";
 
 // Everything else (title, OG, …) is inherited from app/layout.tsx; this only
 // adds the hreflang pair with the English homepage at /en.
@@ -146,6 +147,8 @@ export default function Home() {
               Усі новини →
             </Link>
           </div>
+
+          <LiveBanner />
 
           <div
             className="grid gap-6 lg:grid-cols-2"
