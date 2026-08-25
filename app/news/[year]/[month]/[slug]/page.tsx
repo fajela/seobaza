@@ -11,9 +11,7 @@ import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { Carousel } from "@/components/carousel";
 import type { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
+import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 
 const mdxComponents = { img: MdxImg, a: MdxLink, Carousel };
 
@@ -313,16 +311,7 @@ export default async function NewsPostPage({
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
-          <MDXRemote
-            source={item.content}
-            components={mdxComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeSlug],
-              },
-            }}
-          />
+          <MdxWithLiveBanner source={item.content} components={mdxComponents} />
         </div>
       </article>
 

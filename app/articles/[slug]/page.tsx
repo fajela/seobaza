@@ -10,10 +10,8 @@ import { NewsletterForm } from "@/components/newsletter-form";
 import { buildOgImage } from "@/lib/og-image";
 import { isoDate } from "@/lib/schema-rdfa";
 import type { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 import Link from "next/link";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
 import { slug } from "github-slugger";
 
 const mdxComponents = { img: MdxImg, a: MdxLink, KgProfileTool, IndexingQuiz };
@@ -316,18 +314,7 @@ export default async function ArticlePage({
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
-          <MDXRemote
-            source={contentWithoutH1}
-            components={mdxComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [
-                  rehypeSlug,
-                ],
-              },
-            }}
-          />
+          <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} />
         </div>
       </article>
 
