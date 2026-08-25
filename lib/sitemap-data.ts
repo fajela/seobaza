@@ -11,6 +11,7 @@ import { getAllAuthors } from "./authors";
 import { getAllKgPeople } from "./kg";
 import { getLatestDealsEvent } from "./events";
 import { getAllJobs, jobPath } from "./jobs";
+import { getAllVideos } from "./videos";
 import { CATEGORIES } from "./taxonomy";
 import { REDIRECT_SOURCES } from "./redirects";
 
@@ -160,7 +161,19 @@ export async function buildPages(): Promise<Entry[]> {
   );
   jobPages.push(...jobCompanyPages);
 
-  return [...staticPages, ...eventPages, ...jobPages, ...testPages, ...authorPages, ...kgPersonPages];
+  // /videos enters the sitemap only once at least one video is published.
+  const publishedVideos = getAllVideos();
+  const videoPages: Entry[] = publishedVideos.length
+    ? [
+        { url: `${BASE}/videos`, lastModified: now, changeFrequency: "weekly" as const },
+        ...publishedVideos.map((v) => ({
+          url: `${BASE}/videos/${v.slug}`,
+          lastModified: v.date ? new Date(v.date) : now,
+        })),
+      ]
+    : [];
+
+  return [...staticPages, ...eventPages, ...jobPages, ...testPages, ...authorPages, ...kgPersonPages, ...videoPages];
 }
 
 export function buildArticles(): Entry[] {

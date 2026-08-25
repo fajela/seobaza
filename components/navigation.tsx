@@ -69,6 +69,12 @@ export function Navigation() {
               База знань
             </NavLink>
             <NavLink
+              href="/videos"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Відео
+            </NavLink>
+            <NavLink
               href="/kg"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
@@ -195,6 +201,13 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 База знань
+              </NavLink>
+              <NavLink
+                href="/videos"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Відео
               </NavLink>
               <NavLink
                 href="/kg"
