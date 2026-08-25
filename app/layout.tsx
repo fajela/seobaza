@@ -113,7 +113,9 @@ export default function RootLayout({
             <AnnouncementBar />
             {children}
           </main>
-          <StickyNewsletter />
+          {/* Один банер на сторінку: поки вгорі йде анонс стріму, нижню
+              липку розсилку не показуємо. Повернути після стріму. */}
+          {/* <StickyNewsletter /> */}
           <footer className="border-t border-border bg-muted/30 transition-theme">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
               {/* Newsletter signup (hidden on pages that already have a form) */}
