@@ -459,7 +459,7 @@ export default function Home() {
                 width="100%"
                 height="100%"
                 src="https://www.youtube.com/embed/SWM1Cgd0QpE"
-                title="RAG для SEO. Що працює насправді? Живий стрім SEO Baza"
+                title="RAG для SEO. Що працює насправді? Запис стріму SEO Baza"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
