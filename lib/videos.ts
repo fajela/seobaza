@@ -21,6 +21,12 @@ export interface VideoMeta {
   videoId: string;
   /** Kyiv date of the stream / upload, yyyy-mm-dd. */
   date: string;
+  /**
+   * Full ISO 8601 publish moment with Kyiv offset, e.g. 2026-08-12T18:42:32+03:00.
+   * Google requires a timezone on VideoObject uploadDate; a bare date gets flagged
+   * in Search Console ("missing a timezone").
+   */
+  uploadTime?: string;
   /** Length in seconds. */
   duration: number;
   /** live = стрім, video = звичайне відео. */
@@ -56,6 +62,7 @@ function readVideoFile(filename: string): Video {
     title: data.title ?? "",
     videoId: data.videoId ?? "",
     date: toIsoDate(data.date),
+    uploadTime: data.uploadTime,
     duration: Number(data.duration ?? 0),
     type: data.type === "live" ? "live" : "video",
     description: data.description ?? "",
@@ -127,7 +134,9 @@ export function videoToJsonLd(video: VideoMeta): Record<string, unknown> {
     thumbnailUrl: video.image
       ? `${SITE}${video.image}`
       : `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
-    uploadDate: video.date,
+    // Full datetime with offset when known; midnight Kyiv otherwise, so the
+    // value always carries a timezone.
+    uploadDate: video.uploadTime || `${video.date}T00:00:00+03:00`,
     ...(video.duration > 0 ? { duration: isoDuration(video.duration) } : {}),
     ...(video.videoId
       ? {
