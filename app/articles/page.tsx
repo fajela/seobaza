@@ -11,9 +11,10 @@ export const metadata = pageMeta({
 });
 
 export default async function ArticlesPage() {
-  // Guides live in /knowledge-base, not in the articles feed (avoids the same
-  // guide showing both here and under the "Гайди" category).
-  const articles = getAllArticles().filter((a) => a.category !== "guides");
+  // The articles feed lists EVERYTHING in content/articles, category included.
+  // (A 2026-06-30 filter hid category:guides assuming those lived in
+  // /knowledge-base — they never did, so 14 articles vanished from every list.)
+  const articles = getAllArticles();
 
   // Count articles per category for the navigation pills.
   // These pills LINK to /category/[slug] — that's the canonical filtered listing.
@@ -24,9 +25,11 @@ export default async function ArticlesPage() {
       articleCountsByCategory.set(a.category, (articleCountsByCategory.get(a.category) ?? 0) + 1);
     }
   }
+  // No Гайди pill: /category/guides 301s to /knowledge-base, so a pill for it
+  // would bounce the reader out of the articles feed.
   const activeCategories = CATEGORIES
     .map((c) => ({ ...c, count: articleCountsByCategory.get(c.slug) ?? 0 }))
-    .filter((c) => c.count > 0);
+    .filter((c) => c.count > 0 && c.slug !== "guides");
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
