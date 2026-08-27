@@ -73,22 +73,32 @@ export default async function AuthorPage({
 
   const authorUrl = `https://seobaza.com.ua/authors/${slug}`;
   const latinNames = altNames(author.alternateName);
+  // When the person is a node of the SEO Baza knowledge graph, the entity home
+  // is /kg/person/<kgId>: this page becomes a CollectionPage of their work and
+  // references that single Person entity instead of minting a second one.
+  const kgPersonUrl = author.kgId
+    ? `https://seobaza.com.ua/kg/person/${author.kgId}`
+    : null;
 
   return (
     <div
       className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
       itemScope
-      itemType="https://schema.org/ProfilePage"
-      itemID={`${authorUrl}#profilepage`}
+      itemType={
+        kgPersonUrl
+          ? "https://schema.org/CollectionPage"
+          : "https://schema.org/ProfilePage"
+      }
+      itemID={`${authorUrl}#${kgPersonUrl ? "collectionpage" : "profilepage"}`}
     >
       <div
         className="max-w-4xl mx-auto"
-        itemProp="mainEntity"
+        itemProp={kgPersonUrl ? "about" : "mainEntity"}
         itemScope
         itemType="https://schema.org/Person"
-        itemID={`${authorUrl}#person`}
+        itemID={kgPersonUrl ? `${kgPersonUrl}#person` : `${authorUrl}#person`}
       >
-        <meta itemProp="url" content={authorUrl} />
+        <meta itemProp="url" content={kgPersonUrl ?? authorUrl} />
         {/* Google Knowledge Graph MID: ties this page to the entity Google
             already holds, so both spellings of the name resolve to one thing. */}
         {author.googleKgId && (
@@ -255,6 +265,18 @@ export default async function AuthorPage({
                   </svg>
                   Fajela
                 </a>
+              )}
+              {author.kgId && (
+                <Link
+                  href={`/kg/person/${author.kgId}`}
+                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                          d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 01-5.656-5.656l1.5-1.5m8.828-1.672a4 4 0 000-5.656 4 4 0 00-5.656 0l-1.5 1.5" />
+                  </svg>
+                  Профіль у графі знань
+                </Link>
               )}
             </div>
 

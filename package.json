@@ -6,7 +6,7 @@
     "dev": "next dev",
     "check:news": "node scripts/check-news-slugs.mjs",
     "check:og": "node scripts/check-og.mjs",
-    "prebuild": "node scripts/check-news-slugs.mjs",
+    "prebuild": "node scripts/check-news-slugs.mjs && node scripts/check-person-duplicates.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

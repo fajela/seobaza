@@ -16,6 +16,10 @@ export interface AuthorMetadata {
   // name string, so every form they actually use needs to be stated.
   alternateName?: string | string[];
   googleKgId?: string; // Google Knowledge Graph MID, e.g. "/g/11f3pg5hw6"
+  // SEO Baza KG id (sb0011, ...). When set, /kg/person/<kgId> is the person's
+  // entity home: the author page stops minting its own Person and instead
+  // references that entity's itemID, so one person is one entity site-wide.
+  kgId?: string;
   role: string;
   bio: string;
   image?: string;
@@ -123,6 +127,7 @@ export function getAuthorBySlug(slug: string): Author {
     name: data.name,
     alternateName: data.alternateName,
     googleKgId: data.googleKgId,
+    kgId: data.kgId,
     role: data.role ?? "",
     bio: data.bio ?? "",
     image: data.image,
