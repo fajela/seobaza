@@ -42,6 +42,7 @@ function readPersonFile(filename: string): KgPerson {
     fajelaAbout: data.fajelaAbout,
     company: data.company,
     companyUrl: data.companyUrl,
+    companyGoogleKgId: data.companyGoogleKgId,
     city: data.city,
     topics: data.topics,
     sameAs: data.sameAs,

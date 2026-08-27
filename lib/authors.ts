@@ -32,6 +32,7 @@ export interface AuthorMetadata {
   fajelaAbout?: string; // Fajela consultancy "about" page
   company?: string; // worksFor organization (defaults to SEO BAZA when absent)
   companyUrl?: string;
+  companyGoogleKgId?: string; // Google KG MID of the worksFor organization
   city?: string;
   topics?: string[]; // free-form expertise topics, rendered as knowsAbout chips
   sameAs?: string[]; // extra profile/mention URLs beyond the header socials
@@ -90,7 +91,9 @@ export function profileUrls(person: PersonLinks): string[] {
     person.website,
     ...(person.sameAs ?? []),
   ].filter((u): u is string => Boolean(u));
-  return [...new Set(urls)];
+  // Google KG entity URIs are markup-only (see hiddenSameAs) — a visible
+  // "g.co" chip tells the reader nothing.
+  return [...new Set(urls)].filter((u) => !u.startsWith("https://g.co/kg"));
 }
 
 /**
@@ -103,6 +106,9 @@ export function hiddenSameAs(person: PersonLinks): string[] {
   const urls = [
     person.fajelaAbout,
     person.googleKgId ? googleKgUrl(person.googleKgId) : undefined,
+    // Extra Google KG entity URIs (e.g. a second/duplicate MID) placed in
+    // sameAs go into the markup here, never as a visible chip.
+    ...(person.sameAs ?? []).filter((u) => u.startsWith("https://g.co/kg")),
   ].filter((u): u is string => Boolean(u));
   return [...new Set(urls)].filter((u) => !shown.has(u));
 }
@@ -140,6 +146,7 @@ export function getAuthorBySlug(slug: string): Author {
     fajelaAbout: data.fajelaAbout,
     company: data.company,
     companyUrl: data.companyUrl,
+    companyGoogleKgId: data.companyGoogleKgId,
     city: data.city,
     topics: data.topics,
     sameAs: data.sameAs,

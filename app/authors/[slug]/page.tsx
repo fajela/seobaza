@@ -9,6 +9,7 @@ import {
   absoluteUrl,
   profileUrls,
   hiddenSameAs,
+  googleKgUrl,
 } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
@@ -154,6 +155,9 @@ export default async function AuthorPage({
               <span itemProp="jobTitle">{author.role}</span>
               {author.company && (
                 <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization">
+                  {author.companyGoogleKgId && (
+                    <link itemProp="sameAs" href={googleKgUrl(author.companyGoogleKgId)} />
+                  )}
                   {" · "}
                   {author.companyUrl ? (
                     <a

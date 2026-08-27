@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getKgPersonIds, getKgPersonById } from "@/lib/kg";
-import { altNames, absoluteUrl, profileUrls, hiddenSameAs } from "@/lib/authors";
+import { altNames, absoluteUrl, profileUrls, hiddenSameAs, googleKgUrl } from "@/lib/authors";
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { buildOgImage } from "@/lib/og-image";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
@@ -142,6 +142,9 @@ export default async function KgPersonPage({
               <span itemProp="jobTitle">{person.role}</span>
               {person.company && (
                 <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization">
+                  {person.companyGoogleKgId && (
+                    <link itemProp="sameAs" href={googleKgUrl(person.companyGoogleKgId)} />
+                  )}
                   {" · "}
                   {person.companyUrl ? (
                     <a
