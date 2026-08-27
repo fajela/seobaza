@@ -41,6 +41,8 @@ export function LiveBanner() {
   return (
     <aside
       aria-label="Анонс стріму"
+      // Текст банера не має потрапляти у сніпети і витяги для AI-відповідей.
+      data-nosnippet=""
       className="not-prose my-10 flex flex-col sm:flex-row sm:items-center gap-4 rounded-xl border border-border bg-secondary/30 p-4"
     >
       <a href="/videos/rag-dlia-seo" className="shrink-0 block w-44 sm:w-52">
