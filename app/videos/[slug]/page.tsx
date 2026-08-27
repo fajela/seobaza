@@ -9,6 +9,7 @@ import {
   getVideoBySlug,
   formatDuration,
   videoToJsonLd,
+  seriesJsonLd,
   type VideoSpeaker,
 } from "@/lib/videos";
 
@@ -97,7 +98,12 @@ export default async function VideoPage({ params }: VideoPageProps) {
   if (!video) notFound();
 
   const url = `https://seobaza.com.ua/videos/${slug}`;
-  const jsonLd = videoToJsonLd(video);
+  // Series node ships on every episode page so the isPartOf @id resolves
+  // locally — search engines read structured data per page.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [seriesJsonLd(), videoToJsonLd(video, { bare: true })],
+  };
 
   return (
     <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl">

@@ -112,6 +112,27 @@ export function isoDuration(seconds: number): string {
 
 const SITE = "https://seobaza.com.ua";
 
+// The video series entity: every recording on /videos is an episode of
+// My Dudes Production (KG node sb0013). CreativeWorkSeries is the generic
+// series type — not PodcastSeries (no RSS audio feed) and not TVSeries.
+export const SERIES_ID = `${SITE}/videos#series`;
+
+export function seriesJsonLd(): Record<string, unknown> {
+  return {
+    "@type": "CreativeWorkSeries",
+    "@id": SERIES_ID,
+    name: "My Dudes Production",
+    description: "Відеосерія SEO Baza: лайвстріми і відео української SEO-спільноти.",
+    url: `${SITE}/videos`,
+    inLanguage: "uk",
+    publisher: {
+      "@type": "Organization",
+      name: "SEO BAZA",
+      url: SITE,
+    },
+  };
+}
+
 function speakerJsonLd(s: VideoSpeaker): Record<string, unknown> {
   const url = s.kgId ? `${SITE}/kg/person/${s.kgId}` : s.url ? `${SITE}${s.url}` : undefined;
   return {
@@ -121,13 +142,17 @@ function speakerJsonLd(s: VideoSpeaker): Record<string, unknown> {
   };
 }
 
-/** schema.org/VideoObject JSON-LD. Учасники відео розмічаються як спікери. */
-export function videoToJsonLd(video: VideoMeta): Record<string, unknown> {
+/** schema.org/VideoObject JSON-LD. Учасники відео розмічаються як спікери.
+ *  bare: без @context, для вкладання у спільний @graph. */
+export function videoToJsonLd(
+  video: VideoMeta,
+  opts?: { bare?: boolean },
+): Record<string, unknown> {
   const pageUrl = `${SITE}/videos/${video.slug}`;
   const people = [...video.speakers, ...(video.host ? [video.host] : [])];
 
   return {
-    "@context": "https://schema.org",
+    ...(opts?.bare ? {} : { "@context": "https://schema.org" }),
     "@type": "VideoObject",
     name: video.title,
     description: video.description,
@@ -146,6 +171,7 @@ export function videoToJsonLd(video: VideoMeta): Record<string, unknown> {
       : {}),
     url: pageUrl,
     inLanguage: "uk",
+    isPartOf: { "@id": SERIES_ID },
     ...(people.length
       ? {
           // schema.org VideoObject has no "speaker" property; actor is the

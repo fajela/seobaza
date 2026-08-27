@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllVideos, formatDuration, videoToJsonLd } from "@/lib/videos";
+import { getAllVideos, formatDuration, videoToJsonLd, seriesJsonLd } from "@/lib/videos";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
@@ -24,16 +24,24 @@ export default function VideosPage() {
   // Drafts show up in dev for review; production lists only published videos.
   const videos = getAllVideos(process.env.NODE_ENV !== "production");
 
+  // One @graph: the series entity (My Dudes Production) plus the episode list.
+  // Every VideoObject points at the series via isPartOf @id, and the full
+  // series node lives on the same page so the reference always resolves.
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Відео SEO Baza українською",
-    numberOfItems: videos.length,
-    itemListElement: videos.map((v, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: videoToJsonLd(v),
-    })),
+    "@graph": [
+      seriesJsonLd(),
+      {
+        "@type": "ItemList",
+        name: "Відео SEO Baza українською",
+        numberOfItems: videos.length,
+        itemListElement: videos.map((v, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: videoToJsonLd(v, { bare: true }),
+        })),
+      },
+    ],
   };
 
   return (
