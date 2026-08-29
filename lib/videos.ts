@@ -38,6 +38,10 @@ export interface VideoMeta {
   status: "draft" | "published";
   /** 1200×630 featured image under /images/videos/. */
   image?: string;
+  /** Ручний H1, коли типова формула не підходить. */
+  h1?: string;
+  /** Ручний <title>, коли типова формула не підходить. */
+  seoTitle?: string;
 }
 
 export interface Video extends VideoMeta {
@@ -70,6 +74,8 @@ function readVideoFile(filename: string): Video {
     host: data.host,
     status: data.status === "published" ? "published" : "draft",
     image: data.image,
+    h1: data.h1,
+    seoTitle: data.seoTitle,
     content: content.trim(),
   };
 }
@@ -91,6 +97,25 @@ export function getVideoBySlug(slug: string): Video | null {
 }
 
 // ─── Presentation helpers ─────────────────────────────────────────────────────
+
+/**
+ * Сторінки відео мають власні формули заголовків, щоб не конкурувати в пошуку
+ * зі статтями і новинами на ту саму тему: у H1 попереду стоїть формат запису,
+ * у <title> ключ лишається першим, а відрізняє сторінку брендовий хвіст.
+ */
+export function videoFormatLabel(video: VideoMeta): string {
+  return video.type === "live" ? "Запис стріму" : "Відео";
+}
+
+export function videoH1(video: VideoMeta): string {
+  return video.h1 || `${videoFormatLabel(video)}: ${video.title}`;
+}
+
+export function videoSeoTitle(video: VideoMeta): string {
+  if (video.seoTitle) return video.seoTitle;
+  const brand = video.type === "live" ? "Стрім SEO BAZA" : "Відео SEO BAZA";
+  return `${video.title} | ${brand}`;
+}
 
 /** 4017 → "1 год 7 хв"; 382 → "6 хв". */
 export function formatDuration(seconds: number): string {

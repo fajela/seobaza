@@ -10,6 +10,8 @@ import {
   formatDuration,
   videoToJsonLd,
   seriesJsonLd,
+  videoH1,
+  videoSeoTitle,
   type VideoSpeaker,
 } from "@/lib/videos";
 
@@ -46,7 +48,7 @@ export async function generateMetadata({
     : `https://i.ytimg.com/vi/${video.videoId}/hq720.jpg`;
 
   return {
-    title: `${video.title} - SEO BAZA`,
+    title: videoSeoTitle(video),
     description: video.description,
     alternates: { canonical: url },
     openGraph: {
@@ -138,7 +140,7 @@ export default async function VideoPage({ params }: VideoPageProps) {
         </span>
       </nav>
 
-      <h1 className="text-3xl sm:text-4xl font-display mb-4">{video.title}</h1>
+      <h1 className="text-3xl sm:text-4xl font-display mb-4">{videoH1(video)}</h1>
 
       <p className="text-muted-foreground mb-6">
         {[
