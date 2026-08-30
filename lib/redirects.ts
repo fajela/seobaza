@@ -9,11 +9,22 @@
  * Keep every literal redirect here. All `source` values must be exact paths
  * (no wildcards) so the sitemap filter below can match them.
  */
-export interface Redirect {
+interface RedirectBase {
   source: string;
   destination: string;
+}
+
+/** 301 (permanent: true) або 308/307 (permanent: false). */
+interface PermanentFlagRedirect extends RedirectBase {
   permanent: boolean;
 }
+
+/** Явний код, коли потрібен саме 302, а не 307. */
+interface StatusCodeRedirect extends RedirectBase {
+  statusCode: number;
+}
+
+export type Redirect = PermanentFlagRedirect | StatusCodeRedirect;
 
 export const REDIRECTS: Redirect[] = [
   {
@@ -58,6 +69,13 @@ export const REDIRECTS: Redirect[] = [
     source: "/jobs/whitelobby/seo-aeo-geo-specialist",
     destination: "/jobs/whitelobby/seo-aeo-geo-specialist-2026-07",
     permanent: true,
+  },
+  {
+    // Тимчасово: медіакіт зараз тільки для відео. Коли зʼявиться загальний
+    // медіакіт, він стане на цю адресу, а редірект прибираємо. Тому 302.
+    source: "/sponsors/media-kit",
+    destination: "/sponsors/media-kit-video",
+    statusCode: 302,
   },
   {
     // Дубль у таксономії: частина матеріалів мала тег technical-seo замість

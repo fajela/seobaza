@@ -1,13 +1,15 @@
 import { pageMeta } from "@/lib/page-metadata";
 
-// Медіакіт із цінами й охопленнями. НЕ в індексі й НЕ в сайтмапі, посилань на неї
-// не ставимо: адресу надсилаємо рекламодавцю руками. У robots.txt НЕ закривати,
-// інакше Google не прочитає noindex.
+// Медіакіт відео. НЕ в індексі й НЕ в сайтмапі, посилань на нього не ставимо:
+// адресу надсилаємо рекламодавцю руками. У robots.txt НЕ закривати, інакше
+// Google не прочитає noindex.
+// /sponsors/media-kit поки веде сюди через 302: пізніше там стане загальний
+// медіакіт, а банери й розсилка отримають свої media-kit-* адреси.
 export const metadata = {
   ...pageMeta({
     title: "Медіакіт відеосеред - SEO BAZA",
     description: "Охоплення, формати й ціни спонсорства відеосеред SEO BAZA.",
-    path: "/sponsors/media-kit",
+    path: "/sponsors/media-kit-video",
   }),
   robots: { index: false, follow: false },
 };
