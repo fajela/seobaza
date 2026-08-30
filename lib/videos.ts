@@ -159,7 +159,15 @@ export function seriesJsonLd(): Record<string, unknown> {
 }
 
 function speakerJsonLd(s: VideoSpeaker): Record<string, unknown> {
-  const url = s.kgId ? `${SITE}/kg/person/${s.kgId}` : s.url ? `${SITE}${s.url}` : undefined;
+  // s.url is either a site path (/authors/...) or an external profile
+  // (t.me/..., linkedin.com/...) — only paths get the site prefix.
+  const url = s.kgId
+    ? `${SITE}/kg/person/${s.kgId}`
+    : s.url
+      ? s.url.startsWith("http")
+        ? s.url
+        : `${SITE}${s.url}`
+      : undefined;
   return {
     "@type": "Person",
     name: s.name,

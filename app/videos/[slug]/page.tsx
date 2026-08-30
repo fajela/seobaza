@@ -81,17 +81,22 @@ function formatDate(iso: string): string {
 
 function SpeakerName({ speaker }: { speaker: VideoSpeaker }) {
   const href = speaker.kgId ? `/kg/person/${speaker.kgId}` : speaker.url;
-  if (href) {
+  if (!href) return <span>{speaker.name}</span>;
+  const className =
+    "text-primary hover:text-accent underline transition-colors";
+  // Speakers without a page of their own link to their own channel/profile.
+  if (href.startsWith("http")) {
     return (
-      <Link
-        href={href}
-        className="text-primary hover:text-accent underline transition-colors"
-      >
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
         {speaker.name}
-      </Link>
+      </a>
     );
   }
-  return <span>{speaker.name}</span>;
+  return (
+    <Link href={href} className={className}>
+      {speaker.name}
+    </Link>
+  );
 }
 
 export default async function VideoPage({ params }: VideoPageProps) {
