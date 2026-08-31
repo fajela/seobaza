@@ -208,23 +208,32 @@ export interface NewsSitemapEntry {
   publicationDate: string; // ISO 8601, with time when known
 }
 
-const NEWS_WINDOW_MS = 48 * 60 * 60 * 1000;
+// Google ignores items older than a couple of days, but the sitemap is a build
+// artifact: with a 48h window it goes EMPTY between deploys, and an empty
+// <urlset> is a hard "Missing XML tag" error in Search Console.
+const NEWS_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
+// Floor: if even the wide window is empty, fall back to the newest posts so the
+// sitemap always has at least one <url>.
+const NEWS_MIN_ENTRIES = 5;
 export const PUBLICATION_NAME = "SEO BAZA";
 export const PUBLICATION_LANGUAGE = "uk";
 
 export function buildGoogleNews(): NewsSitemapEntry[] {
   const now = Date.now();
-  return getAllNews()
+  const dated = getAllNews()
     .filter((n) => n.type !== "digest")
     .map((n) => ({ n, time: new Date(n.date).getTime() }))
-    .filter(({ time }) => Number.isFinite(time) && now - time <= NEWS_WINDOW_MS)
-    .map(({ n }) => ({
-      url: n.month
-        ? `${BASE}/news/${n.year}/${n.month}/${n.slug}`
-        : `${BASE}/news/${n.year}/${n.slug}`,
-      title: n.title,
-      publicationDate: new Date(n.date).toISOString(),
-    }));
+    .filter(({ time }) => Number.isFinite(time))
+    .sort((a, b) => b.time - a.time);
+  const fresh = dated.filter(({ time }) => now - time <= NEWS_WINDOW_MS);
+  const picked = fresh.length ? fresh : dated.slice(0, NEWS_MIN_ENTRIES);
+  return picked.map(({ n, time }) => ({
+    url: n.month
+      ? `${BASE}/news/${n.year}/${n.month}/${n.slug}`
+      : `${BASE}/news/${n.year}/${n.slug}`,
+    title: n.title,
+    publicationDate: new Date(time).toISOString(),
+  }));
 }
 
 export function buildDigests(): Entry[] {

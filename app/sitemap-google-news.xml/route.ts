@@ -1,8 +1,10 @@
 import { buildGoogleNews, entriesToNewsUrlset } from "@/lib/sitemap-data";
 
-// Google News sitemap — only articles from the last 48h, in the news: namespace.
-// Recomputed on every build/deploy (new posts trigger a rebuild), so the window
-// stays fresh without needing a dynamic server.
+// Google News sitemap — recent articles in the news: namespace.
+// Revalidated hourly so the time window slides between deploys instead of
+// freezing (and emptying) at build time.
+export const revalidate = 3600;
+
 export function GET() {
   const xml = entriesToNewsUrlset(buildGoogleNews());
   return new Response(xml, {
