@@ -12,7 +12,7 @@ export const metadata = {
     path: "/sponsors/media-kit-video",
     image: {
       path: "/images/og/sponsorstvo-videoserad.jpg",
-      alt: "Темна картка з логотипом SEO BAZA і написом «Спонсорство відеосеред» та ціною 350 доларів за випуск",
+      alt: "Темна картка з логотипом SEO BAZA і написом «Спонсорство відеосеред» та ціною 250 доларів за випуск",
     },
   }),
   robots: { index: false, follow: false },
@@ -75,9 +75,9 @@ const reach = [
 ];
 
 const tiers = [
-  { name: "Один випуск", amount: "$350", per: "", note: "Разове розміщення в одному ефірі", pick: false },
-  { name: "4 випуски", amount: "$1 200", per: "", note: "$300 за випуск. Два місяці присутності поспіль", pick: false },
-  { name: "10 випусків", amount: "$2 500", per: "", note: "$250 за випуск, ціна зафіксована наперед. Плюс банер у розсилці на весь період і пріоритет у виборі дат і тем", pick: true },
+  { name: "Один випуск", amount: "$250", per: "", note: "Разове розміщення в одному ефірі", pick: false },
+  { name: "4 випуски", amount: "$900", per: "", note: "$225 за випуск. Два місяці присутності поспіль", pick: false },
+  { name: "10 випусків", amount: "$2 000", per: "", note: "$200 за випуск, ціна зафіксована наперед. Плюс банер у розсилці на весь період і пріоритет у виборі дат і тем", pick: true },
 ];
 
 export default function MediaKitPage() {
@@ -96,7 +96,7 @@ export default function MediaKitPage() {
           під відео, в анонсі в телеграмі й на сторінці випуску.
         </p>
         <p className="text-2xl font-display font-bold text-accent mb-4">
-          Від $350 за випуск
+          Від $250 за випуск
         </p>
         <p className="text-sm text-muted-foreground border-l-[3px] border-accent pl-3 mb-14">
           Усі цифри зняті 30 серпня 2026.
