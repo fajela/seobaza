@@ -23,6 +23,12 @@ export function pageMeta(opts: {
    * Ukrainian version (the primary one).
    */
   altPath?: string;
+  /**
+   * Absolute path of a 1200×630 jpg for the social preview — e.g.
+   * "/images/og/reklama-v-seo-baza.jpg". Without it the page falls back to the
+   * site-wide square logo, which crops badly in Facebook and LinkedIn cards.
+   */
+  image?: { path: string; alt: string };
 }): Metadata {
   const url = `${BASE}${opts.path}`;
   const locale = opts.locale ?? "uk";
@@ -33,11 +39,32 @@ export function pageMeta(opts: {
     const enUrl = locale === "en" ? url : altUrl;
     languages = { uk: ukUrl, en: enUrl, "x-default": ukUrl };
   }
+  const image = opts.image
+    ? [
+        {
+          url: `${BASE}${opts.image.path}`,
+          width: 1200,
+          height: 630,
+          alt: opts.image.alt,
+        },
+      ]
+    : undefined;
   return {
     title: opts.title,
     description: opts.description,
     alternates: { canonical: url, ...(languages ? { languages } : {}) },
+    ...(image
+      ? {
+          twitter: {
+            card: "summary_large_image" as const,
+            title: opts.title,
+            description: opts.description,
+            images: [`${BASE}${opts.image!.path}`],
+          },
+        }
+      : {}),
     openGraph: {
+      ...(image ? { images: image } : {}),
       title: opts.title,
       description: opts.description,
       url,
