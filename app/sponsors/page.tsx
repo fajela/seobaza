@@ -9,7 +9,7 @@ export const metadata = pageMeta({
   path: "/sponsors",
   image: {
     path: "/images/og/reklama-v-seo-baza.jpg",
-    alt: "Темна картка з логотипом SEO BAZA і написом «Реклама в SEO BAZA» та цінами від 75 доларів",
+    alt: "Темна картка з логотипом SEO BAZA і написом «Реклама в SEO BAZA» та цінами від 50 доларів",
   },
 });
 
@@ -70,8 +70,8 @@ const formats: Format[] = [
   {
     id: "jobs",
     title: "Дошка вакансій",
-    price: "$75",
-    priceNote: "за слот на 30 днів · +$25 за включення в дайджест",
+    price: "$50",
+    priceNote: "за слот на 30 днів · +$20 за включення в дайджест",
     description:
       "Розміщення вакансії перед цільовою українською SEO-аудиторією на фіксований термін.",
     includes: [
