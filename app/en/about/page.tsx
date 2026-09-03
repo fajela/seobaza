@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { pageMeta } from "@/lib/page-metadata";
 import { UkrainianPrimaryNotice } from "@/components/language-notice";
+import { seoBazaOrganization, WEBSITE_REF } from "@/lib/organization";
 
 export const metadata = pageMeta({
   title: "About SEO BAZA: Ukrainian SEO Community and Media",
@@ -20,65 +21,8 @@ const aboutJsonLd = {
   description:
     "SEO BAZA is a Ukrainian community of SEO professionals: industry news, Google update analysis, events and educational materials.",
   inLanguage: "en",
-  isPartOf: {
-    "@type": "WebSite",
-    "@id": "https://seobaza.com.ua/",
-    name: "SEO BAZA",
-    url: "https://seobaza.com.ua/",
-  },
-  mainEntity: {
-    "@type": "Organization",
-    "@id": "https://seobaza.com.ua/",
-    name: "SEO BAZA",
-    url: "https://seobaza.com.ua/",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://seobaza.com.ua/seobaza.png",
-      width: 640,
-      height: 640,
-    },
-    description:
-      "Ukrainian community of SEO professionals. Industry news, Google update analysis, events, educational materials, a daily Telegram channel and an active chat.",
-    foundingDate: "2022-11",
-    knowsAbout: [
-      "SEO",
-      "Search Engine Optimization",
-      "AI Search",
-      "Google Updates",
-      "Knowledge Graph",
-      "Technical SEO",
-      "Link Building",
-    ],
-    areaServed: { "@type": "Country", name: "Ukraine" },
-    inLanguage: "uk-UA",
-    sameAs: [
-      "https://www.youtube.com/c/SEOBAZA",
-      "https://t.me/SEOBAZA",
-      "https://www.linkedin.com/company/seo-baza/",
-      "https://www.facebook.com/groups/seobaza/",
-      "https://www.instagram.com/seobaza/",
-      "https://www.threads.com/@seobaza",
-    ],
-    founder: {
-      "@type": "Person",
-      "@id": "https://seobaza.com.ua/authors/olesia-korobka",
-      name: "Olesia Korobka",
-      alternateName: "Олеся Коробка",
-      url: "https://olesiakorobka.com/",
-      jobTitle: "Founder of SEO BAZA",
-      sameAs: [
-        "https://t.me/Fajela",
-        "https://www.linkedin.com/in/okorobka/",
-        "https://fajela.com/about-olesia-korobka/",
-      ],
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "general",
-      url: "https://t.me/fajela",
-      availableLanguage: ["uk", "en"],
-    },
-  },
+  isPartOf: WEBSITE_REF,
+  mainEntity: seoBazaOrganization("en"),
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement: [

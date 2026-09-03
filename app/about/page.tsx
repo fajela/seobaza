@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { seoBazaOrganization, WEBSITE_REF } from "@/lib/organization";
 
 export const metadata: Metadata = {
   title: "Про SEO BAZA — українська SEO-спільнота",
@@ -32,58 +33,9 @@ const aboutJsonLd = {
   description:
     "SEO BAZA — українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали.",
   inLanguage: "uk-UA",
-  isPartOf: {
-    "@type": "WebSite",
-    "@id": "https://seobaza.com.ua/",
-    name: "SEO BAZA",
-    url: "https://seobaza.com.ua/",
-  },
+  isPartOf: WEBSITE_REF,
   mainEntity: {
-    "@type": "Organization",
-    "@id": "https://seobaza.com.ua/",
-    name: "SEO BAZA",
-    url: "https://seobaza.com.ua/",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://seobaza.com.ua/seobaza.png",
-      width: 640,
-      height: 640,
-    },
-    description:
-      "Українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали, щоденний Telegram-канал та активний чат.",
-    foundingDate: "2022-11",
-    knowsAbout: [
-      "SEO",
-      "Search Engine Optimization",
-      "AI Search",
-      "Google Updates",
-      "Knowledge Graph",
-      "Technical SEO",
-      "Link Building",
-    ],
-    areaServed: { "@type": "Country", name: "Ukraine" },
-    inLanguage: "uk-UA",
-    sameAs: [
-      "https://www.youtube.com/c/SEOBAZA",
-      "https://t.me/SEOBAZA",
-      "https://www.linkedin.com/company/seo-baza/",
-      "https://www.facebook.com/groups/seobaza/",
-      "https://www.instagram.com/seobaza/",
-      "https://www.threads.com/@seobaza",
-    ],
-    founder: {
-      "@type": "Person",
-      "@id": "https://seobaza.com.ua/authors/olesia-korobka",
-      name: "Олеся Коробка",
-      alternateName: "Olesia Korobka",
-      url: "https://olesiakorobka.com/",
-      jobTitle: "Засновниця SEO BAZA",
-      sameAs: [
-        "https://t.me/Fajela",
-        "https://www.linkedin.com/in/okorobka/",
-        "https://fajela.com/about-olesia-korobka/",
-      ],
-    },
+    ...seoBazaOrganization("uk"),
     subjectOf: [
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/news",       name: "Новини" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/articles",   name: "Статті" },
@@ -92,12 +44,6 @@ const aboutJsonLd = {
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/tags",       name: "Теги" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/authors",    name: "Автори" },
     ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "general",
-      url: "https://t.me/fajela",
-      availableLanguage: ["uk", "en"],
-    },
   },
   breadcrumb: {
     "@type": "BreadcrumbList",

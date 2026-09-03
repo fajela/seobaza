@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { pageMeta } from "@/lib/page-metadata";
 import { UkrainianPrimaryNotice } from "@/components/language-notice";
+import { ORG_REF, WEBSITE_REF } from "@/lib/organization";
 
 export const metadata = pageMeta({
   title: "Ukrainian SEO Community: News, Guides, Events | SEO BAZA",
@@ -20,19 +21,8 @@ const jsonLd = {
   description:
     "SEO news, analysis and guides from the Ukrainian SEO community: Google updates, AI search, meetups and a daily Telegram channel.",
   inLanguage: "en",
-  isPartOf: {
-    "@type": "WebSite",
-    "@id": "https://seobaza.com.ua/",
-    name: "SEO BAZA",
-    url: "https://seobaza.com.ua/",
-    inLanguage: "uk-UA",
-  },
-  about: {
-    "@type": "Organization",
-    "@id": "https://seobaza.com.ua/",
-    name: "SEO BAZA",
-    url: "https://seobaza.com.ua/",
-  },
+  isPartOf: WEBSITE_REF,
+  about: ORG_REF,
 };
 
 export default function EnglishHomePage() {

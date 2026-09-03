@@ -7,6 +7,7 @@ import { getAllNews } from "@/lib/news";
 import path from "path";
 import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
 import { getAllAuthors, altNames } from "@/lib/authors";
+import { seoBazaOrganization, seoBazaWebSite } from "@/lib/organization";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
 
 // Everything else (title, OG, …) is inherited from app/layout.tsx; this only
@@ -75,33 +76,15 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Sitewide WebSite + Organization JSON-LD — only on the homepage */}
+      {/* Sitewide WebSite + Organization JSON-LD — only on the homepage.
+          Two nodes with their own @ids; the Organization is the shared
+          definition from lib/organization.ts (also used on /about, /en, /en/about). */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": ["WebSite", "Organization"],
-            "@id": "https://seobaza.com.ua/",
-            name: "SEO BAZA",
-            url: "https://seobaza.com.ua/",
-            description:
-              "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
-            logo: "https://seobaza.com.ua/seobaza.png",
-            sameAs: [
-              "https://www.youtube.com/c/SEOBAZA",
-              "https://t.me/SEOBAZA",
-              "https://www.linkedin.com/company/seo-baza/",
-              "https://www.facebook.com/groups/seobaza/",
-              "https://www.instagram.com/seobaza/",
-              "https://www.threads.com/@seobaza",
-            ],
-            creator: {
-              "@type": "Person",
-              name: "Олеся Коробка",
-              alternateName: "Olesia Korobka",
-              url: "https://olesiakorobka.com",
-            },
+            "@graph": [seoBazaWebSite(), seoBazaOrganization("uk")],
           }),
         }}
       />
