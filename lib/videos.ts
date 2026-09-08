@@ -104,7 +104,9 @@ export function getVideoBySlug(slug: string): Video | null {
  * у <title> ключ лишається першим, а відрізняє сторінку брендовий хвіст.
  */
 export function videoFormatLabel(video: VideoMeta): string {
-  return video.type === "live" ? "Запис стріму" : "Відео";
+  if (video.type !== "live") return "Відео";
+  // Поки запису немає (duration ще 0), сторінка живе як анонс.
+  return video.duration > 0 ? "Запис стріму" : "Анонс стріму";
 }
 
 export function videoH1(video: VideoMeta): string {

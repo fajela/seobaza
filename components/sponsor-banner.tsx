@@ -8,10 +8,17 @@ export function SponsorBanner({
   name,
   url,
   text,
+  extraLinkText,
+  extraUrl,
+  extraText,
 }: {
   name: string;
   url: string;
   text: string;
+  /** Другий рядок усередині блока: лінк + хвіст (наприклад, дослідження спонсора). */
+  extraLinkText?: string;
+  extraUrl?: string;
+  extraText?: string;
 }) {
   return (
     <aside
@@ -32,6 +39,19 @@ export function SponsorBanner({
         </a>{" "}
         {text}
       </p>
+      {extraUrl && extraLinkText && (
+        <p className="m-0 mt-3 leading-relaxed">
+          <a
+            href={extraUrl}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            className="text-primary hover:text-accent underline transition-colors"
+          >
+            {extraLinkText}
+          </a>
+          {extraText}
+        </p>
+      )}
     </aside>
   );
 }
