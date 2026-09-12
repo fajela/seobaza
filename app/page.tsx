@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { TelegramWidget } from "@/components/telegram-widget";
 import { PostCover } from "@/components/post-cover";
+import { LiveBannerLarge } from "@/components/live-banner";
 import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
 import { getAllNews } from "@/lib/news";
 import path from "path";
@@ -119,6 +120,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Банер поточного стріму або свіжого запису — над стрічкою новин. */}
+      <LiveBannerLarge />
 
       {/* Featured news — magazine layout: one lead story + secondary list */}
       {leadStory && (
