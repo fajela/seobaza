@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { TelegramWidget } from "@/components/telegram-widget";
 import { PostCover } from "@/components/post-cover";
-import { LiveBannerLarge } from "@/components/live-banner";
 import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
 import { getAllNews } from "@/lib/news";
 import path from "path";
@@ -120,9 +119,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Банер поточного стріму або свіжого запису — над стрічкою новин. */}
-      <LiveBannerLarge />
 
       {/* Featured news — magazine layout: one lead story + secondary list */}
       {leadStory && (
@@ -442,8 +438,8 @@ export default function Home() {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/SWM1Cgd0QpE"
-                title="RAG для SEO. Що працює насправді? Запис стріму SEO Baza"
+                src="https://www.youtube.com/embed/3LtuRVC1WcE"
+                title="Запити fan-out: як їх знайти і що з ними робити. Запис стріму SEO Baza"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
