@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 // Bump the id when the announced thing changes — a new id shows the bar again
 // to everyone, even those who dismissed the previous one.
-const STORAGE_KEY = "announcement-dismissed:rag-recording-2026-08-27";
+const STORAGE_KEY = "announcement-dismissed:fanout-recording-2026-09-09";
 
 /**
  * Slim, dismissible announcement strip under the header. Promotes the current
@@ -25,10 +25,10 @@ export function AnnouncementBar() {
   return (
     <div className="relative bg-primary text-background">
       <Link
-        href="/videos/rag-dlia-seo"
+        href="/videos/zapyty-fanout"
         className="block px-10 py-2 text-center text-sm font-medium hover:underline"
       >
-        ▶ Запис стріму: RAG для SEO. Що працює насправді?{" "}
+        ▶ Запис стріму: запити fan-out. Як їх знайти і що з ними робити{" "}
         <span className="whitespace-nowrap">Дивитися →</span>
       </Link>
       <button
