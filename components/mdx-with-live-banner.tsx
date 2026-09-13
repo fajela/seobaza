@@ -20,10 +20,16 @@ const options = {
 export function MdxWithLiveBanner({
   source,
   components,
+  banner = true,
 }: {
   source: string;
   components?: MdxComponents;
+  /** false = рендерити MDX без банера лайву (сторінки зі спонсором тощо). */
+  banner?: boolean;
 }) {
+  if (!banner) {
+    return <MDXRemote source={source} components={components} options={options} />;
+  }
   const splitAt = source.search(/^## /m);
   const intro = splitAt === -1 ? source : source.slice(0, splitAt);
   const rest = splitAt === -1 ? null : source.slice(splitAt);

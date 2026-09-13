@@ -12,6 +12,7 @@ export function SponsorBanner({
   logo,
   logoAlt,
   items,
+  children,
   extraLinkText,
   extraUrl,
   extraText,
@@ -26,6 +27,8 @@ export function SponsorBanner({
   logoAlt?: string;
   /** Перелік пунктів від спонсора, кожен окремим рядком. */
   items?: string[];
+  /** Альтернатива items: markdown-вміст усередині тега (список тощо). */
+  children?: React.ReactNode;
   /** Другий рядок усередині блока: лінк + хвіст (наприклад, дослідження спонсора). */
   extraLinkText?: string;
   extraUrl?: string;
@@ -69,6 +72,7 @@ export function SponsorBanner({
           ))}
         </ul>
       )}
+      {children && <div className="mt-3 leading-relaxed space-y-1 [&_p]:m-0 [&_ul]:list-none [&_ul]:p-0 [&_ul]:m-0 [&_li]:m-0">{children}</div>}
       {extraUrl && extraLinkText && (
         <p className="m-0 mt-3 leading-relaxed">
           <a

@@ -312,7 +312,7 @@ export default async function NewsPostPage({
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
-          <MdxWithLiveBanner source={item.content} components={mdxComponents} />
+          <MdxWithLiveBanner source={item.content} components={mdxComponents} banner={!item.hideLiveBanner} />
         </div>
       </article>
 

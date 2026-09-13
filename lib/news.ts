@@ -38,6 +38,7 @@ export interface NewsMetadata {
   sourceUrl?: string;
   telegramMessageId?: number; // Telegram message id — source of truth for t.me links
   image?: string; // first photo from Telegram, used as OG image
+  hideLiveBanner?: boolean; // true = не вставляти банер лайву в цю сторінку (напр. випуск зі спонсором)
 }
 
 export interface NewsArticle extends NewsMetadata {
@@ -130,6 +131,7 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     sourceUrl: data.sourceUrl,
     telegramMessageId: data.telegramMessageId,
     image: data.image,
+    hideLiveBanner: data.hideLiveBanner === true,
     readingTime: computeReadingTime(content),
     content,
   };
