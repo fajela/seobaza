@@ -10,10 +10,11 @@ import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { Carousel } from "@/components/carousel";
+import { SponsorBanner } from "@/components/sponsor-banner";
 import type { Metadata } from "next";
 import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 
-const mdxComponents = { img: MdxImg, a: MdxLink, Carousel };
+const mdxComponents = { img: MdxImg, a: MdxLink, Carousel, SponsorBanner };
 
 export async function generateStaticParams() {
   return getNewsPostPaths();
