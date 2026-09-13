@@ -24,6 +24,9 @@ export interface ArticleMetadata {
   image?: string;
   author: string;
   authorLink?: string;
+  /** Другий автор для матеріалів у співавторстві. */
+  coAuthor?: string;
+  coAuthorLink?: string;
   editor?: string;
   editorLink?: string;
   date: string;
@@ -104,6 +107,8 @@ export function getArticleBySlug(slug: string, dir?: string): Article {
     image: data.image,
     author: data.author ?? "SEO BAZA",
     authorLink: data.authorLink,
+    coAuthor: data.coAuthor,
+    coAuthorLink: data.coAuthorLink,
     editor: data.editor,
     editorLink: data.editorLink,
     date: data.date ? String(data.date) : new Date().toISOString().slice(0, 10),

@@ -55,7 +55,10 @@ export async function generateMetadata({
     return {
       title: `${article.title} - SEO BAZA`,
       description: article.description,
-      authors: [{ name: article.author }],
+      authors: [
+        { name: article.author },
+        ...(article.coAuthor ? [{ name: article.coAuthor }] : []),
+      ],
       alternates: {
         canonical: url,
       },
@@ -68,7 +71,9 @@ export async function generateMetadata({
         type: "article",
         publishedTime: isoDate(article.date),
         modifiedTime: isoDate(article.date),
-        authors: [article.author],
+        authors: article.coAuthor
+          ? [article.author, article.coAuthor]
+          : [article.author],
         section: article.category ? getCategoryDisplayName(article.category) : undefined,
         tags: article.tags,
         images: [
@@ -122,6 +127,10 @@ export default async function ArticlePage({
   const articleAuthorSlug = getAuthorSlugByName(article.author);
   const articleAuthorUrl = articleAuthorSlug
     ? `https://seobaza.com.ua/authors/${articleAuthorSlug}`
+    : undefined;
+  const coAuthorSlug = article.coAuthor ? getAuthorSlugByName(article.coAuthor) : undefined;
+  const coAuthorUrl = coAuthorSlug
+    ? `https://seobaza.com.ua/authors/${coAuthorSlug}`
     : undefined;
   const articleOgImage = article.image
     ? `https://seobaza.com.ua${article.image}`
@@ -225,6 +234,18 @@ export default async function ArticlePage({
             <meta itemProp="name" content={article.author} />
             {articleAuthorUrl && <link itemProp="url" href={articleAuthorUrl} />}
           </div>
+          {article.coAuthor && (
+            <div
+              className="hidden"
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+              {...(coAuthorUrl ? { itemID: coAuthorUrl } : {})}
+            >
+              <meta itemProp="name" content={article.coAuthor} />
+              {coAuthorUrl && <link itemProp="url" href={coAuthorUrl} />}
+            </div>
+          )}
 
           {/* Visible byline — plain UI, no RDFa attributes */}
           <div className="flex flex-wrap items-center gap-3 text-muted-foreground mb-4">
@@ -252,6 +273,35 @@ export default async function ArticlePage({
               }
               return <span className="font-medium">{article.author}</span>;
             })()}
+            {article.coAuthor && (
+              <>
+                <span>і</span>
+                {(() => {
+                  if (coAuthorSlug) {
+                    return (
+                      <Link
+                        href={`/authors/${coAuthorSlug}`}
+                        className="font-medium hover:text-accent transition-colors"
+                      >
+                        {article.coAuthor}
+                      </Link>
+                    );
+                  }
+                  if (article.coAuthorLink) {
+                    return (
+                      <a
+                        href={article.coAuthorLink}
+                        target="_blank"
+                        className="font-medium hover:text-accent transition-colors"
+                      >
+                        {article.coAuthor}
+                      </a>
+                    );
+                  }
+                  return <span className="font-medium">{article.coAuthor}</span>;
+                })()}
+              </>
+            )}
             <span>•</span>
             <time dateTime={article.date}>
               {new Date(article.date).toLocaleDateString("uk-UA", {
