@@ -22,7 +22,25 @@ const aboutJsonLd = {
     "SEO BAZA is a Ukrainian community of SEO professionals: industry news, Google update analysis, events and educational materials.",
   inLanguage: "en",
   isPartOf: WEBSITE_REF,
-  mainEntity: seoBazaOrganization("en"),
+  mainEntity: {
+    ...seoBazaOrganization("en"),
+    member: [
+      {
+        "@type": "Person",
+        "@id": "https://seobaza.com.ua/kg/person/sb0009#person",
+        name: "Oleksandra Khilova",
+        alternateName: "Олександра Хілова",
+        jobTitle: "Co-founder and co-owner of the SEO BAZA YouTube channel",
+        url: "https://seobaza.com.ua/kg/person/sb0009",
+        sameAs: [
+          "https://alexakhilova.com",
+          "https://g.co/kg/g/11yhkbbmw3",
+          "https://www.linkedin.com/in/oleksandra-khilova",
+          "https://t.me/badseo",
+        ],
+      },
+    ],
+  },
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -97,6 +115,13 @@ export default function EnglishAboutPage() {
             </a>
             .
           </p>
+          <p>
+            The SEO BAZA YouTube channel is a joint project of Olesia Korobka
+            and <Link href="/kg/person/sb0009">Oleksandra Khilova</Link>.
+            Oleksandra is the channel&apos;s co-founder and co-owner and hosts
+            streams and webinars on link building, automation and Google
+            updates.
+          </p>
 
           <h2>Where to find us</h2>
           <ul>
@@ -119,7 +144,8 @@ export default function EnglishAboutPage() {
               <a href="https://www.youtube.com/c/SEOBAZA" target="_blank">
                 @SEOBAZA
               </a>{" "}
-              for bigger topics in video format.
+              with streams and webinars on bigger topics, hosted by Olesia
+              Korobka and Oleksandra Khilova.
             </li>
           </ul>
 

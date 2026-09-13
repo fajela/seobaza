@@ -36,6 +36,22 @@ const aboutJsonLd = {
   isPartOf: WEBSITE_REF,
   mainEntity: {
     ...seoBazaOrganization("uk"),
+    member: [
+      {
+        "@type": "Person",
+        "@id": "https://seobaza.com.ua/kg/person/sb0009#person",
+        name: "Олександра Хілова",
+        alternateName: "Oleksandra Khilova",
+        jobTitle: "Співзасновниця та співвласниця YouTube-каналу SEO BAZA",
+        url: "https://seobaza.com.ua/kg/person/sb0009",
+        sameAs: [
+          "https://alexakhilova.com",
+          "https://g.co/kg/g/11yhkbbmw3",
+          "https://www.linkedin.com/in/oleksandra-khilova",
+          "https://t.me/badseo",
+        ],
+      },
+    ],
     subjectOf: [
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/news",       name: "Новини" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/articles",   name: "Статті" },
@@ -119,6 +135,12 @@ export default function AboutPage() {
             </a>
             .
           </p>
+          <p>
+            YouTube-канал SEO BAZA — спільний проєкт Олесі Коробки та{" "}
+            <Link href="/kg/person/sb0009">Олександри Хілової</Link>.
+            Олександра — співзасновниця та співвласниця каналу: веде стріми й
+            вебінари про лінкбілдинг, автоматизацію та апдейти Google.
+          </p>
 
           <h2>Де нас знайти</h2>
           <ul>
@@ -153,7 +175,8 @@ export default function AboutPage() {
               >
                 @SEOBAZA
               </a>{" "}
-              — відео-формат для більших тем.
+              — стріми та вебінари для більших тем, які ведуть Олеся Коробка
+              та Олександра Хілова.
             </li>
           </ul>
 
