@@ -263,6 +263,7 @@ export default async function KgPersonPage({
               "theways.io": "TheWays",
               "flyerone.vc": "Flyer One Ventures",
               "affcatalog.com": "AFFCatalog",
+              "goodreads.com": "Goodreads",
               "fajela.com": "Fajela",
               "bsky.app": "Bluesky",
             };
