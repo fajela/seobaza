@@ -143,11 +143,11 @@ export default async function AuthorPage({
             </h1>
             {latinNames.length > 0 && (
               <p className="text-muted-foreground mb-1">
-                {latinNames.map((n, i) => (
-                  <span key={n}>
-                    {i > 0 && ", "}
-                    <span itemProp="alternateName">{n}</span>
-                  </span>
+                {/* Only the primary Latin form is visible; the remaining
+                    spelling variants stay in the markup for entity matching. */}
+                <span itemProp="alternateName">{latinNames[0]}</span>
+                {latinNames.slice(1).map((n) => (
+                  <meta key={n} itemProp="alternateName" content={n} />
                 ))}
               </p>
             )}
