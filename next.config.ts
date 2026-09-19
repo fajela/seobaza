@@ -20,6 +20,9 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Віддаємо картинки напряму як /images/*.jpg: без проксі /_next/image,
+    // без переконвертації у webp/avif і без dpl-параметра, що міняється кожним деплоєм.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
