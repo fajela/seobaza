@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MaterialEntities } from "@/components/material-entities";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -205,6 +206,8 @@ export default async function VideoPage({ params }: VideoPageProps) {
       <div className="prose prose-lg dark:prose-invert max-w-none">
         <MDXRemote source={video.content} components={mdxComponents} />
       </div>
+
+      <MaterialEntities url={`/videos/${slug}`} microdata={false} />
 
       <div className="mt-12 p-6 bg-muted/30 rounded-xl border border-border">
         <p className="text-muted-foreground">

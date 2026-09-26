@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MaterialEntities } from "@/components/material-entities";
 import path from "path";
 import { getArticleBySlug, getArticleSlugs } from "@/lib/articles";
 import { getAuthorSlugByName } from "@/lib/authors";
@@ -238,6 +239,7 @@ export default async function KnowledgeBaseArticlePage({
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
           <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} />
         </div>
+        <MaterialEntities url={`/knowledge-base/${slug}`} />
       </article>
 
       {/* Newsletter signup */}

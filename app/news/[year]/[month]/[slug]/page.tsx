@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MaterialEntities } from "@/components/material-entities";
 import Link from "next/link";
 import Script from "next/script";
 import { getNewsPostPaths, getNewsBySlug, getRelatedNews, getOtherPostsInSameMonth } from "@/lib/news";
@@ -314,6 +315,7 @@ export default async function NewsPostPage({
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
           <MdxWithLiveBanner source={item.content} components={mdxComponents} banner={!item.hideLiveBanner} />
         </div>
+        <MaterialEntities url={`/news/${year}/${month}/${slug}`} />
       </article>
 
       {/* Auxiliary sections OUTSIDE the <article> so external links here don't

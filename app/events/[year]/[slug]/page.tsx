@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MaterialEntities } from "@/components/material-entities";
 import Link from "next/link";
 import { promises as fs } from "fs";
 import path from "path";
@@ -202,6 +203,7 @@ export default async function EventPage({ params }: EventPageProps) {
       <div className="prose prose-lg dark:prose-invert max-w-none">
         <MDXRemote source={content} components={mdxComponents} />
       </div>
+      <MaterialEntities url={`/events/${year}/${slug}`} microdata={false} />
     </article>
   );
 }

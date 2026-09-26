@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MaterialEntities } from "@/components/material-entities";
 import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/articles";
 import { getAuthorSlugByName } from "@/lib/authors";
 import { getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
@@ -366,6 +367,7 @@ export default async function ArticlePage({
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
           <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} />
         </div>
+        <MaterialEntities url={`/articles/${slug}`} />
       </article>
 
       {/* Newsletter signup */}

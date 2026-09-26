@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllKgPeople } from "@/lib/kg";
+import { ENTITY_TYPES, ENTITY_TYPE_LABELS, getPublishedEntities } from "@/lib/kg-entities";
 import { buildOgImage } from "@/lib/og-image";
 import type { Metadata } from "next";
 
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
 
 export default function KgIndexPage() {
   const peopleCount = getAllKgPeople().length;
+  // One card per entity type that already has published hubs.
+  const hubTypes = ENTITY_TYPES.map((type) => ({ type, hubs: getPublishedEntities(type) })).filter((t) => t.hubs.length > 0);
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -61,14 +64,26 @@ export default function KgIndexPage() {
               </p>
             </div>
           </Link>
-          <div className="p-6 rounded-xl border border-dashed border-border bg-secondary/10">
-            <h2 className="font-display text-xl mb-1 text-muted-foreground">
-              Компанії
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Уже в графі, сторінки скоро
-            </p>
-          </div>
+          {hubTypes.map(({ type, hubs }) => (
+            <Link key={type} href={`/kg/${type}`} className="block group">
+              <div className="h-full p-6 rounded-xl border border-border bg-secondary/20 group-hover:border-accent/50 group-hover:bg-secondary/40 transition-all">
+                <h2 className="font-display text-xl mb-1 group-hover:text-accent transition-colors">
+                  {ENTITY_TYPE_LABELS[type].many}
+                </h2>
+                <p className="text-sm text-muted-foreground">{hubs.map((h) => h.name).join(", ")}</p>
+              </div>
+            </Link>
+          ))}
+          {!hubTypes.some((t) => t.type === "org") && (
+            <div className="p-6 rounded-xl border border-dashed border-border bg-secondary/10">
+              <h2 className="font-display text-xl mb-1 text-muted-foreground">
+                Компанії
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Уже в графі, сторінки скоро
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="prose prose-lg dark:prose-invert max-w-none mt-14">
