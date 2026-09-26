@@ -11,6 +11,10 @@ const kgPersonDirectory = path.join(process.cwd(), "content/kg/person");
 // (sb0002, sb0003, ...) and the URL segment: /kg/person/<kgId>.
 export interface KgPersonMetadata extends AuthorMetadata {
   kgId: string;
+  /** "backend" = in the graph (tagging, statistics) but no public page yet. */
+  visibility: "public" | "backend";
+  /** Extra surface forms for finding mentions (case forms, other scripts). */
+  aliases: string[];
 }
 
 export interface KgPerson extends KgPersonMetadata {
@@ -26,6 +30,8 @@ function readPersonFile(filename: string): KgPerson {
 
   return {
     kgId: data.kgId,
+    visibility: data.visibility === "backend" ? "backend" : "public",
+    aliases: Array.isArray(data.aliases) ? data.aliases.map(String) : data.aliases ? [String(data.aliases)] : [],
     slug: filename.replace(".mdx", ""),
     name: data.name,
     alternateName: data.alternateName,
@@ -51,13 +57,15 @@ function readPersonFile(filename: string): KgPerson {
   };
 }
 
-export function getAllKgPeople(): KgPerson[] {
+/** People with a public page. Pass includeBackend for the whole graph
+ *  (tagging, statistics, validation), where backend people have no page. */
+export function getAllKgPeople(includeBackend = false): KgPerson[] {
   if (!fs.existsSync(kgPersonDirectory)) return [];
   return fs
     .readdirSync(kgPersonDirectory)
     .filter((f) => f.endsWith(".mdx"))
     .map(readPersonFile)
-    .filter((p) => Boolean(p.kgId))
+    .filter((p) => Boolean(p.kgId) && (includeBackend || p.visibility === "public"))
     .sort((a, b) => a.kgId.localeCompare(b.kgId));
 }
 

@@ -83,7 +83,7 @@ export function EntityMentions({ id, name }: { id: string; name: string }) {
         )}
         {stats.people.length > 0 && (
           <div>
-            <h3 className="font-semibold mb-2">Люди зі спільноти в цих матеріалах</h3>
+            <h3 className="font-semibold mb-2">Люди в цих матеріалах</h3>
             <EntityChips items={stats.people} withCount />
           </div>
         )}

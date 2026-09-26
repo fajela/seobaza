@@ -25,6 +25,10 @@ const INDEX_TITLES: Record<string, string> = {
   concept: "SEO-концепти в графі знань SEO Baza",
   tool: "SEO-інструменти в графі знань SEO Baza",
   org: "Компанії в графі знань SEO Baza",
+  assistant: "AI-асистенти в графі знань SEO Baza",
+  social: "Соцмережі в графі знань SEO Baza",
+  event: "Події в графі знань SEO Baza",
+  place: "Місця в графі знань SEO Baza",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {

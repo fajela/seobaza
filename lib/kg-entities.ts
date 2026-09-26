@@ -11,13 +11,17 @@ import { getAllKgPeople } from "./kg";
 // A hub renders only with `status: published`; drafts exist for tagging and
 // validation but have no page, no sitemap entry and no links.
 
-export const ENTITY_TYPES = ["concept", "tool", "org"] as const;
+export const ENTITY_TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place"] as const;
 export type EntityType = (typeof ENTITY_TYPES)[number];
 
 export const ENTITY_TYPE_LABELS: Record<EntityType, { one: string; many: string; schema: string }> = {
   concept: { one: "Концепт", many: "Концепти", schema: "https://schema.org/DefinedTerm" },
   tool: { one: "Інструмент", many: "Інструменти", schema: "https://schema.org/SoftwareApplication" },
+  assistant: { one: "AI-асистент", many: "AI-асистенти", schema: "https://schema.org/SoftwareApplication" },
   org: { one: "Компанія", many: "Компанії", schema: "https://schema.org/Organization" },
+  social: { one: "Соцмережа", many: "Соцмережі", schema: "https://schema.org/Organization" },
+  event: { one: "Подія", many: "Події", schema: "https://schema.org/Event" },
+  place: { one: "Місце", many: "Місця", schema: "https://schema.org/Place" },
 };
 
 export interface KgEntity {
@@ -193,8 +197,8 @@ export interface EntityRef {
 
 /** Resolve an entity id (slug or sb-id) to a display name and live URL. */
 export function resolveEntityRef(id: string): EntityRef {
-  const person = getAllKgPeople().find((p) => p.kgId === id);
-  if (person) return { id, name: person.name, href: `/kg/person/${id}` };
+  const person = getAllKgPeople(true).find((p) => p.kgId === id);
+  if (person) return { id, name: person.name, href: person.visibility === "public" ? `/kg/person/${id}` : undefined };
   const entity = getAllEntities().find((e) => e.slug === id);
   if (!entity) return { id, name: id };
   return { id, name: entity.name, href: entity.status === "published" ? entityUrl(entity) : undefined };
@@ -250,7 +254,7 @@ const L = "\\p{L}";
 function mentionPatterns(id: string): RegExp[][] {
   const pats: RegExp[] = [];
   const weak: RegExp[] = [];
-  const person = getAllKgPeople().find((p) => p.kgId === id);
+  const person = getAllKgPeople(true).find((p) => p.kgId === id);
   if (person) {
     const parts = person.name.split(/\s+/);
     if (parts.length >= 2) {
@@ -260,7 +264,7 @@ function mentionPatterns(id: string): RegExp[][] {
       weak.push(new RegExp(`(?<!${L})${escapeRe(stem)}${L}*`, "u"));
     }
     const alt = person.alternateName ? (Array.isArray(person.alternateName) ? person.alternateName : [person.alternateName]) : [];
-    for (const a of alt) if (a.length >= 4) pats.push(new RegExp(`(?<!${L})${escapeRe(a)}(?!${L})`, "u"));
+    for (const a of [...alt, ...person.aliases]) if (a.length >= 4) pats.push(new RegExp(`(?<!${L})${escapeRe(a)}(?!${L})`, "u"));
     pats.push(new RegExp(escapeRe(`/kg/person/${id}`)));
     return [pats, weak];
   }

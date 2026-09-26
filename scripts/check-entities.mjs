@@ -2,8 +2,8 @@
  * Pre-build guard for the closed entity vocabulary (entity hubs /kg/<type>/<slug>).
  *
  * Invariants enforced:
- *  - every entity file in content/kg/{concept,tool,org}/ has a name, a
- *    description and a valid status; slugs are unique across types and never
+ *  - every entity file in content/kg/{concept,tool,assistant,org,social,event,place}/ has a name and a
+ *    valid status (a published hub also needs a description); slugs are unique across types and never
  *    look like a person sb-id;
  *  - no alias belongs to two entities (the tagger could not tell them apart);
  *  - `related` and every material's `entities:` point only at known ids
@@ -20,7 +20,7 @@ import matter from "gray-matter";
 
 const CONTENT = path.join(process.cwd(), "content");
 const KG = path.join(CONTENT, "kg");
-const TYPES = ["concept", "tool", "org"];
+const TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place"];
 const MATERIAL_DIRS = ["news", "articles", "videos", "events", "knowledge-base"];
 const MIN_MATERIALS = 5;
 
@@ -61,7 +61,7 @@ for (const type of TYPES) {
     if (/^sb\d{4}$/.test(slug)) errors.push(`${rel(file)}: slug looks like a person sb-id`);
     if (entities.has(slug)) errors.push(`${rel(file)}: slug "${slug}" already used by ${rel(entities.get(slug).file)}`);
     if (!data.name) errors.push(`${rel(file)}: missing name`);
-    if (!data.description) errors.push(`${rel(file)}: missing description`);
+    if (!data.description && data.status === "published") errors.push(`${rel(file)}: published hub needs a description`);
     if (data.status && !["draft", "published"].includes(data.status)) errors.push(`${rel(file)}: status must be draft or published`);
     if (data.wikidata && !/^Q\d+$/.test(String(data.wikidata))) errors.push(`${rel(file)}: wikidata must look like Q123`);
     entities.set(slug, { file, data, content, type });
