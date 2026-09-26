@@ -9,6 +9,7 @@ import { getAllArticles, getAllTagSlugs } from "./articles";
 import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
 import { getAllKgPeople } from "./kg";
+import { ENTITY_TYPES, entityUrl, getPublishedEntities } from "./kg-entities";
 import { getLatestDealsEvent } from "./events";
 import { getAllJobs, jobPath } from "./jobs";
 import { getAllVideos } from "./videos";
@@ -140,6 +141,17 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/kg/person`, lastModified: now, changeFrequency: "weekly" as const },
     ...getAllKgPeople().map((p) => ({
       url: `${BASE}/kg/person/${p.kgId}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+    })),
+    // Entity hubs: only published ones, plus the index of each type that has any.
+    ...ENTITY_TYPES.filter((t) => getPublishedEntities(t).length > 0).map((t) => ({
+      url: `${BASE}/kg/${t}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+    })),
+    ...getPublishedEntities().map((e) => ({
+      url: `${BASE}${entityUrl(e)}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
     })),
