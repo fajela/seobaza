@@ -117,6 +117,26 @@ export default function BlackFridayPage() {
           💥 Чорна п'ятниця 2025: пропозиції українських SEO компаній
         </h1>
 
+        {/* Збір пропозицій на наступний сезон. Google Форма, заявки перевіряємо вручну. */}
+        <section className="mb-12 rounded-2xl p-6 border-2 border-accent/50 bg-accent/10">
+          <h2 className="text-xl sm:text-2xl font-display mb-3">
+            Чорна п'ятниця 2026: збираємо пропозиції
+          </h2>
+          <p className="mb-4">
+            Готуємо сторінку зі знижками й бонусами для SEO-спільноти на 2026 рік. Якщо ви українська
+            компанія і не працюєте з рф, додайте свою пропозицію. Розміщення безкоштовне.
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSey7ryJzTCv1N61XJNV8Lklf9J6_2BQBDZB2UUiqHTN-9rKwA/viewform"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center px-5 py-2.5 rounded-full bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity"
+          >
+            Додати пропозицію
+          </a>
+          <p className="text-sm text-muted-foreground mt-4">Нижче пропозиції 2025 року.</p>
+        </section>
+
         <div className="grid gap-6 mb-12">
           {offers.map((offer) => (
             <article
