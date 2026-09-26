@@ -5,6 +5,7 @@ import { altNames, absoluteUrl, profileUrls, hiddenSameAs, googleKgUrl } from "@
 import { getTagDisplayName } from "@/lib/taxonomy";
 import { buildOgImage } from "@/lib/og-image";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
+import { EntityMentions } from "@/components/kg-mentions";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -235,6 +236,9 @@ export default async function KgPersonPage({
             />
           </div>
         )}
+
+        {/* Materials tagged with this person (entities: [sb-id]) */}
+        <EntityMentions id={person.kgId} name={person.name} />
 
         {/* All profiles: socials + speaker pages, mentor profiles, catalogs */}
         {(() => {
