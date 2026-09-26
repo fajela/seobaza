@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   getEntityStats,
   getMaterialsForEntity,
+  getMentionSnippet,
   materialsLabel,
   type EntityRef,
 } from "@/lib/kg-entities";
@@ -93,16 +94,41 @@ export function EntityMentions({ id, name }: { id: string; name: string }) {
         {[...byYear.entries()].map(([year, items]) => (
           <div key={year} className="mb-6">
             <h3 className="font-semibold text-muted-foreground mb-2">{year}</h3>
-            <ul className="space-y-2">
-              {items.map((m) => (
-                <li key={m.url} itemProp="subjectOf" itemScope itemType="https://schema.org/CreativeWork">
-                  <link itemProp="url" href={`${BASE}${m.url}`} />
-                  <Link href={m.url} className="hover:text-accent transition-colors">
-                    <span itemProp="name">{m.title}</span>
-                  </Link>
-                  {m.date && <span className="text-sm text-muted-foreground"> · {ukDate(m.date)}</span>}
-                </li>
-              ))}
+            <ul className="divide-y divide-border">
+              {items.map((m) => {
+                const snippet = getMentionSnippet(m, id);
+                return (
+                  <li key={m.url} className="py-4 flex gap-4" itemProp="subjectOf" itemScope itemType="https://schema.org/CreativeWork">
+                    <link itemProp="url" href={`${BASE}${m.url}`} />
+                    <div className="flex-1 min-w-0">
+                      <Link href={m.url} className="font-semibold hover:text-accent transition-colors">
+                        <span itemProp="name">{m.title}</span>
+                      </Link>
+                      {snippet && (
+                        <p className="text-sm text-muted-foreground mt-1 leading-relaxed" itemProp="abstract">
+                          {snippet}
+                        </p>
+                      )}
+                      {m.date && (
+                        <time dateTime={m.date} itemProp="datePublished" className="block text-xs text-muted-foreground mt-2">
+                          {ukDate(m.date)}
+                        </time>
+                      )}
+                    </div>
+                    {m.image && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={`/_next/image?url=${encodeURIComponent(m.image)}&w=256&q=75`}
+                        alt=""
+                        width={128}
+                        height={67}
+                        loading="lazy"
+                        className="hidden sm:block w-32 h-[67px] object-cover rounded-md border border-border shrink-0"
+                      />
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

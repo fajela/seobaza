@@ -104,6 +104,10 @@ export interface TaggedMaterial {
   date: string;
   kind: "news" | "article" | "video" | "event" | "knowledge-base";
   entities: string[];
+  description: string;
+  image?: string;
+  /** Raw MDX body, used to cut the snippet where the entity is mentioned. */
+  body: string;
 }
 
 function* walkMdx(dir: string): Generator<string> {
@@ -151,14 +155,23 @@ export function getTaggedMaterials(): TaggedMaterial[] {
   for (const [kind, dirName] of MATERIAL_DIRS) {
     const root = path.join(contentDirectory, dirName);
     for (const file of walkMdx(root)) {
-      const { data } = matter(fs.readFileSync(file, "utf8"));
+      const { data, content } = matter(fs.readFileSync(file, "utf8"));
       const entities = asList(data.entities);
       if (entities.length === 0) continue;
       // Videos publish only on an explicit "published"; everything else hides on "draft".
       if (kind === "video" ? data.status !== "published" : data.status === "draft") continue;
       const url = materialUrl(kind, path.relative(root, file).split(path.sep));
       if (!url) continue;
-      out.push({ url, title: data.h1 || data.title, date: data.date ? String(data.date).slice(0, 10) : "", kind, entities });
+      out.push({
+        url,
+        title: data.h1 || data.title,
+        date: data.date ? String(data.date).slice(0, 10) : "",
+        kind,
+        entities,
+        description: data.description ?? "",
+        image: typeof data.image === "string" ? data.image : undefined,
+        body: content,
+      });
     }
   }
   materialCache = out.sort((a, b) => b.date.localeCompare(a.date));
@@ -225,3 +238,90 @@ export function materialsLabel(n: number): string {
   const form = mod10 === 1 && mod100 !== 11 ? "матеріал" : mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? "матеріали" : "матеріалів";
   return `${n} ${form}`;
 }
+
+// ─── Mention context (the NYT topic-page snippet) ─────────────────────────────
+
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const L = "\\p{L}";
+
+/** Patterns that find an entity in text: every alias for hubs; for people the
+ *  full name in any case form (first-name stem + surname stem) and Latin
+ *  spellings, then the bare surname as a weaker second pass. */
+function mentionPatterns(id: string): RegExp[][] {
+  const pats: RegExp[] = [];
+  const weak: RegExp[] = [];
+  const person = getAllKgPeople().find((p) => p.kgId === id);
+  if (person) {
+    const parts = person.name.split(/\s+/);
+    if (parts.length >= 2) {
+      const last = parts[parts.length - 1];
+      const stem = /[аяоийь]$/.test(last) ? last.slice(0, -1) : last;
+      pats.push(new RegExp(`${escapeRe(parts[0].slice(0, 4))}${L}*\\s+${escapeRe(stem)}${L}*`, "u"));
+      weak.push(new RegExp(`(?<!${L})${escapeRe(stem)}${L}*`, "u"));
+    }
+    const alt = person.alternateName ? (Array.isArray(person.alternateName) ? person.alternateName : [person.alternateName]) : [];
+    for (const a of alt) if (a.length >= 4) pats.push(new RegExp(`(?<!${L})${escapeRe(a)}(?!${L})`, "u"));
+    pats.push(new RegExp(escapeRe(`/kg/person/${id}`)));
+    return [pats, weak];
+  }
+  const entity = getAllEntities().find((e) => e.slug === id);
+  for (const a of [entity?.name, ...(entity?.aliases ?? [])].filter(Boolean) as string[]) {
+    const caseSensitive = a.length <= 5 && a !== a.toLowerCase();
+    pats.push(new RegExp(`(?<!${L})${escapeRe(a)}(?!${L})`, caseSensitive ? "u" : "iu"));
+  }
+  return [pats];
+}
+
+function plainText(md: string): string {
+  return md
+    .replace(/<[^>]+>/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/https?:\/\/\S+/g, "")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^\s*[-*]\s+/gm, "")
+    .replace(/[*_`]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * The passage of a material that talks about the entity: the first paragraph
+ * or list item that names it, trimmed around the mention. Falls back to the
+ * material's description when the text never names the entity (e.g. it was
+ * tagged through a speaker list).
+ */
+export function getMentionSnippet(m: TaggedMaterial, id: string, max = 320): string {
+  const blocks = m.body.split(/\n\s*\n|\n(?=\s*[-*]\s)|\n(?=#)/);
+  type Candidate = { index: number; text: string; hit: number; item: boolean };
+  const find = (pats: RegExp[]): Candidate[] =>
+    blocks
+      .map((raw, index) => {
+        if (/^\s*(import|export)\s/.test(raw)) return null;
+        // A heading alone says little: read it together with the paragraph under it.
+        const text = plainText(/^\s*#/.test(raw) && blocks[index + 1] ? `${raw}. ${blocks[index + 1]}` : raw);
+        const hits = pats.map((p) => text.search(p)).filter((i) => i >= 0);
+        if (text.length < 20 || hits.length === 0) return null;
+        return { index, text, hit: Math.min(...hits), item: /^\s*([-*]\s|#)/.test(raw) };
+      })
+      .filter((c): c is Candidate => c !== null);
+  const [strongPats, weakPats = []] = mentionPatterns(id);
+  const strong = find(strongPats);
+  const weak = find(weakPats);
+  // In digests the intro paragraphs list everyone; the item about the entity is
+  // a list entry or a section further down. Preference: a list item or section
+  // naming it in full, one naming it by surname, then any matching paragraph.
+  const pool = [strong.filter((c) => c.item), weak.filter((c) => c.item), strong, weak].find((p) => p.length > 0);
+  if (pool) {
+    const { text, hit } = pool.reduce((x, y) => (y.hit < x.hit ? y : x));
+    if (text.length <= max) return text;
+    const start = Math.max(0, Math.min(hit - 80, text.length - max));
+    const cut = text.slice(start, start + max);
+    const from = start > 0 ? cut.indexOf(" ") + 1 : 0;
+    const more = start + max < text.length;
+    const to = more ? cut.lastIndexOf(" ") : cut.length;
+    return `${start > 0 ? "…" : ""}${cut.slice(from, to)}${more ? "…" : ""}`;
+  }
+  return m.description;
+}
+
