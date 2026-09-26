@@ -26,6 +26,34 @@ interface StatusCodeRedirect extends RedirectBase {
 
 export type Redirect = PermanentFlagRedirect | StatusCodeRedirect;
 
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+/**
+ * Tag → entity hub. When a hub in content/kg/<type>/<slug>.mdx is published
+ * with `replacesTag: <tag>`, the old /tags/<tag> page permanently moves to the
+ * hub (one URL per entity). Drafts never redirect.
+ */
+function tagToHubRedirects(): Redirect[] {
+  const root = path.join(process.cwd(), "content/kg");
+  if (!fs.existsSync(root)) return [];
+  const out: Redirect[] = [];
+  for (const type of fs.readdirSync(root)) {
+    const dir = path.join(root, type);
+    if (type === "person" || !fs.statSync(dir).isDirectory()) continue;
+    for (const file of fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"))) {
+      const { data } = matter(fs.readFileSync(path.join(dir, file), "utf8"));
+      if (data.status !== "published" || !data.replacesTag) continue;
+      const tags: string[] = Array.isArray(data.replacesTag) ? data.replacesTag : [data.replacesTag];
+      for (const tag of tags) {
+        out.push({ source: `/tags/${tag}`, destination: `/kg/${type}/${file.replace(/\.mdx$/, "")}`, permanent: true });
+      }
+    }
+  }
+  return out;
+}
+
 export const REDIRECTS: Redirect[] = [
   {
     // Гайди живуть у Базі знань, а не як категорія серед статей/новин.
@@ -85,6 +113,7 @@ export const REDIRECTS: Redirect[] = [
     destination: "/tags/technical",
     permanent: true,
   },
+  ...tagToHubRedirects(),
 ];
 
 /** Exact redirect source paths — used to filter sitemap entries. */

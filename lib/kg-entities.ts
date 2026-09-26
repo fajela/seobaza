@@ -302,8 +302,11 @@ export function getMentionSnippet(m: TaggedMaterial, id: string, max = 320): str
     blocks
       .map((raw, index) => {
         if (/^\s*(import|export)\s/.test(raw)) return null;
-        // A heading alone says little: read it together with the paragraph under it.
-        const text = plainText(/^\s*#/.test(raw) && blocks[index + 1] ? `${raw}. ${blocks[index + 1]}` : raw);
+        // A heading counts only when it names the entity itself; then it is read
+        // together with the paragraph under it (a heading alone says little).
+        const isHeading = /^\s*#/.test(raw);
+        if (isHeading && !pats.some((p) => p.test(plainText(raw)))) return null;
+        const text = plainText(isHeading && blocks[index + 1] ? `${raw.trim()}. ${blocks[index + 1]}` : raw);
         const hits = pats.map((p) => text.search(p)).filter((i) => i >= 0);
         if (text.length < 20 || hits.length === 0) return null;
         return { index, text, hit: Math.min(...hits), item: /^\s*([-*]\s|#)/.test(raw) };
