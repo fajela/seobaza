@@ -30,6 +30,19 @@ export const metadata: Metadata = {
   keywords: ["SEO", "Ukrainian SEO", "SEO community", "SEO Ukraine", "digital marketing"],
   authors: [{ name: "Олеся Коробка", url: "https://olesiakorobka.com" }],
   creator: "Олеся Коробка",
+  // Без max-image-preview:large Google Discover показує тільки мініатюру
+  // або не показує сторінку взагалі.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },
