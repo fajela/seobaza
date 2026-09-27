@@ -71,7 +71,7 @@ export function seoBazaOrganization(lang: OrgLang = "uk") {
       jobTitle: FOUNDER_TITLE[lang],
       url: "https://olesiakorobka.com/",
       sameAs: [
-        "https://g.co/kg/g/11f2bzkqxz",
+        "https://www.google.com/search?kgmid=/g/11f2bzkqxz",
         "https://fajela.com/entity/people/olesia-korobka/",
         "https://www.linkedin.com/in/okorobka/",
         "https://t.me/Fajela",

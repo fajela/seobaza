@@ -33,6 +33,9 @@ export interface AuthorMetadata {
   company?: string; // worksFor organization (defaults to SEO BAZA when absent)
   companyUrl?: string;
   companyGoogleKgId?: string; // Google KG MID of the worksFor organization
+  podcast?: string; // podcast the person hosts or co-hosts
+  podcastUrl?: string;
+  podcastGoogleKgId?: string; // Google KG MID of that podcast
   city?: string;
   topics?: string[]; // free-form expertise topics, rendered as knowsAbout chips
   sameAs?: string[]; // extra profile/mention URLs beyond the header socials
@@ -49,9 +52,16 @@ export function altNames(value?: string | string[]): string[] {
   return (Array.isArray(value) ? value : [value]).filter(Boolean);
 }
 
-/** Canonical Google Knowledge Graph entity URI for a MID like "/g/11f3pg5hw6". */
+/** Google Knowledge Graph entity URL for a MID like "/g/11f3pg5hw6".
+ *  Not g.co/kg: that short link redirects to a `kponly` search, which Google
+ *  answers with a 404 for entities that have no knowledge panel. */
 export function googleKgUrl(mid: string): string {
-  return `https://g.co/kg${mid}`;
+  return `https://www.google.com/search?kgmid=${mid}`;
+}
+
+/** True for a Google KG entity URL in either the old g.co or the kgmid form. */
+export function isGoogleKgUrl(url: string): boolean {
+  return url.startsWith("https://g.co/kg") || url.startsWith("https://www.google.com/search?kgmid=");
 }
 
 /**
@@ -93,7 +103,7 @@ export function profileUrls(person: PersonLinks): string[] {
   ].filter((u): u is string => Boolean(u));
   // Google KG entity URIs are markup-only (see hiddenSameAs) — a visible
   // "g.co" chip tells the reader nothing.
-  return [...new Set(urls)].filter((u) => !u.startsWith("https://g.co/kg"));
+  return [...new Set(urls)].filter((u) => !isGoogleKgUrl(u));
 }
 
 /**
@@ -108,7 +118,7 @@ export function hiddenSameAs(person: PersonLinks): string[] {
     person.googleKgId ? googleKgUrl(person.googleKgId) : undefined,
     // Extra Google KG entity URIs (e.g. a second/duplicate MID) placed in
     // sameAs go into the markup here, never as a visible chip.
-    ...(person.sameAs ?? []).filter((u) => u.startsWith("https://g.co/kg")),
+    ...(person.sameAs ?? []).filter(isGoogleKgUrl),
   ].filter((u): u is string => Boolean(u));
   return [...new Set(urls)].filter((u) => !shown.has(u));
 }
