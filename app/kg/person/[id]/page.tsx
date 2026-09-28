@@ -109,7 +109,13 @@ export default async function KgPersonPage({
             {person.podcastGoogleKgId && (
               <link itemProp="sameAs" href={googleKgUrl(person.podcastGoogleKgId)} />
             )}
+            {(person.podcastSameAs ?? []).map((url) => (
+              <link key={url} itemProp="sameAs" href={url} />
+            ))}
             <link itemProp="actor" href={`${personUrl}#person`} />
+            {(person.podcastCoHosts ?? []).map((id) => (
+              <link key={id} itemProp="actor" href={`https://seobaza.com.ua/kg/person/${id}#person`} />
+            ))}
           </span>
         )}
 

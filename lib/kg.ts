@@ -52,6 +52,8 @@ function readPersonFile(filename: string): KgPerson {
     podcast: data.podcast,
     podcastUrl: data.podcastUrl,
     podcastGoogleKgId: data.podcastGoogleKgId,
+    podcastSameAs: data.podcastSameAs,
+    podcastCoHosts: data.podcastCoHosts,
     city: data.city,
     topics: data.topics,
     sameAs: data.sameAs,

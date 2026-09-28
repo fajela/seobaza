@@ -36,6 +36,8 @@ export interface AuthorMetadata {
   podcast?: string; // podcast the person hosts or co-hosts
   podcastUrl?: string;
   podcastGoogleKgId?: string; // Google KG MID of that podcast
+  podcastSameAs?: string[]; // the podcast's other homes (Apple Podcasts, Telegram)
+  podcastCoHosts?: string[]; // sb-ids of the other hosts, marked up as actors too
   city?: string;
   topics?: string[]; // free-form expertise topics, rendered as knowsAbout chips
   sameAs?: string[]; // extra profile/mention URLs beyond the header socials
