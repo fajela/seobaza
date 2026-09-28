@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { getAllKgPeople } from "@/lib/kg";
+import { altNames } from "@/lib/authors";
+import { getTagDisplayName } from "@/lib/taxonomy";
+import { KgPeopleList, type KgPeopleListItem, type KgPeopleTopic } from "@/components/kg-people-list";
 import { buildOgImage } from "@/lib/og-image";
 import type { Metadata } from "next";
 
@@ -27,8 +30,42 @@ export const metadata: Metadata = {
   },
 };
 
+/** "Ім'я Прізвище" → "Прізвище Ім'я": the directory is ordered by surname. */
+function surnameFirst(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return parts.length > 1 ? `${parts[parts.length - 1]} ${parts.slice(0, -1).join(" ")}` : name;
+}
+
+// Ukrainian (Cyrillic) names first, then Latin ones, each alphabetically by surname.
+function byName(a: { sortKey: string }, b: { sortKey: string }): number {
+  const cyr = (n: string) => /^[Ѐ-ӿ]/.test(n);
+  if (cyr(a.sortKey) !== cyr(b.sortKey)) return cyr(a.sortKey) ? -1 : 1;
+  return a.sortKey.localeCompare(b.sortKey, "uk");
+}
+
 export default function KgPeopleIndexPage() {
-  const people = getAllKgPeople();
+  const people: KgPeopleListItem[] = getAllKgPeople()
+    .map((p) => ({
+      kgId: p.kgId,
+      name: p.name,
+      sortKey: surnameFirst(p.name),
+      role: p.role,
+      company: p.company,
+      image: p.image,
+      expertise: p.expertise,
+      haystack: [p.name, ...altNames(p.alternateName), ...p.aliases, p.company ?? ""]
+        .join(" ")
+        .toLowerCase()
+        .replace(/[’ʼ`]/g, "'"),
+    }))
+    .sort(byName);
+
+  // Topic chips: every expertise tag in use, most common first.
+  const counts = new Map<string, number>();
+  for (const p of people) for (const t of p.expertise) counts.set(t, (counts.get(t) ?? 0) + 1);
+  const topics: KgPeopleTopic[] = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([slug, count]) => ({ slug, label: getTagDisplayName(slug), count }));
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -40,54 +77,7 @@ export default function KgPeopleIndexPage() {
           стабільним ідентифікатором.
         </p>
 
-        <div
-          className="grid gap-4 sm:grid-cols-2"
-          itemScope
-          itemType="https://schema.org/ItemList"
-        >
-          <meta itemProp="numberOfItems" content={String(people.length)} />
-          {people.map((p, i) => (
-            <div
-              key={p.kgId}
-              itemProp="itemListElement"
-              itemScope
-              itemType="https://schema.org/ListItem"
-            >
-              <meta itemProp="position" content={String(i + 1)} />
-              <link itemProp="url" href={`https://seobaza.com.ua/kg/person/${p.kgId}`} />
-              <Link href={`/kg/person/${p.kgId}`} className="block group h-full">
-                <div className="flex items-center gap-4 p-5 h-full rounded-xl border border-border bg-secondary/20 group-hover:border-accent/50 group-hover:bg-secondary/40 transition-all">
-                  <div>
-                    <h2
-                      itemProp="name"
-                      className="font-display text-lg group-hover:text-accent transition-colors"
-                    >
-                      {p.name}
-                    </h2>
-                    <p className="text-sm text-muted-foreground">
-                      {p.role}
-                      {p.company ? ` · ${p.company}` : ""}
-                    </p>
-                  </div>
-                  {p.image ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      width={56}
-                      height={56}
-                      className="order-first w-14 h-14 rounded-full object-cover shrink-0 border border-border"
-                    />
-                  ) : (
-                    <div className="order-first w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center text-accent font-display text-xl shrink-0">
-                      {p.name.charAt(0)}
-                    </div>
-                  )}
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+        <KgPeopleList people={people} topics={topics} />
       </div>
     </div>
   );
