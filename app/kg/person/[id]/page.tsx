@@ -112,9 +112,22 @@ export default async function KgPersonPage({
             {(person.podcastSameAs ?? []).map((url) => (
               <link key={url} itemProp="sameAs" href={url} />
             ))}
-            <link itemProp="actor" href={`${personUrl}#person`} />
-            {(person.podcastCoHosts ?? []).map((id) => (
-              <link key={id} itemProp="actor" href={`https://seobaza.com.ua/kg/person/${id}#person`} />
+            {/* Hosts as Person items with the same itemID as their profile pages,
+                so parsers merge them with the full Person entities. */}
+            {[
+              { id: person.kgId, name: person.name },
+              ...(person.podcastCoHosts ?? []).map((id) => ({ id, name: getKgPersonById(id).name })),
+            ].map((host) => (
+              <span
+                key={host.id}
+                itemProp="actor"
+                itemScope
+                itemType="https://schema.org/Person"
+                itemID={`https://seobaza.com.ua/kg/person/${host.id}#person`}
+              >
+                <meta itemProp="name" content={host.name} />
+                <link itemProp="url" href={`https://seobaza.com.ua/kg/person/${host.id}`} />
+              </span>
             ))}
           </span>
         )}
