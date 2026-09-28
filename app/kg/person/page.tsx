@@ -6,17 +6,24 @@ import { KgPeopleList, type KgPeopleListItem, type KgPeopleTopic } from "@/compo
 import { buildOgImage } from "@/lib/og-image";
 import type { Metadata } from "next";
 
-const ogPeople = buildOgImage(undefined, "Люди в графі знань SEO Baza");
+const ogPeople = buildOgImage(
+  "/images/og/kg/ukrainski-seo-fakhivtsi.jpg",
+  "Українські SEO-фахівці: профілі спікерів і експертів у графі знань SEO Baza"
+);
+
+const TITLE = "Українські SEO-спеціалісти: профілі спікерів та експертів | SEO BAZA";
+const DESCRIPTION =
+  "Профілі SEO-експертів з України: спікери мітапів і стрімів SEO Baza, їхні доповіді, компанії та соцмережі. Шукайте за прізвищем або темою.";
+const OG_DESCRIPTION =
+  "Хто є хто в українському SEO: спікери SEO Baza з доповідями, компаніями і контактами. Пошук за прізвищем, псевдонімом чи темою.";
 
 export const metadata: Metadata = {
-  title: "Граф знань SEO Baza: люди української SEO-спільноти",
-  description:
-    "Люди з графа знань SEO Baza: спікери мітапів та експерти української SEO-спільноти. Профілі з виступами, роботами і посиланнями. Знайомтесь зі спільнотою.",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
   alternates: { canonical: "https://seobaza.com.ua/kg/person" },
   openGraph: {
-    title: "Граф знань SEO Baza: люди української SEO-спільноти",
-    description:
-      "Люди з графа знань SEO Baza: спікери мітапів та експерти української SEO-спільноти. Профілі з виступами, роботами і посиланнями.",
+    title: TITLE,
+    description: OG_DESCRIPTION,
     url: "https://seobaza.com.ua/kg/person",
     siteName: "SEO BAZA",
     locale: "uk_UA",
@@ -25,7 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Граф знань SEO Baza: люди української SEO-спільноти",
+    title: TITLE,
+    description: OG_DESCRIPTION,
     images: [{ url: ogPeople.url, alt: ogPeople.alt }],
   },
 };
@@ -91,11 +99,11 @@ export default function KgPeopleIndexPage() {
           </span>
         </nav>
 
-        <h1 className="text-4xl font-display mb-3">Граф знань: люди</h1>
+        <h1 className="text-4xl font-display mb-3">Українські SEO-фахівці</h1>
         <p className="text-muted-foreground mb-10">
-          SEO Baza будує власний граф знань української SEO-спільноти. Тут живуть
-          його люди: спікери наших мітапів та експерти галузі, кожен зі своїм
-          стабільним ідентифікатором.
+          SEO-фахівці з України, які виступали на мітапах і стрімах SEO Baza або
+          з'являються в наших матеріалах. У кожному профілі доповіді, компанія
+          і посилання на соцмережі.
         </p>
 
         <KgPeopleList people={people} topics={topics} />
