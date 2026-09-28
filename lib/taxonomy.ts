@@ -99,6 +99,7 @@ export const TAGS: TagMeta[] = [
 
   // Strategy / verticals
   { slug: "link-building",     displayName: "Лінкбілдинг" },
+  { slug: "content",           displayName: "Контент" },
   { slug: "local",             displayName: "Локальне" },
   { slug: "ecommerce",         displayName: "Ecommerce" },
   { slug: "international",     displayName: "Міжнародне" },
