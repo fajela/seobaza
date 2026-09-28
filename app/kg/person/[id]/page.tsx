@@ -120,17 +120,25 @@ export default async function KgPersonPage({
           itemType="https://schema.org/BreadcrumbList"
         >
           <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-            <Link href="/kg/person" className="hover:text-accent transition-colors">
+            <Link href="/kg" className="hover:text-accent transition-colors">
               <span itemProp="name">Граф знань</span>
             </Link>
-            <link itemProp="item" href="https://seobaza.com.ua/kg/person" />
+            <link itemProp="item" href="https://seobaza.com.ua/kg" />
             <meta itemProp="position" content="1" />
+          </span>
+          <span>/</span>
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <Link href="/kg/person" className="hover:text-accent transition-colors">
+              <span itemProp="name">Люди</span>
+            </Link>
+            <link itemProp="item" href="https://seobaza.com.ua/kg/person" />
+            <meta itemProp="position" content="2" />
           </span>
           <span>/</span>
           <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
             <span itemProp="name" className="text-foreground">{person.name}</span>
             <link itemProp="item" href={personUrl} />
-            <meta itemProp="position" content="2" />
+            <meta itemProp="position" content="3" />
           </span>
         </nav>
 

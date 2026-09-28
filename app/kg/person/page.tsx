@@ -70,6 +70,27 @@ export default function KgPeopleIndexPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-4xl mx-auto">
+        {/* Breadcrumbs — microdata BreadcrumbList */}
+        <nav
+          className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8"
+          itemScope
+          itemType="https://schema.org/BreadcrumbList"
+        >
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <Link href="/kg" className="hover:text-accent transition-colors">
+              <span itemProp="name">Граф знань</span>
+            </Link>
+            <link itemProp="item" href="https://seobaza.com.ua/kg" />
+            <meta itemProp="position" content="1" />
+          </span>
+          <span>/</span>
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <span itemProp="name" className="text-foreground">Люди</span>
+            <link itemProp="item" href="https://seobaza.com.ua/kg/person" />
+            <meta itemProp="position" content="2" />
+          </span>
+        </nav>
+
         <h1 className="text-4xl font-display mb-3">Граф знань: люди</h1>
         <p className="text-muted-foreground mb-10">
           SEO Baza будує власний граф знань української SEO-спільноти. Тут живуть
