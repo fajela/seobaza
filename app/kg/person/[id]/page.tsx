@@ -100,10 +100,10 @@ export default async function KgPersonPage({
         {hiddenSameAs(person).map((url) => (
           <link key={url} itemProp="sameAs" href={url} />
         ))}
-        {/* Podcast the person hosts: a separate PodcastSeries item (no itemProp,
-            so it is not a Person property) pointing back at the person as actor. */}
+        {/* Podcast the person hosts: nested in the Person item (subjectOf), so it
+            is part of the main markup, with the hosts as actors. */}
         {person.podcast && (
-          <span itemScope itemType="https://schema.org/PodcastSeries">
+          <span itemProp="subjectOf" itemScope itemType="https://schema.org/PodcastSeries">
             <meta itemProp="name" content={person.podcast} />
             {person.podcastUrl && <link itemProp="url" href={person.podcastUrl} />}
             {person.podcastGoogleKgId && (
