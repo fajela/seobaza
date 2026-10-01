@@ -39,7 +39,7 @@ export async function generateMetadata({
   const entity = getPublishedEntity(type, slug);
   if (!entity) return { title: "Сторінку не знайдено | SEO BAZA" };
   const url = `${BASE}${entityUrl(entity)}`;
-  const title = hubTitle(entity.name);
+  const title = entity.title ?? hubTitle(entity.name);
   const og = buildOgImage(entity.image, entity.name);
   return {
     title,
@@ -133,9 +133,16 @@ export default async function EntityHubPage({
 
         <header className="mb-10 p-6 rounded-xl border border-border bg-secondary/20">
           <p className="text-xs uppercase tracking-wide text-primary mb-2">{labels.one}</p>
-          <h1 className="text-3xl font-display mb-3" itemProp="name">
-            {entity.name}
-          </h1>
+          {entity.h1 ? (
+            <>
+              <h1 className="text-3xl font-display mb-3">{entity.h1}</h1>
+              <meta itemProp="name" content={entity.name} />
+            </>
+          ) : (
+            <h1 className="text-3xl font-display mb-3" itemProp="name">
+              {entity.name}
+            </h1>
+          )}
           <p className="text-lg leading-relaxed" itemProp="description">
             {entity.description}
           </p>

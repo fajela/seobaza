@@ -28,6 +28,10 @@ export interface KgEntity {
   slug: string;
   type: EntityType;
   name: string;
+  /** Optional <title> override; default is "<name>: новини та матеріали SEO Baza". */
+  title?: string;
+  /** Optional H1 override; schema name stays `name`. */
+  h1?: string;
   /** Short description, 1-2 sentences; used as the hub lead and meta description. */
   description: string;
   status: "draft" | "published";
@@ -67,6 +71,8 @@ export function getAllEntities(): KgEntity[] {
         slug: file.replace(/\.mdx$/, ""),
         type,
         name: data.name,
+        title: data.title,
+        h1: data.h1,
         description: data.description ?? "",
         status: data.status === "published" ? "published" : "draft",
         aliases: asList(data.aliases),
