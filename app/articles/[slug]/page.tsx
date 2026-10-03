@@ -14,6 +14,7 @@ import type { Metadata } from "next";
 import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 import Link from "next/link";
 import { slug } from "github-slugger";
+import { tagHref, categoryHref } from "@/lib/redirects";
 
 const mdxComponents = { img: MdxImg, a: MdxLink, KgProfileTool, IndexingQuiz };
 
@@ -181,12 +182,12 @@ export default async function ArticlePage({
               <span>/</span>
               <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                 <Link
-                  href={`/category/${article.category}`}
+                  href={categoryHref(article.category)}
                   className="hover:text-accent transition-colors"
                 >
                   <span itemProp="name">{getCategoryDisplayName(article.category)}</span>
                 </Link>
-                <link itemProp="item" href={`https://seobaza.com.ua/category/${article.category}`} />
+                <link itemProp="item" href={`https://seobaza.com.ua${categoryHref(article.category)}`} />
                 <meta itemProp="position" content="2" />
               </span>
             </>
@@ -208,7 +209,7 @@ export default async function ArticlePage({
           {/* Category badge */}
           {article.category && (
             <Link
-              href={`/category/${article.category}`}
+              href={categoryHref(article.category)}
               className="inline-block mb-4 px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
             >
               {getCategoryDisplayName(article.category)}
@@ -354,7 +355,7 @@ export default async function ArticlePage({
               {article.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/tags/${tag}`}
+                  href={tagHref(tag)}
                   className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                 >
                   {getTagDisplayName(tag)}

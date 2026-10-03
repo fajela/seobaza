@@ -4,6 +4,7 @@ import { getAllTagSlugs, getArticlesByTag } from "@/lib/articles";
 import { getNewsByTag } from "@/lib/news";
 import { getTagMeta, getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import type { Metadata } from "next";
+import { tagHref, categoryHref } from "@/lib/redirects";
 
 export async function generateStaticParams() {
   const slugs = getAllTagSlugs();
@@ -170,7 +171,7 @@ export default async function TagPage({
                     </span>
                     {item.category && (
                       <Link
-                        href={`/category/${item.category}`}
+                        href={categoryHref(item.category)}
                         className="inline-block px-2 py-0.5 text-xs font-medium bg-secondary text-muted-foreground rounded-full hover:bg-primary/20 hover:text-primary transition-colors"
                       >
                         {getCategoryDisplayName(item.category)}
@@ -210,7 +211,7 @@ export default async function TagPage({
                       {item.tags.map((t) => (
                         <Link
                           key={t}
-                          href={`/tags/${t}`}
+                          href={tagHref(t)}
                           className={`px-3 py-1 text-xs font-medium rounded-full transition-colors ${
                             t === slug
                               ? "bg-accent text-background"

@@ -15,6 +15,7 @@ import { isoDate } from "@/lib/schema-rdfa";
 import type { Metadata } from "next";
 import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 import Link from "next/link";
+import { tagHref } from "@/lib/redirects";
 
 const mdxComponents = { img: MdxImg, a: MdxLink, KgProfileTool, IndexingQuiz, SoaaDashboard };
 
@@ -226,7 +227,7 @@ export default async function KnowledgeBaseArticlePage({
               {article.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/tags/${tag}`}
+                  href={tagHref(tag)}
                   className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                 >
                   {getTagDisplayName(tag)}

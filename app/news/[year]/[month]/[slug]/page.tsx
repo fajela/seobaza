@@ -14,6 +14,7 @@ import { Carousel } from "@/components/carousel";
 import { SponsorBanner } from "@/components/sponsor-banner";
 import type { Metadata } from "next";
 import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
+import { tagHref, categoryHref } from "@/lib/redirects";
 
 const mdxComponents = { img: MdxImg, a: MdxLink, Carousel, SponsorBanner };
 
@@ -188,7 +189,7 @@ export default async function NewsPostPage({
           {/* Category badge — matches the pattern on /articles/[slug] */}
           {item.category && (
             <Link
-              href={`/category/${item.category}`}
+              href={categoryHref(item.category)}
               className="inline-block mb-4 px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
             >
               {getCategoryDisplayName(item.category)}
@@ -302,7 +303,7 @@ export default async function NewsPostPage({
               {item.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/tags/${tag}`}
+                  href={tagHref(tag)}
                   className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                 >
                   {getTagDisplayName(tag)}

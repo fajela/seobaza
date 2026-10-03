@@ -3,6 +3,7 @@ import { getAllArticles } from "@/lib/articles";
 import { CATEGORIES, getTagDisplayName, getCategoryDisplayName } from "@/lib/taxonomy";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { tagHref, categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
   title: "Статті — SEO BAZA",
@@ -51,7 +52,7 @@ export default async function ArticlesPage() {
             {activeCategories.map((cat) => (
               <Link
                 key={cat.slug}
-                href={`/category/${cat.slug}`}
+                href={categoryHref(cat.slug)}
                 className="px-4 py-1.5 rounded-full text-sm font-medium border border-border hover:border-accent/50 hover:text-accent transition-colors"
               >
                 {cat.displayName}
@@ -95,7 +96,7 @@ export default async function ArticlesPage() {
                   {/* Category badge */}
                   {article.category && (
                     <Link
-                      href={`/category/${article.category}`}
+                      href={categoryHref(article.category)}
                       className="relative z-20 inline-block mb-3 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
                     >
                       {getCategoryDisplayName(article.category)}
@@ -136,7 +137,7 @@ export default async function ArticlesPage() {
                       {article.tags.map((tag) => (
                         <Link
                           key={tag}
-                          href={`/tags/${tag}`}
+                          href={tagHref(tag)}
                           className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                         >
                           {getTagDisplayName(tag)}

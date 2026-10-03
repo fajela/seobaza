@@ -120,3 +120,25 @@ export const REDIRECTS: Redirect[] = [
 export const REDIRECT_SOURCES: ReadonlySet<string> = new Set(
   REDIRECTS.map((r) => r.source)
 );
+
+/** Permanent redirects only: a temporary 302 target can change, keep linking the source. */
+const PERMANENT_MAP: ReadonlyMap<string, string> = new Map(
+  REDIRECTS.filter((r) => "permanent" in r && r.permanent).map((r) => [r.source, r.destination])
+);
+
+/**
+ * Internal links must point at the final 200 URL, never at a redirect source
+ * (Ahrefs "Internal outlinks to 3xx"). Follows chains, guarded against loops.
+ */
+export function resolveHref(href: string): string {
+  let current = href;
+  for (let i = 0; i < 5; i++) {
+    const next = PERMANENT_MAP.get(current);
+    if (!next) break;
+    current = next;
+  }
+  return current;
+}
+
+export const tagHref = (tag: string) => resolveHref(`/tags/${tag}`);
+export const categoryHref = (slug: string) => resolveHref(`/category/${slug}`);

@@ -3,6 +3,7 @@ import { getAllNews, getNewsYears } from "@/lib/news";
 import { CATEGORIES, getCategoryDisplayName } from "@/lib/taxonomy";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
   title: "SEO новини — SEO BAZA",
@@ -58,7 +59,7 @@ export default function NewsPage() {
             {activeCategories.map((cat) => (
               <Link
                 key={cat.slug}
-                href={`/category/${cat.slug}`}
+                href={categoryHref(cat.slug)}
                 className="px-4 py-1.5 rounded-full text-sm font-medium border border-border hover:border-accent/50 hover:text-accent transition-colors"
               >
                 {cat.displayName}

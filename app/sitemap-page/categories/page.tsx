@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllCategoriesWithCounts } from "@/lib/articles";
 import { pageMeta } from "@/lib/page-metadata";
+import { categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
   title: "Категорії — Карта сайту — SEO BAZA",
@@ -61,9 +62,9 @@ export default function SitemapCategoriesPage() {
               itemType="https://schema.org/ListItem"
             >
               <meta itemProp="position" content={String(i + 1)} />
-              <link itemProp="url" href={`https://seobaza.com.ua/category/${c.slug}`} />
+              <link itemProp="url" href={`https://seobaza.com.ua${categoryHref(c.slug)}`} />
               <Link
-                href={`/category/${c.slug}`}
+                href={categoryHref(c.slug)}
                 className="block p-4 rounded-lg border border-border bg-secondary/20 hover:border-accent/50 hover:bg-secondary/40 transition-all group"
               >
                 <div className="flex items-baseline justify-between gap-3 mb-1">

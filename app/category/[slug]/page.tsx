@@ -5,6 +5,7 @@ import { getNewsByCategory } from "@/lib/news";
 import { CATEGORIES, getCategoryMeta, getTagDisplayName } from "@/lib/taxonomy";
 import type { Metadata } from "next";
 import type { CategorySlug } from "@/lib/taxonomy";
+import { tagHref } from "@/lib/redirects";
 
 export async function generateStaticParams() {
   return CATEGORIES.map((cat) => ({ slug: cat.slug }));
@@ -207,7 +208,7 @@ export default async function CategoryPage({
                       {item.tags.map((tag) => (
                         <Link
                           key={tag}
-                          href={`/tags/${tag}`}
+                          href={tagHref(tag)}
                           className="px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                         >
                           {getTagDisplayName(tag)}

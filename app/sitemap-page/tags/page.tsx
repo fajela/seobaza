@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllTagsWithCounts } from "@/lib/articles";
 import { pageMeta } from "@/lib/page-metadata";
+import { tagHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
   title: "Теги — Карта сайту — SEO BAZA",
@@ -61,9 +62,9 @@ export default function SitemapTagsPage() {
               itemType="https://schema.org/ListItem"
             >
               <meta itemProp="position" content={String(i + 1)} />
-              <link itemProp="url" href={`https://seobaza.com.ua/tags/${t.slug}`} />
+              <link itemProp="url" href={`https://seobaza.com.ua${tagHref(t.slug)}`} />
               <Link
-                href={`/tags/${t.slug}`}
+                href={tagHref(t.slug)}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/30 text-sm hover:bg-accent/10 hover:text-accent hover:border-accent/50 transition-all"
               >
                 <span itemProp="name">{t.displayName}</span>

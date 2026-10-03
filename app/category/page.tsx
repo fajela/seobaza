@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllCategoriesWithCounts } from "@/lib/articles";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
   title: "Категорії — SEO BAZA",
@@ -39,8 +40,8 @@ export default function CategoriesPage() {
               itemType="https://schema.org/ListItem"
             >
               <meta itemProp="position" content={String(i + 1)} />
-              <link itemProp="url" href={`https://seobaza.com.ua/category/${category.slug}`} />
-              <Link href={`/category/${category.slug}`} className="block group">
+              <link itemProp="url" href={`https://seobaza.com.ua${categoryHref(category.slug)}`} />
+              <Link href={categoryHref(category.slug)} className="block group">
                 <div className="h-full bg-secondary/30 rounded-xl p-6 border border-border transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h2

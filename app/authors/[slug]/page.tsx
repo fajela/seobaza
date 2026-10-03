@@ -17,6 +17,7 @@ import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import { tagHref } from "@/lib/redirects";
 
 const mdxComponents = { img: MdxImg, a: MdxLink };
 
@@ -326,7 +327,7 @@ export default async function AuthorPage({
               {author.expertise.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/tags/${tag}`}
+                  href={tagHref(tag)}
                   className="px-3 py-1.5 text-sm bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
                 >
                   {getTagDisplayName(tag)}
@@ -464,7 +465,7 @@ export default async function AuthorPage({
                         {article.tags.map((tag) => (
                           <Link
                             key={tag}
-                            href={`/tags/${tag}`}
+                            href={tagHref(tag)}
                             className="px-2 py-0.5 text-xs bg-accent/10 text-accent rounded-full hover:bg-accent/20 transition-colors"
                           >
                             {getTagDisplayName(tag)}
