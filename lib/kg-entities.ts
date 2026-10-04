@@ -306,6 +306,27 @@ function mentionPatterns(id: string): RegExp[][] {
   return [pats];
 }
 
+/**
+ * The 1-2 entities a material is ABOUT (schema.org `about`), as opposed to the
+ * ones it merely mentions: those named in its title, most-mentioned in the body
+ * first. A series (Пʼятничні новини) is never `about`: the material is part of it.
+ */
+export function getAboutIds(material: TaggedMaterial, candidates: string[]): string[] {
+  const body = plainText(material.body);
+  return candidates
+    .filter((id) => getAllEntities().find((e) => e.slug === id)?.type !== "series")
+    .map((id) => {
+      const [strong] = mentionPatterns(id);
+      const inTitle = strong.some((re) => re.test(material.title));
+      const count = strong.reduce((n, re) => n + (body.match(new RegExp(re.source, re.flags + "g"))?.length ?? 0), 0);
+      return { id, inTitle, count };
+    })
+    .filter((x) => x.inTitle)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 2)
+    .map((x) => x.id);
+}
+
 function plainText(md: string): string {
   return md
     .replace(/<[^>]+>/g, " ")

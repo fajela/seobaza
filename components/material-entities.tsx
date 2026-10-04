@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { getTaggedMaterials, resolveEntityRef } from "@/lib/kg-entities";
+import { getAboutIds, getAllEntities, getTaggedMaterials, resolveEntityRef } from "@/lib/kg-entities";
 
 const BASE = "https://seobaza.com.ua";
 
 /**
  * Links from a material to the knowledge-graph pages of everything it is tagged
  * with (entities: frontmatter). Only entities with a live page are shown: a
- * published hub or a public person profile. Each chip is also a microdata
- * `mentions` of the enclosing article, pointing at the entity's itemID, so the
- * block must sit inside the article's itemScope. Pages whose article has no
+ * published hub or a public person profile. Each chip is also microdata of the
+ * enclosing article, pointing at the entity's itemID: `about` for the 1-2 main
+ * entities (named in the title), `isPartOf` for a series, `mentions` for the
+ * rest. The block must sit inside the article's itemScope. Pages whose article has no
  * microdata scope (videos, events use JSON-LD) pass microdata={false}.
  */
 export function MaterialEntities({ url, microdata = true }: { url: string; microdata?: boolean }) {
@@ -16,6 +17,9 @@ export function MaterialEntities({ url, microdata = true }: { url: string; micro
   if (!material) return null;
   const refs = material.entities.map(resolveEntityRef).filter((r) => r.href);
   if (refs.length === 0) return null;
+  const about = new Set(getAboutIds(material, refs.map((r) => r.id)));
+  const seriesIds = new Set(getAllEntities().filter((e) => e.type === "series").map((e) => e.slug));
+  const prop = (id: string) => (seriesIds.has(id) ? "isPartOf" : about.has(id) ? "about" : "mentions");
 
   return (
     <aside className="mt-10 pt-6 border-t border-border">
@@ -28,9 +32,13 @@ export function MaterialEntities({ url, microdata = true }: { url: string; micro
               key={r.id}
               {...(microdata
                 ? {
-                    itemProp: "mentions",
+                    itemProp: prop(r.id),
                     itemScope: true,
-                    itemType: isPerson ? "https://schema.org/Person" : "https://schema.org/Thing",
+                    itemType: isPerson
+                      ? "https://schema.org/Person"
+                      : seriesIds.has(r.id)
+                        ? "https://schema.org/CreativeWorkSeries"
+                        : "https://schema.org/Thing",
                     itemID: `${BASE}${r.href}#${isPerson ? "person" : "entity"}`,
                   }
                 : {})}
