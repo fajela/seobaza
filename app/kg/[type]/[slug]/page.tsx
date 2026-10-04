@@ -169,7 +169,7 @@ export default async function EntityHubPage({
 
         {entity.sameAs.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-xl font-bold mb-4">Офіційні сторінки</h2>
+            <h2 className="text-xl font-bold mb-4">Профілі й ідентифікатори</h2>
             <div className="flex flex-wrap gap-2">
               {entity.sameAs.map((url) => (
                 <a
@@ -180,7 +180,7 @@ export default async function EntityHubPage({
                   itemProp="sameAs"
                   className="px-3 py-1.5 text-sm border border-border rounded-full hover:border-primary hover:text-primary transition-colors"
                 >
-                  {url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                  {decodeURIComponent(url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")).replace(/_/g, " ")}
                 </a>
               ))}
             </div>
