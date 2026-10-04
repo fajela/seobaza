@@ -5,7 +5,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { getAllArticles, getAllTagSlugs } from "./articles";
+import { getAllArticles, getAllTagSlugs, getArticleBySlug, getArticleSlugs } from "./articles";
 import { getAllNews, getNewsYears, getMonthsForYear } from "./news";
 import { getAllAuthors } from "./authors";
 import { getAllKgPeople } from "./kg";
@@ -189,11 +189,23 @@ export async function buildPages(): Promise<Entry[]> {
 }
 
 export function buildArticles(): Entry[] {
-  return getAllArticles().map((a) => ({
+  const articles: Entry[] = getAllArticles().map((a) => ({
     url: `${BASE}/articles/${a.slug}`,
     lastModified: new Date(a.date),
     changeFrequency: "monthly" as const,
   }));
+  // Knowledge-base guides live in their own folder and route (/knowledge-base/<slug>);
+  // they were missing from every sitemap until 2026-10-04.
+  const kbDirectory = path.join(process.cwd(), "content/knowledge-base");
+  const guides: Entry[] = getArticleSlugs(kbDirectory)
+    .map((file) => getArticleBySlug(file, kbDirectory))
+    .filter((a) => a.status !== "draft")
+    .map((a) => ({
+      url: `${BASE}/knowledge-base/${a.slug}`,
+      lastModified: new Date(a.date),
+      changeFrequency: "monthly" as const,
+    }));
+  return [...articles, ...guides];
 }
 
 export function buildNews(): Entry[] {

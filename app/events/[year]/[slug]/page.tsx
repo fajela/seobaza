@@ -183,12 +183,6 @@ export default async function EventPage({ params }: EventPageProps) {
           <meta itemProp="position" content="1" />
         </span>
         <span>/</span>
-        <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-          <span itemProp="name">{year}</span>
-          <link itemProp="item" href={`https://seobaza.com.ua/events/${year}`} />
-          <meta itemProp="position" content="2" />
-        </span>
-        <span>/</span>
         <span
           itemProp="itemListElement"
           itemScope
@@ -197,7 +191,7 @@ export default async function EventPage({ params }: EventPageProps) {
         >
           <span itemProp="name">{frontmatter.title}</span>
           <link itemProp="item" href={eventUrl} />
-          <meta itemProp="position" content="3" />
+          <meta itemProp="position" content="2" />
         </span>
       </nav>
       <div className="prose prose-lg dark:prose-invert max-w-none">
