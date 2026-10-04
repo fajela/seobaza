@@ -13,7 +13,7 @@ import { ENTITY_TYPES, entityUrl, getPublishedEntities } from "./kg-entities";
 import { getLatestDealsEvent } from "./events";
 import { getAllJobs, jobPath } from "./jobs";
 import { getAllVideos } from "./videos";
-import { CATEGORIES } from "./taxonomy";
+import { CATEGORIES, TAGS } from "./taxonomy";
 import { REDIRECT_SOURCES } from "./redirects";
 
 export const BASE = "https://seobaza.com.ua";
@@ -284,7 +284,12 @@ export function buildTaxonomy(): Entry[] {
     lastModified: now,
     changeFrequency: "weekly" as const,
   }));
-  const tagPages: Entry[] = getAllTagSlugs().map((slug) => ({
+  // Only tags from the closed vocabulary (lib/taxonomy.ts TAGS); stray
+  // frontmatter values have no name or description and stay out of the sitemap.
+  const knownTags = new Set(TAGS.map((t) => t.slug));
+  const tagPages: Entry[] = getAllTagSlugs()
+    .filter((slug) => knownTags.has(slug))
+    .map((slug) => ({
     url: `${BASE}/tags/${slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
