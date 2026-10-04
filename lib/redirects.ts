@@ -62,6 +62,13 @@ export const REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
+    // Тег «Інструменти» не стає окремою сутністю: його сторінка з тим самим
+    // значенням це індекс інструментів графа знань (рішення Олесі 04.10.2026).
+    source: "/tags/tools",
+    destination: "/kg/tool",
+    permanent: true,
+  },
+  {
     source: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1645",
     destination: "/news/2026/06/dmytro-bondar-boosta-pro-realnyi-stan-seo-1646",
     permanent: true,
