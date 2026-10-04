@@ -13,6 +13,8 @@ export interface KgPersonMetadata extends AuthorMetadata {
   kgId: string;
   /** "backend" = in the graph (tagging, statistics) but no public page yet. */
   visibility: "public" | "backend";
+  /** Explicit "member of the Ukrainian SEO community" for people kept in Latin script. */
+  community?: boolean;
   /** Extra surface forms for finding mentions (case forms, other scripts). */
   aliases: string[];
 }
@@ -31,6 +33,7 @@ function readPersonFile(filename: string): KgPerson {
   return {
     kgId: data.kgId,
     visibility: data.visibility === "backend" ? "backend" : "public",
+    community: data.community === true ? true : undefined,
     aliases: Array.isArray(data.aliases) ? data.aliases.map(String) : data.aliases ? [String(data.aliases)] : [],
     slug: filename.replace(".mdx", ""),
     name: data.name,

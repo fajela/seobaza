@@ -81,9 +81,15 @@ export function EntityMentions({ id, name }: { id: string; name: string }) {
             <EntityChips items={stats.coOccurring} withCount />
           </div>
         )}
+        {stats.community.length > 0 && (
+          <div className="mb-6">
+            <h3 className="font-semibold mb-2">Зі спільноти</h3>
+            <EntityChips items={stats.community} withCount />
+          </div>
+        )}
         {stats.people.length > 0 && (
           <div>
-            <h3 className="font-semibold mb-2">Люди в цих матеріалах</h3>
+            <h3 className="font-semibold mb-2">Інші люди в цих матеріалах</h3>
             <EntityChips items={stats.people} withCount />
           </div>
         )}

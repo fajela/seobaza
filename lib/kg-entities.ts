@@ -199,12 +199,21 @@ export interface EntityRef {
   name: string;
   /** Present only when the target has a live page. */
   href?: string;
+  /** People only: member of the Ukrainian SEO community (public profile or a
+   *  Cyrillic name; foreign people are kept in Latin script and on the backend). */
+  community?: boolean;
 }
 
 /** Resolve an entity id (slug or sb-id) to a display name and live URL. */
 export function resolveEntityRef(id: string): EntityRef {
   const person = getAllKgPeople(true).find((p) => p.kgId === id);
-  if (person) return { id, name: person.name, href: person.visibility === "public" ? `/kg/person/${id}` : undefined };
+  if (person)
+    return {
+      id,
+      name: person.name,
+      href: person.visibility === "public" ? `/kg/person/${id}` : undefined,
+      community: person.community === true || person.visibility === "public" || /^\p{Script=Cyrillic}/u.test(person.name),
+    };
   const entity = getAllEntities().find((e) => e.slug === id);
   if (!entity) return { id, name: id };
   return { id, name: entity.name, href: entity.status === "published" ? entityUrl(entity) : undefined };
@@ -217,13 +226,18 @@ export interface EntityStats {
   byYear: Array<{ year: string; count: number }>;
   /** Entities that appear in the same materials, most frequent first. */
   coOccurring: Array<EntityRef & { count: number }>;
-  /** People from the graph who appear in the same materials. */
+  /** People from the Ukrainian community who appear in the same materials. */
+  community: Array<EntityRef & { count: number }>;
+  /** Other people (mostly foreign) who appear in the same materials. */
   people: Array<EntityRef & { count: number }>;
 }
 
 export function getEntityStats(id: string): EntityStats {
   const materials = getMaterialsForEntity(id);
-  const dates = materials.map((m) => m.date).filter(Boolean).sort();
+  // A mention is something already published: an upcoming event dated in the
+  // future must not become the "last mention".
+  const today = new Date().toISOString().slice(0, 10);
+  const dates = materials.map((m) => m.date).filter((d) => d && d <= today).sort();
   const years = new Map<string, number>();
   for (const d of dates) years.set(d.slice(0, 4), (years.get(d.slice(0, 4)) ?? 0) + 1);
 
@@ -238,7 +252,8 @@ export function getEntityStats(id: string): EntityStats {
     lastDate: dates[dates.length - 1],
     byYear: [...years.entries()].sort().map(([year, count]) => ({ year, count })),
     coOccurring: ranked.filter((r) => !isPerson(r)).slice(0, 10),
-    people: ranked.filter(isPerson).slice(0, 10),
+    community: ranked.filter((r) => isPerson(r) && r.community).slice(0, 10),
+    people: ranked.filter((r) => isPerson(r) && !r.community).slice(0, 10),
   };
 }
 
