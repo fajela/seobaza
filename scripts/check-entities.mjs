@@ -2,7 +2,7 @@
  * Pre-build guard for the closed entity vocabulary (entity hubs /kg/<type>/<slug>).
  *
  * Invariants enforced:
- *  - every entity file in content/kg/{concept,tool,assistant,org,social,event,place}/ has a name and a
+ *  - every entity file in content/kg/{concept,tool,assistant,org,social,event,place,series}/ has a name and a
  *    valid status (a published hub also needs a description); slugs are unique across types and never
  *    look like a person sb-id;
  *  - no alias belongs to two entities (the tagger could not tell them apart);
@@ -20,7 +20,7 @@ import matter from "gray-matter";
 
 const CONTENT = path.join(process.cwd(), "content");
 const KG = path.join(CONTENT, "kg");
-const TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place"];
+const TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place", "series"];
 const MATERIAL_DIRS = ["news", "articles", "videos", "events", "knowledge-base"];
 const MIN_MATERIALS = 5;
 

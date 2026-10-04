@@ -29,6 +29,7 @@ const INDEX_TITLES: Record<string, string> = {
   social: "Соцмережі в графі знань SEO Baza",
   event: "Події в графі знань SEO Baza",
   place: "Місця в графі знань SEO Baza",
+  series: "Серії SEO Baza в графі знань",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {

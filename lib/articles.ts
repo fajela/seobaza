@@ -10,6 +10,7 @@ import {
   type ArticleStatus,
   type CategoryMeta,
 } from "./taxonomy";
+import { rankByEntities } from "./related";
 
 const articlesDirectory = path.join(process.cwd(), "content/articles");
 const draftsDirectory = path.join(process.cwd(), "content/drafts");
@@ -31,6 +32,8 @@ export interface ArticleMetadata {
   editorLink?: string;
   date: string;
   tags: string[];
+  /** Knowledge-graph entities (hub slugs and person sb-ids). */
+  entities?: string[];
   slug: string;
   // New
   category: CategorySlug;
@@ -113,6 +116,7 @@ export function getArticleBySlug(slug: string, dir?: string): Article {
     editorLink: data.editorLink,
     date: data.date ? String(data.date) : new Date().toISOString().slice(0, 10),
     tags: data.tags ?? [],
+    entities: Array.isArray(data.entities) ? data.entities.map(String) : [],
     category: data.category ?? "community-and-news",
     type: data.type ?? "article",
     status: data.status,
@@ -302,10 +306,14 @@ export function getRelatedArticles(
   const current = all.find((a) => a.slug === currentSlug);
   if (!current) return [];
 
+  const byEntities: RelatedArticle[] = rankByEntities(current, all, limit, null).map((a) => ({ ...a, sharedTagCount: 0 }));
+  if (byEntities.length >= limit) return byEntities;
+  const taken = new Set(byEntities.map((a) => a.slug));
+
   const currentTags = new Set(current.tags);
 
-  const scored: RelatedArticle[] = all
-    .filter((a) => a.slug !== currentSlug)
+  const tagged: RelatedArticle[] = all
+    .filter((a) => a.slug !== currentSlug && !taken.has(a.slug))
     .map((a) => ({
       ...a,
       sharedTagCount: a.tags.filter((t) => currentTags.has(t)).length,
@@ -313,7 +321,8 @@ export function getRelatedArticles(
     .filter((a) => a.sharedTagCount > 0)
     .sort((a, b) => b.sharedTagCount - a.sharedTagCount || new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  if (scored.length >= limit) return scored.slice(0, limit);
+  const scored = [...byEntities, ...tagged].slice(0, limit);
+  if (scored.length >= limit) return scored;
 
   // Pad with articles from same category if not enough tag matches
   const needed = limit - scored.length;

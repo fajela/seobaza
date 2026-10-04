@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { computeReadingTime } from "./articles";
 import type { CategorySlug, ArticleType, ArticleStatus } from "./taxonomy";
+import { rankByEntities } from "./related";
 
 const newsDirectory = path.join(process.cwd(), "content/news");
 
@@ -24,6 +25,8 @@ export interface NewsMetadata {
   // remains the original publish date.
   updatedAt?: string;
   tags: string[];
+  /** Knowledge-graph entities (hub slugs and person sb-ids). */
+  entities?: string[];
   category: CategorySlug;
   type: ArticleType;
   status?: ArticleStatus;
@@ -124,6 +127,7 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     date: data.date ? String(data.date) : `${year}-01-01`,
     updatedAt: data.updatedAt ? String(data.updatedAt) : undefined,
     tags: data.tags ?? [],
+    entities: Array.isArray(data.entities) ? data.entities.map(String) : [],
     category: data.category ?? "community-and-news",
     type: data.type ?? "digest",
     status: data.status,
@@ -263,8 +267,8 @@ export function getNewsByCategory(
 }
 
 /**
- * Find news posts related to a given one — scored by shared tag count,
- * padded by same-category posts if there aren't enough tag matches.
+ * Find news posts related to a given one: first by shared knowledge-graph
+ * entities (lib/related.ts), then by shared tags, then padded by same-category posts.
  * Digests are excluded from the candidate pool.
  */
 export function getRelatedNews(
@@ -275,11 +279,14 @@ export function getRelatedNews(
   const current = all.find((n) => n.slug === currentSlug);
   if (!current) return [];
 
+  const byEntities = rankByEntities(current, all, limit);
+  const taken = new Set(byEntities.map((n) => n.slug));
+
   const currentTags = new Set(current.tags ?? []);
   const currentTime = new Date(current.date).getTime();
 
   const scored = all
-    .filter((n) => n.slug !== currentSlug)
+    .filter((n) => n.slug !== currentSlug && !taken.has(n.slug))
     .map((n) => {
       const sharedTagCount = (n.tags ?? []).filter((t) =>
         currentTags.has(t)
@@ -303,7 +310,10 @@ export function getRelatedNews(
         new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
     );
 
-  const picked: NewsMetadata[] = scored.slice(0, limit).map((s) => s.item);
+  const picked: NewsMetadata[] = [
+    ...byEntities,
+    ...scored.slice(0, limit - byEntities.length).map((s) => s.item),
+  ];
 
   if (picked.length < limit) {
     const need = limit - picked.length;

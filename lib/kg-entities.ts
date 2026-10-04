@@ -11,7 +11,7 @@ import { getAllKgPeople } from "./kg";
 // A hub renders only with `status: published`; drafts exist for tagging and
 // validation but have no page, no sitemap entry and no links.
 
-export const ENTITY_TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place"] as const;
+export const ENTITY_TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place", "series"] as const;
 export type EntityType = (typeof ENTITY_TYPES)[number];
 
 export const ENTITY_TYPE_LABELS: Record<EntityType, { one: string; many: string; schema: string }> = {
@@ -22,6 +22,7 @@ export const ENTITY_TYPE_LABELS: Record<EntityType, { one: string; many: string;
   social: { one: "Соцмережа", many: "Соцмережі", schema: "https://schema.org/Organization" },
   event: { one: "Подія", many: "Події", schema: "https://schema.org/Event" },
   place: { one: "Місце", many: "Місця", schema: "https://schema.org/Place" },
+  series: { one: "Серія", many: "Серії", schema: "https://schema.org/CreativeWorkSeries" },
 };
 
 export interface KgEntity {
@@ -202,6 +203,8 @@ export interface EntityRef {
   /** People only: member of the Ukrainian SEO community (public profile or a
    *  Cyrillic name; foreign people are kept in Latin script and on the backend). */
   community?: boolean;
+  /** People only: backend-only community member, never shown publicly. */
+  hidden?: boolean;
 }
 
 /** Resolve an entity id (slug or sb-id) to a display name and live URL. */
@@ -213,6 +216,9 @@ export function resolveEntityRef(id: string): EntityRef {
       name: person.name,
       href: person.visibility === "public" ? `/kg/person/${id}` : undefined,
       community: person.community === true || person.visibility === "public" || /^\p{Script=Cyrillic}/u.test(person.name),
+      // Ukrainian community members kept backend-only by Olesia's decision
+      // (no public page) must not be named on public pages either.
+      hidden: person.visibility === "backend" && person.community !== true && /^\p{Script=Cyrillic}/u.test(person.name),
     };
   const entity = getAllEntities().find((e) => e.slug === id);
   if (!entity) return { id, name: id };
@@ -243,7 +249,10 @@ export function getEntityStats(id: string): EntityStats {
 
   const counts = new Map<string, number>();
   for (const m of materials) for (const other of m.entities) if (other !== id) counts.set(other, (counts.get(other) ?? 0) + 1);
-  const ranked = [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([other, count]) => ({ ...resolveEntityRef(other), count }));
+  const ranked = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([other, count]) => ({ ...resolveEntityRef(other), count }))
+    .filter((r) => !r.hidden);
   const isPerson = (r: EntityRef) => /^sb\d{4}$/.test(r.id);
 
   return {
