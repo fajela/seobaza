@@ -518,55 +518,38 @@ export default function Home() {
           </h2>
           <div className="mb-6">
             <p className="text-lg mb-4">
-              <strong>Богдан Красніцький:</strong>
+              <strong>Софія Ватуляк</strong> збирає на розгортання підрозділу,
+              розпорядниця фонду Надія Мелешко:
             </p>
             <blockquote className="pl-4 border-l-4 border-accent italic text-muted-foreground mb-6">
-              Сьогодні в мене День народження. ЗБІР! Майстерня, R&amp;D, щось
-              наше буде літати ще краще, а спати нам всім від цього стане трохи
-              спокійніше.
+              Мій однокласник Спейс наразі має потребу в забезпеченні
+              розгортання підрозділу: транспорт, зв&apos;язок, техніка,
+              відновлення втрат, енергорезерв. Загалом на 2 млн гривень. Збір
+              амбітний, але й ми з вами серйозні люди.
             </blockquote>
             <div className="flex justify-center mb-4">
               <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fbogdan.krasnitskiy%2Fposts%2Fpfbid0W8C5A4SCEr693U7AUhKaQDuRr53k479iMc3esXQPmD8N1vJSZQVQmdvQXbtjw1Ael&show_text=true&width=500"
+                src="https://www.instagram.com/p/DdimQ5bDU0B/embed/captioned/"
+                title="Пост Надії Мелешко в Instagram про збір для підрозділу"
                 width="500"
-                height="640"
+                height="900"
                 style={{ border: "none", overflow: "hidden", maxWidth: "100%" }}
                 scrolling="no"
                 frameBorder="0"
                 allowFullScreen={true}
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allow="clipboard-write; encrypted-media; picture-in-picture; web-share"
               />
             </div>
             <p className="text-center text-muted-foreground mb-6">
               Банка збору:{" "}
               <a
-                href="https://send.monobank.ua/jar/4CcgPhKY6N"
+                href="https://send.monobank.ua/jar/8nacjrPTZs"
                 target="_blank"
                 className="text-primary hover:text-accent underline transition-colors"
               >
-                send.monobank.ua/jar/4CcgPhKY6N
+                send.monobank.ua/jar/8nacjrPTZs
               </a>
             </p>
-          </div>
-          <div className="mb-6">
-            <p className="text-lg mb-4">
-              <strong>Тетяна Поклад:</strong>
-            </p>
-            <blockquote className="pl-4 border-l-4 border-accent italic text-muted-foreground mb-6">
-              Потрібна допомога на ремонт авто з 67 ОМБр!
-            </blockquote>
-            <div className="flex justify-center">
-              <iframe
-                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpokladt%2Fposts%2Fpfbid0279zHuZGq3HxZosoY5QmS55LoaQ6U1cKd7VoYA8T8wHMvzYwME3E5aJ868F4hyUB2l&show_text=true&width=500"
-                width="500"
-                height="387"
-                style={{ border: "none", overflow: "hidden", maxWidth: "100%" }}
-                scrolling="no"
-                frameBorder="0"
-                allowFullScreen={true}
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              />
-            </div>
           </div>
           <div className="mt-8 p-6 bg-background rounded-xl border border-border">
             <h3 className="text-xl font-display mb-3">Додавайте свої</h3>
