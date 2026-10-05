@@ -15,6 +15,8 @@ export interface KgPersonMetadata extends AuthorMetadata {
   visibility: "public" | "backend";
   /** Explicit "member of the Ukrainian SEO community" for people kept in Latin script. */
   community?: boolean;
+  /** Optional meta description (120-155 chars); falls back to the bio. */
+  description?: string;
   /** Extra surface forms for finding mentions (case forms, other scripts). */
   aliases: string[];
 }
@@ -34,6 +36,7 @@ function readPersonFile(filename: string): KgPerson {
     kgId: data.kgId,
     visibility: data.visibility === "backend" ? "backend" : "public",
     community: data.community === true ? true : undefined,
+    description: typeof data.description === "string" ? data.description : undefined,
     aliases: Array.isArray(data.aliases) ? data.aliases.map(String) : data.aliases ? [String(data.aliases)] : [],
     slug: filename.replace(".mdx", ""),
     name: data.name,

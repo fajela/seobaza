@@ -28,13 +28,14 @@ export async function generateMetadata({
     const person = getKgPersonById(id);
     const title = `${person.name}: ${person.role}${person.company ? ` ${person.company}` : ""} | SEO BAZA`;
     const og = buildOgImage(person.image, person.name);
+    const description = person.description || person.bio;
     return {
       title,
-      description: person.bio,
+      description,
       alternates: { canonical: `https://seobaza.com.ua/kg/person/${id}` },
       openGraph: {
         title,
-        description: person.bio,
+        description,
         url: `https://seobaza.com.ua/kg/person/${id}`,
         siteName: "SEO BAZA",
         locale: "uk_UA",
@@ -44,7 +45,7 @@ export async function generateMetadata({
       twitter: {
         card: "summary_large_image",
         title,
-        description: person.bio,
+        description,
         images: [{ url: og.url, alt: og.alt }],
       },
     };
