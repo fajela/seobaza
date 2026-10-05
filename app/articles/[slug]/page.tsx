@@ -125,6 +125,9 @@ export default async function ArticlePage({
     ? article.content.replace(/^#\s+.+$/m, '').trim()
     : article.content;
 
+  // A retired category may now redirect to a single article (Думки → the
+  // horoscope); never link a post to itself from its own breadcrumb or badge.
+  const showCategory = Boolean(article.category) && !categoryHref(article.category!).startsWith("/articles/");
   const pageUrl = `https://seobaza.com.ua/articles/${slug}`;
   const articleAuthorSlug = getAuthorSlugByName(article.author);
   const articleAuthorUrl = articleAuthorSlug
@@ -177,7 +180,7 @@ export default async function ArticlePage({
             <link itemProp="item" href="https://seobaza.com.ua/articles" />
             <meta itemProp="position" content="1" />
           </span>
-          {article.category && (
+          {showCategory && (
             <>
               <span>/</span>
               <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
@@ -201,13 +204,13 @@ export default async function ArticlePage({
           >
             <span itemProp="name">{article.title}</span>
             <link itemProp="item" href={pageUrl} />
-            <meta itemProp="position" content={article.category ? "3" : "2"} />
+            <meta itemProp="position" content={showCategory ? "3" : "2"} />
           </span>
         </nav>
 
         <header className="mb-8">
           {/* Category badge */}
-          {article.category && (
+          {showCategory && (
             <Link
               href={categoryHref(article.category)}
               className="inline-block mb-4 px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"

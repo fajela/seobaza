@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllArticles, getAllCategoriesWithCounts, getAllTagsWithCounts } from "@/lib/articles";
+import { getAllArticles, getAllTagsWithCounts } from "@/lib/articles";
 import { getAllNews } from "@/lib/news";
 import { getAllAuthors } from "@/lib/authors";
 import { pageMeta } from "@/lib/page-metadata";
@@ -16,7 +16,6 @@ export default function SitemapIndexPage() {
   const allNews    = getAllNews();
   const news       = allNews.filter((n) => n.type !== "digest");
   const digests    = allNews.filter((n) => n.type === "digest");
-  const categories = getAllCategoriesWithCounts().filter((c) => c.count > 0);
   const tags       = getAllTagsWithCounts();
   const authors    = getAllAuthors();
 
@@ -43,12 +42,6 @@ export default function SitemapIndexPage() {
       title: "Місячні дайджести",
       count: digests.length,
       desc: "Щомісячні підбірки SEO-новин.",
-    },
-    {
-      href: "/sitemap-page/categories",
-      title: "Категорії",
-      count: categories.length,
-      desc: "Пілар-категорії SEO: новини індустрії, новини SEO BAZA, дайджести, гайди, думки.",
     },
     {
       href: "/sitemap-page/tags",

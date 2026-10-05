@@ -37,25 +37,12 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            {/* Новини + Категорії */}
-            <div className="relative group">
-              <NavLink
-                href="/news"
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-              >
-                Новини
-              </NavLink>
-              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
-                <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
-                  <NavLink
-                    href="/category"
-                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
-                  >
-                    Категорії
-                  </NavLink>
-                </div>
-              </div>
-            </div>
+            <NavLink
+              href="/news"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Новини
+            </NavLink>
             <NavLink
               href="/articles"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
@@ -180,13 +167,6 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Новини
-              </NavLink>
-              <NavLink
-                href="/category"
-                className="ml-4 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Категорії
               </NavLink>
               <NavLink
                 href="/articles"

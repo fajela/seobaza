@@ -98,7 +98,7 @@ export default function EnglishAboutPage() {
               deals such as Black Friday in Ukrainian SEO.
             </li>
             <li>
-              <Link href="/category">Categories</Link> and{" "}
+              <Link href="/kg">Knowledge graph</Link> and{" "}
               <Link href="/tags">tags</Link> for quick navigation by topic.
             </li>
           </ul>

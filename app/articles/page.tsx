@@ -26,11 +26,12 @@ export default async function ArticlesPage() {
       articleCountsByCategory.set(a.category, (articleCountsByCategory.get(a.category) ?? 0) + 1);
     }
   }
-  // No Гайди pill: /category/guides 301s to /knowledge-base, so a pill for it
-  // would bounce the reader out of the articles feed.
+  // Category pages were retired on 2026-10-05 (each /category/<slug> 301s to a
+  // page with the same content), so only categories that still have their own
+  // /category/ listing get a pill. None do now; the block stays for the future.
   const activeCategories = CATEGORIES
     .map((c) => ({ ...c, count: articleCountsByCategory.get(c.slug) ?? 0 }))
-    .filter((c) => c.count > 0 && c.slug !== "guides");
+    .filter((c) => c.count > 0 && categoryHref(c.slug).startsWith("/category/"));
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">

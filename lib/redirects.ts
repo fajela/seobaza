@@ -61,6 +61,16 @@ export const REDIRECTS: Redirect[] = [
     destination: "/knowledge-base",
     permanent: true,
   },
+  // Категорії прибрано (рішення Олесі 05.10.2026): категорія = тип матеріалу,
+  // кожна веде на сторінку з тим самим змістом; навігація за темами = граф знань.
+  { source: "/category", destination: "/kg", permanent: true },
+  { source: "/category/industry-news", destination: "/news", permanent: true },
+  // Новини за місяць: закритий архів дописів з Telegram (листопад 2022 – травень 2026).
+  { source: "/category/digests", destination: "/news", permanent: true },
+  { source: "/category/seobaza-news", destination: "/events", permanent: true },
+  // У категорії «Думки» одна стаття.
+  { source: "/category/opinions", destination: "/articles/seo-horoskop-2026", permanent: true },
+  { source: "/sitemap-page/categories", destination: "/sitemap-page", permanent: true },
   {
     // Тег «Інструменти» не стає окремою сутністю: його сторінка з тим самим
     // значенням це індекс інструментів графа знань (рішення Олесі 04.10.2026).

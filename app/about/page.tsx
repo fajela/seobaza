@@ -56,7 +56,7 @@ const aboutJsonLd = {
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/news",       name: "Новини" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/articles",   name: "Статті" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/events",     name: "Події" },
-      { "@type": "WebPage", "@id": "https://seobaza.com.ua/category",   name: "Категорії" },
+      { "@type": "WebPage", "@id": "https://seobaza.com.ua/kg",         name: "Граф знань" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/tags",       name: "Теги" },
       { "@type": "WebPage", "@id": "https://seobaza.com.ua/authors",    name: "Автори" },
     ],
@@ -115,7 +115,7 @@ export default function AboutPage() {
               кшталт «Чорна п'ятниця в українському SEO».
             </li>
             <li>
-              <Link href="/category">Категорії</Link> та{" "}
+              <Link href="/kg">Граф знань</Link> і{" "}
               <Link href="/tags">теги</Link> — швидка навігація за темами.
             </li>
           </ul>
