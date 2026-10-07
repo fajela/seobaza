@@ -10,13 +10,14 @@ import { isoDate } from "@/lib/schema-rdfa";
 import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
+import { ImageCompare } from "@/components/image-compare";
 import { Carousel } from "@/components/carousel";
 import { SponsorBanner } from "@/components/sponsor-banner";
 import type { Metadata } from "next";
 import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 import { tagHref, categoryHref } from "@/lib/redirects";
 
-const mdxComponents = { img: MdxImg, a: MdxLink, Carousel, SponsorBanner };
+const mdxComponents = { img: MdxImg, a: MdxLink, Carousel, SponsorBanner, ImageCompare };
 
 export async function generateStaticParams() {
   return getNewsPostPaths();
