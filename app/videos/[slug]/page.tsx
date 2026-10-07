@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { ImageCompare } from "@/components/image-compare";
+import { Callout } from "@/components/callout";
 import { SponsorBanner } from "@/components/sponsor-banner";
 import {
   getAllVideos,
@@ -17,7 +18,7 @@ import {
   type VideoSpeaker,
 } from "@/lib/videos";
 
-const mdxComponents = { img: MdxImg, a: MdxLink, SponsorBanner, ImageCompare };
+const mdxComponents = { img: MdxImg, a: MdxLink, SponsorBanner, ImageCompare, Callout };
 
 const isProd = process.env.NODE_ENV === "production";
 
