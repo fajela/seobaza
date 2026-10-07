@@ -28,6 +28,8 @@ export interface ArticleMetadata {
   /** Другий автор для матеріалів у співавторстві. */
   coAuthor?: string;
   coAuthorLink?: string;
+  /** Решта співавторів, коли їх більше одного (після coAuthor). */
+  coAuthors?: string[];
   editor?: string;
   editorLink?: string;
   date: string;
@@ -112,6 +114,7 @@ export function getArticleBySlug(slug: string, dir?: string): Article {
     authorLink: data.authorLink,
     coAuthor: data.coAuthor,
     coAuthorLink: data.coAuthorLink,
+    coAuthors: Array.isArray(data.coAuthors) ? data.coAuthors.map(String) : undefined,
     editor: data.editor,
     editorLink: data.editorLink,
     date: data.date ? String(data.date) : new Date().toISOString().slice(0, 10),

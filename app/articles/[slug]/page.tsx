@@ -61,6 +61,7 @@ export async function generateMetadata({
       authors: [
         { name: article.author },
         ...(article.coAuthor ? [{ name: article.coAuthor }] : []),
+        ...(article.coAuthors ?? []).map((name) => ({ name })),
       ],
       alternates: {
         canonical: url,
@@ -74,9 +75,11 @@ export async function generateMetadata({
         type: "article",
         publishedTime: isoDate(article.date),
         modifiedTime: isoDate(article.date),
-        authors: article.coAuthor
-          ? [article.author, article.coAuthor]
-          : [article.author],
+        authors: [
+          article.author,
+          ...(article.coAuthor ? [article.coAuthor] : []),
+          ...(article.coAuthors ?? []),
+        ],
         section: article.category ? getCategoryDisplayName(article.category) : undefined,
         tags: article.tags,
         images: [
@@ -138,6 +141,10 @@ export default async function ArticlePage({
   const coAuthorUrl = coAuthorSlug
     ? `https://seobaza.com.ua/authors/${coAuthorSlug}`
     : undefined;
+  const extraAuthors = (article.coAuthors ?? []).map((name) => {
+    const slug = getAuthorSlugByName(name);
+    return { name, slug, url: slug ? `https://seobaza.com.ua/authors/${slug}` : undefined };
+  });
   const articleOgImage = article.image
     ? `https://seobaza.com.ua${article.image}`
     : "https://seobaza.com.ua/og-image.png";
@@ -252,6 +259,19 @@ export default async function ArticlePage({
               {coAuthorUrl && <link itemProp="url" href={coAuthorUrl} />}
             </div>
           )}
+          {extraAuthors.map((a) => (
+            <div
+              key={a.name}
+              className="hidden"
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+              {...(a.url ? { itemID: a.url } : {})}
+            >
+              <meta itemProp="name" content={a.name} />
+              {a.url && <link itemProp="url" href={a.url} />}
+            </div>
+          ))}
 
           {/* Visible byline — plain UI, no RDFa attributes */}
           <div className="flex flex-wrap items-center gap-3 text-muted-foreground mb-4">
@@ -308,6 +328,21 @@ export default async function ArticlePage({
                 })()}
               </>
             )}
+            {extraAuthors.map((a) => (
+              <span key={a.name} className="contents">
+                <span>і</span>
+                {a.slug ? (
+                  <Link
+                    href={`/authors/${a.slug}`}
+                    className="font-medium hover:text-accent transition-colors"
+                  >
+                    {a.name}
+                  </Link>
+                ) : (
+                  <span className="font-medium">{a.name}</span>
+                )}
+              </span>
+            ))}
             <span>•</span>
             <time dateTime={article.date}>
               {new Date(article.date).toLocaleDateString("uk-UA", {
