@@ -11,13 +11,14 @@ import { buildOgImage } from "@/lib/og-image";
 import { TelegramComments } from "@/components/telegram-comments";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { ImageCompare } from "@/components/image-compare";
+import { Callout } from "@/components/callout";
 import { Carousel } from "@/components/carousel";
 import { SponsorBanner } from "@/components/sponsor-banner";
 import type { Metadata } from "next";
 import { MdxWithLiveBanner } from "@/components/mdx-with-live-banner";
 import { tagHref, categoryHref } from "@/lib/redirects";
 
-const mdxComponents = { img: MdxImg, a: MdxLink, Carousel, SponsorBanner, ImageCompare };
+const mdxComponents = { img: MdxImg, a: MdxLink, Carousel, SponsorBanner, ImageCompare, Callout };
 
 export async function generateStaticParams() {
   return getNewsPostPaths();

@@ -4,6 +4,7 @@ import { TelegramWidget } from "@/components/telegram-widget";
 import { PostCover } from "@/components/post-cover";
 import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
 import { getAllNews } from "@/lib/news";
+import { getAllVideos } from "@/lib/videos";
 import path from "path";
 import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
 import { getAllAuthors, altNames } from "@/lib/authors";
@@ -36,6 +37,7 @@ const newsUrl = (item: { year: string; month?: string; slug: string }) =>
     : `/news/${item.year}/${item.slug}`;
 
 export default function Home() {
+  const latestVideo = getAllVideos()[0];
   // Map author display names → on-site page + avatar so cards can show a byline.
   const authorIndex = new Map<string, { slug: string; image?: string }>();
   for (const a of getAllAuthors()) {
@@ -438,8 +440,8 @@ export default function Home() {
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/3LtuRVC1WcE"
-                title="Запити fan-out: як їх знайти і що з ними робити. Запис стріму SEO Baza"
+                src={`https://www.youtube.com/embed/${latestVideo?.videoId ?? "3LtuRVC1WcE"}`}
+                title={latestVideo ? `${latestVideo.title}. Запис стріму SEO Baza` : "Запис стріму SEO Baza"}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
