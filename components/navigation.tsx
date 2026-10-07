@@ -79,6 +79,12 @@ export function Navigation() {
             >
               Вакансії
             </NavLink>
+            <NavLink
+              href="/zbir"
+              className="text-sm font-semibold text-accent hover:underline transition-colors"
+            >
+              🇺🇦 Збір
+            </NavLink>
             {/* Про нас + Спонсорам, Контакт, Розсилка */}
             <div className="relative group">
               <NavLink
@@ -209,6 +215,13 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Вакансії
+              </NavLink>
+              <NavLink
+                href="/zbir"
+                className="px-3 py-2 text-sm font-semibold text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                🇺🇦 Збір
               </NavLink>
               <NavLink
                 href="/about"
