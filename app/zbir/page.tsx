@@ -6,6 +6,7 @@ const IBAN = "UA683220010000026200346147626";
 const IBAN_SPACED = "UA 68 322001 00000 2620 0346 1476 26";
 const REPORTS_URL =
   "https://www.instagram.com/p/DdimQ5bDU0B/?stkn=azk1aDlsZWZ1d3R2";
+const WITHDRAWALS_URL = "https://linktr.ee/n.meleshko";
 
 export const metadata = pageMeta({
   title: "Збір на роту 411 бригади Яструби | SEO BAZA",
@@ -94,6 +95,15 @@ export default function ZbirPage() {
             className="text-accent hover:underline"
           >
             звітує в Instagram
+          </a>
+          . Звіти про кожне зняття коштів з фото:{" "}
+          <a
+            href={WITHDRAWALS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            linktr.ee/n.meleshko
           </a>
           .
         </p>
