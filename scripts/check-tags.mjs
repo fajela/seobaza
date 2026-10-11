@@ -21,8 +21,8 @@ const CONTENT = path.join(process.cwd(), "content");
 const DIRS = ["news", "articles"];
 
 const LEGACY = new Set([
-  "industry", "industry-news", "ai", "analytics", "indexing", "ads", "ppc",
-  "discover", "meta", "social", "legal", "search-profiles",
+  "industry", "industry-news", "indexing",
+  "discover", "meta", "social", "search-profiles",
   "e-e-a-t", "links", "linkbuilding",
 ]);
 
