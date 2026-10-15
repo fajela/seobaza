@@ -316,7 +316,7 @@ export default async function NewsPostPage({
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
-          <MdxWithLiveBanner source={item.content} components={mdxComponents} banner={!item.hideLiveBanner} />
+          <MdxWithLiveBanner source={item.content} components={mdxComponents} banner={!item.hideLiveBanner} partner />
         </div>
         <MaterialEntities url={`/news/${year}/${month}/${slug}`} />
       </article>

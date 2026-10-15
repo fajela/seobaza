@@ -5,6 +5,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { AnnouncementBar } from "@/components/announcement-bar";
+import { PARTNER } from "@/lib/partner";
+import { SitePartnerBanner } from "@/components/site-partner-banner";
 import { Analytics } from "@/components/analytics";
 import { FooterNewsletter } from "@/components/footer-newsletter";
 import { StickyNewsletter } from "@/components/sticky-newsletter";
@@ -126,7 +128,9 @@ export default function RootLayout({
         >
           <Navigation />
           <main className="flex-1 pt-16">
-            <AnnouncementBar />
+            {/* Поки є партнер місяця, синю смугу анонсу не показуємо (правило Олесі 15.10). */}
+            {!PARTNER && <AnnouncementBar />}
+            <SitePartnerBanner />
             {children}
           </main>
           {/* Один банер на сторінку: поки вгорі йде анонс стріму, нижню

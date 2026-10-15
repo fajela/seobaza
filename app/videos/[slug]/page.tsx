@@ -7,6 +7,8 @@ import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { ImageCompare } from "@/components/image-compare";
 import { Callout } from "@/components/callout";
 import { SponsorBanner } from "@/components/sponsor-banner";
+import { LiveBanner, LIVE_VIDEO_SLUG } from "@/components/live-banner";
+import { PartnerBanner } from "@/components/partner-banner";
 import {
   getAllVideos,
   getVideoBySlug,
@@ -209,6 +211,9 @@ export default async function VideoPage({ params }: VideoPageProps) {
         <MDXRemote source={video.content} components={mdxComponents} />
       </div>
 
+      {/* Партнер місяця, після опису відео */}
+      <PartnerBanner className="mt-10" />
+
       <MaterialEntities url={`/videos/${slug}`} microdata={false} />
 
       <div className="mt-12 p-6 bg-muted/30 rounded-xl border border-border">
@@ -232,6 +237,11 @@ export default async function VideoPage({ params }: VideoPageProps) {
           .
         </p>
       </div>
+
+      {/* Анонс стріму: поки є партнер місяця, живе тільки на сторінках відео,
+          і не підряд після банера партнера (правило Олесі 15.10).
+          На сторінці самого запису не показуємо. */}
+      {slug !== LIVE_VIDEO_SLUG && <LiveBanner />}
     </article>
   );
 }
