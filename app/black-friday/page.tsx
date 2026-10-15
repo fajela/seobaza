@@ -84,6 +84,16 @@ const OFFERS_2026 = [
     url: "https://uahosting.com.ua/hosting.php",
     cta: "Обрати тариф",
   },
+  {
+    id: "pbnseo",
+    name: "PBN SEO PRO",
+    title: "Знижка $100 на курс PBN SEO PRO",
+    text: "Авторський курс Aleks Topal з PBN SEO в iGaming і не тільки: 8 модулів, заняття онлайн у Zoom раз на тиждень. Знижка $100 на всі пакети курсу.",
+    dates: "13–31 жовтня 2026",
+    promo: null,
+    url: "https://pbnseo.pro/",
+    cta: "Обрати пакет курсу",
+  },
 ];
 
 // Past seasons live on their own archive pages; the offers of each year are
