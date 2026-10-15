@@ -238,7 +238,7 @@ export default async function KnowledgeBaseArticlePage({
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
-          <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} />
+          <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} partner />
         </div>
         <MaterialEntities url={`/knowledge-base/${slug}`} />
       </article>

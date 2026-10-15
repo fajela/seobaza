@@ -406,7 +406,7 @@ export default async function ArticlePage({
         </header>
 
         <div className="prose prose-lg dark:prose-invert max-w-none" itemProp="articleBody">
-          <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} />
+          <MdxWithLiveBanner source={contentWithoutH1} components={mdxComponents} partner />
         </div>
         <MaterialEntities url={`/articles/${slug}`} />
       </article>
