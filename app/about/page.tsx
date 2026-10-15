@@ -46,7 +46,8 @@ const aboutJsonLd = {
         url: "https://seobaza.com.ua/kg/person/sb0009",
         sameAs: [
           "https://alexakhilova.com",
-          "https://www.google.com/search?kgmid=/g/11yhkbbmw3",
+          "https://www.google.com/search?kgmid=/g/11zc_z0k1s",
+          "https://www.google.com/search?kgmid=/g/11wpt8tw5z",
           "https://www.linkedin.com/in/oleksandra-khilova",
           "https://t.me/badseo",
         ],
