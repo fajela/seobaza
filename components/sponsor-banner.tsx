@@ -37,6 +37,8 @@ export function SponsorBanner({
   return (
     <aside
       aria-label={label.replace(/^\W+\s*/, "")}
+      // id для лічильника показів і кліків (/stats)
+      data-ad={`sponsor:${name.toLowerCase().replace(/[^a-z0-9а-яіїєґ]+/g, "-").replace(/^-|-$/g, "") || "sponsor"}`}
       className="not-prose my-8 rounded-xl border-2 border-accent bg-accent/10 px-5 py-4"
     >
       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
