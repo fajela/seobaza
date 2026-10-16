@@ -48,24 +48,40 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
 
   const ads = new Map<string, { view: number; click: number }>();
   const pageLinks = new Map<string, number>();
-  const textLinks = new Map<string, number>();
+  // По днях: для рядків із датою.
+  const dayPage: { day: string; k: string; n: number }[] = [];
+  const dayText: { day: string; k: string; n: number }[] = [];
+  const adDaily: { day: string; ad: string; view: number; click: number }[] = [];
   const pairs = (r: unknown): [string, number][] => {
     const arr = (r as string[] | null) ?? [];
     const out: [string, number][] = [];
     for (let i = 0; i < arr.length; i += 2) out.push([arr[i], Number(arr[i + 1])]);
     return out;
   };
-  days.forEach((_, i) => {
+  days.forEach((day, i) => {
+    const today = new Map<string, { view: number; click: number }>();
     for (const [f, n] of pairs(res[i * 3])) {
       const [kind, ad] = [f.slice(0, f.indexOf("|")), f.slice(f.indexOf("|") + 1)];
       const cur = ads.get(ad) ?? { view: 0, click: 0 };
-      if (kind === "view") cur.view += n;
-      else cur.click += n;
+      const d = today.get(ad) ?? { view: 0, click: 0 };
+      if (kind === "view") {
+        cur.view += n;
+        d.view += n;
+      } else {
+        cur.click += n;
+        d.click += n;
+      }
       ads.set(ad, cur);
+      today.set(ad, d);
     }
-    for (const [f, n] of pairs(res[i * 3 + 1])) pageLinks.set(f, (pageLinks.get(f) ?? 0) + n);
-    for (const [f, n] of pairs(res[i * 3 + 2])) textLinks.set(f, (textLinks.get(f) ?? 0) + n);
+    for (const [ad, v] of today) adDaily.push({ day, ad, ...v });
+    for (const [f, n] of pairs(res[i * 3 + 1])) {
+      pageLinks.set(f, (pageLinks.get(f) ?? 0) + n);
+      dayPage.push({ day, k: f, n });
+    }
+    for (const [f, n] of pairs(res[i * 3 + 2])) dayText.push({ day, k: f, n });
   });
+  adDaily.sort((a, b) => (a.day < b.day ? 1 : a.day > b.day ? -1 : a.ad.localeCompare(b.ad)));
 
   // Унікальні відвідувачі реклами за весь період: PFCOUNT по всіх днях разом.
   const adIds = [...ads.keys()];
@@ -80,22 +96,26 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
 
   // Рядки "звідки | текст | куди". Кліки до 16.10.2026 записані без тексту,
   // їх показуємо з порожнім текстом (різниця між lp і lt).
-  type Row = { page: string; text: string; href: string; n: number };
+  type Row = { day: string; page: string; text: string; href: string; n: number };
   const rows: Row[] = [];
   const withText = new Map<string, number>();
-  for (const [k, n] of textLinks) {
+  for (const { day, k, n } of dayText) {
     const [page, href, text] = k.split(SEP);
-    rows.push({ page, href, text, n });
-    withText.set(`${page}|${href}`, (withText.get(`${page}|${href}`) ?? 0) + n);
+    rows.push({ day, page, href, text, n });
+    const key2 = `${day}|${page}|${href}`;
+    withText.set(key2, (withText.get(key2) ?? 0) + n);
   }
-  for (const [k, n] of pageLinks) {
-    const rest = n - (withText.get(k) ?? 0);
+  for (const { day, k, n } of dayPage) {
+    const rest = n - (withText.get(`${day}|${k}`) ?? 0);
     if (rest > 0) {
       const i = k.indexOf("|");
-      rows.push({ page: k.slice(0, i), href: k.slice(i + 1), text: "", n: rest });
+      rows.push({ day, page: k.slice(0, i), href: k.slice(i + 1), text: "", n: rest });
     }
   }
-  const linkRows = rows.filter((r) => !pageFilter || r.page === pageFilter).sort((a, b) => b.n - a.n);
+  const linkRows = rows
+    .filter((r) => !pageFilter || r.page === pageFilter)
+    .sort((a, b) => (a.day < b.day ? 1 : a.day > b.day ? -1 : b.n - a.n));
+  const dayLabel = (d: string) => `${d.slice(8, 10)}.${d.slice(5, 7)}.${d.slice(0, 4)}`;
 
   const byPage = new Map<string, number>();
   for (const [k, n] of pageLinks) {
@@ -160,6 +180,36 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
         </div>
       )}
 
+      {adDaily.length > 0 && (
+        <>
+          <h2 className="text-2xl font-display mb-3">Реклама по днях</h2>
+          <div className="overflow-x-auto mb-10">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="text-left border-b border-border">
+                  <th className="py-2 pr-4">Дата</th>
+                  <th className="py-2 pr-4">Рекламний блок</th>
+                  <th className="py-2 pr-4 text-right">Покази</th>
+                  <th className="py-2 pr-4 text-right">Кліки</th>
+                  <th className="py-2 text-right">CTR</th>
+                </tr>
+              </thead>
+              <tbody>
+                {adDaily.map((r) => (
+                  <tr key={`${r.day}|${r.ad}`} className="border-b border-border">
+                    <td className="py-1.5 pr-4 whitespace-nowrap">{dayLabel(r.day)}</td>
+                    <td className="py-1.5 pr-4 font-mono">{r.ad}</td>
+                    <td className="py-1.5 pr-4 text-right">{fmt(r.view)}</td>
+                    <td className="py-1.5 pr-4 text-right">{fmt(r.click)}</td>
+                    <td className="py-1.5 text-right">{r.view ? ((r.click / r.view) * 100).toFixed(2) + "%" : "0%"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
       {!pageFilter && pageTotals.length > 0 && (
         <>
           <h2 className="text-2xl font-display mb-3">Де клікають</h2>
@@ -202,6 +252,7 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="text-left border-b border-border">
+                <th className="py-2 pr-4 whitespace-nowrap">Дата</th>
                 <th className="py-2 pr-4">З якої сторінки</th>
                 <th className="py-2 pr-4">На що натиснули</th>
                 <th className="py-2 pr-4">Куди веде</th>
@@ -210,7 +261,8 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
             </thead>
             <tbody>
               {linkRows.slice(0, 500).map((r) => (
-                <tr key={`${r.page}|${r.href}|${r.text}`} className="border-b border-border align-top">
+                <tr key={`${r.day}|${r.page}|${r.href}|${r.text}`} className="border-b border-border align-top">
+                  <td className="py-1.5 pr-4 whitespace-nowrap">{dayLabel(r.day)}</td>
                   <td className="py-1.5 pr-4 break-all">
                     <a href={q({ page: r.page })} className="text-primary underline">{r.page}</a>
                   </td>
