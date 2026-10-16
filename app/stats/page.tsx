@@ -286,7 +286,7 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
             <a href={q({})} className="text-primary underline">Усі сторінки</a>
           </>
         ) : (
-          "Усі сторінки сайту. Щоб лишити одну сторінку, натисніть її адресу в першій колонці."
+          "Усі сторінки сайту. Щоб лишити тільки одну сторінку, натисніть її адресу."
         )}
       </p>
       {linkRows.length === 0 ? (
