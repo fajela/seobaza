@@ -9,7 +9,7 @@ const BOT_RE = /bot|crawl|spider|slurp|headless|preview|lighthouse|facebookexter
 const ALLOWED_HOSTS = new Set(["seobaza.com.ua", "www.seobaza.com.ua", "localhost"]);
 
 const clean = (s: unknown, max: number) =>
-  typeof s === "string" ? s.replace(/[\r\n\t]/g, " ").slice(0, max) : undefined;
+  typeof s === "string" ? s.replace(/[\r\n\t\u001f]/g, " ").slice(0, max) : undefined;
 
 export async function POST(req: Request) {
   const done = new Response(null, { status: 204 });
@@ -36,6 +36,7 @@ export async function POST(req: Request) {
     h: clean(body.h, 300),
     p: clean(body.p, 200) ?? "/",
     a: clean(body.a, 80),
+    x: clean(body.x, 100),
   };
   if (ev.p.startsWith("/stats")) return done;
   if (ev.t === "v" && !ev.a) return done;

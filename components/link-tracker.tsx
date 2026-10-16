@@ -35,6 +35,18 @@ function normalize(a: HTMLAnchorElement): string | undefined {
   }
 }
 
+/** Текст, на який натиснули: видимий текст, або alt картинки, або aria-label. */
+function linkText(a: HTMLAnchorElement): string | undefined {
+  const t =
+    a.innerText ||
+    a.querySelector("img")?.getAttribute("alt") ||
+    a.getAttribute("aria-label") ||
+    a.getAttribute("title") ||
+    "";
+  const clean = t.replace(/\s+/g, " ").trim();
+  return clean ? clean.slice(0, 100) : undefined;
+}
+
 export function LinkTracker() {
   const pathname = usePathname() ?? "/";
 
@@ -48,7 +60,7 @@ export function LinkTracker() {
       const h = normalize(a);
       if (!h) return;
       const ad = (a.closest("[data-ad]") as HTMLElement | null)?.dataset.ad;
-      send({ t: "c", h, p: location.pathname, a: ad });
+      send({ t: "c", h, p: location.pathname, a: ad, x: linkText(a) });
     };
     document.addEventListener("click", onClick, true);
     document.addEventListener("auxclick", onClick, true);

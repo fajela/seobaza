@@ -9,6 +9,7 @@
  * Що зберігаємо, по днях за Києвом (D = YYYY-MM-DD), ключі живуть 400 днів:
  *   l:D   hash  посилання -> кліки
  *   lp:D  hash  "сторінка|посилання" -> кліки
+ *   lt:D  hash  "сторінка␟посилання␟текст посилання" -> кліки (␟ = \u001f), з 16.10.2026
  *   a:D   hash  "view|<реклама>" / "click|<реклама>" -> кількість
  *   au:D:<view|click>:<реклама>  HyperLogLog унікальних відвідувачів
  * IP і User-Agent не зберігаємо: тільки хеш із щоденною сіллю, тож відвідувача
@@ -57,7 +58,11 @@ export type TrackEvent = {
   p: string;
   /** id реклами з data-ad, якщо подія в рекламному блоці */
   a?: string;
+  /** текст посилання, на яке натиснули */
+  x?: string;
 };
+
+export const SEP = "\u001f";
 
 export async function record(ev: TrackEvent, visitor: string) {
   const day = kyivDay();
@@ -66,8 +71,10 @@ export async function record(ev: TrackEvent, visitor: string) {
   if (ev.t === "c" && ev.h) {
     cmds.push(["HINCRBY", `l:${day}`, ev.h, 1]);
     cmds.push(["HINCRBY", `lp:${day}`, `${ev.p}|${ev.h}`, 1]);
+    cmds.push(["HINCRBY", `lt:${day}`, [ev.p, ev.h, ev.x ?? ""].join(SEP), 1]);
     touch(`l:${day}`);
     touch(`lp:${day}`);
+    touch(`lt:${day}`);
   }
   if (ev.a) {
     const kind = ev.t === "v" ? "view" : "click";
