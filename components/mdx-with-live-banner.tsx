@@ -19,6 +19,7 @@ const options = {
  * Рендерить MDX-тіло з банерами після вступу (перед першим H2):
  * банер партнера місяця або LiveBanner (поки є партнер, LiveBanner не показуємо).
  * Якщо H2 немає, банери стають після всього тексту.
+ * Банер партнера показується вдруге ближче до кінця (правило Олесі 16.10).
  */
 export function MdxWithLiveBanner({
   source,
@@ -39,17 +40,40 @@ export function MdxWithLiveBanner({
   if (!banner && !partner) {
     return <MDXRemote source={source} components={components} options={options} />;
   }
-  const splitAt = source.search(/^## /m);
+  let splitAt = source.search(/^## /m);
+  // Без H2 банер партнера йде після першого абзацу (якщо це звичайний текст
+  // і далі є ще текст), щоб другий банер у кінці не стояв поруч з першим.
+  if (splitAt === -1 && partner) {
+    const lead = source.match(/^\s*[^\r\n<!|>\-*#][^\r\n]*(?:\r?\n(?!\r?\n)[^\r\n]*)*\r?\n\r?\n(?=\S)/);
+    if (lead) splitAt = lead[0].length;
+  }
   const intro = splitAt === -1 ? source : source.slice(0, splitAt);
   const rest = splitAt === -1 ? null : source.slice(splitAt);
+
+  // Другий банер партнера ближче до кінця: перед останнім H2, якщо після
+  // першого їх ще щонайменше два; інакше після всього тексту.
+  let middle = rest;
+  let tail: string | null = null;
+  if (partner && rest !== null) {
+    const heads = [...rest.matchAll(/^## /gm)].map((m) => m.index ?? 0);
+    if (heads.length >= 3) {
+      const at = heads[heads.length - 1];
+      middle = rest.slice(0, at);
+      tail = rest.slice(at);
+    }
+  }
 
   return (
     <>
       <MDXRemote source={intro} components={components} options={options} />
       {partner && <PartnerBanner className="my-10" />}
       {banner && <LiveBanner />}
-      {rest !== null && (
-        <MDXRemote source={rest} components={components} options={options} />
+      {middle !== null && (
+        <MDXRemote source={middle} components={components} options={options} />
+      )}
+      {partner && rest !== null && <PartnerBanner className="my-10" />}
+      {tail !== null && (
+        <MDXRemote source={tail} components={components} options={options} />
       )}
     </>
   );
