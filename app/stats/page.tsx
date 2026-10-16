@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { daysBetween, kyivDay, redis, trackingEnabled } from "@/lib/track-store";
+import { SEP, daysBetween, kyivDay, redis, trackingEnabled } from "@/lib/track-store";
 import { PARTNER } from "@/lib/partner";
 
 /**
@@ -42,11 +42,13 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
     );
   }
 
-  const res = await redis(days.flatMap((d) => [["HGETALL", `a:${d}`], ["HGETALL", `l:${d}`], ["HGETALL", `lp:${d}`]]));
+  const res = await redis(
+    days.flatMap((d) => [["HGETALL", `a:${d}`], ["HGETALL", `lp:${d}`], ["HGETALL", `lt:${d}`]]),
+  );
 
   const ads = new Map<string, { view: number; click: number }>();
-  const links = new Map<string, number>();
   const pageLinks = new Map<string, number>();
+  const textLinks = new Map<string, number>();
   const pairs = (r: unknown): [string, number][] => {
     const arr = (r as string[] | null) ?? [];
     const out: [string, number][] = [];
@@ -61,8 +63,8 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
       else cur.click += n;
       ads.set(ad, cur);
     }
-    for (const [f, n] of pairs(res[i * 3 + 1])) links.set(f, (links.get(f) ?? 0) + n);
-    for (const [f, n] of pairs(res[i * 3 + 2])) pageLinks.set(f, (pageLinks.get(f) ?? 0) + n);
+    for (const [f, n] of pairs(res[i * 3 + 1])) pageLinks.set(f, (pageLinks.get(f) ?? 0) + n);
+    for (const [f, n] of pairs(res[i * 3 + 2])) textLinks.set(f, (textLinks.get(f) ?? 0) + n);
   });
 
   // Унікальні відвідувачі реклами за весь період: PFCOUNT по всіх днях разом.
@@ -76,12 +78,24 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
       )
     : [];
 
-  const linkRows = pageFilter
-    ? [...pageLinks.entries()]
-        .filter(([k]) => k.startsWith(`${pageFilter}|`))
-        .map(([k, n]) => [k.slice(pageFilter.length + 1), n] as [string, number])
-    : [...links.entries()];
-  linkRows.sort((a, b) => b[1] - a[1]);
+  // Рядки "звідки | текст | куди". Кліки до 16.10.2026 записані без тексту,
+  // їх показуємо з порожнім текстом (різниця між lp і lt).
+  type Row = { page: string; text: string; href: string; n: number };
+  const rows: Row[] = [];
+  const withText = new Map<string, number>();
+  for (const [k, n] of textLinks) {
+    const [page, href, text] = k.split(SEP);
+    rows.push({ page, href, text, n });
+    withText.set(`${page}|${href}`, (withText.get(`${page}|${href}`) ?? 0) + n);
+  }
+  for (const [k, n] of pageLinks) {
+    const rest = n - (withText.get(k) ?? 0);
+    if (rest > 0) {
+      const i = k.indexOf("|");
+      rows.push({ page: k.slice(0, i), href: k.slice(i + 1), text: "", n: rest });
+    }
+  }
+  const linkRows = rows.filter((r) => !pageFilter || r.page === pageFilter).sort((a, b) => b.n - a.n);
 
   const byPage = new Map<string, number>();
   for (const [k, n] of pageLinks) {
@@ -178,28 +192,38 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
             <a href={q({})} className="text-primary underline">Усі сторінки</a>
           </>
         ) : (
-          "Усі сторінки сайту. Посилання однієї сторінки: натисніть її в таблиці вище."
+          "Усі сторінки сайту. Щоб лишити одну сторінку, натисніть її адресу в першій колонці."
         )}
       </p>
       {linkRows.length === 0 ? (
         <p className="text-muted-foreground">За цей період кліків немає.</p>
       ) : (
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="text-left border-b border-border">
-              <th className="py-2 pr-4">Посилання</th>
-              <th className="py-2 text-right">Кліки</th>
-            </tr>
-          </thead>
-          <tbody>
-            {linkRows.slice(0, 300).map(([h, n]) => (
-              <tr key={h} className="border-b border-border">
-                <td className="py-1.5 pr-4 break-all">{h}</td>
-                <td className="py-1.5 text-right">{fmt(n)}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left border-b border-border">
+                <th className="py-2 pr-4">З якої сторінки</th>
+                <th className="py-2 pr-4">На що натиснули</th>
+                <th className="py-2 pr-4">Куди веде</th>
+                <th className="py-2 text-right">Кліки</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {linkRows.slice(0, 500).map((r) => (
+                <tr key={`${r.page}|${r.href}|${r.text}`} className="border-b border-border align-top">
+                  <td className="py-1.5 pr-4 break-all">
+                    <a href={q({ page: r.page })} className="text-primary underline">{r.page}</a>
+                  </td>
+                  <td className="py-1.5 pr-4">{r.text || <span className="text-muted-foreground">без тексту</span>}</td>
+                  <td className="py-1.5 pr-4 break-all">
+                    <a href={r.href} target="_blank" rel="noopener noreferrer nofollow" className="hover:text-accent">{r.href}</a>
+                  </td>
+                  <td className="py-1.5 text-right">{fmt(r.n)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
