@@ -21,6 +21,39 @@ const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 const isDay = (s?: string) => !!s && /^\d{4}-\d{2}-\d{2}$/.test(s);
 const fmt = (n: number) => n.toLocaleString("uk-UA");
 
+/** Тестові кліки під час налаштування лічильника: день, сторінка, посилання. */
+const TEST_CLICKS = [
+  "2026-10-16|/|/x",
+  "2026-10-16|/sponsors|/seobaza.png",
+];
+
+const pageHtml = new Map<string, Promise<string>>();
+
+/** Текст посилання href на сторінці page нашого сайту (для кліків без тексту). */
+async function anchorText(page: string, href: string): Promise<string | undefined> {
+  if (!pageHtml.has(page)) {
+    pageHtml.set(
+      page,
+      fetch(`https://seobaza.com.ua${page}`, { next: { revalidate: 86400 } })
+        .then((r) => (r.ok ? r.text() : ""))
+        .catch(() => ""),
+    );
+  }
+  const html = await pageHtml.get(page)!;
+  const esc = href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/&/g, "&(?:amp;)?");
+  const m = html.match(new RegExp(`<a\\b[^>]*href="${esc}"[^>]*>([\\s\\S]*?)</a>`));
+  if (!m) return undefined;
+  const t = m[1]
+    .replace(/<img[^>]*alt="([^"]*)"[^>]*>/g, " $1 ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+  return t ? t.slice(0, 100) : undefined;
+}
+
 export default async function StatsPage({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams;
   const key = process.env.STATS_KEY;
@@ -115,6 +148,14 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
   const linkRows = rows
     .filter((r) => !pageFilter || r.page === pageFilter)
     .sort((a, b) => (a.day < b.day ? 1 : a.day > b.day ? -1 : b.n - a.n));
+  // Для старих кліків без тексту шукаємо це посилання на сторінці, звідки клікнули.
+  await Promise.all(
+    linkRows
+      .filter((r) => !r.text)
+      .map(async (r) => {
+        r.text = (await anchorText(r.page, r.href)) ?? "";
+      }),
+  );
   const dayLabel = (d: string) => `${d.slice(8, 10)}.${d.slice(5, 7)}.${d.slice(0, 4)}`;
 
   const byPage = new Map<string, number>();
@@ -182,7 +223,10 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
 
       {adDaily.length > 0 && (
         <>
-          <h2 className="text-2xl font-display mb-3">Реклама по днях</h2>
+          <h2 className="text-2xl font-display mb-1">Реклама по днях</h2>
+          <p className="text-sm text-muted-foreground mb-3">
+            16.10.2026 серед показів є кілька тестових переглядів під час налаштування лічильника, окремо їх не виділити.
+          </p>
           <div className="overflow-x-auto mb-10">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -266,7 +310,12 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
                   <td className="py-1.5 pr-4 break-all">
                     <a href={q({ page: r.page })} className="text-primary underline">{r.page}</a>
                   </td>
-                  <td className="py-1.5 pr-4">{r.text || <span className="text-muted-foreground">без тексту</span>}</td>
+                  <td className="py-1.5 pr-4">
+                    {r.text || <span className="text-muted-foreground">без тексту</span>}
+                    {TEST_CLICKS.includes(`${r.day}|${r.page}|${r.href}`) && (
+                      <span className="ml-2 inline-block rounded bg-accent/20 px-1.5 py-0.5 text-xs font-semibold">тестовий клік</span>
+                    )}
+                  </td>
                   <td className="py-1.5 pr-4 break-all">
                     <a href={r.href} target="_blank" rel="noopener noreferrer nofollow" className="hover:text-accent">{r.href}</a>
                   </td>
