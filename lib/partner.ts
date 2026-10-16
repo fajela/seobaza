@@ -12,6 +12,9 @@ export type Partner = {
   wide: { src: string; width: number; height: number };
   /** Креатив 300×250 для мобільних, шлях у public. */
   square: { src: string; width: number; height: number };
+  /** Необов'язкові варіанти для нічного режиму сайту (тема .dark). */
+  wideDark?: { src: string; width: number; height: number };
+  squareDark?: { src: string; width: number; height: number };
   alt: string;
   /** Період угоди, для довідки: банер сам не вимикається. */
   from: string;
@@ -25,5 +28,5 @@ export const PARTNER: Partner | null = {
   square: { src: "/images/sponsors/phoenix-project-square.jpg", width: 600, height: 500 },
   alt: "Phoenix Project: лінкбілдинг під нішу й гео, стратегія, майданчики та розміщення",
   from: "2026-10-16",
-  to: "2026-11-15",
+  to: "2026-11-12",
 };

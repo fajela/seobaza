@@ -8,6 +8,7 @@ import { AnnouncementBar } from "@/components/announcement-bar";
 import { PARTNER } from "@/lib/partner";
 import { SitePartnerBanner } from "@/components/site-partner-banner";
 import { Analytics } from "@/components/analytics";
+import { LinkTracker } from "@/components/link-tracker";
 import { FooterNewsletter } from "@/components/footer-newsletter";
 import { StickyNewsletter } from "@/components/sticky-newsletter";
 import { GooglePreferredSource } from "@/components/google-preferred-source";
@@ -120,6 +121,7 @@ export default function RootLayout({
         className={`${openSans.variable} ${prozaLibre.variable} antialiased min-h-screen flex flex-col`}
       >
         <Analytics />
+        <LinkTracker />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
