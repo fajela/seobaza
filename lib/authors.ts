@@ -185,8 +185,12 @@ export function getAllAuthors(): AuthorMetadata[] {
 export function getArticlesByAuthorName(
   authorName: string
 ): ArticleMetadata[] {
-  return getAllArticles().filter(
-    (a) => a.author.toLowerCase() === authorName.toLowerCase()
+  const target = authorName.toLowerCase();
+  // Співавтори теж автори статті: coAuthor і список coAuthors.
+  return getAllArticles().filter((a) =>
+    [a.author, a.coAuthor, ...(a.coAuthors ?? [])].some(
+      (name) => name?.toLowerCase() === target
+    )
   );
 }
 
