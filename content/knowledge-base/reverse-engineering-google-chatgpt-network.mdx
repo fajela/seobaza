@@ -1,7 +1,7 @@
 ---
 title: "Реверс-інжиніринг Google і ChatGPT через вкладку Network"
 h1: "Як реверс-інжинірити пошук Google і ChatGPT через вкладку Network"
-description: "Покроково: які рядки відкривати у вкладці Network, де лежать пошукові запити ChatGPT, прочитані й процитовані сайти, службові дані Google, як це зберегти."
+description: "Покроково: які рядки відкривати у вкладці Network, де знаходяться пошукові запити ChatGPT, прочитані й процитовані сайти, службові дані Google, як це зберегти."
 author: "Олеся Коробка"
 date: "2026-10-18"
 image: "/images/articles/reverse-engineering-google-chatgpt-network/featured-reverse-engineering-google-chatgpt-network.jpg"
@@ -69,7 +69,7 @@ Mark так знайшов у запиті People Also Ask параметр `_fm
 1. Клацни на `conversation/<id>` з методом GET.
 2. Відкрий Preview, розгорни `mapping`, знайди повідомлення асистента і розгорни його `metadata`.
 3. У `search_result_groups` усі сторінки, які ChatGPT отримав з пошуку: домен, заголовок, сніпет, дата публікації, тип джерела `ref_type` (звичайний пошук, Reddit, новини, місця, повністю відкрита сторінка).
-4. У `content` → `parts` лежить текст відповіді. Посилання в ньому позначені тегами `<Cite ref="turn508120search1"/>`: номер ходу, тип джерела і номер результату. Той самий набір є в кожного результату в `search_result_groups` у полі `ref_id`.
+4. У `content` → `parts` знаходиться текст відповіді. Посилання в ньому позначені тегами `<Cite ref="turn508120search1"/>`: номер ходу, тип джерела і номер результату. Той самий набір є в кожного результату в `search_result_groups` у полі `ref_id`.
 5. Порівняй: скільки доменів у `search_result_groups` і на скільки з них є тег Cite.
 
 ![Вкладка Preview збереженої розмови з полем search_result_groups і прочитаними сторінками банків](/images/articles/reverse-engineering-google-chatgpt-network/02-chatgpt-preview-search-result-groups.jpg)
