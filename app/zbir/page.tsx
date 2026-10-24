@@ -9,13 +9,13 @@ const REPORTS_URL =
 const WITHDRAWALS_URL = "https://linktr.ee/n.meleshko";
 
 export const metadata = pageMeta({
-  title: "Збір на роту 411 бригади Яструби | SEO BAZA",
+  title: "Збір на роту 411 бригади Яструби | SEO Baza",
   description:
     "SEO Baza допомагає зібрати на розгортання роти в 411 бригаді Яструби: транспорт, зв'язок, техніка. Банка monobank, IBAN, звіти про кожну покупку. Долучайтеся.",
   path: "/zbir",
   image: {
     path: "/images/og/zbir-na-rotu-411-bryhady-yastruby.jpg",
-    alt: "Збір на роту в 411 бригаді Яструби, картка SEO BAZA",
+    alt: "Збір на роту в 411 бригаді Яструби, картка SEO Baza",
   },
 });
 

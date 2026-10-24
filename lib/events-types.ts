@@ -34,7 +34,7 @@ export interface EventMeta {
   dateLabel?: string;
   type: EventType;
   format: EventFormat;
-  /** "SEO BAZA" for our own events, otherwise the partner/community name. */
+  /** "SEO Baza" for our own events, otherwise the partner/community name. */
   organizer: string;
   /** schema.org organizer type. */
   organizerType: "Organization" | "Person";

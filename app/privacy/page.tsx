@@ -2,9 +2,9 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Політика конфіденційності — SEO BAZA",
+  title: "Політика конфіденційності — SEO Baza",
   description:
-    "Як SEO BAZA збирає, використовує та захищає ваші дані: розсилка, аналітика, файли cookie, Google Reader Revenue Manager та ваші права.",
+    "Як SEO Baza збирає, використовує та захищає ваші дані: розсилка, аналітика, файли cookie, Google Reader Revenue Manager та ваші права.",
   path: "/privacy",
   altPath: "/en/privacy",
 });
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
         <div className="space-y-8 text-foreground/90 leading-relaxed">
           <section>
             <p>
-              SEO BAZA (далі «ми», «сайт», «спільнота») поважає вашу
+              SEO Baza (далі «ми», «сайт», «спільнота») поважає вашу
               приватність. Ця політика пояснює, які персональні дані ми збираємо
               на seobaza.com.ua, для чого їх використовуємо та які у вас є права.
               Контролером даних є власниця сайту Олеся Коробка. Зв&apos;язатися

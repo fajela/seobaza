@@ -4,8 +4,8 @@ import { pageMeta } from "@/lib/page-metadata";
 import { categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
-  title: "Категорії — Карта сайту — SEO BAZA",
-  description: "Пілар-категорії SEO на SEO BAZA.",
+  title: "Категорії — Карта сайту — SEO Baza",
+  description: "Пілар-категорії SEO на SEO Baza.",
   path: "/sitemap-page/categories",
 });
 

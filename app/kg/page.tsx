@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
       "SEO Baza будує власний граф знань української SEO-спільноти. Всередині люди зі стабільними айді, компанії та події, кожен факт із джерелом.",
     url: "https://seobaza.com.ua/kg",
-    siteName: "SEO BAZA",
+    siteName: "SEO Baza",
     locale: "uk_UA",
     type: "website",
     images: [{ url: ogKg.url, width: ogKg.width, height: ogKg.height, alt: ogKg.alt, type: ogKg.type }],

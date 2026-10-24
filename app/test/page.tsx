@@ -6,7 +6,7 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Тести SEO BAZA - Експерименти та дослідження",
+  title: "Тести SEO Baza - Експерименти та дослідження",
   description: "SEO експерименти та тести від української спільноти",
   path: "/test",
 });
@@ -46,7 +46,7 @@ export default async function TestPage() {
       <div className="max-w-4xl mx-auto">
         <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Тести", href: "/test" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          SEO BAZA тестує
+          SEO Baza тестує
         </h1>
         <p className="text-lg text-muted-foreground mb-12">
           Експерименти, гіпотези та практичні перевірки від спільноти.

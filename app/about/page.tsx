@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { seoBazaOrganization, WEBSITE_REF } from "@/lib/organization";
 
 export const metadata: Metadata = {
-  title: "Про SEO BAZA — українська SEO-спільнота",
+  title: "Про SEO Baza — українська SEO-спільнота",
   description:
-    "SEO BAZA — українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали.",
+    "SEO Baza — українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали.",
   alternates: {
     canonical: "https://seobaza.com.ua/about",
     languages: {
@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Про SEO BAZA",
+    title: "Про SEO Baza",
     description: "Українська спільнота SEO-фахівців.",
     url: "https://seobaza.com.ua/about",
-    siteName: "SEO BAZA",
+    siteName: "SEO Baza",
     locale: "uk_UA",
     type: "website",
   },
@@ -29,9 +29,9 @@ const aboutJsonLd = {
   "@type": "AboutPage",
   "@id": "https://seobaza.com.ua/about",
   url: "https://seobaza.com.ua/about",
-  name: "Про SEO BAZA",
+  name: "Про SEO Baza",
   description:
-    "SEO BAZA — українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали.",
+    "SEO Baza — українська спільнота SEO-фахівців. Новини індустрії, аналіз оновлень Google, події, навчальні матеріали.",
   inLanguage: "uk-UA",
   isPartOf: WEBSITE_REF,
   mainEntity: {
@@ -42,7 +42,7 @@ const aboutJsonLd = {
         "@id": "https://seobaza.com.ua/kg/person/sb0009#person",
         name: "Олександра Хілова",
         alternateName: "Oleksandra Khilova",
-        jobTitle: "Співзасновниця та співвласниця YouTube-каналу SEO BAZA",
+        jobTitle: "Співзасновниця та співвласниця YouTube-каналу SEO Baza",
         url: "https://seobaza.com.ua/kg/person/sb0009",
         sameAs: [
           "https://alexakhilova.com",
@@ -74,7 +74,7 @@ const aboutJsonLd = {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Про SEO BAZA",
+        name: "Про SEO Baza",
         item: "https://seobaza.com.ua/about",
       },
     ],
@@ -90,12 +90,12 @@ export default function AboutPage() {
       />
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          Про SEO BAZA
+          Про SEO Baza
         </h1>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
           <p>
-            SEO BAZA — українська спільнота SEO-фахівців. Тут діляться новинами
+            SEO Baza — українська спільнота SEO-фахівців. Тут діляться новинами
             індустрії, розбирають оновлення Google, обговорюють AI-пошук та
             формати контенту, проводять зустрічі та конференції.
           </p>
@@ -121,7 +121,7 @@ export default function AboutPage() {
             </li>
           </ul>
 
-          <h2>Хто стоїть за SEO BAZA</h2>
+          <h2>Хто стоїть за SEO Baza</h2>
           <p>
             Спільноту заснувала{" "}
             <Link href="/authors/olesia-korobka">Олеся Коробка</Link> —
@@ -137,7 +137,7 @@ export default function AboutPage() {
             .
           </p>
           <p>
-            YouTube-канал SEO BAZA — спільний проєкт Олесі Коробки та{" "}
+            YouTube-канал SEO Baza — спільний проєкт Олесі Коробки та{" "}
             <Link href="/kg/person/sb0009">Олександри Хілової</Link>.
             Олександра — співзасновниця та співвласниця каналу: веде стріми й
             вебінари про лінкбілдинг, автоматизацію та апдейти Google.

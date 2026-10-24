@@ -45,7 +45,7 @@ export async function generateMetadata({
 }: VideoPageProps): Promise<Metadata> {
   const { slug } = await params;
   const video = visible(slug);
-  if (!video) return { title: "Відео не знайдено - SEO BAZA" };
+  if (!video) return { title: "Відео не знайдено - SEO Baza" };
 
   const url = `https://seobaza.com.ua/videos/${slug}`;
   const ogImage = video.image
@@ -60,7 +60,7 @@ export async function generateMetadata({
       title: video.title,
       description: video.description,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "video.other",
       images: [{ url: ogImage, width: 1200, height: 630, alt: video.title }],
@@ -232,7 +232,7 @@ export default async function VideoPage({ params }: VideoPageProps) {
             rel="noopener noreferrer"
             className="text-primary hover:text-accent underline transition-colors"
           >
-            YouTube-каналі SEO BAZA
+            YouTube-каналі SEO Baza
           </a>
           .
         </p>

@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { UkrainianPrimaryNotice } from "@/components/language-notice";
 
 export const metadata = pageMeta({
-  title: "Privacy Policy: How SEO BAZA Handles Your Data",
+  title: "Privacy Policy: How SEO Baza Handles Your Data",
   description:
     "What personal data seobaza.com.ua collects and why: newsletter, analytics, cookies, third-party services and your rights. Read the full policy.",
   path: "/en/privacy",
@@ -34,7 +34,7 @@ export default function EnglishPrivacyPage() {
         <div className="space-y-8 text-foreground/90 leading-relaxed">
           <section>
             <p>
-              SEO BAZA (referred to as &quot;we&quot;, &quot;the site&quot;,
+              SEO Baza (referred to as &quot;we&quot;, &quot;the site&quot;,
               &quot;the community&quot;) respects your privacy. This policy
               explains what personal data we collect on seobaza.com.ua, what
               we use it for and what rights you have. The data controller is

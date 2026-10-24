@@ -37,14 +37,14 @@ export async function generateMetadata({
     const modified = isoDate(item.updatedAt || item.date);
     const og = buildOgImage(item.image, item.h1 || item.title);
     return {
-      title: `${item.title} — SEO BAZA`,
+      title: `${item.title} — SEO Baza`,
       description: item.description,
       alternates: { canonical: url },
       openGraph: {
         title: item.title,
         description: item.description,
         url,
-        siteName: "SEO BAZA",
+        siteName: "SEO Baza",
         locale: "uk_UA",
         type: "article",
         publishedTime: published,
@@ -62,7 +62,7 @@ export async function generateMetadata({
       },
     };
   } catch {
-    return { title: "Новину не знайдено — SEO BAZA" };
+    return { title: "Новину не знайдено — SEO Baza" };
   }
 }
 
@@ -138,7 +138,7 @@ export default async function NewsPostPage({
           itemType="https://schema.org/Organization"
           itemID="https://seobaza.com.ua/"
         >
-          <meta itemProp="name" content="SEO BAZA" />
+          <meta itemProp="name" content="SEO Baza" />
           <link itemProp="url" href="https://seobaza.com.ua/" />
           <div itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
             <link itemProp="url" href="https://seobaza.com.ua/seobaza.png" />

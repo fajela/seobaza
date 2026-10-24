@@ -31,7 +31,7 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <span className="text-2xl font-display font-bold text-foreground group-hover:text-accent transition-colors">
-              SEO BAZA
+              SEO Baza
             </span>
           </Link>
 

@@ -26,7 +26,7 @@ export function normalizeEvent(
   const isBlackFriday = slug.includes("black-friday");
   const type = (data.type as EventType) ?? (isBlackFriday ? "deals" : "other");
   const format = (data.format as EventFormat) ?? "online";
-  const organizer = (data.organizer as string) ?? "SEO BAZA";
+  const organizer = (data.organizer as string) ?? "SEO Baza";
 
   return {
     year,
@@ -43,7 +43,7 @@ export function normalizeEvent(
     organizerType:
       (data.organizerType as EventMeta["organizerType"]) ?? "Organization",
     organizerUrl: (data.organizerUrl as string) ?? undefined,
-    isPartner: (data.isPartner as boolean) ?? organizer !== "SEO BAZA",
+    isPartner: (data.isPartner as boolean) ?? organizer.toLowerCase() !== "seo baza",
     city: (data.city as string) ?? undefined,
     country: (data.country as string) ?? undefined,
     venue: (data.venue as string) ?? undefined,

@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 
 /**
- * IndexingQuiz — вбудований у статтю інтерактивний квіз із мітапу SEO BAZA.
+ * IndexingQuiz — вбудований у статтю інтерактивний квіз із мітапу SEO Baza.
  *
  * Гра проста: для кожного SEO-фактора треба вгадати, чи це СИГНАЛ ДЛЯ
  * ІНДЕКСАЦІЇ (тобто чи впливає він на те, потрапить сторінка в індекс Google
@@ -116,7 +116,7 @@ export function IndexingQuiz() {
   return (
     <div className="not-prose my-8 rounded-xl border border-border bg-secondary/30 p-6">
       <div ref={topRef} className="mb-1 text-sm font-semibold text-primary">
-        🧪 Квіз SEO BAZA
+        🧪 Квіз SEO Baza
       </div>
       <h2 className="mb-1 mt-0 text-2xl font-display">
         Сигнал для індексації чи ні?
@@ -236,7 +236,7 @@ export function IndexingQuiz() {
         ) : (
           <div className="rounded-xl border border-accent/40 bg-accent/5 p-6 text-center">
             <div className="text-sm font-semibold uppercase tracking-wide text-primary">
-              🧪 Квіз SEO BAZA
+              🧪 Квіз SEO Baza
             </div>
             <div className="mt-0.5 text-sm text-foreground">
               Сигнали індексації Google

@@ -18,19 +18,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryMeta(slug);
-  if (!category) return { title: "Категорія не знайдена — SEO BAZA" };
+  if (!category) return { title: "Категорія не знайдена — SEO Baza" };
 
   return {
-    title: `${category.displayName} — SEO BAZA`,
+    title: `${category.displayName} — SEO Baza`,
     description: category.description,
     alternates: {
       canonical: `https://seobaza.com.ua/category/${slug}`,
     },
     openGraph: {
-      title: `${category.displayName} — SEO BAZA`,
+      title: `${category.displayName} — SEO Baza`,
       description: category.description,
       url: `https://seobaza.com.ua/category/${slug}`,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
     },

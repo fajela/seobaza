@@ -20,16 +20,16 @@ export async function generateMetadata({
   const displayName = getTagDisplayName(slug);
 
   return {
-    title: `${displayName} — Статті за тегом — SEO BAZA`,
-    description: `Статті українського SEO-ком'юніті за темою "${displayName}". Практичні матеріали від SEO BAZA.`,
+    title: `${displayName} — Статті за тегом — SEO Baza`,
+    description: `Статті українського SEO-ком'юніті за темою "${displayName}". Практичні матеріали від SEO Baza.`,
     alternates: {
       canonical: `https://seobaza.com.ua/tags/${slug}`,
     },
     openGraph: {
-      title: `${displayName} — SEO BAZA`,
+      title: `${displayName} — SEO Baza`,
       description: `Статті за тегом "${displayName}"`,
       url: `https://seobaza.com.ua/tags/${slug}`,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
     },

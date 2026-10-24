@@ -40,15 +40,15 @@ export const CATEGORIES: CategoryMeta[] = [
   },
   {
     slug: "seobaza-news",
-    displayName: "Новини SEO BAZA",
+    displayName: "Новини SEO Baza",
     description:
-      "Анонси та підсумки заходів SEO BAZA: мітапи, SEO Charity, конференції, новини самої спільноти.",
+      "Анонси та підсумки заходів SEO Baza: мітапи, SEO Charity, конференції, новини самої спільноти.",
   },
   {
     slug: "digests",
     displayName: "Дайджести",
     description:
-      "Щомісячні підбірки SEO-новин від спільноти SEO BAZA — все найважливіше за місяць в одному місці.",
+      "Щомісячні підбірки SEO-новин від спільноти SEO Baza — все найважливіше за місяць в одному місці.",
   },
   {
     slug: "guides",

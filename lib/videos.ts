@@ -115,7 +115,7 @@ export function videoH1(video: VideoMeta): string {
 
 export function videoSeoTitle(video: VideoMeta): string {
   if (video.seoTitle) return video.seoTitle;
-  const brand = video.type === "live" ? "Стрім SEO BAZA" : "Відео SEO BAZA";
+  const brand = video.type === "live" ? "Стрім SEO Baza" : "Відео SEO Baza";
   return `${video.title} | ${brand}`;
 }
 
@@ -154,7 +154,7 @@ export function seriesJsonLd(): Record<string, unknown> {
     inLanguage: "uk",
     publisher: {
       "@type": "Organization",
-      name: "SEO BAZA",
+      name: "SEO Baza",
       url: SITE,
     },
   };
@@ -217,7 +217,7 @@ export function videoToJsonLd(
       : {}),
     publisher: {
       "@type": "Organization",
-      name: "SEO BAZA",
+      name: "SEO Baza",
       url: SITE,
     },
   };

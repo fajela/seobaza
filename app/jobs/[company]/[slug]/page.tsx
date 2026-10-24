@@ -41,13 +41,13 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
   const job = await getJob(company, slug);
 
   if (!job) {
-    return { title: "Вакансію не знайдено - SEO BAZA" };
+    return { title: "Вакансію не знайдено - SEO Baza" };
   }
 
   const { meta } = job;
   const url = `https://seobaza.com.ua/jobs/${company}/${slug}`;
   const ogImage = "https://seobaza.com.ua/og-image.png";
-  const title = `${meta.title}: вакансія в ${meta.company} - SEO BAZA`;
+  const title = `${meta.title}: вакансія в ${meta.company} - SEO Baza`;
 
   return {
     title,
@@ -57,11 +57,11 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
       title,
       description: meta.description,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "article",
       publishedTime: meta.datePosted,
-      images: [{ url: ogImage, width: 640, height: 640, alt: "SEO BAZA logo" }],
+      images: [{ url: ogImage, width: 640, height: 640, alt: "SEO Baza logo" }],
     },
     twitter: {
       card: "summary_large_image",

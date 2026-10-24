@@ -68,7 +68,7 @@ export function pageMeta(opts: {
       title: opts.title,
       description: opts.description,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: locale === "en" ? "en_US" : "uk_UA",
       ...(opts.altPath
         ? { alternateLocale: locale === "en" ? "uk_UA" : "en_US" }

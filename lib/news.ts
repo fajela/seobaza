@@ -121,7 +121,7 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     title: data.title,
     h1: data.h1,
     description: data.description ?? "",
-    author: data.author ?? "SEO BAZA",
+    author: data.author ?? "SEO Baza",
     authorLink: data.authorLink,
     coAuthor: data.coAuthor,
     date: data.date ? String(data.date) : `${year}-01-01`,

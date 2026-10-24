@@ -30,7 +30,7 @@ export interface AuthorMetadata {
   facebook?: string;
   website?: string; // personal website / blog
   fajelaAbout?: string; // Fajela consultancy "about" page
-  company?: string; // worksFor organization (defaults to SEO BAZA when absent)
+  company?: string; // worksFor organization (defaults to SEO Baza when absent)
   companyUrl?: string;
   companyGoogleKgId?: string; // Google KG MID of the worksFor organization
   podcast?: string; // podcast the person hosts or co-hosts

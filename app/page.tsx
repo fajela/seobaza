@@ -47,7 +47,7 @@ export default function Home() {
     }
   }
   const resolveAuthor = (name?: string): BylineAuthor => {
-    const display = name?.trim() || "SEO BAZA";
+    const display = name?.trim() || "SEO Baza";
     const match = authorIndex.get(display.toLowerCase());
     return { name: display, slug: match?.slug, image: match?.image };
   };
@@ -98,7 +98,7 @@ export default function Home() {
             property="name"
             className="text-4xl sm:text-5xl md:text-6xl font-display mb-3 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
           >
-            SEO BAZA
+            SEO Baza
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Українське SEO-ком'юніті · 600+ матеріалів · новини, гайди та місячні дайджести
@@ -401,7 +401,7 @@ export default function Home() {
       {/* Community band — Telegram + YouTube side by side */}
       <section className="mb-16">
         <h2 className="text-2xl sm:text-3xl font-display mb-6 text-center">
-          Спільнота SEO BAZA
+          Спільнота SEO Baza
         </h2>
         <div className="grid gap-6 lg:grid-cols-2 items-start">
           {/* Telegram */}
@@ -431,7 +431,7 @@ export default function Home() {
           {/* YouTube */}
           <div className="flex h-full min-w-0 flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
             <h3 className="text-xl font-display mb-1">
-              SEO BAZA на YouTube
+              SEO Baza на YouTube
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
               Доповіді, розбори та інтерв&apos;ю від спільноти
@@ -582,7 +582,7 @@ export default function Home() {
         <link itemProp="sameAs" href="https://seobaza.com.ua/authors/olesia-korobka" />
         <meta itemProp="name" content="Олеся Коробка" />
         <meta itemProp="alternateName" content="Olesia Korobka" />
-        <meta itemProp="jobTitle" content="Засновниця SEO BAZA" />
+        <meta itemProp="jobTitle" content="Засновниця SEO Baza" />
       </span>
     </div>
   );

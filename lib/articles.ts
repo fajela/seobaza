@@ -110,7 +110,7 @@ export function getArticleBySlug(slug: string, dir?: string): Article {
     h1: data.h1,
     description: data.description ?? "",
     image: data.image,
-    author: data.author ?? "SEO BAZA",
+    author: data.author ?? "SEO Baza",
     authorLink: data.authorLink,
     coAuthor: data.coAuthor,
     coAuthorLink: data.coAuthorLink,

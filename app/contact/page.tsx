@@ -2,7 +2,7 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Контакти - SEO BAZA",
+  title: "Контакти - SEO Baza",
   description: "Зв'яжіться з нами через Telegram або email info@seobaza.com.ua",
   path: "/contact",
 });
@@ -13,7 +13,7 @@ export default function ContactPage() {
       <div className="max-w-2xl mx-auto">
         <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Контакти", href: "/contact" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-8 text-center bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          Контакти SEO BAZA
+          Контакти SEO Baza
         </h1>
 
         <div className="bg-secondary/30 rounded-2xl p-8 border border-border text-center">

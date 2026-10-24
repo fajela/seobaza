@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Події - SEO BAZA",
+  title: "Події - SEO Baza",
   description: "SEOшні та навколоSEOшні події від української спільноти",
   path: "/events",
 });

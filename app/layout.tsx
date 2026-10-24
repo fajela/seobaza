@@ -27,7 +27,7 @@ const prozaLibre = Proza_Libre({
 });
 
 export const metadata: Metadata = {
-  title: "SEO BAZA - українська SEO-спільнота",
+  title: "SEO Baza - українська SEO-спільнота",
   description:
     "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом. І найкращою в світі спільнотою!",
   keywords: ["SEO", "Ukrainian SEO", "SEO community", "SEO Ukraine", "digital marketing"],
@@ -60,22 +60,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "uk_UA",
     url: "https://seobaza.com.ua/",
-    title: "SEO BAZA - українська SEO-спільнота",
+    title: "SEO Baza - українська SEO-спільнота",
     description:
       "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
-    siteName: "SEO BAZA",
+    siteName: "SEO Baza",
     images: [
       {
         url: "https://seobaza.com.ua/og-image.png",
         width: 640,
         height: 640,
-        alt: "SEO BAZA logo",
+        alt: "SEO Baza logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SEO BAZA - українська SEO-спільнота",
+    title: "SEO Baza - українська SEO-спільнота",
     description:
       "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
     images: ["https://seobaza.com.ua/og-image.png"],
@@ -175,7 +175,7 @@ export default function RootLayout({
                 </Link>
               </nav>
               <div className="text-center">
-                <h2 className="text-xl font-display mb-4">SEO BAZA в соцмережах</h2>
+                <h2 className="text-xl font-display mb-4">SEO Baza в соцмережах</h2>
                 <div className="flex justify-center space-x-6 mb-6">
                   <a
 

@@ -2,9 +2,9 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Прозорість видання — SEO BAZA",
+  title: "Прозорість видання — SEO Baza",
   description:
-    "Хто стоїть за SEO BAZA, як ми заробляємо, як працює редакція, звідки беремо факти й де нас виправити. Прозорість видання.",
+    "Хто стоїть за SEO Baza, як ми заробляємо, як працює редакція, звідки беремо факти й де нас виправити. Прозорість видання.",
   path: "/transparency",
   altPath: "/en/transparency",
 });
@@ -26,7 +26,7 @@ export default function TransparencyPage() {
         <div className="space-y-8 text-foreground/90 leading-relaxed">
           <section>
             <p>
-              Тут ми відкрито пояснюємо, хто стоїть за SEO BAZA, як ми
+              Тут ми відкрито пояснюємо, хто стоїть за SEO Baza, як ми
               заробляємо й за якими правилами працює редакція. Це наша версія
               сторінки прозорості, на яку спираються Google та сумлінні читачі.
             </p>
@@ -35,7 +35,7 @@ export default function TransparencyPage() {
           <section>
             <h2 className="text-2xl font-display mb-3">Хто ми</h2>
             <p>
-              SEO BAZA — українська спільнота SEO-фахівців і медіа про пошукову
+              SEO Baza — українська спільнота SEO-фахівців і медіа про пошукову
               оптимізацію. Спільнота працює з листопада 2022 року: щоденний
               Telegram-канал, активний чат, YouTube, новини й аналітика на сайті
               та події для індустрії.
@@ -49,7 +49,7 @@ export default function TransparencyPage() {
 
           <section>
             <h2 className="text-2xl font-display mb-3">Як ми заробляємо</h2>
-            <p>SEO BAZA фінансується за рахунок:</p>
+            <p>SEO Baza фінансується за рахунок:</p>
             <ul className="list-disc pl-6 space-y-2 mt-2">
               <li>власних коштів засновниці;</li>
               <li>спонсорства новин і відео;</li>

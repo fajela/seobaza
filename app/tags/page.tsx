@@ -5,9 +5,9 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { tagHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
-  title: "Теги — SEO BAZA",
+  title: "Теги — SEO Baza",
   description:
-    "Всі теги статей SEO BAZA: знайдіть матеріали за темами Core Web Vitals, E-E-A-T, лінкбілдинг, AI Overviews та іншими ключовими напрямами SEO.",
+    "Всі теги статей SEO Baza: знайдіть матеріали за темами Core Web Vitals, E-E-A-T, лінкбілдинг, AI Overviews та іншими ключовими напрямами SEO.",
   path: "/tags",
 });
 

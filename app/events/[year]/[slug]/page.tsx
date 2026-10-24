@@ -50,7 +50,7 @@ export async function generateMetadata({
 
   if (!event) {
     return {
-      title: "Подія не знайдена - SEO BAZA",
+      title: "Подія не знайдена - SEO Baza",
     };
   }
 
@@ -74,7 +74,7 @@ export async function generateMetadata({
     : url;
 
   return {
-    title: `${frontmatter.title} - SEO BAZA`,
+    title: `${frontmatter.title} - SEO Baza`,
     description: frontmatter.description || frontmatter.title,
     authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
     alternates: {
@@ -84,7 +84,7 @@ export async function generateMetadata({
       title: frontmatter.title,
       description: frontmatter.description || frontmatter.title,
       url: url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "article",
       publishedTime: frontmatter.date,
@@ -101,7 +101,7 @@ export async function generateMetadata({
               url: ogImage,
               width: 640,
               height: 640,
-              alt: "SEO BAZA logo",
+              alt: "SEO Baza logo",
             },
       ],
     },

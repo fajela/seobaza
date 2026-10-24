@@ -30,14 +30,14 @@ export async function generateMetadata({
   const monthName = ukMonthName(month);
   const url = `https://seobaza.com.ua/news/${year}/${month}`;
   return {
-    title: `SEO новини: ${monthName} ${year} — SEO BAZA`,
+    title: `SEO новини: ${monthName} ${year} — SEO Baza`,
     description: `Усі SEO-новини за ${monthName.toLowerCase()} ${year} року.`,
     alternates: { canonical: url },
     openGraph: {
       title: `SEO новини: ${monthName} ${year}`,
       description: `Усі SEO-новини за ${monthName.toLowerCase()} ${year} року.`,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
     },

@@ -6,8 +6,8 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Карта сайту — SEO BAZA",
-  description: "Повна карта сайту SEO BAZA: статті, новини, дайджести, теги, категорії, автори.",
+  title: "Карта сайту — SEO Baza",
+  description: "Повна карта сайту SEO Baza: статті, новини, дайджести, теги, категорії, автори.",
   path: "/sitemap-page",
 });
 
@@ -53,7 +53,7 @@ export default function SitemapIndexPage() {
       href: "/sitemap-page/authors",
       title: "Автори",
       count: authors.length,
-      desc: "Профілі авторів спільноти SEO BAZA.",
+      desc: "Профілі авторів спільноти SEO Baza.",
     },
   ];
 
@@ -65,7 +65,7 @@ export default function SitemapIndexPage() {
           Карта сайту
         </h1>
         <p className="text-lg text-muted-foreground mb-4">
-          Все, що опубліковано на SEO BAZA — для пошуку та навігації.
+          Все, що опубліковано на SEO Baza — для пошуку та навігації.
         </p>
         <p className="text-sm text-muted-foreground mb-12">
           XML-версію для пошукових систем дивіться за адресою{" "}

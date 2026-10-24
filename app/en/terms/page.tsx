@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { UkrainianPrimaryNotice } from "@/components/language-notice";
 
 export const metadata = pageMeta({
-  title: "Terms of Use: Content License and Rules | SEO BAZA",
+  title: "Terms of Use: Content License and Rules | SEO Baza",
   description:
     "Rules for using seobaza.com.ua: an open content license, newsletter terms, external links and liability. Read the terms before reusing content.",
   path: "/en/terms",
@@ -43,7 +43,7 @@ export default function EnglishTermsPage() {
           <section>
             <h2 className="text-2xl font-display mb-3">About the site</h2>
             <p>
-              SEO BAZA is a Ukrainian community of SEO professionals and a
+              SEO Baza is a Ukrainian community of SEO professionals and a
               media outlet about search engine optimization: industry news,
               analysis, educational materials and events. The owner and
               publisher of the site is Olesia Korobka. The content is
@@ -54,21 +54,21 @@ export default function EnglishTermsPage() {
           <section>
             <h2 className="text-2xl font-display mb-3">Using the content</h2>
             <p>
-              SEO BAZA is an open-source project. You can do whatever you like
+              SEO Baza is an open-source project. You can do whatever you like
               with the materials provided here: read, copy, translate, rework
               and distribute them, including for commercial purposes, and even
               publish them under your own name. No separate permission or
               source attribution is required.
             </p>
             <p className="mt-3">
-              Keep in mind: if a material does not belong to SEO BAZA (quotes,
+              Keep in mind: if a material does not belong to SEO Baza (quotes,
               images or texts of third parties), permission from the original
               source may be required.
             </p>
             <p className="mt-3">
-              The only thing you cannot do is impersonate SEO BAZA: use the
+              The only thing you cannot do is impersonate SEO Baza: use the
               name, brand or logo in a way that creates the impression that
-              your material, site or project is official SEO BAZA output or
+              your material, site or project is official SEO Baza output or
               released on our behalf.
             </p>
           </section>
