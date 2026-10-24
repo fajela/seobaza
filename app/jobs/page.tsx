@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "SEO вакансії: робота для SEO-спеціалістів в Україні - SEO BAZA",
+  title: "SEO вакансії: робота для SEO-спеціалістів в Україні - SEO Baza",
   description:
     "Актуальні вакансії для SEOшників від українських компаній і проєктів. Віддалена робота, лінкбілдинг, AI SEO. Знайдіть роботу або додайте свою вакансію!",
   path: "/jobs",

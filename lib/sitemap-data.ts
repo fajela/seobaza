@@ -240,7 +240,7 @@ const NEWS_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 // Floor: if even the wide window is empty, fall back to the newest posts so the
 // sitemap always has at least one <url>.
 const NEWS_MIN_ENTRIES = 5;
-export const PUBLICATION_NAME = "SEO BAZA";
+export const PUBLICATION_NAME = "SEO Baza";
 export const PUBLICATION_LANGUAGE = "uk";
 
 export function buildGoogleNews(): NewsSitemapEntry[] {

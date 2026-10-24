@@ -3,8 +3,8 @@ import { getAllAuthors } from "@/lib/authors";
 import { pageMeta } from "@/lib/page-metadata";
 
 export const metadata = pageMeta({
-  title: "Автори — Карта сайту — SEO BAZA",
-  description: "Профілі авторів SEO BAZA.",
+  title: "Автори — Карта сайту — SEO Baza",
+  description: "Профілі авторів SEO Baza.",
   path: "/sitemap-page/authors",
 });
 

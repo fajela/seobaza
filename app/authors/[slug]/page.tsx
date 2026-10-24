@@ -34,20 +34,20 @@ export async function generateMetadata({
   try {
     const author = getAuthorBySlug(slug);
     return {
-      title: `${author.name} — Автор SEO BAZA`,
+      title: `${author.name} — Автор SEO Baza`,
       description: author.bio,
       alternates: { canonical: `https://seobaza.com.ua/authors/${slug}` },
       openGraph: {
-        title: `${author.name} — SEO BAZA`,
+        title: `${author.name} — SEO Baza`,
         description: author.bio,
         url: `https://seobaza.com.ua/authors/${slug}`,
-        siteName: "SEO BAZA",
+        siteName: "SEO Baza",
         locale: "uk_UA",
         type: "profile",
       },
     };
   } catch {
-    return { title: "Автора не знайдено — SEO BAZA" };
+    return { title: "Автора не знайдено — SEO Baza" };
   }
 }
 
@@ -292,7 +292,7 @@ export default async function AuthorPage({
               <meta key={tag} itemProp="knowsAbout" content={getTagDisplayName(tag)} />
             ))}
             {!author.company && (
-              <meta itemProp="worksFor" content="SEO BAZA" />
+              <meta itemProp="worksFor" content="SEO Baza" />
             )}
           </div>
 

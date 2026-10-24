@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
-  title: "Категорії — SEO BAZA",
+  title: "Категорії — SEO Baza",
   description:
     "Всі категорії матеріалів про SEO від української спільноти: лінкбілдинг, технічне SEO, AI та SEO, оновлення алгоритмів і багато іншого.",
   path: "/category",

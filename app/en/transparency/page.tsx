@@ -3,9 +3,9 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { UkrainianPrimaryNotice } from "@/components/language-notice";
 
 export const metadata = pageMeta({
-  title: "Publication Transparency: Ownership and Funding | SEO BAZA",
+  title: "Publication Transparency: Ownership and Funding | SEO Baza",
   description:
-    "Who owns SEO BAZA, how the publication earns money, how the editorial process works and where to report errors. Read the transparency policy.",
+    "Who owns SEO Baza, how the publication earns money, how the editorial process works and where to report errors. Read the transparency policy.",
   path: "/en/transparency",
   locale: "en",
   altPath: "/transparency",
@@ -34,7 +34,7 @@ export default function EnglishTransparencyPage() {
         <div className="space-y-8 text-foreground/90 leading-relaxed">
           <section>
             <p>
-              This page openly explains who is behind SEO BAZA, how we earn
+              This page openly explains who is behind SEO Baza, how we earn
               money and what rules the editorial team follows.
             </p>
           </section>
@@ -42,7 +42,7 @@ export default function EnglishTransparencyPage() {
           <section>
             <h2 className="text-2xl font-display mb-3">Who we are</h2>
             <p>
-              SEO BAZA is a Ukrainian community of SEO professionals and a
+              SEO Baza is a Ukrainian community of SEO professionals and a
               media outlet about search engine optimization. The community has
               been active since November 2022: a daily Telegram channel, an
               active chat, YouTube, news and analysis on the site, and events
@@ -61,7 +61,7 @@ export default function EnglishTransparencyPage() {
 
           <section>
             <h2 className="text-2xl font-display mb-3">How we earn money</h2>
-            <p>SEO BAZA is funded by:</p>
+            <p>SEO Baza is funded by:</p>
             <ul className="list-disc pl-6 space-y-2 mt-2">
               <li>the founder&apos;s own funds;</li>
               <li>news and video sponsorships;</li>

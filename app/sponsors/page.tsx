@@ -3,9 +3,9 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Спонсорам - SEO BAZA",
+  title: "Спонсорам - SEO Baza",
   description:
-    "Формати співпраці та реклами в SEO BAZA: спонсор відеосереди, спонсор новинного дайджесту, банери, дошка вакансій. Доступ до української SEO-спільноти.",
+    "Формати співпраці та реклами в SEO Baza: спонсор відеосереди, спонсор новинного дайджесту, банери, дошка вакансій. Доступ до української SEO-спільноти.",
   path: "/sponsors",
   image: {
     path: "/images/og/reklama-v-seo-baza.jpg",
@@ -131,7 +131,7 @@ export default function SponsorsPage() {
       <div className="max-w-4xl mx-auto">
         <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Спонсорам", href: "/sponsors" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          Спонсорам SEO BAZA
+          Спонсорам SEO Baza
         </h1>
         <p className="text-lg text-muted-foreground mb-10">
           Розкажіть про свій продукт українській SEO-спільноті без нав&apos;язливої
@@ -276,7 +276,7 @@ export default function SponsorsPage() {
               href="/seobaza.png"
               className="text-primary hover:text-accent underline transition-colors"
             >
-              завантажити логотип SEO BAZA
+              завантажити логотип SEO Baza
             </a>
             .
           </p>

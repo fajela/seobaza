@@ -3,8 +3,8 @@ import { getAllNews, getNewsYears } from "@/lib/news";
 import { pageMeta } from "@/lib/page-metadata";
 
 export const metadata = pageMeta({
-  title: "Місячні дайджести — Карта сайту — SEO BAZA",
-  description: "Усі місячні дайджести SEO BAZA — підбірки новин за кожен місяць.",
+  title: "Місячні дайджести — Карта сайту — SEO Baza",
+  description: "Усі місячні дайджести SEO Baza — підбірки новин за кожен місяць.",
   path: "/sitemap-page/digests",
 });
 

@@ -37,7 +37,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { type, slug } = await params;
   const entity = getPublishedEntity(type, slug);
-  if (!entity) return { title: "Сторінку не знайдено | SEO BAZA" };
+  if (!entity) return { title: "Сторінку не знайдено | SEO Baza" };
   const url = `${BASE}${entityUrl(entity)}`;
   const title = entity.title ?? hubTitle(entity.name);
   const og = buildOgImage(entity.image, entity.name);
@@ -49,7 +49,7 @@ export async function generateMetadata({
       title,
       description: entity.description,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
       images: [{ url: og.url, width: og.width, height: og.height, alt: og.alt, type: og.type }],

@@ -5,8 +5,8 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Автори — SEO BAZA",
-  description: "Автори матеріалів SEO BAZA — SEO-спеціалісти та експерти українського ком'юніті.",
+  title: "Автори — SEO Baza",
+  description: "Автори матеріалів SEO Baza — SEO-спеціалісти та експерти українського ком'юніті.",
   path: "/authors",
 });
 
@@ -21,7 +21,7 @@ export default function AuthorsPage() {
           Автори
         </h1>
         <p className="text-lg text-muted-foreground mb-12">
-          SEO-спеціалісти та експерти, які створюють матеріали для SEO BAZA
+          SEO-спеціалісти та експерти, які створюють матеріали для SEO Baza
         </p>
 
         <div

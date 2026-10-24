@@ -145,7 +145,7 @@ export function KgProfileTool() {
   return (
     <div className="not-prose my-8 rounded-xl border border-border bg-secondary/30 p-6">
       <div className="mb-1 text-sm font-medium text-accent">
-        🛠 Інструмент SEO BAZA
+        🛠 Інструмент SEO Baza
       </div>
       <h2 className="mb-1 mt-0 text-2xl font-display">
         Перевір сутність і згенеруй посилання на Google Search Profile

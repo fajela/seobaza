@@ -11,7 +11,7 @@ const ogPeople = buildOgImage(
   "Українські SEO-фахівці: профілі спікерів і експертів у графі знань SEO Baza"
 );
 
-const TITLE = "Українські SEO-спеціалісти: профілі спікерів та експертів | SEO BAZA";
+const TITLE = "Українські SEO-спеціалісти: профілі спікерів та експертів | SEO Baza";
 const DESCRIPTION =
   "Профілі SEO-експертів з України: спікери мітапів і стрімів SEO Baza, їхні доповіді, компанії та соцмережі. Шукайте за прізвищем або темою.";
 const OG_DESCRIPTION =
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: OG_DESCRIPTION,
     url: "https://seobaza.com.ua/kg/person",
-    siteName: "SEO BAZA",
+    siteName: "SEO Baza",
     locale: "uk_UA",
     type: "website",
     images: [{ url: ogPeople.url, width: ogPeople.width, height: ogPeople.height, alt: ogPeople.alt, type: ogPeople.type }],

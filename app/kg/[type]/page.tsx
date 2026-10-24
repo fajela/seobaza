@@ -34,7 +34,7 @@ const INDEX_TITLES: Record<string, string> = {
 
 export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
   const { type } = await params;
-  if (!isEntityType(type)) return { title: "Сторінку не знайдено | SEO BAZA" };
+  if (!isEntityType(type)) return { title: "Сторінку не знайдено | SEO Baza" };
   const title = INDEX_TITLES[type];
   const names = getPublishedEntities(type).slice(0, 4).map((e) => e.name).join(", ");
   const description = `${ENTITY_TYPE_LABELS[type].many} з графа знань SEO Baza: ${names}. Усі матеріали спільноти про кожен в одному місці. Переходьте.`;
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
       title,
       description,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
       images: [{ url: og.url, width: og.width, height: og.height, alt: og.alt, type: og.type }],

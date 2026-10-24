@@ -4,9 +4,9 @@ import { UkrainianPrimaryNotice } from "@/components/language-notice";
 import { seoBazaOrganization, WEBSITE_REF } from "@/lib/organization";
 
 export const metadata = pageMeta({
-  title: "About SEO BAZA: Ukrainian SEO Community and Media",
+  title: "About SEO Baza: Ukrainian SEO Community and Media",
   description:
-    "Ukrainian community of SEO professionals: industry news, Google update analysis, events and guides. Learn what SEO BAZA is and who runs it.",
+    "Ukrainian community of SEO professionals: industry news, Google update analysis, events and guides. Learn what SEO Baza is and who runs it.",
   path: "/en/about",
   locale: "en",
   altPath: "/about",
@@ -17,9 +17,9 @@ const aboutJsonLd = {
   "@type": "AboutPage",
   "@id": "https://seobaza.com.ua/en/about",
   url: "https://seobaza.com.ua/en/about",
-  name: "About SEO BAZA",
+  name: "About SEO Baza",
   description:
-    "SEO BAZA is a Ukrainian community of SEO professionals: industry news, Google update analysis, events and educational materials.",
+    "SEO Baza is a Ukrainian community of SEO professionals: industry news, Google update analysis, events and educational materials.",
   inLanguage: "en",
   isPartOf: WEBSITE_REF,
   mainEntity: {
@@ -30,7 +30,7 @@ const aboutJsonLd = {
         "@id": "https://seobaza.com.ua/kg/person/sb0009#person",
         name: "Oleksandra Khilova",
         alternateName: "Олександра Хілова",
-        jobTitle: "Co-founder and co-owner of the SEO BAZA YouTube channel",
+        jobTitle: "Co-founder and co-owner of the SEO Baza YouTube channel",
         url: "https://seobaza.com.ua/kg/person/sb0009",
         sameAs: [
           "https://alexakhilova.com",
@@ -54,7 +54,7 @@ const aboutJsonLd = {
       {
         "@type": "ListItem",
         position: 2,
-        name: "About SEO BAZA",
+        name: "About SEO Baza",
         item: "https://seobaza.com.ua/en/about",
       },
     ],
@@ -72,12 +72,12 @@ export default function EnglishAboutPage() {
         <UkrainianPrimaryNotice ukPath="/about" />
 
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          About SEO BAZA
+          About SEO Baza
         </h1>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
           <p>
-            SEO BAZA is a Ukrainian community of SEO professionals. Members
+            SEO Baza is a Ukrainian community of SEO professionals. Members
             share industry news, break down Google updates, discuss AI search
             and content formats, and run meetups and conferences. The site and
             all editorial content are in Ukrainian.
@@ -104,7 +104,7 @@ export default function EnglishAboutPage() {
             </li>
           </ul>
 
-          <h2>Who is behind SEO BAZA</h2>
+          <h2>Who is behind SEO Baza</h2>
           <p>
             The community was founded by{" "}
             <Link href="/authors/olesia-korobka">Olesia Korobka</Link>, an SEO
@@ -117,7 +117,7 @@ export default function EnglishAboutPage() {
             .
           </p>
           <p>
-            The SEO BAZA YouTube channel is a joint project of Olesia Korobka
+            The SEO Baza YouTube channel is a joint project of Olesia Korobka
             and <Link href="/kg/person/sb0009">Oleksandra Khilova</Link>.
             Oleksandra is the channel&apos;s co-founder and co-owner and hosts
             streams and webinars on link building, automation and Google

@@ -34,11 +34,11 @@ export async function generateMetadata({
 }: CompanyPageProps): Promise<Metadata> {
   const { company } = await params;
   const jobs = getAllJobs().filter((j) => j.companySlug === company);
-  if (!jobs.length) return { title: "Вакансії не знайдено - SEO BAZA" };
+  if (!jobs.length) return { title: "Вакансії не знайдено - SEO Baza" };
 
   const name = jobs[0].company;
   const url = `https://seobaza.com.ua/jobs/${company}`;
-  const title = `Вакансії ${name}: відкриті SEO-позиції - SEO BAZA`;
+  const title = `Вакансії ${name}: відкриті SEO-позиції - SEO Baza`;
   const description = `Робота в ${name}: актуальні вакансії для SEO-спеціалістів з описом обов'язків, вимог і умов. Оберіть позицію та відгукніться!`;
 
   return {
@@ -49,7 +49,7 @@ export async function generateMetadata({
       title,
       description,
       url,
-      siteName: "SEO BAZA",
+      siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
     },

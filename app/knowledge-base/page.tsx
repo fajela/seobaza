@@ -5,7 +5,7 @@ import { getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles"
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "База знань - SEO BAZA",
+  title: "База знань - SEO Baza",
   description: "Корисні матеріали, гайди та документи для SEO-спеціалістів",
   path: "/knowledge-base",
 });

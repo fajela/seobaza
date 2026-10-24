@@ -26,7 +26,7 @@ export async function generateMetadata({
   const { id } = await params;
   try {
     const person = getKgPersonById(id);
-    const title = `${person.name}: ${person.role}${person.company ? ` ${person.company}` : ""} | SEO BAZA`;
+    const title = `${person.name}: ${person.role}${person.company ? ` ${person.company}` : ""} | SEO Baza`;
     const og = buildOgImage(person.image, person.name);
     const description = person.description || person.bio;
     return {
@@ -37,7 +37,7 @@ export async function generateMetadata({
         title,
         description,
         url: `https://seobaza.com.ua/kg/person/${id}`,
-        siteName: "SEO BAZA",
+        siteName: "SEO Baza",
         locale: "uk_UA",
         type: "profile",
         images: [{ url: og.url, width: og.width, height: og.height, alt: og.alt, type: og.type }],
@@ -50,7 +50,7 @@ export async function generateMetadata({
       },
     };
   } catch {
-    return { title: "Людину не знайдено — SEO BAZA" };
+    return { title: "Людину не знайдено — SEO Baza" };
   }
 }
 

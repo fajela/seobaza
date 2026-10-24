@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { tagHref, categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
-  title: "Статті — SEO BAZA",
+  title: "Статті — SEO Baza",
   description: "Навчальні матеріали та статті від української SEO-спільноти",
   path: "/articles",
 });

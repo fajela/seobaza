@@ -6,9 +6,9 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { categoryHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
-  title: "SEO новини — SEO BAZA",
+  title: "SEO новини — SEO Baza",
   description:
-    "Архів SEO-новин від спільноти SEO BAZA: оновлення Google, тренди AI та події SEO-індустрії.",
+    "Архів SEO-новин від спільноти SEO Baza: оновлення Google, тренди AI та події SEO-індустрії.",
   path: "/news",
 });
 
@@ -44,7 +44,7 @@ export default function NewsPage() {
           Новини
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
-          SEO-новини від спільноти SEO BAZA
+          SEO-новини від спільноти SEO Baza
         </p>
 
         {/* Category navigation — pills link to /category/[slug] */}

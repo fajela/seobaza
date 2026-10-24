@@ -3,9 +3,9 @@ import { NewsletterForm } from "@/components/newsletter-form";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Розсилка SEO BAZA",
+  title: "Розсилка SEO Baza",
   description:
-    "Підпишіться на email-розсилку SEO BAZA: новини SEO, розбори оновлень Google і AI-пошуку та навчальні матеріали українською.",
+    "Підпишіться на email-розсилку SEO Baza: новини SEO, розбори оновлень Google і AI-пошуку та навчальні матеріали українською.",
   path: "/newsletter",
 });
 
@@ -15,7 +15,7 @@ export default function NewsletterPage() {
       <div className="max-w-2xl mx-auto">
         <Breadcrumbs items={[{ name: "Головна", href: "/" }, { name: "Розсилка", href: "/newsletter" }]} />
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-          Розсилка SEO BAZA
+          Розсилка SEO Baza
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           Найважливіше зі світу SEO, прямо на вашу пошту. Те саме, що ми пишемо

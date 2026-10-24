@@ -2,7 +2,7 @@ import Image from "next/image";
 
 /**
  * Cover image for post cards. Falls back to a branded gradient block with the
- * SEO BAZA wordmark when a post has no image (most articles, some news items),
+ * SEO Baza wordmark when a post has no image (most articles, some news items),
  * so cards never render as empty grey boxes.
  */
 export function PostCover({
@@ -39,7 +39,7 @@ export function PostCover({
       aria-hidden
     >
       <span className="px-4 text-center font-display text-lg font-bold tracking-tight text-white/90 drop-shadow-sm sm:text-xl">
-        {label ?? "SEO BAZA"}
+        {label ?? "SEO Baza"}
       </span>
     </div>
   );

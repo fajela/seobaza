@@ -16,7 +16,7 @@ interface Props {
 
 export function NewsletterForm({
   variant = "default",
-  title = "Підпишіться на розсилку SEO BAZA",
+  title = "Підпишіться на розсилку SEO Baza",
   description = "Новини SEO, розбори та матеріали українською. Без спаму, відписатися можна будь-коли.",
   className = "",
 }: Props) {

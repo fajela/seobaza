@@ -4,8 +4,8 @@ import { ukMonthName } from "@/lib/months";
 import { pageMeta } from "@/lib/page-metadata";
 
 export const metadata = pageMeta({
-  title: "Новини — Карта сайту — SEO BAZA",
-  description: "Усі індивідуальні новинні дописи SEO BAZA, згруповані за роком і місяцем.",
+  title: "Новини — Карта сайту — SEO Baza",
+  description: "Усі індивідуальні новинні дописи SEO Baza, згруповані за роком і місяцем.",
   path: "/sitemap-page/news",
 });
 

@@ -4,8 +4,8 @@ import { pageMeta } from "@/lib/page-metadata";
 import { tagHref } from "@/lib/redirects";
 
 export const metadata = pageMeta({
-  title: "Теги — Карта сайту — SEO BAZA",
-  description: "Усі теги статей і новин SEO BAZA.",
+  title: "Теги — Карта сайту — SEO Baza",
+  description: "Усі теги статей і новин SEO Baza.",
   path: "/sitemap-page/tags",
 });
 

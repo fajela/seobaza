@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata = pageMeta({
-  title: "Відео - SEO BAZA",
+  title: "Відео - SEO Baza",
   description:
     "Українські SEO-відео від спільноти SEO Baza: стріми по середах, розбори з запрошеними фахівцями і поради спільноти. Дивіться на сайті чи YouTube.",
   path: "/videos",
@@ -84,7 +84,7 @@ export default function VideosPage() {
               rel="noopener noreferrer"
               className="text-primary hover:text-accent underline transition-colors"
             >
-              YouTube-каналі SEO BAZA
+              YouTube-каналі SEO Baza
             </a>
             .
           </p>

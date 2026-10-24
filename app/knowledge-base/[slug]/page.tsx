@@ -40,7 +40,7 @@ export async function generateMetadata({
     const og = buildOgImage(article.image, article.h1 || article.title);
 
     return {
-      title: `${article.title} - SEO BAZA`,
+      title: `${article.title} - SEO Baza`,
       description: article.description,
       authors: [{ name: article.author }],
       alternates: {
@@ -50,7 +50,7 @@ export async function generateMetadata({
         title: article.title,
         description: article.description,
         url: url,
-        siteName: "SEO BAZA",
+        siteName: "SEO Baza",
         locale: "uk_UA",
         type: "article",
         publishedTime: isoDate(article.date),
@@ -77,7 +77,7 @@ export async function generateMetadata({
     };
   } catch {
     return {
-      title: "Матеріал не знайдено - SEO BAZA",
+      title: "Матеріал не знайдено - SEO Baza",
     };
   }
 }
@@ -131,7 +131,7 @@ export default async function KnowledgeBaseArticlePage({
           itemType="https://schema.org/Organization"
           itemID="https://seobaza.com.ua/"
         >
-          <meta itemProp="name" content="SEO BAZA" />
+          <meta itemProp="name" content="SEO Baza" />
           <link itemProp="url" href="https://seobaza.com.ua/" />
           <div itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
             <link itemProp="url" href="https://seobaza.com.ua/seobaza.png" />

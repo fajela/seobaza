@@ -1,7 +1,7 @@
 /**
  * Google "Preferred sources" badge.
  * seobaza.com.ua was added to Google's preferred sources; this badge lets
- * readers add SEO BAZA as their preferred source in Google Search.
+ * readers add SEO Baza as their preferred source in Google Search.
  * Docs: https://developers.google.com/search/docs/appearance/preferred-sources
  *
  * The badge art is Google's official Ukrainian asset and must not be altered,
@@ -10,7 +10,7 @@
  */
 export function GooglePreferredSource() {
   const href = "https://www.google.com/preferences/source?q=seobaza.com.ua";
-  const alt = "Додати SEO BAZA як бажане джерело в Google";
+  const alt = "Додати SEO Baza як бажане джерело в Google";
 
   return (
     <a

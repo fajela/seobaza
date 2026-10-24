@@ -1,5 +1,5 @@
 /**
- * The ONE description of SEO BAZA as a schema.org Organization, shared by every
+ * The ONE description of SEO Baza as a schema.org Organization, shared by every
  * page that emits it (/, /about, /en, /en/about). Before this file each page
  * carried its own copy and they had drifted: the homepage used `creator` while
  * /about used `founder`, knowsAbout had 7 items, and WebSite and Organization
@@ -11,7 +11,7 @@
  *
  * Every fact here is verified, not assumed:
  *   alternateName  = spellings actually used in the Telegram channel export
- *                    (SEO BAZA 1401x, SEO Baza 50x, seobaza 57x, Cyrillic 0x)
+ *                    (SEO Baza 1401x, SEO Baza 50x, seobaza 57x, Cyrillic 0x)
  *   foundingDate   = first channel post 24.11.2022
  *   logo           = /seobaza.png is 640x640
  *   sameAs         = every URL returns 200 (checked 2026-09-03)
@@ -41,8 +41,8 @@ const DESCRIPTION = {
 } as const;
 
 const FOUNDER_TITLE = {
-  uk: "Засновниця SEO BAZA",
-  en: "Founder of SEO BAZA",
+  uk: "Засновниця SEO Baza",
+  en: "Founder of SEO Baza",
 } as const;
 
 export type OrgLang = keyof typeof DESCRIPTION;
@@ -52,7 +52,7 @@ export function seoBazaOrganization(lang: OrgLang = "uk") {
   return {
     "@type": "Organization",
     "@id": ORG_ID,
-    name: "SEO BAZA",
+    name: "SEO Baza",
     alternateName: ["SEO Baza", "seobaza"],
     url: `${SITE_URL}/`,
     logo: {
@@ -103,7 +103,7 @@ export function seoBazaWebSite() {
   return {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
-    name: "SEO BAZA",
+    name: "SEO Baza",
     alternateName: ["SEO Baza", "seobaza"],
     url: `${SITE_URL}/`,
     description:
@@ -114,5 +114,5 @@ export function seoBazaWebSite() {
 }
 
 /** Short references for pages that only need to point at the nodes. */
-export const ORG_REF = { "@type": "Organization", "@id": ORG_ID, name: "SEO BAZA", url: `${SITE_URL}/` };
-export const WEBSITE_REF = { "@type": "WebSite", "@id": WEBSITE_ID, name: "SEO BAZA", url: `${SITE_URL}/` };
+export const ORG_REF = { "@type": "Organization", "@id": ORG_ID, name: "SEO Baza", url: `${SITE_URL}/` };
+export const WEBSITE_REF = { "@type": "WebSite", "@id": WEBSITE_ID, name: "SEO Baza", url: `${SITE_URL}/` };

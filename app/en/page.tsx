@@ -4,9 +4,9 @@ import { UkrainianPrimaryNotice } from "@/components/language-notice";
 import { ORG_REF, WEBSITE_REF } from "@/lib/organization";
 
 export const metadata = pageMeta({
-  title: "Ukrainian SEO Community: News, Guides, Events | SEO BAZA",
+  title: "Ukrainian SEO Community: News, Guides, Events | SEO Baza",
   description:
-    "SEO news, analysis and guides from the Ukrainian SEO community: Google updates, AI search, meetups and a daily Telegram channel. Join SEO BAZA!",
+    "SEO news, analysis and guides from the Ukrainian SEO community: Google updates, AI search, meetups and a daily Telegram channel. Join SEO Baza!",
   path: "/en",
   locale: "en",
   altPath: "/",
@@ -17,7 +17,7 @@ const jsonLd = {
   "@type": "WebPage",
   "@id": "https://seobaza.com.ua/en",
   url: "https://seobaza.com.ua/en",
-  name: "SEO BAZA: Ukrainian SEO Community",
+  name: "SEO Baza: Ukrainian SEO Community",
   description:
     "SEO news, analysis and guides from the Ukrainian SEO community: Google updates, AI search, meetups and a daily Telegram channel.",
   inLanguage: "en",
@@ -38,7 +38,7 @@ export default function EnglishHomePage() {
         {/* Hero — mirrors the (visually hidden) hero of the Ukrainian homepage */}
         <section className="mb-14 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-display mb-3 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-            SEO BAZA
+            SEO Baza
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Ukrainian SEO community · 600+ materials · news, guides and
@@ -96,7 +96,7 @@ export default function EnglishHomePage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/seobaza.png"
-                  alt="SEO BAZA logo, green base station of the Ukrainian SEO community"
+                  alt="SEO Baza logo, green base station of the Ukrainian SEO community"
                   width={192}
                   height={192}
                   className="w-48 h-48 rounded-2xl object-cover shadow-xl"
@@ -152,7 +152,7 @@ export default function EnglishHomePage() {
         {/* Community band — mirrors the homepage community section */}
         <section className="mb-14">
           <h2 className="text-2xl sm:text-3xl font-display mb-6 text-center">
-            SEO BAZA community
+            SEO Baza community
           </h2>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl p-6 border border-border bg-secondary/30 transition-theme">
@@ -171,7 +171,7 @@ export default function EnglishHomePage() {
               </a>
             </div>
             <div className="rounded-2xl p-6 border border-border bg-secondary/30 transition-theme">
-              <h3 className="text-xl font-display mb-1">SEO BAZA on YouTube</h3>
+              <h3 className="text-xl font-display mb-1">SEO Baza on YouTube</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Talks, breakdowns and interviews from the community
               </p>
@@ -194,7 +194,7 @@ export default function EnglishHomePage() {
           <ul className="space-y-2">
             <li>
               <Link href="/en/about" className="text-primary underline hover:text-accent">
-                About SEO BAZA
+                About SEO Baza
               </Link>
             </li>
             <li>

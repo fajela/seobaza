@@ -4,8 +4,8 @@ import { getCategoryDisplayName } from "@/lib/taxonomy";
 import { pageMeta } from "@/lib/page-metadata";
 
 export const metadata = pageMeta({
-  title: "Статті — Карта сайту — SEO BAZA",
-  description: "Список усіх вічнозелених статей на SEO BAZA.",
+  title: "Статті — Карта сайту — SEO Baza",
+  description: "Список усіх вічнозелених статей на SEO Baza.",
   path: "/sitemap-page/articles",
 });
 

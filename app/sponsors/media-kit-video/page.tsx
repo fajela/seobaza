@@ -7,12 +7,12 @@ import { pageMeta } from "@/lib/page-metadata";
 // медіакіт, а банери й розсилка отримають свої media-kit-* адреси.
 export const metadata = {
   ...pageMeta({
-    title: "Медіакіт відеосеред - SEO BAZA",
-    description: "Охоплення, формати й ціни спонсорства відеосеред SEO BAZA.",
+    title: "Медіакіт відеосеред - SEO Baza",
+    description: "Охоплення, формати й ціни спонсорства відеосеред SEO Baza.",
     path: "/sponsors/media-kit-video",
     image: {
       path: "/images/og/sponsorstvo-videoserad.jpg",
-      alt: "Темна картка з логотипом SEO BAZA і написом «Спонсорство відеосеред» та ціною 250 доларів за випуск",
+      alt: "Темна картка з логотипом SEO Baza і написом «Спонсорство відеосеред» та ціною 250 доларів за випуск",
     },
   }),
   robots: { index: false, follow: false },
@@ -41,7 +41,7 @@ const deliverables = [
     h: "Анонс і пост із записом у телеграмі",
     p: "Анонс виходить у каналі напередодні ефіру, спонсор названий у ньому. Після ефіру виходить пост із записом. Анонс випуску про RAG зібрав 2 730 переглядів.",
     img: "/images/mediakit/telegram-anons-efiru.jpg",
-    alt: "Анонс ефіру про RAG у телеграм-каналі SEO BAZA зі згадкою спонсора Collaborator і 2,73 тисячі переглядів",
+    alt: "Анонс ефіру про RAG у телеграм-каналі SEO Baza зі згадкою спонсора Collaborator і 2,73 тисячі переглядів",
   },
   {
     h: "Постійна сторінка випуску на сайті",
@@ -85,7 +85,7 @@ export default function MediaKitPage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-3xl mx-auto">
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
-          Медіакіт · SEO BAZA
+          Медіакіт · SEO Baza
         </p>
         <h1 className="text-4xl sm:text-5xl font-display mb-5">
           Спонсорство відеосеред
