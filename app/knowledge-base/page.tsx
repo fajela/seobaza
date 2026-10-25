@@ -134,7 +134,7 @@ export default function KnowledgeBasePage() {
                       </Link>
                     ) : (
                       <a
-                        href={item.url}
+                        href={item.url} rel={item.url.startsWith("http") ? "nofollow noopener" : undefined}
                         target="_blank"
                         className="hover:text-accent transition-colors"
                       >
@@ -161,7 +161,7 @@ export default function KnowledgeBasePage() {
                   {/* Action */}
                   {item.type === "pdf" ? (
                     <a
-                      href={item.url}
+                      href={item.url} rel={item.url.startsWith("http") ? "nofollow noopener" : undefined}
                       target="_blank"
 
                       className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors"
@@ -183,7 +183,7 @@ export default function KnowledgeBasePage() {
                     </a>
                   ) : item.type === "external" ? (
                     <a
-                      href={item.url}
+                      href={item.url} rel={item.url.startsWith("http") ? "nofollow noopener" : undefined}
                       target="_blank"
 
                       className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors"
@@ -239,7 +239,7 @@ export default function KnowledgeBasePage() {
           <p className="text-muted-foreground">
             Якщо у вас є корисні матеріали для спільноти, напишіть{" "}
             <a
-              href="https://t.me/fajela"
+              href="https://t.me/fajela" rel="nofollow noopener"
               target="_blank"
 
               className="text-primary hover:text-accent underline transition-colors"

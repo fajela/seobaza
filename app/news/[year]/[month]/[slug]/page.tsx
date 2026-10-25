@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import { MaterialEntities } from "@/components/material-entities";
 import Link from "next/link";
@@ -259,7 +260,7 @@ export default async function NewsPostPage({
               if (item.authorLink) {
                 return (
                   <a
-                    href={item.authorLink}
+                    href={item.authorLink} rel={externalRel(item.authorLink)}
                     target="_blank"
                     className="font-medium hover:text-accent transition-colors"
                   >

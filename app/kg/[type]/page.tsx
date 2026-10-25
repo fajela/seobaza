@@ -11,6 +11,9 @@ import {
   materialsLabel,
 } from "@/lib/kg-entities";
 import { buildOgImage } from "@/lib/og-image";
+import { ToolsHubView } from "@/components/tools-hub-view";
+import { getToolsOgImage } from "@/lib/tools";
+import { pageMeta } from "@/lib/page-metadata";
 
 const BASE = "https://seobaza.com.ua";
 
@@ -35,6 +38,15 @@ const INDEX_TITLES: Record<string, string> = {
 export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
   const { type } = await params;
   if (!isEntityType(type)) return { title: "Сторінку не знайдено | SEO Baza" };
+  // /kg/tool = каталог SEO-сервісів (content/tools/tools.json) + інструменти графу.
+  if (type === "tool")
+    return pageMeta({
+      title: "SEO-інструменти та сервіси: каталог для SEO під бурж | SEO Baza",
+      description:
+        "Понад 300 сервісів: AI-інструменти, технічний аудит, семантика, лінкбілдинг, локальне SEO і робота агенцій. Знайди потрібний інструмент!",
+      path: "/kg/tool",
+      image: getToolsOgImage(),
+    });
   const title = INDEX_TITLES[type];
   const names = getPublishedEntities(type).slice(0, 4).map((e) => e.name).join(", ");
   const description = `${ENTITY_TYPE_LABELS[type].many} з графа знань SEO Baza: ${names}. Усі матеріали спільноти про кожен в одному місці. Переходьте.`;
@@ -62,6 +74,7 @@ export default async function EntityTypeIndexPage({ params }: { params: Promise<
   if (!isEntityType(type)) notFound();
   const entities = getPublishedEntities(type);
   if (entities.length === 0) notFound();
+  if (type === "tool") return <ToolsHubView />;
   const labels = ENTITY_TYPE_LABELS[type];
   const url = `${BASE}/kg/${type}`;
 

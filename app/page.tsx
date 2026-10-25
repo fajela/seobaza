@@ -419,7 +419,7 @@ export default function Home() {
             </div>
             <div className="mt-4 text-center">
               <a
-                href="https://t.me/SEOBAZA"
+                href="https://t.me/SEOBAZA" rel="nofollow noopener"
                 target="_blank"
                 className="text-sm text-primary hover:text-accent underline transition-colors"
               >
@@ -450,7 +450,7 @@ export default function Home() {
             </div>
             <div className="mt-auto pt-4 text-center">
               <a
-                href="https://www.youtube.com/@SEOBAZA"
+                href="https://www.youtube.com/@SEOBAZA" rel="nofollow noopener"
                 target="_blank"
                 className="text-sm text-primary hover:text-accent underline transition-colors"
               >
@@ -474,7 +474,7 @@ export default function Home() {
                 ком'юніті. А формально це ресурс з SEO з новинами, учбовими
                 матеріалами,{" "}
                 <a
-                  href="https://www.youtube.com/@SEOBAZA"
+                  href="https://www.youtube.com/@SEOBAZA" rel="nofollow noopener"
                   target="_blank"
 
                   className="text-primary hover:text-accent underline transition-colors"
@@ -483,7 +483,7 @@ export default function Home() {
                 </a>{" "}
                 і{" "}
                 <a
-                  href="https://t.me/SEOBAZA"
+                  href="https://t.me/SEOBAZA" rel="nofollow noopener"
                   target="_blank"
 
                   className="text-primary hover:text-accent underline transition-colors"
@@ -545,7 +545,7 @@ export default function Home() {
             <p className="text-center text-muted-foreground mb-6">
               Банка збору:{" "}
               <a
-                href="https://send.monobank.ua/jar/8nacjrPTZs"
+                href="https://send.monobank.ua/jar/8nacjrPTZs" rel="nofollow noopener"
                 target="_blank"
                 className="text-primary hover:text-accent underline transition-colors"
               >
@@ -558,7 +558,7 @@ export default function Home() {
             <p className="text-muted-foreground">
               Пишіть мені в тг{" "}
               <a
-                href="https://t.me/fajela"
+                href="https://t.me/fajela" rel="nofollow noopener"
                 target="_blank"
 
                 className="text-primary hover:text-accent underline transition-colors"

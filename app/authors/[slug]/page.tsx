@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -162,7 +163,7 @@ export default async function AuthorPage({
                   {" · "}
                   {author.companyUrl ? (
                     <a
-                      href={author.companyUrl}
+                      href={author.companyUrl} rel={externalRel(author.companyUrl)}
                       target="_blank"
                       itemProp="url"
                       className="hover:text-accent transition-colors"
@@ -187,7 +188,7 @@ export default async function AuthorPage({
             <div className="flex flex-wrap gap-3 mb-4">
               {author.telegram && (
                 <a
-                  href={author.telegram}
+                  href={author.telegram} rel={externalRel(author.telegram)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -199,7 +200,7 @@ export default async function AuthorPage({
               )}
               {author.linkedin && (
                 <a
-                  href={author.linkedin}
+                  href={author.linkedin} rel={externalRel(author.linkedin)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -211,7 +212,7 @@ export default async function AuthorPage({
               )}
               {author.twitter && (
                 <a
-                  href={author.twitter}
+                  href={author.twitter} rel={externalRel(author.twitter)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -223,7 +224,7 @@ export default async function AuthorPage({
               )}
               {author.instagram && (
                 <a
-                  href={author.instagram}
+                  href={author.instagram} rel={externalRel(author.instagram)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -235,7 +236,7 @@ export default async function AuthorPage({
               )}
               {author.facebook && (
                 <a
-                  href={author.facebook}
+                  href={author.facebook} rel={externalRel(author.facebook)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -247,7 +248,7 @@ export default async function AuthorPage({
               )}
               {author.website && (
                 <a
-                  href={author.website}
+                  href={author.website} rel={externalRel(author.website)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -260,7 +261,7 @@ export default async function AuthorPage({
               )}
               {author.fajelaAbout && (
                 <a
-                  href={author.fajelaAbout}
+                  href={author.fajelaAbout} rel={externalRel(author.fajelaAbout)}
                   target="_blank"
                   className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -396,7 +397,7 @@ export default async function AuthorPage({
                   key={url}
                   href={url}
                   target="_blank"
-                  rel="noopener"
+                  rel={externalRel(url)}
                   itemProp="sameAs"
                   className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
                 >

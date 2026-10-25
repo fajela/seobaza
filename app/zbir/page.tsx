@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
@@ -42,7 +43,7 @@ export default function ZbirPage() {
         <a
           href={JAR_URL}
           target="_blank"
-          rel="noopener noreferrer"
+          rel={externalRel(JAR_URL)}
           className="block w-full text-center rounded-xl bg-accent px-6 py-5 text-xl font-bold text-black hover:opacity-90 transition-opacity mb-4"
         >
           Закинути в банку monobank
@@ -67,7 +68,7 @@ export default function ZbirPage() {
               <a
                 href={JAR_URL}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel={externalRel(JAR_URL)}
                 className="text-accent hover:underline break-all"
               >
                 send.monobank.ua/jar/8nacjrPTZs
@@ -91,7 +92,7 @@ export default function ZbirPage() {
           <a
             href={REPORTS_URL}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={externalRel(REPORTS_URL)}
             className="text-accent hover:underline"
           >
             звітує в Instagram
@@ -100,7 +101,7 @@ export default function ZbirPage() {
           <a
             href={WITHDRAWALS_URL}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={externalRel(WITHDRAWALS_URL)}
             className="text-accent hover:underline"
           >
             linktr.ee/n.meleshko
@@ -127,7 +128,7 @@ export default function ZbirPage() {
               <a
                 href="https://t.me/SEOBAZA"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow noopener"
                 className="text-accent hover:underline"
               >
                 пост у нашому Telegram

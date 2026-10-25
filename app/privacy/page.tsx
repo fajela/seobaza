@@ -83,7 +83,7 @@ export default function PrivacyPage() {
               <li>
                 <strong>Kit (ConvertKit)</strong> — сервіс розсилки. Зберігає
                 вашу email-адресу й керує підпискою.{" "}
-                <a href="https://kit.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-accent">
+                <a href="https://kit.com/privacy" target="_blank" rel="nofollow noopener" className="text-primary underline hover:text-accent">
                   Політика Kit
                 </a>
                 .
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
                 <strong>Vercel</strong> — хостинг сайту та знеособлена аналітика
                 Vercel Analytics, яка не використовує рекламних файлів cookie й
                 не ідентифікує окремих відвідувачів.{" "}
-                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-accent">
+                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="nofollow noopener" className="text-primary underline hover:text-accent">
                   Політика Vercel
                 </a>
                 .
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
                 Google для підписки на розсилку та підтримки видання. Коли він
                 показує форму на сайті, Google може встановлювати власні файли
                 cookie відповідно до{" "}
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-accent">
+                <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener" className="text-primary underline hover:text-accent">
                   Політики конфіденційності Google
                 </a>
                 .

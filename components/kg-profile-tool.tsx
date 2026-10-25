@@ -1,5 +1,6 @@
 "use client";
 
+import { externalRel } from "@/lib/own-sites";
 import { useState } from "react";
 
 /**
@@ -249,7 +250,7 @@ export function KgProfileTool() {
                         <a
                           href={`https://www.google.com/search?kgmid=${encodeURIComponent(e.kgmid)}`}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="nofollow noopener"
                           title="Відкрити сутність у Google"
                           className="text-xs text-muted-foreground hover:text-accent transition-colors"
                         >
@@ -279,7 +280,7 @@ export function KgProfileTool() {
                       <a
                         href={url}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel={externalRel(url)}
                         className="rounded-md bg-gradient-to-r from-accent to-primary px-3 py-1.5 text-xs font-medium text-white hover:opacity-90 transition-opacity"
                       >
                         Відкрити профіль ↗
@@ -326,7 +327,7 @@ export function KgProfileTool() {
                 <a
                   href={directUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel={externalRel(directUrl)}
                   className="rounded-md bg-gradient-to-r from-accent to-primary px-3 py-1.5 text-xs font-medium text-white hover:opacity-90 transition-opacity"
                 >
                   Відкрити профіль ↗
@@ -345,7 +346,7 @@ export function KgProfileTool() {
         <a
           href="https://app.fajela.com/kg-search/"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
           className="text-accent hover:underline"
         >
           тулза Knowledge Graph Search від Fajela

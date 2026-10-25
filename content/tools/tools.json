@@ -1,0 +1,2790 @@
+[
+  {
+    "name": "Netpeak Spider",
+    "url": "https://netpeaksoftware.com/spider",
+    "category": "tekhnichnyi-audyt",
+    "section": "Краулери",
+    "description": "Десктопний краулер для Windows і macOS: знаходить понад 100 технічних проблем, рендерить JavaScript, має кастомний скрейпінг (XPath, CSS, Regexp) і white-label PDF-звіти.",
+    "ua": [
+      "in-ukraine",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://dou.ua/lenta/news/netpeak-software-has-blocked-products-in-russia/",
+      "supports-ukraine": "https://dou.ua/lenta/news/netpeak-software-has-blocked-products-in-russia/"
+    }
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/website-audit.html",
+    "category": "tekhnichnyi-audyt",
+    "section": "Краулери",
+    "description": "Хмарний краулер для аудиту сайту.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Screaming Frog SEO Spider",
+    "url": "https://www.screamingfrog.co.uk/seo-spider/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Краулери",
+    "description": "Десктопний краулер. Перевіряє основні технічні помилки на сайті, зокрема теги."
+  },
+  {
+    "name": "Sitebulb",
+    "url": "https://sitebulb.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Краулери",
+    "description": "Краулер для технічного аудиту у двох варіантах: десктоп і хмара. Перевіряє 300+ проблем із пріоритетами й поясненнями, робить візуалізації та PDF-звіти для клієнтів."
+  },
+  {
+    "name": "Lumar (раніше DeepCrawl)",
+    "url": "https://www.lumar.io/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Краулери",
+    "description": "Хмарний краулер. Перевіряє основні технічні помилки на сайті, зокрема теги."
+  },
+  {
+    "name": "Google Search Console Explorer",
+    "url": "https://docs.google.com/spreadsheets/u/1/d/1MrpGs824Ub6xgkmj5PegfXw7aJdqcUNbwWmSc1e2Kgg/copy",
+    "category": "tekhnichnyi-audyt",
+    "section": "Аналіз даних Google Search Console",
+    "description": "Таблиця Google, яка вивантажує й аналізує дані з Google Search Console."
+  },
+  {
+    "name": "Screaming Frog Log File Analyser",
+    "url": "https://www.screamingfrog.co.uk/log-file-analyser/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Аналіз логів",
+    "description": "Аналізатор лог-файлів сервера."
+  },
+  {
+    "name": "JetOctopus",
+    "url": "https://jetoctopus.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Аналіз логів",
+    "description": "Аналізатор логів для великих сайтів.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://jetoctopus.com/sum-up-for-the-six-months-of-2022/"
+    }
+  },
+  {
+    "name": "View DNS",
+    "url": "https://viewdns.info/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Перевірка DNS та IP",
+    "description": "Перевірка DNS, IP та їхньої історії."
+  },
+  {
+    "name": "SecurityTrails (раніше PTR Archive)",
+    "url": "https://securitytrails.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Перевірка DNS та IP",
+    "description": "Перевірка історії PTR-записів (зворотний DNS)."
+  },
+  {
+    "name": "MX Toolbox",
+    "url": "https://mxtoolbox.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Перевірка DNS та IP",
+    "description": "Перевірка поштових записів MX, DNS та потрапляння домену чи IP у спам-списки."
+  },
+  {
+    "name": "Safe search",
+    "url": "https://transparencyreport.google.com/safe-browsing/search",
+    "category": "tekhnichnyi-audyt",
+    "section": "Перевірка DNS та IP",
+    "description": "Перевірка сайту в Google Safe Browsing: чи позначений він як небезпечний."
+  },
+  {
+    "name": "W3",
+    "url": "https://validator.w3.org/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Валідатори",
+    "description": "Валідатор HTML від W3C: шукає помилки в розмітці."
+  },
+  {
+    "name": "Schema Markup Validator",
+    "url": "https://validator.schema.org/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Валідатори",
+    "description": "Перевірка розмітки schema.org на сторінці або у фрагменті коду."
+  },
+  {
+    "name": "Semantify It",
+    "url": "https://semantify.it/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Валідатори",
+    "description": "Безкоштовний інструмент валідації мікророзмітки та специфікацій домену, є бета-плагін для WordPress. Перевіряє за загальним стандартом, який може відрізнятися від вимог Google. Не підходить для великих сайтів."
+  },
+  {
+    "name": "Google Page Speed Insights",
+    "url": "https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect",
+    "category": "tekhnichnyi-audyt",
+    "section": "Швидкість",
+    "description": "Інструмент Google для аналізу швидкості завантаження сторінок і Core Web Vitals."
+  },
+  {
+    "name": "WebPageTest",
+    "url": "https://webpagetest.org/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Швидкість",
+    "description": "Емулює завантаження сторінки з різних пристроїв і типів інтернет-з'єднання, робить аналіз Lighthouse і дає змогу переглянути кожен ресурс сторінки."
+  },
+  {
+    "name": "GTmetrix",
+    "url": "https://gtmetrix.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Швидкість",
+    "description": "Сервіс аналізу швидкості завантаження сторінок."
+  },
+  {
+    "name": "Pingdom",
+    "url": "https://www.pingdom.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Швидкість",
+    "description": "Сервіс перевірки швидкості сайту та моніторингу."
+  },
+  {
+    "name": "Google Search Console",
+    "url": "https://search.google.com/search-console",
+    "category": "tekhnichnyi-audyt",
+    "section": "Google",
+    "description": "Безкоштовний сервіс Google для моніторингу присутності сайту в пошуку.",
+    "entity": "google-search-console"
+  },
+  {
+    "name": "Rich snippets",
+    "url": "https://search.google.com/test/rich-results",
+    "category": "tekhnichnyi-audyt",
+    "section": "Google",
+    "description": "Rich Results Test від Google: перевіряє, чи сторінка може показуватися з розширеними результатами."
+  },
+  {
+    "name": "Search Quality Rater Guidelines",
+    "url": "https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf",
+    "category": "tekhnichnyi-audyt",
+    "section": "Google",
+    "description": "Офіційні настанови Google для асесорів якості пошуку (англійською)."
+  },
+  {
+    "name": "Copyscape",
+    "url": "https://www.copyscape.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Дублі",
+    "description": "Пошук копій тексту в інтернеті."
+  },
+  {
+    "name": "Siteliner",
+    "url": "http://www.siteliner.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Дублі",
+    "description": "Онлайн-сканер від команди Copyscape: запускає перевірку сайту прямо з головної сторінки й шукає дублі контенту та биті посилання. Є API."
+  },
+  {
+    "name": "Tag Assistant",
+    "url": "https://chromewebstore.google.com/detail/tag-assistant/kejbdjndbnbjgmefkgdddjlbokphdefk",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Розширення для перевірки коду аналітики та GTM на сторінці."
+  },
+  {
+    "name": "Detailed",
+    "url": "https://chrome.google.com/webstore/detail/detailed-seo-extension/pfjdepjjfjjahkjfpkcgfmfhmnakjfba",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Розширення від Glen Allsopp для швидкого аналізу основних тегів сторінки."
+  },
+  {
+    "name": "SEO Extractor",
+    "url": "https://chrome.google.com/webstore/detail/seo-extractor/lmdnefllhiljfomcenmaojglalglejfo?hl=en",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Зручний інструмент для аналізу та вивантаження даних із видачі (SERP) і зі сторінки."
+  },
+  {
+    "name": "Ahrefs SEO Toolbar",
+    "url": "https://ahrefs.com/seo-toolbar",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Розширення Ahrefs для on-page аналізу сторінки.",
+    "ua": [
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://en.ain.ua/2019/05/30/dmitry-gerasimenko-ahrefs-interview",
+      "supports-ukraine": "https://www.searchenginejournal.com/seo-support-ukraine/440621/"
+    },
+    "entity": "ahrefs"
+  },
+  {
+    "name": "SEO Pro",
+    "url": "https://chrome.google.com/webstore/detail/seo-pro-extension/lajfdngpocmchpihjecojjllfjeehgnl",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Розширення Христини Азаренко для аналізу технічних і on-page аспектів вебсторінки."
+  },
+  {
+    "name": "Web Vitals",
+    "url": "https://chrome.google.com/webstore/detail/web-vitals/ahfhijdlegdabablpippeagghigmibma?hl=en",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Розширення для аналізу Core Web Vitals."
+  },
+  {
+    "name": "Devaka Tools",
+    "url": "https://chromewebstore.google.com/detail/devaka-tools-%E2%80%94-seo-pro-ex/mciiiobohemepnafmkihbohkjhogjhia",
+    "category": "tekhnichnyi-audyt",
+    "section": "Розширення для браузера",
+    "description": "Розширення для Chrome від Сергія Кокшарова: аудит сторінки, парсинг органічної видачі Google, Google Images і Google News, AI-асистент.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://devakatalk.com/about-me"
+    },
+    "people": [
+      "sb0023"
+    ]
+  },
+  {
+    "name": "SEO Detective",
+    "url": "https://www.seo-detective.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Онлайн-аналізатори",
+    "description": "Онлайн-аналізатор сайту."
+  },
+  {
+    "name": "SEOptimer",
+    "url": "https://www.seoptimer.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Онлайн-аналізатори",
+    "description": "Онлайн-аналізатор сайту з SEO-звітом."
+  },
+  {
+    "name": "Zadroweb",
+    "url": "https://zadroweb.com/seo-auditor/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Онлайн-аналізатори",
+    "description": "Онлайн SEO-аудитор сайту."
+  },
+  {
+    "name": "Immuniweb Website Security Test",
+    "url": "https://www.immuniweb.com/websec/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Онлайн-аналізатори",
+    "description": "Перевірка безпеки сайту та відповідності GDPR."
+  },
+  {
+    "name": "Tiny jpg / Tiny png",
+    "url": "https://tinyjpg.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Стиснення зображень без програм",
+    "description": "Онлайн-стиснення зображень JPG і PNG."
+  },
+  {
+    "name": "Optimizilla",
+    "url": "https://imagecompressor.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Стиснення зображень без програм",
+    "description": "Онлайн-стиснення зображень."
+  },
+  {
+    "name": "ADA Compliant Website",
+    "url": "https://www.searchenginejournal.com/ada-compliant-website/200106/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Відповідність ADA",
+    "description": "Стаття про те, що таке ADA і який сайт вважається відповідним."
+  },
+  {
+    "name": "The Underlying Truth about Overlays",
+    "url": "https://www.youtube.com/watch?v=ICAu6vDemnw&feature=youtu.be",
+    "category": "tekhnichnyi-audyt",
+    "section": "Відповідність ADA",
+    "description": "Відео про те, чому ні плагіни, ні онлайн-інструменти не приведуть сайт у відповідність до вимог ADA."
+  },
+  {
+    "name": "Webaim",
+    "url": "https://wave.webaim.org/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Відповідність ADA",
+    "description": "Онлайн-інструмент WAVE для дуже приблизної, поверхневої оцінки доступності за ADA. Не є доказом у суді."
+  },
+  {
+    "name": "Webaccessibility",
+    "url": "https://webaccessibility.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Відповідність ADA",
+    "description": "Онлайн-інструмент для дуже приблизної, поверхневої оцінки доступності за ADA. Не є доказом у суді."
+  },
+  {
+    "name": "NodePing",
+    "url": "https://nodeping.com/features.html",
+    "category": "tekhnichnyi-audyt",
+    "section": "Моніторинг доступності сайту",
+    "description": "Моніторинг відповіді сайту (код 200), перевірка раз на хвилину, налаштовується. Є й інші функції."
+  },
+  {
+    "name": "Uptime Robot",
+    "url": "https://uptimerobot.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Моніторинг доступності сайту",
+    "description": "Моніторинг доступності, відповідей сервера, заголовків, ключових слів, портів тощо."
+  },
+  {
+    "name": "Little Warden",
+    "url": "https://littlewarden.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Моніторинг доступності сайту",
+    "description": "Перевіряє доступність, сертифікати, індексацію, sitemap, контент і шкідливий код."
+  },
+  {
+    "name": "Prerender io",
+    "url": "https://prerender.io/",
+    "category": "tekhnichnyi-audyt",
+    "section": "JavaScript SEO",
+    "description": "Віддає краулерам HTML-версію сторінки. Є безкоштовний ліміт на невелику кількість сторінок."
+  },
+  {
+    "name": "Wappalyzer",
+    "url": "https://www.wappalyzer.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Визначає CMS і технології, які використовує сайт."
+  },
+  {
+    "name": "Tech seo boost Apps script demos",
+    "url": "https://docs.google.com/spreadsheets/d/1zx8QvgLajOkpVl5aD4d3J1D4GslZEyz3ovkD18gh6VI/edit?usp=sharing",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Скрипти для Google Таблиць: видача Google, частотність слів за URL, вивід автопідказок, класифікатор за інтентом, табличне вивантаження даних із веб-архіву."
+  },
+  {
+    "name": "Merkle Tool",
+    "url": "https://technicalseo.com/tools/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Набір тестів, особливо корисний без доступу до Search Console: рендер, sitemap, robots, генератор розмітки, локальна видача тощо."
+  },
+  {
+    "name": "Scaling Google indexation checks with Node.js",
+    "url": "https://builtvisible.com/scaling-google-indexation-checks-with-node-js/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Як перевірити індексацію одразу багатьох URL за допомогою Node.js."
+  },
+  {
+    "name": "X Frame Options Test",
+    "url": "https://gf.dev/x-frame-options-test",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Перевірка наявності заголовка X-Frame-Options."
+  },
+  {
+    "name": "DNProtect",
+    "url": "https://dnprotect.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Безкоштовна перевірка доменного імені на ризики."
+  },
+  {
+    "name": "Dataset Search",
+    "url": "https://datasetsearch.research.google.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Пошук наборів даних від Google."
+  },
+  {
+    "name": "Lozad",
+    "url": "https://apoorv.pro/lozad.js/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Інше",
+    "description": "Скрипт для правильної реалізації lazy load (відкладеного завантаження)."
+  },
+  {
+    "name": "HTML Standard",
+    "url": "https://html.spec.whatwg.org/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Офіційна специфікація HTML, зокрема для семантичної верстки."
+  },
+  {
+    "name": "The Anatomy of a Large-Scale Hypertextual Web Search Engine",
+    "url": "https://research.google/pubs/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Стаття Сергія Бріна і Ларрі Пейджа 1998 року про те, як побудовано Google. Англійською."
+  },
+  {
+    "name": "X-Frame-Options",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Докладніше про захист від клікджекінгу."
+  },
+  {
+    "name": "Mobile Information Retrieval",
+    "url": "https://arxiv.org/pdf/1902.01790.pdf",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Наукова праця про пошук інформації на мобільних пристроях (arXiv)."
+  },
+  {
+    "name": "Lighthouse",
+    "url": "https://developer.chrome.com/docs/lighthouse/overview/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Інструмент Google для аудиту якості сторінок: швидкість, доступність, SEO."
+  },
+  {
+    "name": "Dataset Schema",
+    "url": "https://developers.google.com/search/docs/data-types/dataset",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Документація Google про розмітку Dataset."
+  },
+  {
+    "name": "Google Search developer documentation latest updates",
+    "url": "https://developers.google.com/search/updates?hl=ru",
+    "category": "tekhnichnyi-audyt",
+    "section": "Довідкові матеріали",
+    "description": "Усі зміни в документації Google Search для розробників."
+  },
+  {
+    "name": "Ubersuggest",
+    "url": "https://neilpatel.com/ubersuggest/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Безкоштовний онлайн-інструмент для збору ключових слів за семантичною близькістю, конкурентами, тематиками та підказками."
+  },
+  {
+    "name": "Ahrefs",
+    "url": "https://ahrefs.com/keywords-explorer",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Keywords Explorer: ідеї ключів з AI-брейнштормом, кластеризація за Parent Topic, Keyword Difficulty на основі бекслінків і Traffic Potential. Показує SERP та історію позицій.",
+    "ua": [
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://en.ain.ua/2019/05/30/dmitry-gerasimenko-ahrefs-interview",
+      "supports-ukraine": "https://www.searchenginejournal.com/seo-support-ukraine/440621/"
+    },
+    "entity": "ahrefs"
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/keyword-suggestion-tool.html",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Keyword Tool: метрики (обсяг, складність, CPC, інтент) для 188 баз локацій, підказки за категоріями, історія SERP з 2020 року, ключі конкурентів і масова перевірка списків.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Serpstat",
+    "url": "https://serpstat.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Має невеликий безкоштовний ліміт з обмеженими можливостями та платну багатофункціональну програму, зокрема для збору ключових слів за семантичною близькістю, конкурентами, тематиками та підказками, а також для пошуку пропущеної семантики.",
+    "ua": [
+      "in-ukraine",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war",
+      "supports-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war"
+    },
+    "entity": "serpstat"
+  },
+  {
+    "name": "Keywords Everywhere",
+    "url": "https://keywordseverywhere.com/credits.html",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Оплата за слово (через кредити), а не місячна підписка."
+  },
+  {
+    "name": "Mangools KWFinder",
+    "url": "https://mangools.com/kwfinder/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Платний сервіс для збору низькочастотних і додаткових запитів, ідей та локальних ключових слів."
+  },
+  {
+    "name": "SEO Hero",
+    "url": "http://www.seo-hero.tech/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Безкоштовний інструмент: шукає слова за темою або сутністю та слова, які вживають у цій темі."
+  },
+  {
+    "name": "Soovle",
+    "url": "https://www.seo.com/soovle/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Безкоштовний сервіс підказок за ключовим словом із Google, Bing, Amazon, Answers.com, Yahoo, Wikipedia та YouTube."
+  },
+  {
+    "name": "Seed Keywords",
+    "url": "https://www.seedkeywords.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Сервіс описує сценарій розв'язання проблеми, ви ділитеся ним з друзями, просите допомогти, і так збираєте підходящу семантику."
+  },
+  {
+    "name": "Answer the Public",
+    "url": "https://answerthepublic.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Автоматичні підказки з Google і Bing."
+  },
+  {
+    "name": "Also Asked",
+    "url": "https://alsoasked.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "На відміну від Answer the Public, використовує не підказки, а дані блоку People Also Ask."
+  },
+  {
+    "name": "Reddit keywords",
+    "url": "https://www.highervisibility.com/free-seo-tools/keyworddit/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Збір і вивантаження ключових слів із Reddit."
+  },
+  {
+    "name": "Keyword Surfer",
+    "url": "https://chrome.google.com/webstore/detail/keyword-surfer/bafijghppfhdpldihckdcadbcobikaca",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Розширення для браузера, заміна Keywords Everywhere: вводите запит у пошуку й бачите частотність та схожі запити."
+  },
+  {
+    "name": "Exploding Topics",
+    "url": "https://explodingtopics.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Показує теми, які швидко набирають популярність, і тренди. Сервіс Brian Dean."
+  },
+  {
+    "name": "Search Volume",
+    "url": "https://searchvolume.io/",
+    "category": "semantyka-i-kontent",
+    "section": "Додаткові сервіси для перевірки частотності",
+    "description": "Безкоштовний сервіс, не підходить для великих обсягів."
+  },
+  {
+    "name": "SECockPit",
+    "url": "https://secockpit.com/keywords/",
+    "category": "semantyka-i-kontent",
+    "section": "Додаткові сервіси для перевірки частотності",
+    "description": "Платний інструмент з розширеними функціями, дає аналіз ключових слів, підходить і для YouTube."
+  },
+  {
+    "name": "Sanity Check",
+    "url": "https://www.sanitycheck.io/",
+    "category": "semantyka-i-kontent",
+    "section": "Ключові слова з Google Search Console",
+    "description": "Платний сервіс, який вивантажує дані через API."
+  },
+  {
+    "name": "Search Analytics for Sheets",
+    "url": "https://workspace.google.com/marketplace/app/search_analytics_for_sheets/1035646374811?pann=cwsdp&hl=en",
+    "category": "semantyka-i-kontent",
+    "section": "Ключові слова з Google Search Console",
+    "description": "Безкоштовне розширення для Chrome, яке вивантажує дані в Google Таблиці."
+  },
+  {
+    "name": "Google Search Console Explorer",
+    "url": "https://docs.google.com/spreadsheets/u/1/d/1MrpGs824Ub6xgkmj5PegfXw7aJdqcUNbwWmSc1e2Kgg/copy",
+    "category": "semantyka-i-kontent",
+    "section": "Ключові слова з Google Search Console",
+    "description": "Google Таблиця для вивантаження й аналізу даних із Google Search Console."
+  },
+  {
+    "name": "Keyword Hero",
+    "url": "https://keyword-hero.com/#howitworks",
+    "category": "semantyka-i-kontent",
+    "section": "Ключові слова з Google Search Console",
+    "description": "Допомагає з певною ймовірністю визначити ключові слова, які Google приховує як not provided."
+  },
+  {
+    "name": "Google Trends",
+    "url": "https://trends.google.com/trends/",
+    "category": "semantyka-i-kontent",
+    "section": "Аналіз ключових слів",
+    "description": "Тренди за ключовими словами в Google."
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/keyword-grouper.html",
+    "category": "semantyka-i-kontent",
+    "section": "Кластеризація",
+    "description": "Кластеризує за топом зі своїми налаштуваннями, збирає частотність або дає завантажити власну.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Keyword Cupid",
+    "url": "https://keywordcupid.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Кластеризація",
+    "description": ""
+  },
+  {
+    "name": "Serpstat Keywords Clustering Tool",
+    "url": "https://serpstat.com/keywords-clustering/",
+    "category": "semantyka-i-kontent",
+    "section": "Кластеризація",
+    "description": "Інструмент Serpstat для кластеризації ключових слів.",
+    "ua": [
+      "in-ukraine",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war",
+      "supports-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war"
+    },
+    "entity": "serpstat"
+  },
+  {
+    "name": "POP (Page Optimizer Pro)",
+    "url": "https://pageoptimizer.pro/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Оптимізація контенту на основі видачі за одним ключовим словом; на агентському тарифі є підключення до NLP API."
+  },
+  {
+    "name": "Surfer",
+    "url": "https://surfer.ai/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Оптимізація контенту на основі видачі за одним ключовим словом, працює з NLP API."
+  },
+  {
+    "name": "Cora",
+    "url": "https://seotoollab.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Оптимізація контенту на основі видачі за одним ключовим словом з урахуванням великої кількості факторів і кореляцій. Це найскладніший інструмент у списку."
+  },
+  {
+    "name": "SEO Compare",
+    "url": "https://tools.internetmarketingninjas.com/seo-compare/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Безкоштовний інструмент для порівняння сайтів у видачі."
+  },
+  {
+    "name": "Thruuu",
+    "url": "https://app.thruuu.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Безкоштовний інструмент: показує видачу за ключовим словом, порівнює сайти, дає інформацію про них і середні показники."
+  },
+  {
+    "name": "Inlinks",
+    "url": "https://inlinks.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Визначає контекст контенту та дає рекомендації щодо насичення його сутностями на основі топу, є Content Brief."
+  },
+  {
+    "name": "Clear Scope",
+    "url": "https://www.clearscope.io/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Інструмент для створення релевантного контенту: підбір теми, створення контенту за темою, покращення тексту."
+  },
+  {
+    "name": "Nightwatch / Ranktrackr",
+    "url": "https://app.nightwatch.io/",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Rank tracker з щоденним відстеженням у Google, Bing, YouTube, DuckDuckGo і Yahoo, плюс перевірка згадок бренду в ChatGPT, Claude, Gemini і Perplexity. Локальний трекінг до рівня zip-коду."
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/position-tracking.html",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Платний модуль відстеження позицій у SE Ranking.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Authority Labs",
+    "url": "https://www.authoritylabs.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Rank tracker із щоденними перевірками, локальним і мобільним трекінгом (штат, місто, поштовий індекс), відстеженням конкурентів і white-label звітами з необмеженою кількістю користувачів."
+  },
+  {
+    "name": "Cognitive SEO",
+    "url": "https://cognitiveseo.com/ranktracker/",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Платний трекер позицій від Cognitive SEO."
+  },
+  {
+    "name": "SERP Fox",
+    "url": "https://serpfox.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Щоденний трекер позицій у Google за локацією для desktop і mobile, плюс перевірка видимості бренду в ChatGPT, Claude, Perplexity і Gemini. Є клієнтські акаунти, white label та API."
+  },
+  {
+    "name": "AccuRanker",
+    "url": "https://www.accuranker.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Rank tracker з даними в реальному часі та модулем AccuLLM для видимості в ChatGPT, Perplexity, AI Overviews і AI Mode. Є база ключів, прогнозування і необмежена кількість користувачів та доменів."
+  },
+  {
+    "name": "Amazon - AMZ Tracker",
+    "url": "https://www.amztracker.com/index_en.php",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: платні",
+    "description": "Трекер позицій для Amazon."
+  },
+  {
+    "name": "SERP Robot",
+    "url": "https://www.serprobot.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: безкоштовні",
+    "description": "Безкоштовний трекер позицій, результатами можна ділитися за посиланням."
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/google-ranking-checker.html",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: безкоштовні",
+    "description": "Безкоштовна перевірка позицій у Google від SE Ranking.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Spyserp",
+    "url": "https://spyserp.com",
+    "category": "semantyka-i-kontent",
+    "section": "Rank Tracking: безкоштовні",
+    "description": "Перевірка позицій у Google з великим безкоштовним лімітом."
+  },
+  {
+    "name": "Internal Linking Template (seonotebook.com)",
+    "url": "https://docs.google.com/spreadsheets/d/10rbO8O7qXMhvsZlmEsXHuRBstoB64-h8zfudtdP_y1M/edit?usp=sharing",
+    "category": "semantyka-i-kontent",
+    "section": "Перелінковка",
+    "description": "Таблиця Google, яку можна скопіювати й побудувати власну Silo-структуру сайту."
+  },
+  {
+    "name": "Spin Rewriter",
+    "url": "https://www.spinrewriter.com/free/special-offer",
+    "category": "semantyka-i-kontent",
+    "section": "Спінери",
+    "description": "Безкоштовний спінер для переписування тексту."
+  },
+  {
+    "name": "Chimp Rewriter",
+    "url": "https://chimprewriter.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Спінери",
+    "description": "Спінер для переписування тексту."
+  },
+  {
+    "name": "SpinnerChief",
+    "url": "http://www.spinnerchief.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Спінери",
+    "description": "Спінер із рівнями humanize, налаштуванням кількості перебудованих речень, генерацією spintax і захистом слів від змін. Є пакетна обробка статей і перевірка на AI-детектори."
+  },
+  {
+    "name": "SEO Content Machine",
+    "url": "https://seocontentmachine.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Спінери",
+    "description": "Генератор контенту зі спінінгом, підтримує всі мови."
+  },
+  {
+    "name": "WordAi",
+    "url": "https://wordai.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Спінери",
+    "description": "Інструмент для автоматичного переписування тексту."
+  },
+  {
+    "name": "Menterprise",
+    "url": "https://menterprise.io/",
+    "category": "semantyka-i-kontent",
+    "section": "Спінери",
+    "description": "Генератор контенту та спінтакс."
+  },
+  {
+    "name": "CopyScape",
+    "url": "https://www.copyscape.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Перевірка унікальності",
+    "description": "Перевіряє унікальність тільки за контентом у власній базі. Якщо приймаєте багато контенту одразу, повний плагіат може пройти непоміченим."
+  },
+  {
+    "name": "Grammarly",
+    "url": "https://www.grammarly.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Перевірка унікальності",
+    "description": "Інструмент для письма та перевірки граматики. Для перевірки унікальності не підходить.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://www.grammarly.com/blog/company/support-for-ukraine/",
+      "founded-by-ukrainians": "https://en.wikipedia.org/wiki/Grammarly",
+      "supports-ukraine": "https://www.grammarly.com/blog/company/support-for-ukraine/"
+    }
+  },
+  {
+    "name": "Simple Plagiarism Checker",
+    "url": "https://smallseotools.com/plagiarism-checker/",
+    "category": "semantyka-i-kontent",
+    "section": "Перевірка унікальності",
+    "description": "Безкоштовна перевірка плагіату до 1000 слів."
+  },
+  {
+    "name": "Google: скарга DMCA",
+    "url": "https://reportcontent.google.com/forms/dmca_search",
+    "category": "semantyka-i-kontent",
+    "section": "DMCA: коли крадуть контент",
+    "description": "Інструмент Google для подання скарги на сайт, який використовує ваш контент без дозволу, щоб прибрати його сторінку з видачі."
+  },
+  {
+    "name": "Take Dwn",
+    "url": "https://takedwn.com/",
+    "category": "semantyka-i-kontent",
+    "section": "DMCA: коли крадуть контент",
+    "description": "Шукає, хто міг скопіювати ваш текст, за допомогою Copyscape, і допомагає подати DMCA за результатами сканування."
+  },
+  {
+    "name": "Vision API",
+    "url": "https://cloud.google.com/vision/",
+    "category": "semantyka-i-kontent",
+    "section": "Оптимізація зображень",
+    "description": "Google Vision API: можна завантажити зображення й перевірити, як його розпізнає Google."
+  },
+  {
+    "name": "Online JPG Tools",
+    "url": "https://onlinejpgtools.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Оптимізація зображень",
+    "description": "Конвертери, компресори, піксельні ефекти, додавання рамки та інші інструменти для зображень."
+  },
+  {
+    "name": "Iloveimg",
+    "url": "https://www.iloveimg.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Оптимізація зображень",
+    "description": "Стиснення, конвертація, додавання водяного знака та інші операції із зображеннями."
+  },
+  {
+    "name": "123RF",
+    "url": "https://www.123rf.com/products/",
+    "category": "semantyka-i-kontent",
+    "section": "Фотостоки",
+    "description": "Платний фотосток."
+  },
+  {
+    "name": "Pixabay",
+    "url": "https://pixabay.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Фотостоки",
+    "description": "Безкоштовний фотосток. Уважно читайте умови: інколи дрібним шрифтом унизу вказано, що посилання на автора обов'язкове."
+  },
+  {
+    "name": "Pexels",
+    "url": "https://www.pexels.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Фотостоки",
+    "description": "Безкоштовні фото і відео від авторів, з вбудованими інструментами редагування (видалення фону, колір, ретуш), фотоконкурсами та API для розробників."
+  },
+  {
+    "name": "Unsplash",
+    "url": "https://unsplash.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Фотостоки",
+    "description": "Бібліотека фото та ілюстрацій із категоріями й візуальним пошуком. Платний тариф Unsplash+ додає обрізання, зміну розміру, видалення фону та частину преміум-зображень."
+  },
+  {
+    "name": "Omm Writer",
+    "url": "https://ommwriter.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Інше",
+    "description": "Програма, яка допомагає зосередитися на написанні контенту."
+  },
+  {
+    "name": "WorkFlowy",
+    "url": "https://workflowy.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Інше",
+    "description": "Сервіс для організації робочого процесу авторів."
+  },
+  {
+    "name": "SEO Scout: Keyword Suggestions",
+    "url": "https://seoscout.com/suggest",
+    "category": "semantyka-i-kontent",
+    "section": "Інше",
+    "description": "Генератор ключових слів."
+  },
+  {
+    "name": "HigherVisibility Bulk Keyword Generator",
+    "url": "https://www.highervisibility.com/free-seo-tools/bulk-keyword-generator/",
+    "category": "semantyka-i-kontent",
+    "section": "Інше",
+    "description": "Генератор ключових слів, підходить для локального SEO."
+  },
+  {
+    "name": "Questions generator",
+    "url": "https://www.webfx.com/seo-tools/faqfox/",
+    "category": "semantyka-i-kontent",
+    "section": "Інше",
+    "description": "Безкоштовний інструмент: вводите ключове слово та майданчики, де люди ставлять запитання (наприклад, Reddit, Quora), переходите за зібраними посиланнями й дивитеся, як користувачі формулюють питання в темі. Також дає ідеї для статей."
+  },
+  {
+    "name": "Ahrefs",
+    "url": "https://ahrefs.com/site-explorer",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Введіть домен або сторінку й отримайте дані про посилання з бази Ahrefs.",
+    "ua": [
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://en.ain.ua/2019/05/30/dmitry-gerasimenko-ahrefs-interview",
+      "supports-ukraine": "https://www.searchenginejournal.com/seo-support-ukraine/440621/"
+    },
+    "entity": "ahrefs"
+  },
+  {
+    "name": "Majestic",
+    "url": "https://majestic.com/reports/site-explorer",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Введіть домен або сторінку й отримайте дані про посилання з бази Majestic.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://blog.majestic.com/conferences/seo-for-ukraine/"
+    }
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/backlink-checker.html",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Введіть домен або сторінку й отримайте дані про посилання з бази SE Ranking.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Linkody",
+    "url": "https://www.linkody.com/en/seo-tools/free-backlink-checker",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Безкоштовна перевірка зворотних посилань з обмеженням. У платній версії даних більше."
+  },
+  {
+    "name": "Moz",
+    "url": "https://moz.com/link-explorer",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Введіть домен або сторінку й отримайте дані про посилання з бази Moz."
+  },
+  {
+    "name": "Cognitive SEO",
+    "url": "https://cognitiveseo.com/backlinkanalysis/",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Аудит зворотних посилань з аналітикою в межах аудиту сайту."
+  },
+  {
+    "name": "Open Link Profiler",
+    "url": "https://www.openlinkprofiler.org/",
+    "category": "linkbilding",
+    "section": "Бази даних зворотних посилань (Backlink Index, Tracker, Analytics)",
+    "description": "Безкоштовний сервіс. Даних небагато, але він зручний для аналізу."
+  },
+  {
+    "name": "Link Research Tool (LRT)",
+    "url": "https://www.linkresearchtools.com/seo-software/link-audit-google-penalty-recovery/",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": "Сервіс для аудиту посилань і відновлення після санкцій Google."
+  },
+  {
+    "name": "Monitor Backlinks",
+    "url": "https://monitorbacklinks.com/",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": "Сервіс для моніторингу зворотних посилань."
+  },
+  {
+    "name": "Small SEO Tools",
+    "url": "https://smallseotools.com/backlink-checker/",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": "Безкоштовно видає обмежену кількість даних."
+  },
+  {
+    "name": "Public WWW",
+    "url": "https://publicwww.com/",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": "Пошук за вихідним кодом сайтів. Для нормальної роботи потрібна платна версія."
+  },
+  {
+    "name": "Serped",
+    "url": "https://serped.net/",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": "Ще один спосіб знайти приховані посилання."
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/backlinks-monitoring.html",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": "Моніторинг зворотних посилань в SE Ranking.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Link Checker Pro",
+    "url": "https://linkchecker.pro/",
+    "category": "linkbilding",
+    "section": "Аудит посилань і пошук прихованих посилань та мереж",
+    "description": ""
+  },
+  {
+    "name": "Pitchbox",
+    "url": "https://pitchbox.com/",
+    "category": "linkbilding",
+    "section": "Інструменти для outreach",
+    "description": ""
+  },
+  {
+    "name": "Buzz Stream",
+    "url": "https://www.buzzstream.com/",
+    "category": "linkbilding",
+    "section": "Інструменти для outreach",
+    "description": ""
+  },
+  {
+    "name": "Just Reach Out",
+    "url": "https://justreachout.io/",
+    "category": "linkbilding",
+    "section": "Інструменти для outreach",
+    "description": ""
+  },
+  {
+    "name": "Respona",
+    "url": "https://respona.com",
+    "category": "linkbilding",
+    "section": "Інструменти для outreach",
+    "description": ""
+  },
+  {
+    "name": "HARO",
+    "url": "https://www.helpareporter.com/",
+    "category": "linkbilding",
+    "section": "Блогери та журналісти",
+    "description": ""
+  },
+  {
+    "name": "Muck Rack",
+    "url": "https://muckrack.com/search/",
+    "category": "linkbilding",
+    "section": "Блогери та журналісти",
+    "description": ""
+  },
+  {
+    "name": "Melt Water",
+    "url": "https://www.meltwater.com/",
+    "category": "linkbilding",
+    "section": "Блогери та журналісти",
+    "description": "Великий функціонал, зокрема пошук за медіа, журналістами, інфлюенсерами та медійними контактами для outreach."
+  },
+  {
+    "name": "Contact Out",
+    "url": "https://contactout.com/",
+    "category": "linkbilding",
+    "section": "Пошук email і контактів",
+    "description": "Пошук email, зокрема в LinkedIn. Є розширення для Chrome."
+  },
+  {
+    "name": "SignalHire",
+    "url": "https://www.signalhire.com/",
+    "category": "linkbilding",
+    "section": "Пошук email і контактів",
+    "description": "Шукає email і номери телефонів.",
+    "ua": [
+      "in-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://jobs.dou.ua/companies/signalhire/"
+    }
+  },
+  {
+    "name": "Hunter",
+    "url": "https://hunter.io",
+    "category": "linkbilding",
+    "section": "Пошук email і контактів",
+    "description": "Платформа для B2B-лідів: Domain Search і Email Finder шукають адреси, Email Verifier перевіряє їх (також масово). Є холодні розсилки з власної пошти та інтеграції з CRM.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://hunter.io/blog/hunter-stands-with-ukraine/"
+    }
+  },
+  {
+    "name": "FindThatLead",
+    "url": "https://findthatlead.com/en/",
+    "category": "linkbilding",
+    "section": "Пошук email і контактів",
+    "description": "Пошук контактів: email і телефон за посиланням на соцмережу, списки локальних бізнесів, Prospector за параметрами ринку. Є верифікатор і багатокрокові холодні кампанії."
+  },
+  {
+    "name": "Name Liquidate",
+    "url": "https://nameliquidate.com/",
+    "category": "linkbilding",
+    "section": "Дропи",
+    "description": "Реверсний аукціон, а не дропи. Якщо не плануєте продовжувати домен, його можна передати тут. Трапляються непогані домени."
+  },
+  {
+    "name": "Dropcatch",
+    "url": "https://www.dropcatch.com/",
+    "category": "linkbilding",
+    "section": "Дропи",
+    "description": "Можливий backorder, а також купівля на аукціоні."
+  },
+  {
+    "name": "Expired",
+    "url": "https://www.expireddomains.net/",
+    "category": "linkbilding",
+    "section": "Дропи",
+    "description": "Каталог доменів, що закінчуються."
+  },
+  {
+    "name": "NameJet",
+    "url": "http://www.namejet.com/",
+    "category": "linkbilding",
+    "section": "Дропи",
+    "description": "Платформа для backorder доменів."
+  },
+  {
+    "name": "SnapNames",
+    "url": "https://www.snapnames.com/",
+    "category": "linkbilding",
+    "section": "Дропи",
+    "description": "Платформа для backorder доменів."
+  },
+  {
+    "name": "Domain Tools",
+    "url": "http://whois.domaintools.com/",
+    "category": "linkbilding",
+    "section": "Історія Whois",
+    "description": ""
+  },
+  {
+    "name": "Who Is",
+    "url": "https://who.is/",
+    "category": "linkbilding",
+    "section": "Історія Whois",
+    "description": ""
+  },
+  {
+    "name": "Who is request",
+    "url": "https://whoisrequest.com/",
+    "category": "linkbilding",
+    "section": "Історія Whois",
+    "description": ""
+  },
+  {
+    "name": "Whoisology",
+    "url": "https://whoisology.com/",
+    "category": "linkbilding",
+    "section": "Історія Whois",
+    "description": ""
+  },
+  {
+    "name": "View DNS",
+    "url": "https://viewdns.info/",
+    "category": "linkbilding",
+    "section": "DNS",
+    "description": ""
+  },
+  {
+    "name": "Auto Fill Magic",
+    "url": "http://autofillmagic.com/",
+    "category": "linkbilding",
+    "section": "Web 2.0",
+    "description": "Інструмент для створення акаунтів Web 2.0 і керування PBN."
+  },
+  {
+    "name": "RankerX",
+    "url": "https://rankerx.com/homepage/",
+    "category": "linkbilding",
+    "section": "Web 2.0",
+    "description": "Програма для автоматичного лінкбілдінгу: керує контентом на WordPress і Tumblr, будує PBN із Web 2.0 блогів, має Strategy Designer для побудови схем кампаній."
+  },
+  {
+    "name": "GSA",
+    "url": "https://www.gsa-online.de/en/product/search_engine_ranker/",
+    "category": "linkbilding",
+    "section": "Web 2.0",
+    "description": "GSA Search Engine Ranker сам шукає майданчики в Google, реєструє акаунти й постить контент. Має фільтри за країною та авторитетом, 30+ сервісів розпізнавання капчі, керування проксі."
+  },
+  {
+    "name": "SEO Autopilot",
+    "url": "https://seo-autopilot.eu/",
+    "category": "linkbilding",
+    "section": "Web 2.0",
+    "description": ""
+  },
+  {
+    "name": "Glow Insta",
+    "url": "https://www.glowinsta.com/",
+    "category": "linkbilding",
+    "section": "Соціальні сигнали (Social Signals)",
+    "description": "Соціальні сигнали для Instagram."
+  },
+  {
+    "name": "SEO Butler",
+    "url": "https://seobutler.com/social-signals/",
+    "category": "linkbilding",
+    "section": "Соціальні сигнали (Social Signals)",
+    "description": "Соціальні сигнали для Facebook, Twitter і Pinterest."
+  },
+  {
+    "name": "Signal Boy",
+    "url": "https://www.signalboy.com/",
+    "category": "linkbilding",
+    "section": "Соціальні сигнали (Social Signals)",
+    "description": "Соціальні сигнали й накрутка, зокрема для YouTube."
+  },
+  {
+    "name": "Amazon Mechanical Turk",
+    "url": "https://www.mturk.com/",
+    "category": "linkbilding",
+    "section": "Мікроворкери та аутсорс",
+    "description": "Платформа для пошуку виконавців простих завдань, зокрема для накрутки поведінкових факторів (наприклад, для YouTube)."
+  },
+  {
+    "name": "Microworkers",
+    "url": "https://www.microworkers.com/",
+    "category": "linkbilding",
+    "section": "Мікроворкери та аутсорс",
+    "description": "Платформа для пошуку виконавців простих завдань."
+  },
+  {
+    "name": "Mega Stacker",
+    "url": "http://therankingstore.com/mega-stacker/",
+    "category": "linkbilding",
+    "section": "Стеки (Stacks)",
+    "description": ""
+  },
+  {
+    "name": "MPC (Mass Page Creator)",
+    "url": "http://masspagecreator.com/",
+    "category": "linkbilding",
+    "section": "Стеки (Stacks)",
+    "description": ""
+  },
+  {
+    "name": "Ranking Factory",
+    "url": "https://therankingstore.com/",
+    "category": "linkbilding",
+    "section": "Стеки (Stacks)",
+    "description": ""
+  },
+  {
+    "name": "Staxio",
+    "url": "https://staxio.tools/",
+    "category": "linkbilding",
+    "section": "Стеки (Stacks)",
+    "description": ""
+  },
+  {
+    "name": "Webarchive",
+    "url": "https://web.archive.org/",
+    "category": "linkbilding",
+    "section": "Вебархів",
+    "description": "Wayback Machine, архів інтернету."
+  },
+  {
+    "name": "PBN Hosting",
+    "url": "https://pbn.hosting/",
+    "category": "linkbilding",
+    "section": "Вебархів",
+    "description": "Відновлення сайтів з вебархіву."
+  },
+  {
+    "name": "Awario",
+    "url": "https://awario.com/",
+    "category": "linkbilding",
+    "section": "Управління репутацією",
+    "description": "Моніторить згадки, зокрема коментарі в блогах і на форумах."
+  },
+  {
+    "name": "Linkio",
+    "url": "https://www.linkio.com/anchor-text-generator/",
+    "category": "linkbilding",
+    "section": "Інше",
+    "description": "Генератор анкорів для лінкбілдингу."
+  },
+  {
+    "name": "Hacker News",
+    "url": "https://news.ycombinator.com/",
+    "category": "linkbilding",
+    "section": "Інше",
+    "description": "Спільнота з обміну посиланнями на статті. В оригіналі використовується для сабміту статей з tier 2."
+  },
+  {
+    "name": "Група у Facebook з обміну даними про dofollow-посилання",
+    "url": "https://www.facebook.com/groups/1180649018749577/",
+    "category": "linkbilding",
+    "section": "Інше",
+    "description": "Група для обміну даними про dofollow-посилання. Потрібно подавати по 2 джерела на місяць, інакше виключають з групи."
+  },
+  {
+    "name": "Buzz Sumo",
+    "url": "https://buzzsumo.com/",
+    "category": "linkbilding",
+    "section": "Інше",
+    "description": "Ідеї для контенту. Аналог Content Explorer в Ahrefs."
+  },
+  {
+    "name": "List of sources cited in Knowledge Panels",
+    "url": "https://kalicube.pro/tools/trusted-sources",
+    "category": "linkbilding",
+    "section": "Інше",
+    "description": "Список сайтів, з яких Google бере дані для панелі знань. Оновлюється."
+  },
+  {
+    "name": "by Joshua Hardwick",
+    "url": "https://www.theseoproject.org/link-building-strategies/",
+    "category": "linkbilding",
+    "section": "Списки стратегій лінкбілдингу: які бувають посилання",
+    "description": ""
+  },
+  {
+    "name": "Name Pros",
+    "url": "https://www.namepros.com/",
+    "category": "linkbilding",
+    "section": "Списки стратегій лінкбілдингу: які бувають посилання",
+    "description": "Форум про домени та дропи."
+  },
+  {
+    "name": "PBN Mastermind",
+    "url": "https://seojungle.teachable.com/p/pbn-mastermind/",
+    "category": "linkbilding",
+    "section": "Списки стратегій лінкбілдингу: які бувають посилання",
+    "description": "Безкоштовний дуже базовий курс про PBN англійською мовою."
+  },
+  {
+    "name": "Служба підтримки Google Business Profile по телефону",
+    "url": "https://support.google.com/business/contact/business_c2c_l",
+    "category": "lokalne-seo",
+    "section": "Загальне",
+    "description": "Залиште заявку та чекайте дзвінка від служби підтримки."
+  },
+  {
+    "name": "Форма зв'язку з підтримкою Google Business Profile",
+    "url": "https://support.google.com/business/gethelp",
+    "category": "lokalne-seo",
+    "section": "Загальне",
+    "description": ""
+  },
+  {
+    "name": "Google Business Profile в соцмережах",
+    "url": "https://x.com/GoogleMyBiz",
+    "category": "lokalne-seo",
+    "section": "Загальне",
+    "description": "Можна написати в особисті повідомлення або тегнути акаунт."
+  },
+  {
+    "name": "Reinstatement request for Google Business Profile",
+    "url": "https://support.google.com/business/troubleshooter/2690129",
+    "category": "lokalne-seo",
+    "section": "Загальне",
+    "description": "Заявка потрібна, якщо з профілем виникли проблеми: його видалили, позначили неактивним, статус pending триває понад 3 дні тощо."
+  },
+  {
+    "name": "Якщо не вдається підтвердити профіль Google Business Profile",
+    "url": "https://support.google.com/business/contact/business_general_cuf?from=cuf&visit_id=637221031183635848-1631462026&rd=1",
+    "category": "lokalne-seo",
+    "section": "Загальне",
+    "description": "Форма для випадків, коли код підтвердження не приходить, після введення коду профіль видаляється або є інші проблеми з верифікацією."
+  },
+  {
+    "name": "Скарга на профіль Google Business Profile",
+    "url": "https://support.google.com/business/contact/business_redressal_form",
+    "category": "lokalne-seo",
+    "section": "Загальне",
+    "description": "Форма для подання скарги на профіль."
+  },
+  {
+    "name": "GMB Checker",
+    "url": "https://gmbvault.com/gmb-tool",
+    "category": "lokalne-seo",
+    "section": "Інструменти для аудиту Google Business Profile",
+    "description": "Перевірка базових параметрів профілю."
+  },
+  {
+    "name": "Bright Local",
+    "url": "https://www.brightlocal.com/local-seo-tools/google-my-business-audit/",
+    "category": "lokalne-seo",
+    "section": "Інструменти для аудиту Google Business Profile",
+    "description": ""
+  },
+  {
+    "name": "GMB Audit Checklist from Local Client Takeover",
+    "url": "https://drive.google.com/file/d/1UG-dW_tu5ZlBEw1Nvpv78YcWe-EpLugN/view?usp=sharing",
+    "category": "lokalne-seo",
+    "section": "Інструменти для аудиту Google Business Profile",
+    "description": "Чекліст для аудиту профілю під час onboarding або коли виникають проблеми з профілями."
+  },
+  {
+    "name": "Audit from Web20Ranker for free",
+    "url": "https://web20ranker.com/local-seo-audit/",
+    "category": "lokalne-seo",
+    "section": "Інструменти для аудиту Google Business Profile",
+    "description": "Безкоштовний аудит, але потрібно залишити email і номер телефону."
+  },
+  {
+    "name": "Melissa Address Lookup",
+    "url": "https://lookups.melissa.com/home/addresscheck/address",
+    "category": "lokalne-seo",
+    "section": "Інструменти для аудиту Google Business Profile",
+    "description": "Введіть адресу та звірте її з Census Entities. Якщо місто не збігається, з профілем будуть проблеми."
+  },
+  {
+    "name": "Local Viking",
+    "url": "https://localviking.com/gmb-rank-tracker",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": "Перевіряє позиції в картах і в локальній видачі."
+  },
+  {
+    "name": "Local Falcon",
+    "url": "https://www.localfalcon.com/",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": ""
+  },
+  {
+    "name": "GEO Ranker",
+    "url": "https://www.georanker.com/",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": "Також показує частотність, дані по shopping (зокрема з Amazon) і дані по рекламі Google Ads."
+  },
+  {
+    "name": "ProRankTracker",
+    "url": "https://proranktracker.com/",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": ""
+  },
+  {
+    "name": "Bright Local Rank Tracker",
+    "url": "https://www.brightlocal.com/local-search-results-checker/",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": "Ручна перевірка запиту в локальній видачі."
+  },
+  {
+    "name": "I Search From",
+    "url": "http://www.isearchfrom.com/",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": "Безкоштовно. Пошук з іншої локації та пристрою."
+  },
+  {
+    "name": "Valentin App",
+    "url": "https://www.valentin.app/",
+    "category": "lokalne-seo",
+    "section": "Перевірка позицій у картах і локальному пошуку, Local Rank Trackers",
+    "description": "Безкоштовно. Видача з іншої локації."
+  },
+  {
+    "name": "Local Viking",
+    "url": "https://localviking.com/",
+    "category": "lokalne-seo",
+    "section": "Інструменти керування Google Business Profile",
+    "description": ""
+  },
+  {
+    "name": "GMB Factory",
+    "url": "https://gmbfactory.com/",
+    "category": "lokalne-seo",
+    "section": "Інструменти керування Google Business Profile",
+    "description": ""
+  },
+  {
+    "name": "Bright Local",
+    "url": "https://www.brightlocal.com/",
+    "category": "lokalne-seo",
+    "section": "Інструменти керування Google Business Profile",
+    "description": ""
+  },
+  {
+    "name": "Bright Local",
+    "url": "https://www.brightlocal.com/resources/top-50-local-citation-sites/",
+    "category": "lokalne-seo",
+    "section": "Перевірка та списки citations",
+    "description": "Списки сайтів для citations."
+  },
+  {
+    "name": "BrightLocal Local Search Audit",
+    "url": "https://www.brightlocal.com/local-search-results-checker/",
+    "category": "lokalne-seo",
+    "section": "Перевірка та списки citations",
+    "description": "Безкоштовний Local SERP Checker: показує видачу Google або Google Maps для країни, міста чи ZIP-коду без VPN. Безкоштовно 3 пошуки на день, AI Overviews не показує."
+  },
+  {
+    "name": "Moz Local Listing Score",
+    "url": "https://moz.com/products/local/check-listing",
+    "category": "lokalne-seo",
+    "section": "Перевірка та списки citations",
+    "description": "Безкоштовний citation checker від Moz: показує, наскільки точні дані бізнесу в каталогах і на місцевих майданчиках. Є перехід на платний Moz Local для керування listings."
+  },
+  {
+    "name": "Whitespark Local Citation Finder",
+    "url": "https://whitespark.ca/local-citation-finder/",
+    "category": "lokalne-seo",
+    "section": "Перевірка та списки citations",
+    "description": ""
+  },
+  {
+    "name": "Loganix",
+    "url": "https://loganix.com/the-seven-dollar-citation-audit/",
+    "category": "lokalne-seo",
+    "section": "Перевірка та списки citations",
+    "description": "Платний інструмент для аудиту citations і для складання списку для побудови citations."
+  },
+  {
+    "name": "Local Clarity",
+    "url": "https://www.localclarity.com/",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Платформа локального SEO для мереж локацій: синхронізація listings, локальні позиції, пости, ReviewsInbox з AI-відповідями, до 10 локацій конкурентів на сайт."
+  },
+  {
+    "name": "Trustpilot",
+    "url": "https://www.trustpilot.com/",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Публічний майданчик відгуків: споживачі читають і пишуть відгуки та бачать TrustScore компаній, бізнес збирає й показує відгуки через Trustpilot Business."
+  },
+  {
+    "name": "Birdeye",
+    "url": "https://birdeye.com/",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Платформа з AI-агентами для бізнесу з багатьма локаціями: збір відгуків, listings, соцмережі, AI front desk для записів і дзвінків, опитування клієнтів, відстеження конкурентів."
+  },
+  {
+    "name": "WP Business Reviews",
+    "url": "https://wpbusinessreviews.com/",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Плагін для WordPress для оформлення відгуків на сайті."
+  },
+  {
+    "name": "Як надіслати запит на видалення фотографій, доданих клієнтами",
+    "url": "https://support.google.com/business/answer/6130451?hl=uk",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Якщо клієнт або конкурент додав у профіль небажане фото, позначте його на видалення. Якщо за 3 дні фото не видалили, дивіться наступний пункт."
+  },
+  {
+    "name": "Чат або дзвінок підтримки для видалення фото з профілю",
+    "url": "https://support.google.com/business/?hl=uk#topic=4539639&contact=1",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Якщо попередній крок не допоміг, відкрийте сторінку, оберіть Зв'язатися з нами, далі Фотографії та відгуки клієнтів і форму зв'язку. Краще чат, але можна запросити й дзвінок."
+  },
+  {
+    "name": "Якщо конкуренти ставлять негативні відгуки або просто одну зірку, особливо масово",
+    "url": "https://support.google.com/business/answer/4596773?from=cuf_business_inappropriate_reviews#flag",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Поскаржтеся на ці відгуки, можна попросити допомогти співробітників і знайомих. Якщо за 3 дні це не допомогло, дивіться наступний пункт."
+  },
+  {
+    "name": "Видалення неправдивих і негативних відгуків конкурентів",
+    "url": "https://support.google.com/business/?hl=uk#topic=4539639&contact=1",
+    "category": "lokalne-seo",
+    "section": "Відгуки, Reviews, Reviews Management Tools",
+    "description": "Якщо скарга не допомогла, через 3 дні відкрийте сторінку, оберіть Зв'язатися з нами, Фотографії та відгуки клієнтів, Робота з відгуками клієнтів, далі запит дзвінка або чату (краще чат). Якщо на вас йде атака, поясніть це й наведіть докази. Можна попросити тимчасово заблокувати додавання будь-яких відгуків, але тоді й позитивні відгуки додати не вийде."
+  },
+  {
+    "name": "Phantom Buster",
+    "url": "https://phantombuster.com/automations/google-maps/23412/google-maps-search-export",
+    "category": "lokalne-seo",
+    "section": "Парсери Google Maps (Google Business Profile crawlers)",
+    "description": "Екстрактор даних з Google Maps, який зберігає результати в таблиці Google."
+  },
+  {
+    "name": "Botsol",
+    "url": "http://www.botsol.com/Products/GoogleMapsCrawler",
+    "category": "lokalne-seo",
+    "section": "Парсери Google Maps (Google Business Profile crawlers)",
+    "description": "Платна десктопна програма."
+  },
+  {
+    "name": "GMB A-Z Ranking Guide: Google Local SEO Tactics Derived from 1000's of Ranked Listings",
+    "url": "https://blog.localviking.com/gmb-a-z-ranking-guide-google-local-seo-tactics-derived-from-1000s-of-ranked-listings/",
+    "category": "lokalne-seo",
+    "section": "Рекомендації щодо просування",
+    "description": "Стисле й повне керівництво з просування в Google Maps і Google Business Profile. Там само можна зареєструватися й отримати доступ до Toolbox."
+  },
+  {
+    "name": "План на перші 6 місяців від Matt Boley",
+    "url": "https://docs.google.com/spreadsheets/d/1MtebVqFkIejmtma8k7tfsk1X_X-3xSSpNxWto2Uc1xU/edit#gid=0",
+    "category": "lokalne-seo",
+    "section": "Рекомендації щодо просування",
+    "description": ""
+  },
+  {
+    "name": "Google Business Profile Roadmap, схема",
+    "url": "https://drive.google.com/drive/folders/18ln0I6HOXgb-IekSjEh_iLef117hVo0E",
+    "category": "lokalne-seo",
+    "section": "Рекомендації щодо просування",
+    "description": ""
+  },
+  {
+    "name": "Google Local Changes",
+    "url": "https://www.sterlingsky.ca/google-local-changes/",
+    "category": "lokalne-seo",
+    "section": "Рекомендації щодо просування",
+    "description": "Оновлення в локальному пошуку."
+  },
+  {
+    "name": "Довідка Google про Google Business Profile",
+    "url": "https://support.google.com/business/answer/3038177?hl=en",
+    "category": "lokalne-seo",
+    "section": "Рекомендації щодо просування",
+    "description": ""
+  },
+  {
+    "name": "CCAOS",
+    "url": "https://ccaos.com/clientarea.php",
+    "category": "lokalne-seo",
+    "section": "Інше",
+    "description": "Одне з місць, де можна купити проксі."
+  },
+  {
+    "name": "XGC Media",
+    "url": "https://www.xgcmedia.com/category/email-accts/aged-gmail-pvas/",
+    "category": "lokalne-seo",
+    "section": "Інше",
+    "description": "Продаж Gmail-акаунтів."
+  },
+  {
+    "name": "Сервіс з Google Business Profile від Олега Костюкевича",
+    "url": "https://www.facebook.com/lionest.360/",
+    "category": "lokalne-seo",
+    "section": "Інше",
+    "description": "Додавання профілю в Google Maps, зміна та підтвердження даних, робота з дублікатами та спамом."
+  },
+  {
+    "name": "Форум Google Business Profile",
+    "url": "https://support.google.com/business/community",
+    "category": "lokalne-seo",
+    "section": "Інше",
+    "description": "Тут можна поставити питання, особливо якщо інші способи зв'язку з підтримкою не дали результату. Іноді відповіді немає, можна спробувати кілька разів."
+  },
+  {
+    "name": "Agency Analytics",
+    "url": "https://agencyanalytics.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Платформа звітності й аналітики для агенцій."
+  },
+  {
+    "name": "Collabx",
+    "url": "https://collabx.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "CRM для агенцій, орієнтована на західний ринок."
+  },
+  {
+    "name": "HubSpot",
+    "url": "https://www.hubspot.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Популярна CRM-платформа з дуже широким функціоналом."
+  },
+  {
+    "name": "BrightLocal",
+    "url": "https://www.brightlocal.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Інструмент для агенцій, які займаються локальним SEO."
+  },
+  {
+    "name": "Raven Tools",
+    "url": "https://raventools.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Звітність і універсальний інструмент для SEO."
+  },
+  {
+    "name": "ReportGarden",
+    "url": "https://reportgarden.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Автоматична маркетингова звітність: збирає дані з Google Ads, GA4, Facebook Ads та Search Console, понад 1000 шаблонів, white-label портал і PDF за розкладом."
+  },
+  {
+    "name": "WebCEO",
+    "url": "https://www.webceo.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Платформа для агенцій із 24 SEO-інструментами (ключі, позиції, аудит, бекслінки) і Task Manager, що перетворює проблеми на завдання. White label на власному домені та віджет для лідів.",
+    "ua": [
+      "in-ukraine",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://jobs.dou.ua/companies/webceo/",
+      "supports-ukraine": "https://www.searchenginejournal.com/seo-support-ukraine/440621/"
+    }
+  },
+  {
+    "name": "Megalytic",
+    "url": "https://www.tapclicks.com/megalytic",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Сервіс звітності, який зараз веде користувачів на TapClicks: дашборди, ETL маркетингових даних і автоматичні клієнтські звіти."
+  },
+  {
+    "name": "Wayfront (раніше SPP)",
+    "url": "https://wayfront.com/",
+    "category": "ahentsii",
+    "section": "CRM та аналітика для агенцій",
+    "description": "Платформа для продажу й адміністрування послуг агенції."
+  },
+  {
+    "name": "Process ST",
+    "url": "https://www.process.st/",
+    "category": "ahentsii",
+    "section": "Автоматизація процесів",
+    "description": "Зручний сервіс для організації процесів, особливо в агенції."
+  },
+  {
+    "name": "Zapier",
+    "url": "https://zapier.com/",
+    "category": "ahentsii",
+    "section": "Автоматизація процесів",
+    "description": "Сервіс автоматизації процесів, який інтегрується з великою кількістю інших сервісів. Для повноцінної роботи потрібна платна версія.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://zapier.com/blog/zapier-stands-with-ukraine/"
+    }
+  },
+  {
+    "name": "SE Ranking",
+    "url": "https://seranking.com/white-label.html",
+    "category": "ahentsii",
+    "section": "White label",
+    "description": "Платформа SE Ranking з white label: звіти й кабінет під брендом агенції.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Close",
+    "url": "https://close.com/",
+    "category": "ahentsii",
+    "section": "CRM для продажів",
+    "description": "CRM для керування лідами й продажами."
+  },
+  {
+    "name": "Hubstaff",
+    "url": "https://hubstaff.com/",
+    "category": "ahentsii",
+    "section": "Трекери часу",
+    "description": "Трекер часу й управління командою: скриншоти й активність, GPS для виїзних, табелі, розрахунок виплат (Wise, PayPal, Deel), рахунки клієнтам із відпрацьованого часу."
+  },
+  {
+    "name": "Toggl",
+    "url": "https://toggl.com/",
+    "category": "ahentsii",
+    "section": "Трекери часу",
+    "description": "Трекер часу з плануванням навантаження: таймери, Gantt і календар планування, звіти про завантаження та прибутковість, рахунки з billable rates, Toggl AI.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://toggl.com/blog/ukraine"
+    }
+  },
+  {
+    "name": "Followupthen",
+    "url": "https://www.followupthen.com/",
+    "category": "ahentsii",
+    "section": "Планувальники задач",
+    "description": "Сервіс нагадувань на електронну пошту."
+  },
+  {
+    "name": "The Blueprint Training",
+    "url": "https://modules.theblueprint.training/dashboard",
+    "category": "ahentsii",
+    "section": "Почитати і подивитися",
+    "description": "Навчальний курс. Кілька модулів безкоштовні, решта платна. Є посилання на безкоштовну групу в Slack."
+  },
+  {
+    "name": "ChatGPT",
+    "url": "https://chatgpt.com/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Чат-асистент від OpenAI: відповіді з пошуком у вебі, робота з файлами, генерація зображень.",
+    "entity": "chatgpt"
+  },
+  {
+    "name": "Claude",
+    "url": "https://claude.ai/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Асистент від Anthropic для текстів, аналізу документів і коду.",
+    "entity": "claude"
+  },
+  {
+    "name": "Gemini",
+    "url": "https://gemini.google.com/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Асистент від Google, пов'язаний з пошуком і сервісами Google Workspace.",
+    "entity": "gemini"
+  },
+  {
+    "name": "Microsoft Copilot",
+    "url": "https://copilot.microsoft.com/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Асистент від Microsoft, працює на базі Bing і вбудований у Windows та Microsoft 365.",
+    "entity": "copilot"
+  },
+  {
+    "name": "Perplexity",
+    "url": "https://www.perplexity.ai/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Пошуковий AI-асистент, який відповідає з посиланнями на джерела.",
+    "entity": "perplexity"
+  },
+  {
+    "name": "Grok",
+    "url": "https://grok.com/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Асистент від xAI з доступом до публікацій у X."
+  },
+  {
+    "name": "Le Chat",
+    "url": "https://chat.mistral.ai/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Асистент від французької компанії Mistral AI."
+  },
+  {
+    "name": "DeepSeek",
+    "url": "https://chat.deepseek.com/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Чат з моделями DeepSeek, які також доступні як відкриті."
+  },
+  {
+    "name": "Kimi",
+    "url": "https://www.kimi.com/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Асистент від Moonshot AI на моделях Kimi.",
+    "entity": "kimi"
+  },
+  {
+    "name": "Gemini Notebook (раніше NotebookLM)",
+    "url": "https://notebook.google/",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Інструмент Google для роботи з власними джерелами: відповіді, конспекти й аудіоогляди тільки за завантаженими документами.",
+    "entity": "gemini-notebook"
+  },
+  {
+    "name": "Llama",
+    "url": "https://www.llama.com/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті моделі від Meta."
+  },
+  {
+    "name": "Qwen",
+    "url": "https://qwen.ai/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті моделі від Alibaba для тексту, коду та зображень."
+  },
+  {
+    "name": "Gemma",
+    "url": "https://deepmind.google/models/gemma/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті моделі від Google DeepMind, які можна запускати локально."
+  },
+  {
+    "name": "Mistral",
+    "url": "https://mistral.ai/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті й комерційні моделі від Mistral AI."
+  },
+  {
+    "name": "DeepSeek на Hugging Face",
+    "url": "https://huggingface.co/deepseek-ai",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті ваги моделей DeepSeek для завантаження."
+  },
+  {
+    "name": "Kimi на Hugging Face",
+    "url": "https://huggingface.co/moonshotai",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті ваги моделей Kimi від Moonshot AI.",
+    "entity": "moonshot-ai"
+  },
+  {
+    "name": "gpt-oss",
+    "url": "https://openai.com/index/introducing-gpt-oss/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Відкриті моделі від OpenAI."
+  },
+  {
+    "name": "Ollama",
+    "url": "https://ollama.com/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Програма для запуску відкритих моделей на своєму комп'ютері однією командою."
+  },
+  {
+    "name": "LM Studio",
+    "url": "https://lmstudio.ai/",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Програма з інтерфейсом для завантаження і запуску відкритих моделей локально."
+  },
+  {
+    "name": "OpenRouter",
+    "url": "https://openrouter.ai/",
+    "category": "ai",
+    "section": "Порівняння моделей і доступ через API",
+    "description": "Один API-ключ для сотень моделей різних компаній, з оплатою за використання."
+  },
+  {
+    "name": "Arena (раніше LMArena)",
+    "url": "https://arena.ai/",
+    "category": "ai",
+    "section": "Порівняння моделей і доступ через API",
+    "description": "Рейтинг моделей за сліпими порівняннями відповідей, які оцінюють користувачі."
+  },
+  {
+    "name": "Jasper",
+    "url": "https://www.jasper.ai/",
+    "category": "ai",
+    "section": "Генерація тексту",
+    "description": "Платформа для маркетингових текстів з AI-агентами."
+  },
+  {
+    "name": "Copy.ai",
+    "url": "https://www.copy.ai/",
+    "category": "ai",
+    "section": "Генерація тексту",
+    "description": "Генерація текстів і автоматизація процесів для продажів і маркетингу."
+  },
+  {
+    "name": "Writesonic",
+    "url": "https://writesonic.com/",
+    "category": "ai",
+    "section": "Генерація тексту",
+    "description": "Генерація SEO-текстів і відстеження видимості бренду в AI-пошуку."
+  },
+  {
+    "name": "Midjourney",
+    "url": "https://www.midjourney.com/",
+    "category": "ai",
+    "section": "Генерація зображень",
+    "description": "Генерація зображень за текстовим описом."
+  },
+  {
+    "name": "FLUX (Black Forest Labs)",
+    "url": "https://bfl.ai/",
+    "category": "ai",
+    "section": "Генерація зображень",
+    "description": "Моделі генерації зображень FLUX, частина з них відкрита."
+  },
+  {
+    "name": "Ideogram",
+    "url": "https://ideogram.ai/",
+    "category": "ai",
+    "section": "Генерація зображень",
+    "description": "Генерація зображень, добре справляється з текстом на картинці."
+  },
+  {
+    "name": "Recraft",
+    "url": "https://www.recraft.ai/",
+    "category": "ai",
+    "section": "Генерація зображень",
+    "description": "Генерація зображень і векторної графіки для дизайну."
+  },
+  {
+    "name": "Leonardo.Ai",
+    "url": "https://leonardo.ai/",
+    "category": "ai",
+    "section": "Генерація зображень",
+    "description": "Генерація зображень і відео з набором готових моделей і стилів."
+  },
+  {
+    "name": "Adobe Firefly",
+    "url": "https://firefly.adobe.com/",
+    "category": "ai",
+    "section": "Генерація зображень",
+    "description": "Генерація і редагування зображень від Adobe."
+  },
+  {
+    "name": "Waikay",
+    "url": "https://waikay.io/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Показує, що AI-моделі знають і кажуть про твій бренд, які факти помилкові та на які джерела вони посилаються. Створено командою InLinks."
+  },
+  {
+    "name": "Profound",
+    "url": "https://www.tryprofound.com/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Платформа для відстеження видимості бренду в ChatGPT та інших AI-пошуковиках."
+  },
+  {
+    "name": "Peec AI",
+    "url": "https://peec.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Аналітика згадок бренду і джерел у відповідях AI-пошуковиків."
+  },
+  {
+    "name": "Otterly.AI",
+    "url": "https://otterly.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Моніторинг бренду в ChatGPT, Perplexity і Google AI Overviews."
+  },
+  {
+    "name": "Scrunch",
+    "url": "https://scrunch.com/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Видимість у AI-пошуку і підготовка сайту для AI-краулерів."
+  },
+  {
+    "name": "AthenaHQ",
+    "url": "https://athenahq.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Відстеження видимості в AI-пошуку на рівні джерел і цитувань."
+  },
+  {
+    "name": "LLMrefs",
+    "url": "https://llmrefs.com/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Трекінг ключових слів і згадок бренду в AI-пошуку."
+  },
+  {
+    "name": "ZipTie",
+    "url": "https://ziptie.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Відстеження присутності в Google AI Overviews, ChatGPT і Perplexity."
+  },
+  {
+    "name": "Ahrefs Brand Radar",
+    "url": "https://ahrefs.com/brand-radar",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Видимість будь-якого бренду в AI-відповідях за даними Ahrefs.",
+    "ua": [
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://en.ain.ua/2019/05/30/dmitry-gerasimenko-ahrefs-interview",
+      "supports-ukraine": "https://www.searchenginejournal.com/seo-support-ukraine/440621/"
+    },
+    "entity": "ahrefs"
+  },
+  {
+    "name": "Semrush AI Visibility",
+    "url": "https://www.semrush.com/ai-seo/overview/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Набір Semrush для відстеження видимості бренду в AI-пошуку.",
+    "entity": "semrush"
+  },
+  {
+    "name": "SE Ranking AI Visibility Tracker",
+    "url": "https://seranking.com/ai-visibility-tracker.html",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Відстеження згадок і посилань на сайт в AI-відповідях.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://seranking.com/about-us.html",
+      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
+      "supports-ukraine": "https://seranking.com/about-us.html"
+    }
+  },
+  {
+    "name": "Hugging Face Models",
+    "url": "https://huggingface.co/models",
+    "category": "ai",
+    "section": "Відкриті моделі та запуск на своєму комп'ютері",
+    "description": "Список наявних трансформерів."
+  },
+  {
+    "name": "WordLift",
+    "url": "https://wordlift.io/",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Плагін для оптимізації контенту на сайті: від сутностей і зображень до дати оновлення публікації."
+  },
+  {
+    "name": "Common Crawl",
+    "url": "https://commoncrawl.org/",
+    "category": "inshi",
+    "section": "Відкриті дані",
+    "description": "Великий і різноманітний корпус даних з реальних джерел, на відміну від Wikipedia. Повністю безкоштовний."
+  },
+  {
+    "name": "Registry of Open Data on AWS",
+    "url": "https://registry.opendata.aws/",
+    "category": "inshi",
+    "section": "Відкриті дані",
+    "description": "Відкриті корпуси даних на AWS."
+  },
+  {
+    "name": "Wikidata",
+    "url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Wikidata, база знань Wikimedia."
+  },
+  {
+    "name": "PetScan",
+    "url": "https://petscan.wmcloud.org/",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Запити до Wikipedia і Wikimedia з фільтром за наявністю запису в Wikidata."
+  },
+  {
+    "name": "Hugging Face Dataset Viewer",
+    "url": "https://huggingface.co/docs/dataset-viewer/index",
+    "category": "inshi",
+    "section": "Відкриті дані",
+    "description": "NLP Viewer. Багато наборів даних, зокрема Yext, IMDB тощо. Легко пробувати, є прикріплений Colab."
+  },
+  {
+    "name": "Best Affiliate Networks (Matt Diggity)",
+    "url": "https://diggitymarketing.com/best-affiliate-networks/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Огляд найкращих партнерських мереж від Diggity Marketing."
+  },
+  {
+    "name": "Affiliaxe",
+    "url": "https://www.affiliaxe.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Health, Digital Entertainment, Mobile."
+  },
+  {
+    "name": "Rakuten",
+    "url": "https://rakutenadvertising.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніша: Retail Goods."
+  },
+  {
+    "name": "Clickbank",
+    "url": "https://www.clickbank.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Digital Goods, Dating, Self-Improvement. Є реферальні програми."
+  },
+  {
+    "name": "CJ Affiliate",
+    "url": "https://www.cj.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Online Retail, Software."
+  },
+  {
+    "name": "2Checkout (Verifone)",
+    "url": "https://www.2checkout.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Software, Software-as-a-Service."
+  },
+  {
+    "name": "MaxBounty",
+    "url": "https://www.maxbounty.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Dieting, Dating, Real Estate."
+  },
+  {
+    "name": "MoreNiche",
+    "url": "https://moreniche.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Bodybuilding, Weight Loss, Health."
+  },
+  {
+    "name": "Market Health",
+    "url": "https://www.markethealth.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Health, Beauty."
+  },
+  {
+    "name": "AvantLinks",
+    "url": "http://www.avantlink.com/programs",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Ніші: Outdoor, Large Retail Products."
+  },
+  {
+    "name": "eBay Partner Network",
+    "url": "https://partnernetwork.ebay.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Партнерська програма eBay: комісія за трафік на конкретний товар і за покупки, що з нього випливають. Є фіди й API, deals-сторінки та eBay Ambassador для творців у США й Британії."
+  },
+  {
+    "name": "Amazon Associates",
+    "url": "https://affiliate-program.amazon.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Партнерська програма Amazon для власників сайтів і застосунків: кастомні посилання, комісія до 10% залежно від категорії, виплата приблизно через 60 днів після кінця місяця.",
+    "entity": "amazon"
+  },
+  {
+    "name": "Bang Good",
+    "url": "https://www.banggood.com",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Інтернет-магазин з партнерською програмою."
+  },
+  {
+    "name": "impact.com",
+    "url": "https://impact.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Партнерська платформа impact.com."
+  },
+  {
+    "name": "Awin",
+    "url": "https://www.awin.com",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Партнерська мережа."
+  },
+  {
+    "name": "FlexOffers",
+    "url": "https://www.flexoffers.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Партнерська мережа, що з'єднує рекламодавців і паблішерів: API, фіди товарів, звіти в реальному часі. Заявлено 12 000+ програм і 75 000+ паблішерів."
+  },
+  {
+    "name": "Partnerize",
+    "url": "https://partnerize.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Платформа партнерського маркетингу."
+  },
+  {
+    "name": "Affiliately",
+    "url": "https://www.affiliatly.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Інструмент для запуску партнерських програм інтернет-магазинів."
+  },
+  {
+    "name": "Home Depot",
+    "url": "https://www.homedepot.com/c/SF_MS_The_Home_Depot_Affiliate_Program",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Партнерська програма Home Depot. Працює через Impact Radius."
+  },
+  {
+    "name": "Commission Factory",
+    "url": "https://www.commissionfactory.com/",
+    "category": "partnerski-prohramy",
+    "section": "Партнерські мережі",
+    "description": "Австралійська партнерська платформа, частина Awin Group: працює з 2011 року в Азійсько-Тихоокеанському регіоні. Для паблішерів членство безкоштовне, є AI-звіти Nexus."
+  },
+  {
+    "name": "KGR (Keyword Golden Ratio)",
+    "url": "https://nichesiteproject.com/keyword-golden-ratio/",
+    "category": "partnerski-prohramy",
+    "section": "Інструменти",
+    "description": "Метод оцінки ключових слів Keyword Golden Ratio для нішевих сайтів."
+  },
+  {
+    "name": "Omega Indexer",
+    "url": "https://www.omegaindexer.com/",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Платний індексатор: посилання потрапляють у Google через drip-feed до 30 днів, 1 кредит це 1 посилання. За неіндексовані повертають кредити. Є API та MCP-сервер."
+  },
+  {
+    "name": "Add URL Info",
+    "url": "http://www.add-url.info",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Сервіс масового додавання URL у чергу сканування Google і Яндекс через веб-інтерфейс або API. Живий статус черги та звіт по кожному посиланню, підтримка російською."
+  },
+  {
+    "name": "Index Inject",
+    "url": "https://indexinject.com/",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Веб-сервіс для краулінгу й індексації бекслінків із проєктами, розкладом і drip-feed. Не потрібні проксі, капча чи VPS, є API. Гарантії індексації немає."
+  },
+  {
+    "name": "Colinkri",
+    "url": "https://www.colinkri.com/",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Веб-краулер, що змушує пошукових ботів відвідувати бекслінки через приватну мережу серверів. Не потрібні проксі, капча чи VPS, Gmail-акаунти входять у вартість."
+  },
+  {
+    "name": "One Hour Indexing",
+    "url": "https://onehourindexing.co/",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Автоматична індексація бекслінків з тарифами за щоденним обсягом, API для третіх сторін і звітом по кожному посиланню. Власні тести сервісу показують 12-23% проіндексованих за годину."
+  },
+  {
+    "name": "Link Centaur",
+    "url": "http://www.linkcentaur.com/",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Сервіс для індексації посилань."
+  },
+  {
+    "name": "Speed Links",
+    "url": "http://speed-links.net/",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Індексатор для Google: файл або список URL, drip-feed 1-30 днів і три методи (Regular, VIP, SEQ). Є API та інтеграція з GSA Search Engine Ranker."
+  },
+  {
+    "name": "SEO Rank",
+    "url": "https://seo-rank.my-addr.com/",
+    "category": "inshi",
+    "section": "API-сервіси",
+    "description": "API для показників cf/tf, DA і PA (Moz)."
+  },
+  {
+    "name": "DataForSEO",
+    "url": "https://dataforseo.com/",
+    "category": "inshi",
+    "section": "API-сервіси",
+    "description": "API з даними для SEO, зокрема кліксторіми, видача, частотність тощо.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians",
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://dataforseo.com/about-us",
+      "founded-by-ukrainians": "https://youcontrol.com.ua/en/catalog/company_details/44864377/",
+      "supports-ukraine": "https://dataforseo.com/blog/important-information"
+    }
+  },
+  {
+    "name": "Knowledge Graph Search",
+    "url": "https://knowledgegraphsearch.com/",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Пошук за графами знань."
+  },
+  {
+    "name": "Kalicube Graph Explorer",
+    "url": "https://kalicube.pro/knowledge-graph-explorer",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Показує впевненість Google щодо сутності за ключовим словом."
+  },
+  {
+    "name": "Entity Explorer",
+    "url": "http://entityexplorer.com/",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Дослідження сутностей та їхніх зв'язків."
+  },
+  {
+    "name": "Mobirise",
+    "url": "https://mobirise.com/",
+    "category": "inshi",
+    "section": "Базова побудова сайтів / стандартні HTML-сторінки",
+    "description": "Конструктор сайтів."
+  },
+  {
+    "name": "Codepen",
+    "url": "https://codepen.io/pen/",
+    "category": "inshi",
+    "section": "Базова побудова сайтів / стандартні HTML-сторінки",
+    "description": "Онлайн-редактор для тестування HTML, CSS і JavaScript."
+  },
+  {
+    "name": "Pugjs",
+    "url": "https://pugjs.org/api/getting-started.html",
+    "category": "inshi",
+    "section": "Базова побудова сайтів / стандартні HTML-сторінки",
+    "description": "Шаблонізатор для генерації HTML."
+  },
+  {
+    "name": "Coggle",
+    "url": "https://coggle.it/",
+    "category": "inshi",
+    "section": "Mind map (інтелект-карти)",
+    "description": "Програма для створення mind map з безкоштовним лімітом."
+  },
+  {
+    "name": "SEO Work",
+    "url": "https://seowork.io",
+    "category": "inshi",
+    "section": "Аналіз даних",
+    "description": "Аналітика даних пошукової видачі: відстежує видимість і потенціал сторінок, аналізує конкурентів, моніторить технічний стан сайту, оцінює SEO A/B-тести та передає дані в BI."
+  },
+  {
+    "name": "Causal Impact",
+    "url": "https://google.github.io/CausalImpact/CausalImpact.html",
+    "category": "inshi",
+    "section": "Аналіз даних",
+    "description": "Причинно-наслідковий аналіз даних від Google, заміна звичайному A/B-тестуванню."
+  },
+  {
+    "name": "List of Tools",
+    "url": "https://www.bulkseotools.com",
+    "category": "inshi",
+    "section": "Інше",
+    "description": "Безкоштовний список інструментів для SEO."
+  },
+  {
+    "name": "KeywordStat",
+    "url": "https://keywordstat.co/",
+    "category": "semantyka-i-kontent",
+    "section": "Збір ключових слів",
+    "description": "Сервіс для підбору ключових слів із вісьмома метриками, серед них частотність, складність, traffic potential і комерційна цінність, плюс AI-кластеризація.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://seobaza.com.ua/news/2026/10/maizhe-piatnychni-novyny-10-zhovtnia-2026"
+    }
+  },
+  {
+    "name": "QueryBurst Query Fan-Out Tool",
+    "url": "https://queryburst.com/free-tools/query-fan-out-tool/",
+    "category": "semantyka-i-kontent",
+    "section": "Аналіз ключових слів",
+    "description": "Безкоштовно показує підзапити (fan-out), на які AI-пошук на кшталт ChatGPT розбиває твій запит. Без реєстрації."
+  },
+  {
+    "name": "QueryClassifier",
+    "url": "https://queryclassifier.com/",
+    "category": "semantyka-i-kontent",
+    "section": "Аналіз ключових слів",
+    "description": "Безкоштовно розкладає ключові слова за вісьмома класами запитів Google: так/ні, інструкція, короткий факт, визначення, порівняння, причина, наслідок, інше."
+  },
+  {
+    "name": "SEO-борщ (Collaborator)",
+    "url": "https://collaborator.pro/ua/serp-volatility-index",
+    "category": "semantyka-i-kontent",
+    "section": "Волатильність видачі",
+    "description": "Індекс волатильності української видачі Google від Collaborator.",
+    "ua": [
+      "in-ukraine"
+    ],
+    "uaSources": {
+      "in-ukraine": "https://jobs.dou.ua/companies/collaborator/"
+    }
+  },
+  {
+    "name": "LogLens SEO",
+    "url": "https://github.com/fanatikya/loglens-seo",
+    "category": "tekhnichnyi-audyt",
+    "section": "Аналіз логів",
+    "description": "Локальний аналізатор логів від Ярослава Бешти з відкритим кодом: як сайтом ходять Googlebot, Bingbot, GPTBot, ClaudeBot та інші боти, редиректи, помилки 4xx і 5xx, повільні URL, перевірка IP ботів. Логи нікуди не вантажаться.",
+    "ua": [
+      "in-ukraine",
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://t.me/shozashum/163",
+      "in-ukraine": "Олеся Коробка, 25.10.2026"
+    },
+    "people": [
+      "sb0020"
+    ]
+  },
+  {
+    "name": "GSC MCP (Suganthan Mohanadasan)",
+    "url": "https://github.com/Suganthan-Mohanadasan/Suganthans-GSC-MCP",
+    "category": "tekhnichnyi-audyt",
+    "section": "Аналіз даних Google Search Console",
+    "description": "MCP-сервер з відкритим кодом, який підключає Google Search Console до AI-асистента."
+  },
+  {
+    "name": "Site Kit",
+    "url": "https://sitekit.withgoogle.com/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Google",
+    "description": "Офіційний плагін Google для WordPress: дані Search Console, Analytics та інших сервісів Google просто в панелі сайту."
+  },
+  {
+    "name": "Prompt Buttons for AI",
+    "url": "https://chromewebstore.google.com/detail/prompt-buttons-for-ai-cha/mikoipgbfhgniblhmfkabbgddjelikdh",
+    "category": "ai",
+    "section": "Асистенти",
+    "description": "Безкоштовне розширення для Chrome від Всеволода з каналу Sevbanchik talks: додає на сторінку ChatGPT, Claude, Gemini та інших чатів кнопки з твоїми промптами.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://t.me/sevbanchik_talks/43"
+    }
+  },
+  {
+    "name": "DEJAN AI SEO Suite",
+    "url": "https://app.dejan.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Набір інструментів Dan Petrovic для видимості в AI: за розкладом питає моделі Google, OpenAI і Anthropic про твої теми й показує, які бренди AI пов'язує з темою."
+  },
+  {
+    "name": "Rankscale",
+    "url": "https://rankscale.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Відстеження видимості бренду в ChatGPT, Perplexity і AI Overviews."
+  },
+  {
+    "name": "Promptwatch",
+    "url": "https://promptwatch.com/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Платформа для відстеження видимості в AI-пошуку і GEO."
+  },
+  {
+    "name": "geoSurge",
+    "url": "https://geosurge.ai/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Сервіс для аналізу того, як AI-моделі пам'ятають і згадують бренди."
+  },
+  {
+    "name": "Aiso",
+    "url": "https://www.getaiso.com/",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Відстеження видимості бренду в ChatGPT та інших AI-пошуковиках."
+  },
+  {
+    "name": "Microsoft Clarity",
+    "url": "https://clarity.microsoft.com/",
+    "category": "inshi",
+    "section": "Аналіз даних",
+    "description": "Безкоштовні теплові карти й записи сесій від Microsoft, а також дашборд AI Citations про те, як AI цитує сайт."
+  },
+  {
+    "name": "OpenReplay",
+    "url": "https://openreplay.com/",
+    "category": "inshi",
+    "section": "Аналіз даних",
+    "description": "Запис сесій і продуктова аналітика з відкритим кодом на власному сервері, альтернатива Hotjar."
+  },
+  {
+    "name": "seobaza-writer",
+    "url": "https://github.com/fajela/seobaza-writer",
+    "category": "ai",
+    "section": "Генерація тексту",
+    "description": "Скіл для Claude від SEO Baza з відкритим кодом: пише новини, статті, дайджести й дописи для соцмереж українською в стилі SEO Baza.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://seobaza.com.ua/about"
+    },
+    "people": [
+      "sb0011"
+    ]
+  },
+  {
+    "name": "Share of AI Answer",
+    "url": "/knowledge-base/share-of-ai-answer",
+    "category": "ai",
+    "section": "Трекінг видимості в AI-пошуку",
+    "description": "Метод SEO Baza з покроковою інструкцією: через Grounding API Gemini і дані Search Console вимірює, яка частка AI-відповідей Google складається з твого контенту.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://seobaza.com.ua/about"
+    },
+    "people": [
+      "sb0011"
+    ]
+  },
+  {
+    "name": "Генератор посилання на Google Search Profile",
+    "url": "/knowledge-base/iak-vidkryty-google-search-profiles-cherez-knowledge-graph-id",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Інструмент SEO Baza: знаходить сутність у графі знань Google за назвою або KGMID і генерує посилання на її Google Search Profile з будь-якої країни.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://seobaza.com.ua/about"
+    },
+    "people": [
+      "sb0011"
+    ]
+  },
+  {
+    "name": "KG Search від Fajela",
+    "url": "https://app.fajela.com/kg-search/",
+    "category": "inshi",
+    "section": "Графи знань і Wikidata",
+    "description": "Пошук сутностей у графі знань Google: KGMID, типи й описи сутностей.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://olesiakorobka.com/"
+    },
+    "people": [
+      "sb0011"
+    ]
+  },
+  {
+    "name": "Квіз «Сигнали індексації Google»",
+    "url": "/knowledge-base/syhnaly-indeksatsii-kviz",
+    "category": "inshi",
+    "section": "Індексація",
+    "description": "Квіз SEO Baza з 20 сигналів індексації, які Gary Illyes і Cherry Sireetorn Prommawin підтвердили на Search Central Live.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://seobaza.com.ua/about"
+    },
+    "people": [
+      "sb0011"
+    ]
+  }
+]

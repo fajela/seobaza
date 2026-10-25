@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import { MaterialEntities } from "@/components/material-entities";
 import Link from "next/link";
@@ -92,7 +93,7 @@ function SpeakerName({ speaker }: { speaker: VideoSpeaker }) {
   // Speakers without a page of their own link to their own channel/profile.
   if (href.startsWith("http")) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a href={href} target="_blank" rel={externalRel(href)} className={className}>
         {speaker.name}
       </a>
     );
@@ -229,7 +230,7 @@ export default async function VideoPage({ params }: VideoPageProps) {
           <a
             href="https://www.youtube.com/@SEOBAZA"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener"
             className="text-primary hover:text-accent underline transition-colors"
           >
             YouTube-каналі SEO Baza

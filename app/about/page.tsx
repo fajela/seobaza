@@ -128,7 +128,7 @@ export default function AboutPage() {
             SEO-консультантка з понад 10-річним досвідом у технічному SEO,
             оптимізації під граф знань і AI-пошук, засновниця SEO-консалтингу{" "}
             <a
-              href="https://fajela.com/"
+              href="https://fajela.com/" rel="noopener"
               target="_blank"
 
             >
@@ -148,7 +148,7 @@ export default function AboutPage() {
             <li>
               <strong>Telegram-канал:</strong>{" "}
               <a
-                href="https://t.me/SEOBAZA"
+                href="https://t.me/SEOBAZA" rel="nofollow noopener"
                 target="_blank"
 
               >
@@ -159,7 +159,7 @@ export default function AboutPage() {
             <li>
               <strong>Чат спільноти:</strong>{" "}
               <a
-                href="https://t.me/seobazachat"
+                href="https://t.me/seobazachat" rel="nofollow noopener"
                 target="_blank"
 
               >
@@ -170,7 +170,7 @@ export default function AboutPage() {
             <li>
               <strong>YouTube:</strong>{" "}
               <a
-                href="https://www.youtube.com/c/SEOBAZA"
+                href="https://www.youtube.com/c/SEOBAZA" rel="nofollow noopener"
                 target="_blank"
 
               >

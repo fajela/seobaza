@@ -139,7 +139,7 @@ export default function JobsPage() {
           <p className="text-muted-foreground">
             Шукаєте SEOшника в команду? Напишіть{" "}
             <a
-              href="https://t.me/TheBronso"
+              href="https://t.me/TheBronso" rel="nofollow noopener"
               target="_blank"
               className="text-primary hover:text-accent underline transition-colors"
             >

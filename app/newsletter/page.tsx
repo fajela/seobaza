@@ -23,7 +23,7 @@ export default function NewsletterPage() {
           <a
             href="https://t.me/SEOBAZA"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener"
             className="text-accent hover:underline"
           >
             Telegram

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { promises as fs } from "fs";
@@ -101,7 +102,7 @@ export default async function CompanyJobsPage({ params }: CompanyPageProps) {
             <a
               href={companyUrl}
               target="_blank"
-              rel="nofollow noopener noreferrer"
+              rel={externalRel(companyUrl)}
               className="text-primary hover:text-accent underline transition-colors"
             >
               {companyUrl.replace(/^https?:\/\//, "")}

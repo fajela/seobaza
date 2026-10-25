@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import Link from "next/link";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -244,7 +245,7 @@ export default function SponsorsPage() {
                   <a
                     href={f.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={externalRel(f.url)}
                     className="text-primary hover:text-accent underline transition-colors"
                   >
                     {f.name}
@@ -289,7 +290,7 @@ export default function SponsorsPage() {
             Напишіть Bronso, і ми підберемо формат під ваші задачі
           </p>
           <a
-            href="https://t.me/TheBronso"
+            href="https://t.me/TheBronso" rel="nofollow noopener"
             target="_blank"
             className="inline-flex items-center gap-3 text-xl font-bold text-primary hover:text-accent transition-colors"
           >

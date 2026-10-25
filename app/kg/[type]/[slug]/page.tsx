@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -12,6 +13,7 @@ import {
   resolveEntityRef,
 } from "@/lib/kg-entities";
 import { EntityChips, EntityMentions } from "@/components/kg-mentions";
+import { KgCatalogFacts } from "@/components/kg-catalog-facts";
 import { googleKgUrl } from "@/lib/authors";
 import { buildOgImage } from "@/lib/og-image";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
@@ -160,6 +162,8 @@ export default async function EntityHubPage({
 
         <EntityMentions id={entity.slug} name={entity.name} />
 
+        <KgCatalogFacts slug={entity.slug} />
+
         {related.length > 0 && (
           <section className="mb-12">
             <h2 className="text-xl font-bold mb-4">Повʼязане</h2>
@@ -176,7 +180,7 @@ export default async function EntityHubPage({
                   key={url}
                   href={url}
                   target="_blank"
-                  rel="noopener"
+                  rel={externalRel(url)}
                   itemProp="sameAs"
                   className="px-3 py-1.5 text-sm border border-border rounded-full hover:border-primary hover:text-primary transition-colors"
                 >

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import { promises as fs } from "fs";
 import path from "path";
@@ -125,7 +126,7 @@ export default async function JobPage({ params }: JobPageProps) {
           key="c"
           href={meta.companyUrl}
           target="_blank"
-          rel="nofollow noopener noreferrer"
+          rel={externalRel(meta.companyUrl)}
           className="text-primary hover:text-accent underline transition-colors"
         >
           {meta.company}
@@ -213,7 +214,7 @@ export default async function JobPage({ params }: JobPageProps) {
             href={meta.applyUrl}
             {...(meta.applyUrl.startsWith("mailto:")
               ? {}
-              : { target: "_blank", rel: "nofollow noopener noreferrer" })}
+              : { target: "_blank", rel: "nofollow noopener" })}
             className="inline-block rounded-xl bg-accent px-8 py-3 text-lg font-medium text-accent-foreground transition-all hover:shadow-lg hover:shadow-accent/25"
           >
             Відгукнутися на вакансію

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SEP, daysBetween, kyivDay, redis, trackingEnabled } from "@/lib/track-store";
@@ -317,7 +318,7 @@ export default async function StatsPage({ searchParams }: { searchParams: SP }) 
                     )}
                   </td>
                   <td className="py-1.5 pr-4 break-all">
-                    <a href={r.href} target="_blank" rel="noopener noreferrer nofollow" className="hover:text-accent">{r.href}</a>
+                    <a href={r.href} target="_blank" rel={externalRel(r.href)} className="hover:text-accent">{r.href}</a>
                   </td>
                   <td className="py-1.5 text-right">{fmt(r.n)}</td>
                 </tr>

@@ -1,10 +1,11 @@
+import { externalRel } from "@/lib/own-sites";
 import { imageSize } from "image-size";
 import path from "path";
 import fs from "fs";
 
 /**
  * Drop-in replacement for the default MDX `<a>` element.
- * External links (http/https) open in a new tab with rel="noopener noreferrer".
+ * External links (http/https) open in a new tab: rel="nofollow noopener", own sites (lib/own-sites.ts) without nofollow.
  * Internal links (/path) behave normally.
  */
 export function MdxLink({
@@ -15,7 +16,7 @@ export function MdxLink({
   const isExternal = href?.startsWith("http://") || href?.startsWith("https://");
   if (isExternal) {
     return (
-      <a href={href} target="_blank" rel="nofollow noopener noreferrer" {...props}>
+      <a href={href} target="_blank" rel={externalRel(href)} {...props}>
         {children}
       </a>
     );
