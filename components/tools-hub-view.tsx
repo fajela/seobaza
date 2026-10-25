@@ -16,7 +16,7 @@ export function ToolsHubView() {
           SEO-інструменти і сервіси в графі знань SEO Baza
         </h1>
         <p className="text-lg text-muted-foreground mb-4">
-          {tools.length} SEO-інструментів і сервісів для просування під англомовні ринки: AI, технічний
+          {tools.length} SEO-інструментів і сервісів: AI, технічний
           аудит, збір семантики, лінкбілдинг, локальне SEO і робота агенції.
         </p>
         <p className="text-muted-foreground mb-10">
