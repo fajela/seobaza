@@ -2634,8 +2634,8 @@
   {
     "name": "GSC MCP (Suganthan Mohanadasan)",
     "url": "https://github.com/Suganthan-Mohanadasan/Suganthans-GSC-MCP",
-    "category": "tekhnichnyi-audyt",
-    "section": "Аналіз даних Google Search Console",
+    "category": "ai",
+    "section": "Плагіни і розширення",
     "description": "MCP-сервер з відкритим кодом, який підключає Google Search Console до AI-асистента."
   },
   {
@@ -2711,7 +2711,7 @@
     "name": "seobaza-writer",
     "url": "https://github.com/fajela/seobaza-writer",
     "category": "ai",
-    "section": "Генерація тексту",
+    "section": "Плагіни і розширення",
     "description": "Скіл для Claude від SEO Baza з відкритим кодом: пише новини, статті, дайджести й дописи для соцмереж українською в стилі SEO Baza.",
     "ua": [
       "founded-by-ukrainians"
