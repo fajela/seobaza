@@ -67,7 +67,7 @@ export default function VideosPage() {
           <a
             href="https://www.youtube.com/@SEOBAZA"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener"
             className="text-primary hover:text-accent underline transition-colors"
           >
             нашому YouTube-каналі
@@ -81,7 +81,7 @@ export default function VideosPage() {
             <a
               href="https://www.youtube.com/@SEOBAZA"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener"
               className="text-primary hover:text-accent underline transition-colors"
             >
               YouTube-каналі SEO Baza

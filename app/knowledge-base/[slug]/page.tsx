@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import { MaterialEntities } from "@/components/material-entities";
 import path from "path";
@@ -197,7 +198,7 @@ export default async function KnowledgeBaseArticlePage({
               </Link>
             ) : article.authorLink ? (
               <a
-                href={article.authorLink}
+                href={article.authorLink} rel={externalRel(article.authorLink)}
                 target="_blank"
                 className="font-medium hover:text-accent transition-colors"
               >

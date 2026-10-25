@@ -73,7 +73,7 @@ export default function EnglishHomePage() {
                   a Ukrainian community. Formally, it is an SEO resource with
                   news, educational materials, a{" "}
                   <a
-                    href="https://www.youtube.com/@SEOBAZA"
+                    href="https://www.youtube.com/@SEOBAZA" rel="nofollow noopener"
                     target="_blank"
                     className="text-primary hover:text-accent underline transition-colors"
                   >
@@ -81,7 +81,7 @@ export default function EnglishHomePage() {
                   </a>{" "}
                   and a{" "}
                   <a
-                    href="https://t.me/SEOBAZA"
+                    href="https://t.me/SEOBAZA" rel="nofollow noopener"
                     target="_blank"
                     className="text-primary hover:text-accent underline transition-colors"
                   >
@@ -163,7 +163,7 @@ export default function EnglishHomePage() {
                 Daily news, discussions and community announcements
               </p>
               <a
-                href="https://t.me/SEOBAZA"
+                href="https://t.me/SEOBAZA" rel="nofollow noopener"
                 target="_blank"
                 className="text-sm text-primary hover:text-accent underline transition-colors"
               >
@@ -176,7 +176,7 @@ export default function EnglishHomePage() {
                 Talks, breakdowns and interviews from the community
               </p>
               <a
-                href="https://www.youtube.com/@SEOBAZA"
+                href="https://www.youtube.com/@SEOBAZA" rel="nofollow noopener"
                 target="_blank"
                 className="text-sm text-primary hover:text-accent underline transition-colors"
               >

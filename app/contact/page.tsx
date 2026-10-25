@@ -27,7 +27,7 @@ export default function ContactPage() {
             </a>
           </p>
           <a
-            href="https://t.me/TheBronso"
+            href="https://t.me/TheBronso" rel="nofollow noopener"
             target="_blank"
             className="inline-flex items-center gap-3 text-2xl font-bold text-primary hover:text-accent transition-colors"
           >
@@ -50,7 +50,7 @@ export default function ContactPage() {
             Контент, співпраця, загальні питання
           </p>
           <a
-            href="https://t.me/fajela"
+            href="https://t.me/fajela" rel="nofollow noopener"
             target="_blank"
             className="inline-flex items-center gap-3 text-2xl font-bold text-primary hover:text-accent transition-colors"
           >

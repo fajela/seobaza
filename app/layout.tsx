@@ -179,7 +179,7 @@ export default function RootLayout({
                 <div className="flex justify-center space-x-6 mb-6">
                   <a
 
-                    href="https://www.youtube.com/c/SEOBAZA"
+                    href="https://www.youtube.com/c/SEOBAZA" rel="nofollow noopener"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="YouTube"
@@ -194,7 +194,7 @@ export default function RootLayout({
                   </a>
                   <a
 
-                    href="https://t.me/SEOBAZA"
+                    href="https://t.me/SEOBAZA" rel="nofollow noopener"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="Telegram"
@@ -208,7 +208,7 @@ export default function RootLayout({
                     </svg>
                   </a>
                   <a
-                    href="https://www.linkedin.com/company/seo-baza/"
+                    href="https://www.linkedin.com/company/seo-baza/" rel="nofollow noopener"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="LinkedIn"
@@ -222,7 +222,7 @@ export default function RootLayout({
                     </svg>
                   </a>
                   <a
-                    href="https://www.facebook.com/groups/seobaza/"
+                    href="https://www.facebook.com/groups/seobaza/" rel="nofollow noopener"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="Facebook"
@@ -236,7 +236,7 @@ export default function RootLayout({
                     </svg>
                   </a>
                   <a
-                    href="https://www.instagram.com/seobaza/"
+                    href="https://www.instagram.com/seobaza/" rel="nofollow noopener"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="Instagram"
@@ -250,7 +250,7 @@ export default function RootLayout({
                     </svg>
                   </a>
                   <a
-                    href="https://www.threads.com/@seobaza"
+                    href="https://www.threads.com/@seobaza" rel="nofollow noopener"
                     target="_blank"
                     className="text-foreground hover:text-accent transition-colors"
                     aria-label="Threads"

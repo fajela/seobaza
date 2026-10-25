@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getKgPersonIds, getKgPersonById } from "@/lib/kg";
@@ -190,7 +191,7 @@ export default async function KgPersonPage({
                   {" · "}
                   {person.companyUrl ? (
                     <a
-                      href={person.companyUrl}
+                      href={person.companyUrl} rel={externalRel(person.companyUrl)}
                       target="_blank"
                       itemProp="url"
                       className="hover:text-accent transition-colors"
@@ -323,7 +324,7 @@ export default async function KgPersonPage({
                   key={url}
                   href={url}
                   target="_blank"
-                  rel="noopener"
+                  rel={externalRel(url)}
                   itemProp="sameAs"
                   className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
                 >

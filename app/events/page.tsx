@@ -110,7 +110,7 @@ export default function EventsPage() {
           <p className="text-muted-foreground">
             Напишіть{" "}
             <a
-              href="https://t.me/TheBronso"
+              href="https://t.me/TheBronso" rel="nofollow noopener"
               target="_blank"
               className="text-primary hover:text-accent underline transition-colors"
             >

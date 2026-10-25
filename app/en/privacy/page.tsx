@@ -89,7 +89,7 @@ export default function EnglishPrivacyPage() {
                 <a
                   href="https://kit.com/privacy"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener"
                   className="text-primary underline hover:text-accent"
                 >
                   Kit&apos;s policy
@@ -103,7 +103,7 @@ export default function EnglishPrivacyPage() {
                 <a
                   href="https://vercel.com/legal/privacy-policy"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener"
                   className="text-primary underline hover:text-accent"
                 >
                   Vercel&apos;s policy
@@ -117,7 +117,7 @@ export default function EnglishPrivacyPage() {
                 <a
                   href="https://policies.google.com/privacy"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener"
                   className="text-primary underline hover:text-accent"
                 >
                   Google Privacy Policy

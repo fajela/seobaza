@@ -1,0 +1,25 @@
+{
+  "categories": {
+    "ai": "ai",
+    "tekhnichnyi-audyt": "technical-seo",
+    "semantyka-i-kontent": "semantic-seo",
+    "linkbilding": "link-building",
+    "lokalne-seo": "local-seo"
+  },
+  "sections": {
+    "Аналіз даних Google Search Console": "google-search-console",
+    "Ключові слова з Google Search Console": "google-search-console",
+    "Швидкість": "core-web-vitals",
+    "Перелінковка": "internal-linking",
+    "Робота з контентом": "content",
+    "Індексація": "indexing",
+    "Графи знань і Wikidata": "knowledge-graph",
+    "Трекінг видимості в AI-пошуку": "ai-search",
+    "Відкриті моделі та запуск на своєму комп'ютері": "llm",
+    "Генерація тексту": "ai-content",
+    "Волатильність видачі": "serp",
+    "Rank Tracking: платні": "serp",
+    "Rank Tracking: безкоштовні": "serp",
+    "Аналіз даних": "analytics"
+  }
+}

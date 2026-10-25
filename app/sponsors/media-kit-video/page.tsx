@@ -264,7 +264,7 @@ export default function MediaKitPage() {
           <a
             href="https://t.me/TheBronso"
             target="_blank"
-            rel="noopener"
+            rel="nofollow noopener"
             className="inline-block bg-accent text-accent-foreground font-bold px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
           >
             @TheBronso

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 interface Props {
   /** Telegram channel username (e.g. "SEOBAZA") */
   channel: string;
@@ -22,7 +23,7 @@ export function TelegramComments({ channel, postId }: Props) {
   return (
     <section className="mt-12 pt-8 border-t border-border">
       <a
-        href={url}
+        href={url} rel={externalRel(url)}
         target="_blank"
 
         className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"

@@ -1,5 +1,6 @@
 "use client";
 
+import { externalRel } from "@/lib/own-sites";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { type EventMeta, EVENT_TYPE_LABELS } from "@/lib/events-types";
@@ -116,7 +117,7 @@ function EventCard({ event, past }: { event: EventMeta; past: boolean }) {
           <a
             href={event.registrationUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={externalRel(event.registrationUrl)}
             className="relative z-20 inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-accent text-white rounded-lg font-medium transition-colors"
           >
             Зареєструватися
@@ -189,7 +190,7 @@ export function EventsList({
           <p className="text-sm text-muted-foreground">
             Слідкуйте за оновленнями в{" "}
             <a
-              href="https://t.me/SEOBAZA"
+              href="https://t.me/SEOBAZA" rel="nofollow noopener"
               target="_blank"
               className="text-primary hover:text-accent underline transition-colors"
             >

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 /**
  * Google "Preferred sources" badge.
  * seobaza.com.ua was added to Google's preferred sources; this badge lets
@@ -16,7 +17,7 @@ export function GooglePreferredSource() {
     <a
       href={href}
       target="_blank"
-      rel="noopener"
+      rel={externalRel(href)}
       aria-label={alt}
       className="inline-block transition-opacity hover:opacity-80"
     >

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import { notFound } from "next/navigation";
 import { MaterialEntities } from "@/components/material-entities";
 import { getAllArticles, getArticleBySlug, getRelatedArticles } from "@/lib/articles";
@@ -290,7 +291,7 @@ export default async function ArticlePage({
               if (article.authorLink) {
                 return (
                   <a
-                    href={article.authorLink}
+                    href={article.authorLink} rel={externalRel(article.authorLink)}
                     target="_blank"
                     className="font-medium hover:text-accent transition-colors"
                   >
@@ -317,7 +318,7 @@ export default async function ArticlePage({
                   if (article.coAuthorLink) {
                     return (
                       <a
-                        href={article.coAuthorLink}
+                        href={article.coAuthorLink} rel={externalRel(article.coAuthorLink)}
                         target="_blank"
                         className="font-medium hover:text-accent transition-colors"
                       >
@@ -375,7 +376,7 @@ export default async function ArticlePage({
                     if (article.editorLink) {
                       return (
                         <a
-                          href={article.editorLink}
+                          href={article.editorLink} rel={externalRel(article.editorLink)}
                           target="_blank"
                           className="hover:text-accent transition-colors"
                         >

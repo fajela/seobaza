@@ -111,7 +111,7 @@ export default function EnglishAboutPage() {
             consultant with more than 10 years of experience in technical SEO,
             knowledge graph optimization and AI search, and the founder of the
             SEO consultancy{" "}
-            <a href="https://fajela.com/" target="_blank">
+            <a href="https://fajela.com/" rel="noopener" target="_blank">
               Fajela
             </a>
             .
@@ -128,21 +128,21 @@ export default function EnglishAboutPage() {
           <ul>
             <li>
               <strong>Telegram channel:</strong>{" "}
-              <a href="https://t.me/SEOBAZA" target="_blank">
+              <a href="https://t.me/SEOBAZA" rel="nofollow noopener" target="_blank">
                 @SEOBAZA
               </a>{" "}
               with daily posts, news and reactions.
             </li>
             <li>
               <strong>Community chat:</strong>{" "}
-              <a href="https://t.me/seobazachat" target="_blank">
+              <a href="https://t.me/seobazachat" rel="nofollow noopener" target="_blank">
                 @seobazachat
               </a>{" "}
               for discussions, questions and networking.
             </li>
             <li>
               <strong>YouTube:</strong>{" "}
-              <a href="https://www.youtube.com/c/SEOBAZA" target="_blank">
+              <a href="https://www.youtube.com/c/SEOBAZA" rel="nofollow noopener" target="_blank">
                 @SEOBAZA
               </a>{" "}
               with streams and webinars on bigger topics, hosted by Olesia

@@ -1,3 +1,4 @@
+import { externalRel } from "@/lib/own-sites";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
@@ -130,7 +131,7 @@ export default function BlackFridayPage() {
               <a
                 href={o.url}
                 target="_blank"
-                rel="nofollow noopener"
+                rel={externalRel(o.url)}
                 className="text-primary hover:text-accent underline transition-colors"
               >
                 {o.cta} 👈
@@ -151,7 +152,7 @@ export default function BlackFridayPage() {
           <a
             href={FORM_URL}
             target="_blank"
-            rel="noopener"
+            rel={externalRel(FORM_URL)}
             className="inline-flex items-center px-5 py-2.5 rounded-full bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity"
           >
             Додати пропозицію

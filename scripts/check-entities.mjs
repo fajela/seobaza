@@ -99,6 +99,36 @@ for (const dir of MATERIAL_DIRS) {
   }
 }
 
+// Tools catalog (/kg/tool): a row's `entity` must be a known entity.
+const toolsFile = path.join(CONTENT, "tools", "tools.json");
+try {
+  const tools = JSON.parse(await fs.readFile(toolsFile, "utf8"));
+  let blocked = {};
+  try {
+    blocked = JSON.parse(await fs.readFile(path.join(CONTENT, "tools", "blocklist.json"), "utf8")).domains ?? {};
+  } catch {}
+  for (const t of tools) {
+    let host = "";
+    try { host = new URL(t.url, "https://seobaza.com.ua").hostname.replace(/^www\./, ""); } catch {}
+    for (const [d, why] of Object.entries(blocked))
+      if (host === d || host.endsWith(`.${d}`)) errors.push(`${rel(toolsFile)}: "${t.name}" is on the blocklist (${d}: ${why})`);
+    for (const id of t.people ?? []) if (!personIds.has(id)) errors.push(`${rel(toolsFile)}: "${t.name}" has unknown person "${id}"`);
+    if (t.entity && !entities.has(t.entity)) errors.push(`${rel(toolsFile)}: "${t.name}" has unknown entity "${t.entity}" (add it to content/kg/ first)`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") errors.push(`${rel(toolsFile)}: ${e.message}`);
+}
+// Catalog categories/sections → concept entities (content/tools/concepts.json).
+const conceptsFile = path.join(CONTENT, "tools", "concepts.json");
+try {
+  const map = JSON.parse(await fs.readFile(conceptsFile, "utf8"));
+  for (const [key, id] of [...Object.entries(map.categories ?? {}), ...Object.entries(map.sections ?? {})]) {
+    if (!entities.has(id)) errors.push(`${rel(conceptsFile)}: "${key}" points at unknown entity "${id}"`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") errors.push(`${rel(conceptsFile)}: ${e.message}`);
+}
+
 for (const [slug, { file, data, content }] of entities) {
   if (data.status !== "published") continue;
   if (content.trim().length === 0) errors.push(`${rel(file)}: published hub needs its own intro text in the body`);
