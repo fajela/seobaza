@@ -250,10 +250,12 @@
     "section": "Розширення для браузера",
     "description": "Розширення для Chrome від Сергія Кокшарова: аудит сторінки, парсинг органічної видачі Google, Google Images і Google News, AI-асистент.",
     "ua": [
-      "founded-by-ukrainians"
+      "founded-by-ukrainians",
+      "supports-ukraine"
     ],
     "uaSources": {
-      "founded-by-ukrainians": "https://devakatalk.com/about-me"
+      "founded-by-ukrainians": "https://devakatalk.com/about-me",
+      "supports-ukraine": "Олеся Коробка, 25.10.2026"
     },
     "people": [
       "sb0023"
