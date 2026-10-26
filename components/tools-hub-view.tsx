@@ -3,6 +3,11 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ToolsCatalog } from "@/components/tools-catalog";
 import { getCategoryConceptLinks, getSectionConceptLinks, TOOL_CATEGORIES, getAllTools, getToolsByCategory } from "@/lib/tools";
 import { TOOLS_BASE, toolCategoryUrl } from "@/lib/tools-types";
+import { externalRel } from "@/lib/own-sites";
+
+// Заявки в каталог: Google Форма на акаунті Fajela, перевіряємо вручну (як у Чорної пʼятниці).
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdmLi18aILYPhLymvyL1p8uM6Z4LKWO1xEb8QIatJC-69Zn2A/viewform";
 
 /** /kg/tool: каталог сервісів. */
 export function ToolsHubView() {
@@ -35,6 +40,22 @@ export function ToolsHubView() {
             </Link>
           ))}
         </nav>
+
+        <section className="mb-12 rounded-2xl p-6 border-2 border-accent/50 bg-accent/10">
+          <h2 className="text-xl sm:text-2xl font-display mb-3">Додайте сервіс у каталог</h2>
+          <p className="mb-4">
+            Знаєте корисний інструмент, якого тут немає, або зробили свій? Надішліть його нам.
+            Розміщення безкоштовне, кожну заявку перевіряємо вручну.
+          </p>
+          <a
+            href={FORM_URL}
+            target="_blank"
+            rel={externalRel(FORM_URL)}
+            className="inline-flex items-center px-5 py-2.5 rounded-full bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity"
+          >
+            Додати сервіс
+          </a>
+        </section>
 
         <ToolsCatalog
           tools={tools}
