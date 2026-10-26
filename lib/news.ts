@@ -24,6 +24,9 @@ export interface NewsMetadata {
   // frontmatter when a post is updated. Feeds NewsArticle `dateModified`; `date`
   // remains the original publish date.
   updatedAt?: string;
+  // Optional publish time "HH:MM" (Kyiv). Only orders posts that share a `date`:
+  // the later one goes first. Quote it in frontmatter ("16:40").
+  time?: string;
   tags: string[];
   /** Knowledge-graph entities (hub slugs and person sb-ids). */
   entities?: string[];
@@ -126,6 +129,7 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     coAuthor: data.coAuthor,
     date: data.date ? String(data.date) : `${year}-01-01`,
     updatedAt: data.updatedAt ? String(data.updatedAt) : undefined,
+    time: parseTime(data.time),
     tags: data.tags ?? [],
     entities: Array.isArray(data.entities) ? data.entities.map(String) : [],
     category: data.category ?? "community-and-news",
@@ -139,6 +143,24 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     readingTime: computeReadingTime(content),
     content,
   };
+}
+
+// Unquoted 16:40 is read by YAML as a base-60 number (1000), so accept both.
+function parseTime(raw: unknown): string | undefined {
+  if (typeof raw === "number") {
+    const h = Math.floor(raw / 60), m = raw % 60;
+    return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+  }
+  return typeof raw === "string" && /^\d{1,2}:\d{2}$/.test(raw.trim())
+    ? raw.trim().padStart(5, "0")
+    : undefined;
+}
+
+/** Sort key: `date` plus optional `time`, so same-day posts keep publish order. */
+export function newsTimestamp(n: { date: string; time?: string }): number {
+  return n.time
+    ? new Date(`${n.date.slice(0, 10)}T${n.time}:00Z`).getTime()
+    : new Date(n.date).getTime();
 }
 
 // ─── Collection helpers ───────────────────────────────────────────────────────
@@ -173,7 +195,7 @@ export function getAllNews(includeDrafts = false): NewsMetadata[] {
   }
 
   return items
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => newsTimestamp(b) - newsTimestamp(a))
     .map(({ content, ...meta }) => meta);
 }
 
