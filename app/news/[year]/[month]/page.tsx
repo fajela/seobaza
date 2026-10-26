@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getNewsYears, getMonthsForYear, getNewsSlugsForMonth, getNewsBySlug } from "@/lib/news";
+import { getNewsYears, getMonthsForYear, getNewsSlugsForMonth, getNewsBySlug, newsTimestamp } from "@/lib/news";
 import { ukMonthName } from "@/lib/months";
 import type { Metadata } from "next";
 
@@ -63,7 +63,7 @@ export default async function NewsMonthPage({
       }
     })
     .filter((p): p is NonNullable<typeof p> => p !== null)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => newsTimestamp(a) - newsTimestamp(b));
 
   if (longPosts.length === 0) {
     notFound();
