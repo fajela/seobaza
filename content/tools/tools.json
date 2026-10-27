@@ -2788,5 +2788,18 @@
     "people": [
       "sb0011"
     ]
+  },
+  {
+    "name": "Stus.ai",
+    "url": "https://stus.ai/",
+    "category": "ai",
+    "section": "Агенти для SEO",
+    "description": "AI-агент для SEO на даних Serpstat: підбір ключових слів, аудити й аналіз конкурентів за командою @agent, показує реальну видачу Google з органікою, рекламою й AI Overview, вивантаження в CSV.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://seobaza.com.ua/news/2026/07/piatnychni-novyny-31-lypnia-2026-1726"
+    }
   }
 ]
