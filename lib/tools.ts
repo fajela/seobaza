@@ -105,6 +105,7 @@ let cache: Tool[] | null = null;
 export function getAllTools(): Tool[] {
   if (cache) return cache;
   const file = path.join(process.cwd(), "content/tools/tools.json");
+  const materials = getMaterialLinks();
   const tools = (JSON.parse(fs.readFileSync(file, "utf8")) as Tool[]).map((t) =>
     ({
       ...t,
@@ -117,6 +118,10 @@ export function getAllTools(): Tool[] {
               .map((r) => ({ name: r.name, href: r.href as string })),
           }
         : {}),
+      ...(() => {
+        const m = mentionsFor(t.url, materials);
+        return m.length ? { mentions: m } : {};
+      })(),
     })
   );
   // У dev без кешу, щоб правки tools.json було видно одразу.
@@ -214,4 +219,72 @@ export function getToolsOgImage(): { path: string; alt: string } {
 /** Сервіси каталогу, які створила людина (поле people: sb-id). */
 export function getToolsForPerson(kgId: string): Tool[] {
   return getAllTools().filter((t) => t.people?.includes(kgId));
+}
+
+// ─── «У новинах SEO Baza»: наші матеріали, що посилаються на сервіс ───────────
+// Хости, де на одному домені багато різних сервісів: збіг тільки за шляхом URL.
+const SHARED_HOSTS = new Set([
+  "chromewebstore.google.com", "github.com", "docs.google.com", "support.google.com", "developers.google.com",
+  "search.google.com", "google.com", "huggingface.co", "x.com", "t.me", "youtube.com", "openai.com",
+  "deepmind.google", "research.google", "workspace.google.com", "drive.google.com", "forms.gle",
+]);
+
+interface MaterialLinks { title: string; url: string; date: string; links: string[] }
+let materialLinksCache: MaterialLinks[] | null = null;
+
+function normUrl(u: string): string {
+  try {
+    const x = new URL(u);
+    return (x.hostname.replace(/^www\./, "") + x.pathname).replace(/\/+$/, "").toLowerCase();
+  } catch {
+    return u.toLowerCase();
+  }
+}
+
+function getMaterialLinks(): MaterialLinks[] {
+  if (materialLinksCache && process.env.NODE_ENV === "production") return materialLinksCache;
+  const out: MaterialLinks[] = [];
+  const dirs: [string, (rel: string[]) => string | null][] = [
+    ["news", (r) => (r.length === 3 ? `/news/${r[0]}/${r[1]}/${r[2].replace(/\.mdx$/, "")}` : null)],
+    ["articles", (r) => (r.length === 1 ? `/articles/${r[0].replace(/\.mdx$/, "")}` : null)],
+    ["knowledge-base", (r) => (r.length === 1 ? `/knowledge-base/${r[0].replace(/\.mdx$/, "")}` : null)],
+  ];
+  for (const [dir, toUrl] of dirs) {
+    const root = path.join(process.cwd(), "content", dir);
+    const walk = (d: string): string[] =>
+      fs.existsSync(d)
+        ? fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+            e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".mdx") ? [path.join(d, e.name)] : []
+          )
+        : [];
+    for (const file of walk(root)) {
+      const raw = fs.readFileSync(file, "utf8");
+      const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      const head = fm ? fm[1] : "";
+      if (/^status:\s*"?draft"?/m.test(head)) continue;
+      // Анонси самого каталогу посилаються на сервіси як на приклади, це не згадка про сервіс.
+      if (raw.includes("](/kg/tool")) continue;
+      const url = toUrl(path.relative(root, file).split(path.sep));
+      if (!url) continue;
+      const title = (head.match(/^h1:\s*"(.*)"/m) || head.match(/^title:\s*"(.*)"/m) || [])[1] ?? url;
+      const date = (head.match(/^date:\s*"?([0-9-]{10})/m) || [])[1] ?? "";
+      const links = [...raw.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)].map((m) => normUrl(m[1]));
+      if (links.length) out.push({ title, url, date, links });
+    }
+  }
+  out.sort((a, b) => b.date.localeCompare(a.date));
+  materialLinksCache = out;
+  return out;
+}
+
+function mentionsFor(toolUrl: string, materials: MaterialLinks[]): { title: string; url: string; date: string }[] {
+  if (!toolUrl.startsWith("http")) return [];
+  const target = normUrl(toolUrl);
+  const host = target.split("/")[0];
+  const shared = SHARED_HOSTS.has(host) || [...SHARED_HOSTS].some((h) => host.endsWith(`.${h}`));
+  const hit = (l: string) => (shared ? l === target || l.startsWith(target + "/") : l.split("/")[0] === host);
+  return materials
+    .filter((m) => m.links.some(hit))
+    .slice(0, 2)
+    .map(({ title, url, date }) => ({ title, url, date }));
 }
