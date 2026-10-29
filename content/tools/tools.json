@@ -7,11 +7,13 @@
     "description": "Десктопний краулер для Windows і macOS: знаходить понад 100 технічних проблем, рендерить JavaScript, має кастомний скрейпінг (XPath, CSS, Regexp) і white-label PDF-звіти.",
     "ua": [
       "in-ukraine",
+      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://dou.ua/lenta/news/netpeak-software-has-blocked-products-in-russia/",
-      "supports-ukraine": "https://dou.ua/lenta/news/netpeak-software-has-blocked-products-in-russia/"
+      "supports-ukraine": "https://dou.ua/lenta/news/netpeak-software-has-blocked-products-in-russia/",
+      "founded-by-ukrainians": "https://en.wikipedia.org/wiki/Borodatiuk_Artem"
     }
   },
   {
@@ -22,12 +24,10 @@
     "description": "Хмарний краулер для аудиту сайту.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -36,7 +36,7 @@
     "url": "https://www.screamingfrog.co.uk/seo-spider/",
     "category": "tekhnichnyi-audyt",
     "section": "Краулери",
-    "description": "Десктопний краулер. Перевіряє основні технічні помилки на сайті, зокрема теги."
+    "description": "Десктопний краулер, який перевіряє сайт на понад 300 SEO-проблем: биті посилання й редиректи, title і мета-дані, рендеринг JavaScript, генерація XML-карт сайту. Безкоштовно до 500 URL, далі платна ліцензія."
   },
   {
     "name": "Sitebulb",
@@ -495,12 +495,10 @@
     "description": "Keyword Tool: метрики (обсяг, складність, CPC, інтент) для 188 баз локацій, підказки за категоріями, історія SERP з 2020 року, ключі конкурентів і масова перевірка списків.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -512,11 +510,13 @@
     "description": "Має невеликий безкоштовний ліміт з обмеженими можливостями та платну багатофункціональну програму, зокрема для збору ключових слів за семантичною близькістю, конкурентами, тематиками та підказками, а також для пошуку пропущеної семантики.",
     "ua": [
       "in-ukraine",
+      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war",
-      "supports-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war"
+      "supports-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war",
+      "founded-by-ukrainians": "https://serpstat.com/about/"
     },
     "entity": "serpstat"
   },
@@ -647,12 +647,10 @@
     "description": "Кластеризує за топом зі своїми налаштуваннями, збирає частотність або дає завантажити власну.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -671,11 +669,13 @@
     "description": "Інструмент Serpstat для кластеризації ключових слів.",
     "ua": [
       "in-ukraine",
+      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war",
-      "supports-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war"
+      "supports-ukraine": "https://www.practicalecommerce.com/ukraine-based-serpstat-perseveres-amid-the-war",
+      "founded-by-ukrainians": "https://serpstat.com/about/"
     },
     "entity": "serpstat"
   },
@@ -743,12 +743,10 @@
     "description": "Платний модуль відстеження позицій у SE Ranking.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -802,12 +800,10 @@
     "description": "Безкоштовна перевірка позицій у Google від SE Ranking.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -1033,12 +1029,10 @@
     "description": "Введіть домен або сторінку й отримайте дані про посилання з бази SE Ranking.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -1113,12 +1107,10 @@
     "description": "Моніторинг зворотних посилань в SE Ranking.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -1251,7 +1243,7 @@
     "url": "https://www.snapnames.com/",
     "category": "linkbilding",
     "section": "Дропи",
-    "description": "Платформа для backorder доменів."
+    "description": "Аукціонний майданчик доменів: перехоплення доменів, що звільняються (pending delete), щоденні аукціони й продаж власних доменів через маркетплейс."
   },
   {
     "name": "Domain Tools",
@@ -1870,12 +1862,10 @@
     "description": "Платформа SE Ranking з white label: звіти й кабінет під брендом агенції.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -2226,12 +2216,10 @@
     "description": "Відстеження згадок і посилань на сайт в AI-відповідях.",
     "ua": [
       "in-ukraine",
-      "founded-by-ukrainians",
       "supports-ukraine"
     ],
     "uaSources": {
       "in-ukraine": "https://seranking.com/about-us.html",
-      "founded-by-ukrainians": "https://dev.ua/en/news/zasnovana-ukraintsiamy-seo-platforma-se-ranking-skorotyla-15-pratsivnykiv-shcho-stalo-prychynoiu-1765371749",
       "supports-ukraine": "https://seranking.com/about-us.html"
     }
   },
@@ -2388,7 +2376,7 @@
     "url": "https://www.awin.com",
     "category": "partnerski-prohramy",
     "section": "Партнерські мережі",
-    "description": "Партнерська мережа."
+    "description": "Глобальна партнерська мережа, яка з'єднує бренди з афіліатами, креаторами й агенціями: за даними Awin, понад 30 тисяч брендів і понад мільйон партнерів у 14 країнах."
   },
   {
     "name": "FlexOffers",
@@ -2466,13 +2454,6 @@
     "category": "inshi",
     "section": "Індексація",
     "description": "Автоматична індексація бекслінків з тарифами за щоденним обсягом, API для третіх сторін і звітом по кожному посиланню. Власні тести сервісу показують 12-23% проіндексованих за годину."
-  },
-  {
-    "name": "Link Centaur",
-    "url": "http://www.linkcentaur.com/",
-    "category": "inshi",
-    "section": "Індексація",
-    "description": "Сервіс для індексації посилань."
   },
   {
     "name": "Speed Links",

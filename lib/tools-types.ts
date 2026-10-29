@@ -28,6 +28,8 @@ export interface Tool {
   people?: string[];
   /** Посилання на сторінки цих людей; заповнює сервер, тільки для публічних сторінок. */
   peopleRefs?: { name: string; href: string }[];
+  /** Наші матеріали, які посилаються на цей сервіс; заповнює сервер, до 2 найновіших. */
+  mentions?: { title: string; url: string; date: string }[];
   /** Примітка редактору: що перевірити. Показується тільки в dev. */
   review?: string;
 }

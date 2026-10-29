@@ -74,6 +74,19 @@ function ToolCard({ tool, showReview, position }: { tool: Tool; showReview: bool
       {tool.description && (
         <p className="text-sm text-muted-foreground mt-1">{tool.description}</p>
       )}
+      {tool.mentions?.length ? (
+        <p className="text-xs text-muted-foreground mt-2">
+          У новинах SEO Baza:{" "}
+          {tool.mentions.map((m, i) => (
+            <span key={m.url}>
+              {i > 0 && " · "}
+              <Link href={m.url} className="text-primary hover:text-accent transition-colors">
+                {m.title}
+              </Link>
+            </span>
+          ))}
+        </p>
+      ) : null}
       {(tool.ua?.length || (showReview && tool.review)) && (
         <div className="flex flex-wrap gap-2 mt-2 text-xs font-medium">
           {tool.ua?.map((m) => (
