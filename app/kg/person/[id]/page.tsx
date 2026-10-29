@@ -7,6 +7,7 @@ import { getTagDisplayName } from "@/lib/taxonomy";
 import { buildOgImage } from "@/lib/og-image";
 import { MdxImg, MdxLink } from "@/components/mdx-img";
 import { EntityMentions } from "@/components/kg-mentions";
+import { KgPersonTools } from "@/components/kg-person-tools";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -278,6 +279,9 @@ export default async function KgPersonPage({
             />
           </div>
         )}
+
+        {/* Tools from the /kg/tool catalog this person made (tools.json people: [sb-id]) */}
+        <KgPersonTools kgId={person.kgId} />
 
         {/* Materials tagged with this person (entities: [sb-id]) */}
         <EntityMentions id={person.kgId} name={person.name} />

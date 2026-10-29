@@ -210,3 +210,8 @@ export function getToolsOgImage(): { path: string; alt: string } {
     alt: "Каталог SEO-інструментів і сервісів SEO Baza з українськими мітками",
   };
 }
+
+/** Сервіси каталогу, які створила людина (поле people: sb-id). */
+export function getToolsForPerson(kgId: string): Tool[] {
+  return getAllTools().filter((t) => t.people?.includes(kgId));
+}
