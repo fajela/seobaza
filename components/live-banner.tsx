@@ -1,5 +1,5 @@
 // Відео, на яке веде анонс; на його власній сторінці анонс не показуємо.
-export const LIVE_VIDEO_SLUG = "spam-apdeity-google-2026";
+export const LIVE_VIDEO_SLUG = "ahenty-dlia-seo";
 
 /**
  * Внутрішньоконтентний банер поточного лайву. Один на сторінку, вставляється
@@ -13,14 +13,14 @@ export const LIVE_VIDEO_SLUG = "spam-apdeity-google-2026";
 export function LiveBannerLarge() {
   return (
     <a
-      href="/videos/spam-apdeity-google-2026"
-      aria-label="Запис стріму про апдейти Google 2026, дивитися"
+      href="/videos/ahenty-dlia-seo"
+      aria-label="Запис стріму про агентів для SEO, дивитися"
       className="group relative block mb-8 max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border shadow-lg hover:shadow-xl hover:border-accent/50 transition-all duration-300"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/videos/spam-apdeity-google-2026.jpg"
-        alt="Обкладинка стріму SEO Baza про апдейти Google 2026 з Анастасією Казаковою, Сашею Хіловою і Олесею Коробкою"
+        src="/images/videos/ahenty-dlia-seo.jpg"
+        alt="Обкладинка стріму SEO Baza Агенти для SEO з Сашею Хіловою і Олесею Коробкою"
         className="w-full h-auto object-cover"
         width={1200}
         height={630}
@@ -30,10 +30,10 @@ export function LiveBannerLarge() {
       </span>
       <span className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-5 pt-10 pb-4 text-white">
         <span className="block font-bold text-lg sm:text-xl">
-          Апдейти Google 2026: спам-апдейти і core update
+          Агенти для SEO: автоматизація для нетехнічних людей
         </span>
         <span className="block text-sm text-white/85">
-          Анастасія Казакова, Саша Хілова і Олеся Коробка. Що зачепили апдейти і що робити, якщо сайт просів. Дивитися →
+          Саша Хілова і Олеся Коробка. Архітектура, інструкції і часті помилки з погляду нетехнічної людини. Дивитися →
         </span>
       </span>
     </a>
@@ -48,11 +48,11 @@ export function LiveBanner() {
       data-nosnippet=""
       className="not-prose my-10 flex flex-col sm:flex-row sm:items-center gap-4 rounded-xl border border-border bg-secondary/30 p-4"
     >
-      <a href="/videos/spam-apdeity-google-2026" className="shrink-0 block w-44 sm:w-52">
+      <a href="/videos/ahenty-dlia-seo" className="shrink-0 block w-44 sm:w-52">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/videos/spam-apdeity-google-2026.jpg"
-          alt="Обкладинка стріму SEO Baza про апдейти Google 2026 з Анастасією Казаковою, Сашею Хіловою і Олесею Коробкою"
+          src="/images/videos/ahenty-dlia-seo.jpg"
+          alt="Обкладинка стріму SEO Baza Агенти для SEO з Сашею Хіловою і Олесею Коробкою"
           className="w-full h-auto rounded-lg border border-border"
           width={1200}
           height={630}
@@ -63,14 +63,14 @@ export function LiveBanner() {
           ▶ Запис стріму
         </p>
         <p className="font-bold text-lg leading-snug m-0">
-          Апдейти Google 2026: спам-апдейти і core update
+          Агенти для SEO: автоматизація для нетехнічних людей
         </p>
         <p className="text-sm text-muted-foreground m-0">
-          Анастасія Казакова, Саша Хілова і Олеся Коробка. Що зачепили апдейти і що робити, якщо сайт просів.
+          Саша Хілова і Олеся Коробка. Архітектура, інструкції і часті помилки з погляду нетехнічної людини.
         </p>
       </div>
       <a
-        href="/videos/spam-apdeity-google-2026"
+        href="/videos/ahenty-dlia-seo"
         className="shrink-0 self-start sm:self-center px-4 py-2 rounded-lg bg-primary text-background text-sm font-medium hover:opacity-90 transition-opacity"
       >
         Дивитися →
