@@ -553,23 +553,28 @@ export default function Home() {
               </a>
             </p>
           </div>
-          <div className="mb-6 pt-6 border-t border-border">
-            <p className="text-lg mb-4">
+          <div className="mb-6 p-6 bg-background rounded-xl border-2 border-accent shadow-md">
+            <h3 className="text-xl sm:text-2xl font-display mb-3">
+              💙💛 Збір для Артема Пилипця
+            </h3>
+            <p className="text-lg mb-5">
               <strong>Артем Пилипець</strong>, SEO-експерт і автор
-              YouTube-каналу Школа SEO, зараз служить у ЗСУ. Збираємо 100 000
-              гривень на комплектуючі для ремонту й обслуговування зенітних
-              БПАК його підрозділу.
+              YouTube-каналу Школа SEO, зараз служить у ЗСУ. Збираємо{" "}
+              <strong>100 000 гривень</strong> на комплектуючі для ремонту й
+              обслуговування зенітних БПАК його підрозділу.
             </p>
-            <p className="text-center text-muted-foreground mb-6">
-              Банка збору (Приват24, Apple Pay, Google Pay):{" "}
+            <div className="text-center">
               <a
                 href="https://www.privat24.ua/send/kmttp" rel="nofollow noopener"
                 target="_blank"
-                className="text-primary hover:text-accent underline transition-colors"
+                className="inline-block px-6 py-3 rounded-lg bg-accent text-[#262626] font-semibold text-lg hover:opacity-90 transition-opacity"
               >
-                privat24.ua/send/kmttp
+                Задонатити Артему
               </a>
-            </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Приват24, Apple Pay або Google Pay
+              </p>
+            </div>
           </div>
           <div className="mt-8 p-6 bg-background rounded-xl border border-border">
             <h3 className="text-xl font-display mb-3">Додавайте свої</h3>
