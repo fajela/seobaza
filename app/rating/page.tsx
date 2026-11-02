@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -10,35 +7,10 @@ import { MaterialEntities } from "@/components/material-entities";
 import { RatingPhoto } from "@/components/rating-photo";
 import { buildOgImage } from "@/lib/og-image";
 import { isoDate } from "@/lib/schema-rdfa";
+import { getCurrentRating } from "@/lib/rating";
 
 const PAGE_URL = "https://seobaza.com.ua/rating";
-const RATING_DIR = path.join(process.cwd(), "content/rating");
-
 const mdxComponents = { img: MdxImg, a: MdxLink, RatingPhoto };
-
-// The newest published monthly file (content/rating/YYYY-MM.mdx) is the page.
-function getCurrentRating() {
-  if (!fs.existsSync(RATING_DIR)) return null;
-  const files = fs
-    .readdirSync(RATING_DIR)
-    .filter((f) => /^\d{4}-\d{2}\.mdx$/.test(f))
-    .sort()
-    .reverse();
-  for (const file of files) {
-    const { data, content } = matter(fs.readFileSync(path.join(RATING_DIR, file), "utf8"));
-    if (data.status === "draft") continue;
-    return {
-      title: String(data.title),
-      h1: String(data.h1 || data.title),
-      description: String(data.description ?? ""),
-      date: data.date ? String(data.date).slice(0, 10) : "",
-      image: typeof data.image === "string" ? data.image : undefined,
-      author: String(data.author ?? "Олеся Коробка"),
-      content,
-    };
-  }
-  return null;
-}
 
 export function generateMetadata(): Metadata {
   const rating = getCurrentRating();

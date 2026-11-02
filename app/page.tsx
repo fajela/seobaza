@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { TelegramWidget } from "@/components/telegram-widget";
 import { PostCover } from "@/components/post-cover";
 import { AuthorByline, type BylineAuthor } from "@/components/author-byline";
-import { getAllNews } from "@/lib/news";
+import { getAllNews, newsTimestamp } from "@/lib/news";
+import { getCurrentRating } from "@/lib/rating";
 import { getAllVideos } from "@/lib/videos";
 import path from "path";
 import { getAllArticles, getArticleSlugs, getArticleBySlug, type Article } from "@/lib/articles";
@@ -31,8 +32,10 @@ const formatDate = (date: string) =>
     day: "numeric",
   });
 
-const newsUrl = (item: { year: string; month?: string; slug: string }) =>
-  item.month
+const newsUrl = (item: { year: string; month?: string; slug: string; href?: string }) =>
+  item.href
+    ? item.href
+    : item.month
     ? `/news/${item.year}/${item.month}/${item.slug}`
     : `/news/${item.year}/${item.slug}`;
 
@@ -53,7 +56,19 @@ export default function Home() {
   };
 
   // Newest content to surface on the homepage (both fetchers return date-desc).
-  const latestNews = getAllNews().filter((n) => n.type === "news").slice(0, 7);
+  // The monthly rating sits in the news feed by its date and slides down as new posts arrive.
+  const rating = getCurrentRating();
+  const ratingCard = rating
+    ? [{
+        slug: "rating", year: rating.date.slice(0, 4), href: "/rating",
+        title: rating.h1, description: rating.description, author: rating.author,
+        date: rating.date, time: rating.time, image: rating.image,
+        readingTime: rating.readingTime, category: undefined as undefined | ReturnType<typeof getAllNews>[number]["category"],
+      }]
+    : [];
+  const latestNews = [...getAllNews().filter((n) => n.type === "news"), ...ratingCard]
+    .sort((a, b) => newsTimestamp(b) - newsTimestamp(a))
+    .slice(0, 7);
   const leadStory = latestNews[0];
   const secondaryStories = latestNews.slice(1, 5);
   const moreNews = latestNews.slice(5, 7);
