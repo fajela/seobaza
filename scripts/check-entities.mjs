@@ -21,7 +21,7 @@ import matter from "gray-matter";
 const CONTENT = path.join(process.cwd(), "content");
 const KG = path.join(CONTENT, "kg");
 const TYPES = ["concept", "tool", "assistant", "org", "social", "event", "place", "series"];
-const MATERIAL_DIRS = ["news", "articles", "videos", "events", "knowledge-base"];
+const MATERIAL_DIRS = ["news", "articles", "videos", "events", "knowledge-base", "rating"];
 const MIN_MATERIALS = 5;
 
 const list = (v) => (!v ? [] : (Array.isArray(v) ? v : [v]).map(String).filter(Boolean));
