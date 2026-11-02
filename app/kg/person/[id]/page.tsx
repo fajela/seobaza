@@ -13,6 +13,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { tagHref } from "@/lib/redirects";
+import { getRatingBadges } from "@/lib/rating";
 
 const mdxComponents = { img: MdxImg, a: MdxLink };
 
@@ -211,6 +212,22 @@ export default async function KgPersonPage({
                 </span>
               )}
             </p>
+
+            {/* Rating badges: one per monthly SEO Baza rating the person is in. */}
+            {getRatingBadges(person.kgId).length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {getRatingBadges(person.kgId).map((b) => (
+                  <Link
+                    key={b.label}
+                    href={b.href}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-sm font-semibold text-black hover:opacity-90 transition-opacity"
+                  >
+                    <span aria-hidden="true">🏆</span>
+                    <span itemProp="award">{b.label}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
 
             {/* Expertise chips inside the header, entity-page style */}
             {(person.expertise.length > 0 || (person.topics?.length ?? 0) > 0) && (
