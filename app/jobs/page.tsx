@@ -1,13 +1,8 @@
 import Link from "next/link";
 import { getSplitJobs, isClosedJob, jobPath, EMPLOYMENT_TYPE_LABELS } from "@/lib/jobs";
 import type { JobMeta } from "@/lib/jobs";
-import { getMarketJobs } from "@/lib/market-jobs";
-import type { MarketJob } from "@/lib/market-jobs";
 import { pageMeta } from "@/lib/page-metadata";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-
-// Market vacancies are re-collected once a day (keep in sync with MARKET_JOBS_REVALIDATE).
-export const revalidate = 86400;
 
 export const metadata = pageMeta({
   title: "SEO вакансії: робота для SEO-спеціалістів в Україні - SEO Baza",
@@ -74,47 +69,8 @@ function JobCard({ job }: { job: JobMeta }) {
   );
 }
 
-function capitalize(s: string): string {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-function MarketJobCard({ job }: { job: MarketJob }) {
-  return (
-    <a
-      href={job.url}
-      rel="nofollow noopener"
-      target="_blank"
-      className="block group rounded-xl p-5 border border-border bg-card hover:border-accent/70 transition-all"
-    >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-base sm:text-lg font-display group-hover:text-accent transition-colors">
-            {job.title}
-          </h3>
-          <p className="text-sm font-medium text-accent mt-1">{job.company}</p>
-          <p className="text-sm text-muted-foreground mt-2">
-            {[
-              job.location && capitalize(job.location),
-              job.salary,
-              formatUkrDate(job.datePosted),
-              job.source,
-            ]
-              .filter(Boolean)
-              .join(" · ")}
-          </p>
-        </div>
-        <span className="shrink-0 mt-1 text-accent text-xl">↗</span>
-      </div>
-    </a>
-  );
-}
-
-export default async function JobsPage() {
+export default function JobsPage() {
   const { active, closedJobs } = getSplitJobs();
-  const market = await getMarketJobs();
-  const updated = new Date(market.updatedAt).toLocaleDateString("en-CA", {
-    timeZone: "Europe/Kyiv",
-  });
 
   // A plain ItemList of URLs. JobPosting markup lives ONLY on the individual
   // job pages — Google's guidelines forbid it on list pages.
@@ -165,21 +121,6 @@ export default async function JobsPage() {
             </Link>
             , щоб не пропустити нові.
           </p>
-        )}
-
-        {market.jobs.length > 0 && (
-          <div className="mt-12">
-            <h2 className="text-2xl font-display mb-2">Свіжі SEO-вакансії з ринку</h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              SEO-вакансії з DOU і Djinni за останні 30 днів.
-              Оновлено {formatUkrDate(updated)}.
-            </p>
-            <div className="flex flex-col gap-3">
-              {market.jobs.map((job) => (
-                <MarketJobCard key={job.url} job={job} />
-              ))}
-            </div>
-          </div>
         )}
 
         {closedJobs.length > 0 && (
