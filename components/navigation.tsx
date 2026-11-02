@@ -37,24 +37,31 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <NavLink
-              href="/news"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Новини
-            </NavLink>
-            <NavLink
-              href="/articles"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Статті
-            </NavLink>
-            <NavLink
-              href="/knowledge-base"
-              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
-            >
-              База знань
-            </NavLink>
+            {/* Новини + Статті, База знань (тест з 02.11: рахуємо кліки в /stats) */}
+            <div className="relative group">
+              <NavLink
+                href="/news"
+                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+              >
+                Новини
+              </NavLink>
+              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
+                <div className="min-w-[160px] rounded-lg border border-border bg-background py-2 shadow-lg">
+                  <NavLink
+                    href="/articles"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    Статті
+                  </NavLink>
+                  <NavLink
+                    href="/knowledge-base"
+                    className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary transition-colors"
+                  >
+                    База знань
+                  </NavLink>
+                </div>
+              </div>
+            </div>
             <NavLink
               href="/videos"
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
@@ -66,6 +73,12 @@ export function Navigation() {
               className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
               Граф знань
+            </NavLink>
+            <NavLink
+              href="/rating"
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+            >
+              Рейтинг
             </NavLink>
             <NavLink
               href="/events"
@@ -176,14 +189,14 @@ export function Navigation() {
               </NavLink>
               <NavLink
                 href="/articles"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                className="pl-7 pr-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Статті
               </NavLink>
               <NavLink
                 href="/knowledge-base"
-                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                className="pl-7 pr-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 База знань
@@ -201,6 +214,13 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Граф знань
+              </NavLink>
+              <NavLink
+                href="/rating"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-secondary rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Рейтинг
               </NavLink>
               <NavLink
                 href="/events"
