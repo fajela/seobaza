@@ -91,6 +91,7 @@ export async function buildPages(): Promise<Entry[]> {
     { url: `${BASE}/knowledge-base`,          lastModified: now },
     { url: `${BASE}/about`,                   lastModified: now },
     { url: `${BASE}/zbir`,                    lastModified: now, changeFrequency: "weekly" },
+    { url: `${BASE}/rating`,                  lastModified: now, changeFrequency: "monthly" },
     { url: `${BASE}/contact`,                 lastModified: now },
     { url: `${BASE}/transparency`,            lastModified: now, changeFrequency: "yearly" },
     { url: `${BASE}/privacy`,                 lastModified: now, changeFrequency: "yearly" },

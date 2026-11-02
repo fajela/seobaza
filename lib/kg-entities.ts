@@ -113,7 +113,7 @@ export interface TaggedMaterial {
   url: string;
   title: string;
   date: string;
-  kind: "news" | "article" | "video" | "event" | "knowledge-base";
+  kind: "news" | "article" | "video" | "event" | "knowledge-base" | "rating";
   entities: string[];
   description: string;
   image?: string;
@@ -146,6 +146,9 @@ function materialUrl(kind: TaggedMaterial["kind"], rel: string[]): string | null
       return rel.length === 1 ? `/videos/${slug}` : null;
     case "knowledge-base":
       return rel.length === 1 ? `/knowledge-base/${slug}` : null;
+    case "rating":
+      // One page for now: every monthly file lives at /rating.
+      return rel.length === 1 ? `/rating` : null;
   }
 }
 
@@ -155,6 +158,7 @@ const MATERIAL_DIRS: Array<[TaggedMaterial["kind"], string]> = [
   ["video", "videos"],
   ["event", "events"],
   ["knowledge-base", "knowledge-base"],
+  ["rating", "rating"],
 ];
 
 let materialCache: TaggedMaterial[] | null = null;
