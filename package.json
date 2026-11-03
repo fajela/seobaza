@@ -7,6 +7,7 @@
     "check:news": "node scripts/check-news-slugs.mjs",
     "check:og": "node scripts/check-og.mjs",
     "indexnow": "node scripts/indexnow.mjs",
+    "google-indexing": "node scripts/google-indexing.mjs",
     "prebuild": "node scripts/check-news-slugs.mjs && node scripts/check-person-duplicates.mjs && node scripts/check-entities.mjs && node scripts/check-tags.mjs",
     "build": "next build",
     "start": "next start",
