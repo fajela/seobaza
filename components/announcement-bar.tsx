@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 // Bump the id when the announced thing changes — a new id shows the bar again
 // to everyone, even those who dismissed the previous one.
-const STORAGE_KEY = "announcement-dismissed:ahenty-recording-2026-10-28";
+const STORAGE_KEY = "announcement-dismissed:osobystyi-brend-recording-2026-11-04";
 
 /**
  * Slim, dismissible announcement strip under the header. Promotes the current
@@ -25,10 +25,10 @@ export function AnnouncementBar() {
   return (
     <div className="relative bg-primary text-background">
       <Link
-        href="/videos/ahenty-dlia-seo"
+        href="/videos/seo-osobystoho-brendu"
         className="block px-10 py-2 text-center text-sm font-medium hover:underline"
       >
-        ▶ Запис стріму: Агенти для SEO. Як нетехнічній людині будувати автоматизацію{" "}
+        ▶ Запис стріму: SEO особистого бренду. Як оптимізувати себе для пошуку і AI{" "}
         <span className="whitespace-nowrap">Дивитися →</span>
       </Link>
       <button
