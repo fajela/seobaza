@@ -257,7 +257,7 @@ export function ToolsCatalog({
                       </Link>
                     )}
                   </Heading>
-                  <ul className="grid gap-3 sm:grid-cols-2">
+                  <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     {s.tools.map((t) => (
                       <ToolCard key={t.url + t.name} tool={t} showReview={showReview} position={positions.get(t) ?? 0} />
                     ))}

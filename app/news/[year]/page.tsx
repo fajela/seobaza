@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { plural } from "@/lib/plural";
 import Link from "next/link";
 import { getNewsYears, getNewsByYear, getMonthsForYear } from "@/lib/news";
 import { ukMonthName } from "@/lib/months";
@@ -72,7 +73,7 @@ export default async function NewsYearPage({
           Новини {year}
         </h1>
         <p className="text-muted-foreground mb-6">
-          {posts.length} {posts.length === 1 ? "публікація" : posts.length < 5 ? "публікації" : "публікацій"}
+          {posts.length} {plural(posts.length, "публікація", "публікації", "публікацій")}
         </p>
 
         {/* Month navigation — jump straight to /news/[year]/[month] */}
@@ -102,7 +103,7 @@ export default async function NewsYearPage({
           {posts.length > 0 && (
             <section>
               <div
-                className="grid gap-3"
+                className="grid grid-cols-1 gap-3"
                 itemScope
                 itemType="https://schema.org/ItemList"
               >
@@ -165,7 +166,7 @@ export default async function NewsYearPage({
                 Місячні дайджести {year}
               </h2>
               <div
-                className="grid sm:grid-cols-2 gap-3"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                 itemScope
                 itemType="https://schema.org/ItemList"
               >
@@ -193,7 +194,7 @@ export default async function NewsYearPage({
                           </span>
                           {item.itemCount && (
                             <span className="shrink-0 text-xs text-muted-foreground">
-                              {item.itemCount} постів
+                              {item.itemCount} {plural(item.itemCount, "пост", "пости", "постів")}
                             </span>
                           )}
                         </div>

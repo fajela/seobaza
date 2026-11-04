@@ -203,7 +203,7 @@ export function EventsList({
           <section>
             <h2 className="text-2xl font-display mb-6">Найближчі події</h2>
             {filteredUpcoming.length > 0 ? (
-              <div className="grid gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {filteredUpcoming.map((event) => (
                   <EventCard
                     key={`${event.year}-${event.slug}`}
@@ -222,7 +222,7 @@ export function EventsList({
           {filteredPast.length > 0 && (
             <section>
               <h2 className="text-2xl font-display mb-6">Архів</h2>
-              <div className="grid gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {filteredPast.map((event) => (
                   <EventCard
                     key={`${event.year}-${event.slug}`}

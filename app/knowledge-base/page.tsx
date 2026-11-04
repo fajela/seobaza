@@ -72,7 +72,7 @@ export default function KnowledgeBasePage() {
         </p>
 
         <div
-          className="grid gap-6"
+          className="grid grid-cols-1 gap-6"
           itemScope
           itemType="https://schema.org/ItemList"
         >

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ToolsCatalog } from "@/components/tools-catalog";
 import { getCategoryConceptLinks, getSectionConceptLinks, TOOL_CATEGORIES, getAllTools, getToolsByCategory } from "@/lib/tools";
@@ -21,14 +22,14 @@ export function ToolsHubView() {
           SEO-інструменти і сервіси в графі знань SEO Baza
         </h1>
         <p className="text-lg text-muted-foreground mb-4">
-          {tools.length} SEO-інструментів і сервісів: AI, технічний
+          {tools.length} {plural(tools.length, "SEO-інструмент", "SEO-інструменти", "SEO-інструментів")} і сервісів: AI, технічний
           аудит, збір семантики, лінкбілдинг, локальне SEO і робота агенції.
         </p>
         <p className="text-muted-foreground mb-10">
           Список не є рекомендацією, відверто поганих сервісів тут немає.
         </p>
 
-        <nav aria-label="Категорії" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+        <nav aria-label="Категорії" className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-12">
           {TOOL_CATEGORIES.map((c) => (
             <Link
               key={c.slug}
@@ -36,7 +37,7 @@ export function ToolsHubView() {
               className="rounded-xl p-4 border border-border bg-secondary/30 transition-all hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10"
             >
               <span className="block font-display text-lg">{c.name}</span>
-              <span className="text-sm text-muted-foreground">{getToolsByCategory(c.slug).length} сервісів</span>
+              <span className="text-sm text-muted-foreground">{getToolsByCategory(c.slug).length} {plural(getToolsByCategory(c.slug).length, "сервіс", "сервіси", "сервісів")}</span>
             </Link>
           ))}
         </nav>

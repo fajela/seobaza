@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllNews, getNewsYears } from "@/lib/news";
 import { pageMeta } from "@/lib/page-metadata";
 
@@ -9,9 +10,7 @@ export const metadata = pageMeta({
 });
 
 function pluralizeDigests(n: number) {
-  if (n === 1) return "дайджест";
-  if (n < 5) return "дайджести";
-  return "дайджестів";
+  return plural(n, "дайджест", "дайджести", "дайджестів");
 }
 
 export default function SitemapDigestsPage() {
@@ -86,7 +85,7 @@ export default function SitemapDigestsPage() {
                           </Link>
                           {d.itemCount && (
                             <span className="ml-2 text-xs text-muted-foreground">
-                              {d.itemCount} постів
+                              {d.itemCount} {plural(d.itemCount, "пост", "пости", "постів")}
                             </span>
                           )}
                         </li>

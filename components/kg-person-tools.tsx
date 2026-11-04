@@ -11,7 +11,7 @@ export function KgPersonTools({ kgId }: { kgId: string }) {
   return (
     <section className="mb-12">
       <h2 className="text-xl font-bold mb-4">Інструменти</h2>
-      <ul className="grid gap-3">
+      <ul className="grid grid-cols-1 gap-3">
         {tools.map((t) => {
           const cat = TOOL_CATEGORIES.find((c) => c.slug === t.category);
           return (

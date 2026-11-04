@@ -1,4 +1,5 @@
 import { externalRel } from "@/lib/own-sites";
+import { plural } from "@/lib/plural";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -399,7 +400,7 @@ export default async function AuthorPage({
                   target="_blank"
                   rel={externalRel(url)}
                   itemProp="sameAs"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
+                  className="inline-flex max-w-full break-all items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
                 >
                   {profileLabel(url)}
                   <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -415,7 +416,7 @@ export default async function AuthorPage({
         {/* Stats */}
         {totalCount > 0 && (
           <p className="text-sm text-muted-foreground mb-8">
-            {totalCount} матеріал{totalCount === 1 ? "" : totalCount < 5 ? "и" : "ів"} на сайті
+            {totalCount} {plural(totalCount, "матеріал", "матеріали", "матеріалів")} на сайті
           </p>
         )}
 
@@ -424,7 +425,7 @@ export default async function AuthorPage({
           <section className="mb-12">
             <h2 className="text-2xl font-display mb-6">Статті</h2>
             <div
-              className="grid gap-4"
+              className="grid grid-cols-1 gap-4"
               itemScope
               itemType="https://schema.org/ItemList"
             >
@@ -486,7 +487,7 @@ export default async function AuthorPage({
           <section className="mb-12">
             <h2 className="text-2xl font-display mb-6">Новини</h2>
             <div
-              className="grid gap-4"
+              className="grid grid-cols-1 gap-4"
               itemScope
               itemType="https://schema.org/ItemList"
             >
@@ -540,7 +541,7 @@ export default async function AuthorPage({
           <section>
             <h2 className="text-2xl font-display mb-6">Дайджести</h2>
             <div
-              className="grid gap-4"
+              className="grid grid-cols-1 gap-4"
               itemScope
               itemType="https://schema.org/ItemList"
             >
@@ -583,7 +584,7 @@ export default async function AuthorPage({
                   className="text-sm text-primary hover:text-accent transition-colors"
                 >
                   Переглянути всі {digests.length}{" "}
-                  {digests.length === 1 ? "дайджест" : digests.length < 5 ? "дайджести" : "дайджестів"} →
+                  {plural(digests.length, "дайджест", "дайджести", "дайджестів")} →
                 </Link>
               )}
             </div>

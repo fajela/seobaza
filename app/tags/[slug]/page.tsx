@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { plural } from "@/lib/plural";
 import Link from "next/link";
 import { getAllTagSlugs, getArticlesByTag } from "@/lib/articles";
 import { getNewsByTag } from "@/lib/news";
@@ -119,7 +120,7 @@ export default async function TagPage({
           </h1>
           {items.length > 0 && (
             <p className="text-muted-foreground">
-              {items.length} матеріал{items.length === 1 ? "" : items.length < 5 ? "и" : "ів"}
+              {items.length} {plural(items.length, "матеріал", "матеріали", "матеріалів")}
             </p>
           )}
         </div>
@@ -138,7 +139,7 @@ export default async function TagPage({
           </div>
         ) : (
           <div
-            className="grid gap-6"
+            className="grid grid-cols-1 gap-6"
             itemScope
             itemType="https://schema.org/ItemList"
           >

@@ -200,7 +200,7 @@ export default function MediaKitPage() {
           Оплата наперед за пакет. Підготовка тексту згадки й вставка логотипа
           входять у ціну.
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
           {tiers.map((t) => (
             <div
               key={t.name}

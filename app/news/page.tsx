@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllNews, getNewsYears } from "@/lib/news";
 import { CATEGORIES, getCategoryDisplayName } from "@/lib/taxonomy";
 import { pageMeta } from "@/lib/page-metadata";
@@ -86,7 +87,7 @@ export default function NewsPage() {
                   )}
                 </div>
                 <div
-                  className="grid gap-3"
+                  className="grid grid-cols-1 gap-3"
                   itemScope
                   itemType="https://schema.org/ItemList"
                 >
@@ -184,7 +185,7 @@ export default function NewsPage() {
                           {year}
                         </h3>
                         <div
-                          className="grid sm:grid-cols-2 gap-3"
+                          className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                           itemScope
                           itemType="https://schema.org/ItemList"
                         >
@@ -212,7 +213,7 @@ export default function NewsPage() {
                                     </span>
                                     {item.itemCount && (
                                       <span className="shrink-0 text-xs text-muted-foreground">
-                                        {item.itemCount} пост{item.itemCount === 1 ? "" : "ів"}
+                                        {item.itemCount} {plural(item.itemCount, "пост", "пости", "постів")}
                                       </span>
                                     )}
                                   </div>

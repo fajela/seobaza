@@ -27,7 +27,7 @@ export default function CategoriesPage() {
         </p>
 
         <div
-          className="grid sm:grid-cols-2 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           itemScope
           itemType="https://schema.org/ItemList"
         >
