@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 // Prefetch посилання для швидшої навігації
@@ -23,6 +23,17 @@ const NavLink = ({
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Open mobile menu: freeze the page behind it so only the menu scrolls
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const root = document.documentElement;
+    const prev = root.style.overflow;
+    root.style.overflow = "hidden";
+    return () => {
+      root.style.overflow = prev;
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border transition-theme">
@@ -178,7 +189,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden pb-4 animate-slide-in-right">
+          <div className="md:hidden pb-4 animate-slide-in-right max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
             <div className="flex flex-col space-y-3">
               <NavLink
                 href="/news"
