@@ -176,7 +176,7 @@ export default function RootLayout({
               </nav>
               <div className="text-center">
                 <h2 className="text-xl font-display mb-4">SEO Baza в соцмережах</h2>
-                <div className="flex justify-center space-x-6 mb-6">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-4 mb-6">
                   <a
 
                     href="https://www.youtube.com/c/SEOBAZA" rel="nofollow noopener"

@@ -90,6 +90,13 @@
   @apply text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
 }
 
+/* Long bare URLs in body text must wrap on mobile instead of overflowing the screen */
+.prose a,
+.prose p,
+.prose li {
+  overflow-wrap: anywhere;
+}
+
 /* HR separator with SEOBAZA text (from original site) */
 .prose hr {
   border: none;
