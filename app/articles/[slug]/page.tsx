@@ -432,7 +432,7 @@ export default async function ArticlePage({
       {relatedArticles.length > 0 && (
         <div className="max-w-3xl mx-auto mt-16 pt-12 border-t border-border">
           <h2 className="text-2xl font-display mb-6">Схожі статті</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {relatedArticles.map((related) => (
               <Link
                 key={related.slug}

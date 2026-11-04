@@ -52,7 +52,7 @@ export default async function TestPage() {
           Експерименти, гіпотези та практичні перевірки від спільноти.
         </p>
 
-        <div className="grid gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {tests.map((test, index) => (
             <Link
               key={test.slug}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllKgPeople } from "@/lib/kg";
 import { ENTITY_TYPES, ENTITY_TYPE_LABELS, getPublishedEntities } from "@/lib/kg-entities";
 import { buildOgImage } from "@/lib/og-image";
@@ -43,14 +44,14 @@ export default function KgIndexPage() {
           ідентифікатор і джерело факту.
         </p>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <Link href="/kg/person" className="block group">
             <div className="p-6 rounded-xl border border-border bg-secondary/20 group-hover:border-accent/50 group-hover:bg-secondary/40 transition-all">
               <h2 className="font-display text-xl mb-1 group-hover:text-accent transition-colors">
                 Люди
               </h2>
               <p className="text-sm text-muted-foreground">
-                {peopleCount} профіл{peopleCount === 1 ? "ь" : peopleCount < 5 ? "і" : "ів"}: спікери мітапів та експерти спільноти
+                {peopleCount} {plural(peopleCount, "профіль", "профілі", "профілів")}: спікери мітапів та експерти спільноти
               </p>
             </div>
           </Link>

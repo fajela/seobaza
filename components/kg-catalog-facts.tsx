@@ -39,7 +39,7 @@ export function KgCatalogFacts({ slug }: { slug: string }) {
   return (
     <section className="mb-12">
       <h2 className="text-xl font-bold mb-4">У каталозі сервісів</h2>
-      <ul className="grid gap-3 mb-6">
+      <ul className="grid grid-cols-1 gap-3 mb-6">
         {tools.map((t) => {
           const cat = TOOL_CATEGORIES.find((c) => c.slug === t.category);
           return (

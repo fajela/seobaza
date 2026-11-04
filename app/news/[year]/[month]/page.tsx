@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { plural } from "@/lib/plural";
 import Link from "next/link";
 import { getNewsYears, getMonthsForYear, getNewsSlugsForMonth, getNewsBySlug, newsTimestamp } from "@/lib/news";
 import { ukMonthName } from "@/lib/months";
@@ -105,7 +106,7 @@ export default async function NewsMonthPage({
           {monthName} {year}
         </h1>
         <p className="text-muted-foreground mb-10">
-          {longPosts.length} {longPosts.length === 1 ? "стаття" : longPosts.length < 5 ? "статті" : "статей"}
+          {longPosts.length} {plural(longPosts.length, "стаття", "статті", "статей")}
         </p>
 
         {/* Long-form posts — clickable cards, wrapped in ItemList microdata */}
@@ -117,7 +118,7 @@ export default async function NewsMonthPage({
           >
             <meta itemProp="numberOfItems" content={String(longPosts.length)} />
             <meta itemProp="itemListOrder" content="https://schema.org/ItemListOrderAscending" />
-            <div className="grid gap-3">
+            <div className="grid grid-cols-1 gap-3">
               {longPosts.map((p, i) => {
                 const postUrl = `https://seobaza.com.ua/news/${year}/${month}/${p.slug}`;
                 return (

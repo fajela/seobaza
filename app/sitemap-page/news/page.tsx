@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllNews, getNewsYears, getMonthsForYear } from "@/lib/news";
 import { ukMonthName } from "@/lib/months";
 import { pageMeta } from "@/lib/page-metadata";
@@ -10,9 +11,7 @@ export const metadata = pageMeta({
 });
 
 function pluralizeNews(n: number) {
-  if (n === 1) return "допис";
-  if (n < 5) return "дописи";
-  return "дописів";
+  return plural(n, "допис", "дописи", "дописів");
 }
 
 export default function SitemapNewsPage() {

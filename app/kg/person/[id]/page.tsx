@@ -347,7 +347,7 @@ export default async function KgPersonPage({
                   target="_blank"
                   rel={externalRel(url)}
                   itemProp="sameAs"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
+                  className="inline-flex max-w-full break-all items-center gap-1 px-3 py-1.5 text-sm border border-border rounded-full text-foreground hover:border-primary hover:text-primary transition-colors"
                 >
                   {profileLabel(url)}
                   <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

@@ -97,7 +97,7 @@ export default async function EntityTypeIndexPage({ params }: { params: Promise<
         <h1 className="text-4xl font-display mb-8" itemProp="name">
           {INDEX_TITLES[type]}
         </h1>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {entities.map((e) => {
             const count = getMaterialsForEntity(e.slug).length;
             return (

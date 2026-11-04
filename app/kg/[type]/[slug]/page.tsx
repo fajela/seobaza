@@ -182,7 +182,7 @@ export default async function EntityHubPage({
                   target="_blank"
                   rel={externalRel(url)}
                   itemProp="sameAs"
-                  className="px-3 py-1.5 text-sm border border-border rounded-full hover:border-primary hover:text-primary transition-colors"
+                  className="max-w-full break-all px-3 py-1.5 text-sm border border-border rounded-full hover:border-primary hover:text-primary transition-colors"
                 >
                   {decodeURIComponent(url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")).replace(/_/g, " ")}
                 </a>

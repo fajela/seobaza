@@ -154,7 +154,7 @@ export default function EnglishHomePage() {
           <h2 className="text-2xl sm:text-3xl font-display mb-6 text-center">
             SEO Baza community
           </h2>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="rounded-2xl p-6 border border-border bg-secondary/30 transition-theme">
               <h3 className="text-xl font-display mb-1">
                 Most active on Telegram

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllTagsWithCounts } from "@/lib/articles";
 import { pageMeta } from "@/lib/page-metadata";
 import { tagHref } from "@/lib/redirects";
@@ -10,9 +11,7 @@ export const metadata = pageMeta({
 });
 
 function pluralizeTags(n: number) {
-  if (n === 1) return "тег";
-  if (n < 5) return "теги";
-  return "тегів";
+  return plural(n, "тег", "теги", "тегів");
 }
 
 export default function SitemapTagsPage() {

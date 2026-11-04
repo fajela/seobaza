@@ -25,7 +25,7 @@ export default function AuthorsPage() {
         </p>
 
         <div
-          className="grid sm:grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
           itemScope
           itemType="https://schema.org/ItemList"
         >

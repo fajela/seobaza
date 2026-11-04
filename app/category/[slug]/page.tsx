@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { plural } from "@/lib/plural";
 import Link from "next/link";
 import { getArticlesByCategory } from "@/lib/articles";
 import { getNewsByCategory } from "@/lib/news";
@@ -124,7 +125,7 @@ export default async function CategoryPage({
           </p>
           {items.length > 0 && (
             <p className="mt-3 text-sm text-muted-foreground">
-              {items.length} матеріал{items.length === 1 ? "" : items.length < 5 ? "и" : "ів"}
+              {items.length} {plural(items.length, "матеріал", "матеріали", "матеріалів")}
             </p>
           )}
         </div>
@@ -143,7 +144,7 @@ export default async function CategoryPage({
           </div>
         ) : (
           <div
-            className="grid gap-6"
+            className="grid grid-cols-1 gap-6"
             itemScope
             itemType="https://schema.org/ItemList"
           >

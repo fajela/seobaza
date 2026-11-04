@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllAuthors } from "@/lib/authors";
 import { pageMeta } from "@/lib/page-metadata";
 
@@ -9,9 +10,7 @@ export const metadata = pageMeta({
 });
 
 function pluralizeAuthors(n: number) {
-  if (n === 1) return "автор";
-  if (n < 5) return "автори";
-  return "авторів";
+  return plural(n, "автор", "автори", "авторів");
 }
 
 export default function SitemapAuthorsPage() {
@@ -48,7 +47,7 @@ export default function SitemapAuthorsPage() {
         </p>
 
         <ul
-          className="grid sm:grid-cols-2 gap-3"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3"
           itemScope
           itemType="https://schema.org/ItemList"
         >

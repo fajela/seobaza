@@ -133,7 +133,7 @@ export function KgPeopleList({
           {groups.map((group) => (
             <section key={group.letter} id={`letter-${group.letter}`} className="scroll-mt-24">
               <h2 className="text-2xl font-display mb-4 text-accent">{group.letter}</h2>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {group.people.map((p) => (
                   <div
                     key={p.kgId}

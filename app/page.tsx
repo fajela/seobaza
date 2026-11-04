@@ -148,7 +148,7 @@ export default function Home() {
           </div>
 
           <div
-            className="grid gap-6 lg:grid-cols-2"
+            className="grid grid-cols-1 gap-6 lg:grid-cols-2"
             itemScope
             itemType="https://schema.org/ItemList"
           >
@@ -208,7 +208,7 @@ export default function Home() {
             </div>
 
             {/* Secondary stories — compact rows with thumbnail */}
-            <div className="grid content-start gap-3">
+            <div className="grid grid-cols-1 content-start gap-3">
               {secondaryStories.map((item, i) => (
                 <div
                   key={item.slug}
@@ -288,7 +288,7 @@ export default function Home() {
             </Link>
           </div>
           <div
-            className="grid sm:grid-cols-3 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
             itemScope
             itemType="https://schema.org/ItemList"
           >
@@ -356,7 +356,7 @@ export default function Home() {
             </Link>
           </div>
           <div
-            className="grid sm:grid-cols-3 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
             itemScope
             itemType="https://schema.org/ItemList"
           >
@@ -418,7 +418,7 @@ export default function Home() {
         <h2 className="text-2xl sm:text-3xl font-display mb-6 text-center">
           Спільнота SEO Baza
         </h2>
-        <div className="grid gap-6 lg:grid-cols-2 items-start">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-start">
           {/* Telegram */}
           <div className="flex h-full min-w-0 flex-col rounded-2xl p-6 border border-border bg-secondary/30 transition-theme hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 duration-300">
             <h3 className="text-xl font-display mb-1">

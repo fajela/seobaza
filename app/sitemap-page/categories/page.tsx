@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllCategoriesWithCounts } from "@/lib/articles";
 import { pageMeta } from "@/lib/page-metadata";
 import { categoryHref } from "@/lib/redirects";
@@ -10,9 +11,7 @@ export const metadata = pageMeta({
 });
 
 function pluralizeCats(n: number) {
-  if (n === 1) return "категорія";
-  if (n < 5) return "категорії";
-  return "категорій";
+  return plural(n, "категорія", "категорії", "категорій");
 }
 
 export default function SitemapCategoriesPage() {
@@ -49,7 +48,7 @@ export default function SitemapCategoriesPage() {
         </p>
 
         <ul
-          className="grid sm:grid-cols-2 gap-3"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3"
           itemScope
           itemType="https://schema.org/ItemList"
         >

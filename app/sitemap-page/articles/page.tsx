@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural } from "@/lib/plural";
 import { getAllArticles } from "@/lib/articles";
 import { getCategoryDisplayName } from "@/lib/taxonomy";
 import { pageMeta } from "@/lib/page-metadata";
@@ -10,9 +11,7 @@ export const metadata = pageMeta({
 });
 
 function pluralizeArticles(n: number) {
-  if (n === 1) return "стаття";
-  if (n < 5) return "статті";
-  return "статей";
+  return plural(n, "стаття", "статті", "статей");
 }
 
 export default function SitemapArticlesPage() {
