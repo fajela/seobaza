@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 
 const TITLE = "Чорна п'ятниця 2026 в українському SEO: знижки | SEO Baza";
 const DESCRIPTION =
-  "Знижки й бонуси від українських SEO-компаній на Чорну п'ятницю 2026: VYDAI, INeedTexts, Referr, UAHOSTING. Сторінка поповнюється, додайте свою пропозицію через форму.";
+  "Знижки й бонуси від українських SEO-компаній на Чорну п'ятницю 2026: Serpstat, Stus AI, PBN.LINK, VYDAI, Referr, UAHOSTING. Додайте свою пропозицію.";
 const OG_IMAGE = "https://seobaza.com.ua/images/og/black-friday-2026.jpg";
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSey7ryJzTCv1N61XJNV8Lklf9J6_2BQBDZB2UUiqHTN-9rKwA/viewform";
@@ -86,6 +86,16 @@ const OFFERS_2026 = [
     cta: "Обрати тариф",
   },
   {
+    id: "seojobs",
+    name: "SEO JOBS",
+    title: "Виділена вакансія за €9 замість €25 у SEO JOBS",
+    text: "Telegram-канал, який щодня збирає SEO-, GEO- та лінкбілдинг-вакансії з усього світу. Перша виділена вакансія з закріпом на добу за €9 замість €25.",
+    dates: "лише 27 листопада 2026",
+    promo: null,
+    url: "https://t.me/seogeojobs",
+    cta: "Відкрити канал SEO JOBS",
+  },
+  {
     id: "pbnseo",
     name: "PBN SEO PRO",
     title: "Знижка $100 на курс PBN SEO PRO",
@@ -94,6 +104,36 @@ const OFFERS_2026 = [
     promo: null,
     url: "https://pbnseo.pro/",
     cta: "Обрати пакет курсу",
+  },
+  {
+    id: "pbnlink",
+    name: "PBN.LINK",
+    title: "До 24% знижки на пакети PBN-посилань від PBN.LINK",
+    text: "Посилання на головних сторінках сайтів власної мережі відновлених доменів на 12 місяців. Тематичні пакети від $209 замість $275, iGaming 100 посилань за $1 980 замість $2 500.",
+    dates: "20–30 листопада 2026",
+    promo: "PBNBAZA26",
+    url: "https://t.me/sales_pbn_link",
+    cta: "Написати менеджеру",
+  },
+  {
+    id: "serpstat",
+    name: "Serpstat",
+    title: "20% знижки на підписки Serpstat",
+    text: "Платформа для аналізу пошуку й AI. Місяць від $55 замість $69, рік від $530 замість $828.",
+    dates: "23–30 листопада 2026",
+    promo: null,
+    url: "https://serpstat.com/",
+    cta: "Обрати підписку",
+  },
+  {
+    id: "stusai",
+    name: "Stus AI",
+    title: "20% знижки на підписки Stus AI",
+    text: "AI-платформа для автоматизації SEO на даних Serpstat. Starter $31,20 замість $39 на місяць або $310 замість $468 на рік.",
+    dates: "23–30 листопада 2026",
+    promo: null,
+    url: "https://stus.ai/",
+    cta: "Спробувати Stus AI",
   },
 ];
 
