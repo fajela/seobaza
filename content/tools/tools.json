@@ -53,6 +53,19 @@
     "description": "Хмарний краулер. Перевіряє основні технічні помилки на сайті, зокрема теги."
   },
   {
+    "name": "JetOctopus",
+    "url": "https://jetoctopus.com/js-seo/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Краулери",
+    "description": "Хмарний краулер, який рендерить JavaScript і порівнює сирий HTML зі сторінкою після рендеру, щоб показати, що бачать Google і AI-боти.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://jetoctopus.com/sum-up-for-the-six-months-of-2022/"
+    }
+  },
+  {
     "name": "Google Search Console Explorer",
     "url": "https://docs.google.com/spreadsheets/u/1/d/1MrpGs824Ub6xgkmj5PegfXw7aJdqcUNbwWmSc1e2Kgg/copy",
     "category": "tekhnichnyi-audyt",
@@ -351,6 +364,19 @@
     "category": "tekhnichnyi-audyt",
     "section": "Моніторинг доступності сайту",
     "description": "Перевіряє доступність, сертифікати, індексацію, sitemap, контент і шкідливий код."
+  },
+  {
+    "name": "JetOctopus SEO Alerts",
+    "url": "https://jetoctopus.com/alerts/",
+    "category": "tekhnichnyi-audyt",
+    "section": "Моніторинг доступності сайту",
+    "description": "Сповіщення в пошту, Slack чи MS Teams про помилки 5xx і не-200 у логах, проблеми краулу, падіння позицій і CTR у Search Console та погіршення Core Web Vitals.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://jetoctopus.com/sum-up-for-the-six-months-of-2022/"
+    }
   },
   {
     "name": "Prerender io",
@@ -820,6 +846,19 @@
     "category": "semantyka-i-kontent",
     "section": "Перелінковка",
     "description": "Таблиця Google, яку можна скопіювати й побудувати власну Silo-структуру сайту."
+  },
+  {
+    "name": "JetOctopus AI Internal Linker",
+    "url": "https://jetoctopus.com/internal-linker/",
+    "category": "semantyka-i-kontent",
+    "section": "Перелінковка",
+    "description": "Автоматична перелінковка для сайтів від 10 000 сторінок: на даних краулу, логів і Search Console знаходить слабкі й сирітські сторінки та звʼязує їх із сильними за змістом.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://jetoctopus.com/sum-up-for-the-six-months-of-2022/"
+    }
   },
   {
     "name": "Spin Rewriter",
@@ -2781,6 +2820,19 @@
     ],
     "uaSources": {
       "founded-by-ukrainians": "https://seobaza.com.ua/news/2026/07/piatnychni-novyny-31-lypnia-2026-1726"
+    }
+  },
+  {
+    "name": "JetOctopus MCP",
+    "url": "https://jetoctopus.com/mcp/",
+    "category": "ai",
+    "section": "Агенти для SEO",
+    "description": "Підключає ChatGPT, Claude, Cursor чи Gemini CLI до даних краулу, логів і Search Console у JetOctopus: питання звичайною мовою і запуск краулів. Є в усіх тарифах.",
+    "ua": [
+      "supports-ukraine"
+    ],
+    "uaSources": {
+      "supports-ukraine": "https://jetoctopus.com/sum-up-for-the-six-months-of-2022/"
     }
   }
 ]
