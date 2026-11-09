@@ -181,3 +181,121 @@ iframe[id^="telegram-post"] {
 html {
   overflow-x: clip;
 }
+
+/* Google Programmable Search на /search: віджет приносить власні світлі стилі,
+   тут підганяємо його під кольори сайту в обох темах. */
+.seobaza-cse .gsc-control-cse {
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+}
+.seobaza-cse .gsc-input-box {
+  background-color: hsl(var(--background)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.5rem !important;
+}
+.seobaza-cse input.gsc-input {
+  background: transparent !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 1rem !important;
+}
+.seobaza-cse .gsc-search-button-v2 {
+  border-radius: 0.5rem !important;
+  padding: 0.7rem 1.1rem !important;
+  cursor: pointer;
+}
+.seobaza-cse .gsc-webResult.gsc-result,
+.seobaza-cse .gsc-results .gsc-imageResult {
+  background-color: transparent !important;
+  border-color: hsl(var(--border)) !important;
+}
+.seobaza-cse .gsc-above-wrapper-area {
+  border-bottom-color: hsl(var(--border)) !important;
+}
+.seobaza-cse .gs-snippet,
+.seobaza-cse .gsc-result-info,
+.seobaza-cse .gsc-orderby-label,
+.seobaza-cse .gs-no-results-result .gs-snippet {
+  color: hsl(var(--foreground)) !important;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+.seobaza-cse .gsc-results .gsc-cursor-box .gsc-cursor-page {
+  background-color: transparent !important;
+  color: hsl(var(--foreground)) !important;
+}
+.dark .seobaza-cse .gs-title,
+.dark .seobaza-cse .gs-title * {
+  color: #8ab4f8 !important;
+}
+.dark .seobaza-cse .gs-visibleUrl,
+.dark .seobaza-cse .gsc-url-top {
+  color: #9aa0a6 !important;
+}
+/* Результати Google відкриває у спливному вікні поверх сторінки (налаштування
+   самої пошукової системи). Без цього блоку вікно лишається білим у темній темі. */
+.seobaza-cse .gsc-results-wrapper-overlay {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.75rem !important;
+}
+.seobaza-cse .gsc-modal-background-image {
+  background-color: hsl(var(--background)) !important;
+}
+.seobaza-cse .gsc-tabsArea,
+.seobaza-cse .gsc-refinementsArea {
+  border-bottom-color: hsl(var(--border)) !important;
+}
+.seobaza-cse .gsc-tabHeader {
+  background-color: transparent !important;
+}
+.seobaza-cse .gsc-tabHeader.gsc-tabhInactive,
+.seobaza-cse .gsc-selected-option-container,
+.seobaza-cse .gsc-option-menu-item {
+  color: hsl(var(--foreground)) !important;
+}
+.seobaza-cse .gsc-selected-option-container,
+.seobaza-cse .gsc-option-menu {
+  background-color: hsl(var(--background)) !important;
+  border-color: hsl(var(--border)) !important;
+  box-shadow: none !important;
+}
+.dark .seobaza-cse .gsc-tabHeader.gsc-tabhActive {
+  color: #8ab4f8 !important;
+  border-bottom-color: #8ab4f8 !important;
+}
+.dark .seobaza-cse .gsc-results-close-btn,
+.dark .seobaza-cse .gsc-option-selector {
+  filter: invert(1);
+}
+.dark .seobaza-cse .gs-visibleUrl *,
+.dark .seobaza-cse .gsc-cursor-current-page {
+  color: #9aa0a6 !important;
+}
+/* Телефон: менші відступи й заголовки, щоб результат не стискався. */
+@media (max-width: 640px) {
+  .seobaza-cse .gsc-results-wrapper-overlay {
+    top: 4rem !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% - 4rem) !important;
+    padding: 2.5rem 1rem 1rem !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    border-width: 0 !important;
+  }
+  .seobaza-cse .gsc-webResult.gsc-result {
+    padding: 0.75rem 0.5rem !important;
+  }
+  .seobaza-cse .gs-title,
+  .seobaza-cse .gs-title * {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+  }
+  .seobaza-cse .gsc-table-cell-thumbnail,
+  .seobaza-cse .gs-web-image-box {
+    display: none !important;
+  }
+}

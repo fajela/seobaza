@@ -142,11 +142,57 @@ export function Navigation() {
                 </div>
               </div>
             </div>
+            <Link
+              href="/search"
+              prefetch={true}
+              aria-label="Пошук по сайту"
+              title="Пошук по сайту"
+              className="p-2 rounded-lg hover:bg-secondary transition-colors group"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <svg
+                className="w-5 h-5 text-foreground group-hover:text-accent transition-colors"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                />
+              </svg>
+            </Link>
             <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden items-center space-x-2">
+            <Link
+              href="/search"
+              prefetch={true}
+              aria-label="Пошук по сайту"
+              title="Пошук по сайту"
+              className="p-2 rounded-lg hover:bg-secondary transition-colors group"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <svg
+                className="w-5 h-5 text-foreground group-hover:text-accent transition-colors"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+                />
+              </svg>
+            </Link>
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
