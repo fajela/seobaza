@@ -379,6 +379,13 @@
     }
   },
   {
+    "name": "Polyarix Site Check",
+    "url": "https://polyarix.com/uk/site-check",
+    "category": "tekhnichnyi-audyt",
+    "section": "Моніторинг доступності сайту",
+    "description": "Безкоштовна перевірка безпеки сайту без реєстрації: відкриває його як браузер, робот Google, телефон і перехід із пошуку, шукає приховані редиректи, шкідливий код, відкриті службові файли й вразливі плагіни WordPress. Може перевіряти щотижня й писати на пошту про зміни."
+  },
+  {
     "name": "Prerender io",
     "url": "https://prerender.io/",
     "category": "tekhnichnyi-audyt",
