@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { computeReadingTime } from "./articles";
 import type { CategorySlug, ArticleType, ArticleStatus } from "./taxonomy";
 import { rankByEntities } from "./related";
+import { resolveEntityIds } from "./kg";
 
 const newsDirectory = path.join(process.cwd(), "content/news");
 
@@ -131,7 +132,7 @@ export function getNewsBySlug(year: string, slug: string, month?: string): NewsA
     updatedAt: data.updatedAt ? String(data.updatedAt) : undefined,
     time: parseTime(data.time),
     tags: data.tags ?? [],
-    entities: Array.isArray(data.entities) ? data.entities.map(String) : [],
+    entities: Array.isArray(data.entities) ? resolveEntityIds(data.entities.map(String)) : [],
     category: data.category ?? "community-and-news",
     type: data.type ?? "digest",
     status: data.status,
