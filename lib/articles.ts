@@ -11,6 +11,7 @@ import {
   type CategoryMeta,
 } from "./taxonomy";
 import { rankByEntities } from "./related";
+import { resolveEntityIds } from "./kg";
 
 const articlesDirectory = path.join(process.cwd(), "content/articles");
 const draftsDirectory = path.join(process.cwd(), "content/drafts");
@@ -119,7 +120,7 @@ export function getArticleBySlug(slug: string, dir?: string): Article {
     editorLink: data.editorLink,
     date: data.date ? String(data.date) : new Date().toISOString().slice(0, 10),
     tags: data.tags ?? [],
-    entities: Array.isArray(data.entities) ? data.entities.map(String) : [],
+    entities: Array.isArray(data.entities) ? resolveEntityIds(data.entities.map(String)) : [],
     category: data.category ?? "community-and-news",
     type: data.type ?? "article",
     status: data.status,

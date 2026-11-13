@@ -1,12 +1,13 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { getAllKgPeople } from "./kg";
+import { getAllKgPeople, resolveEntityIds } from "./kg";
 
 // ─── Entity hubs: /kg/<type>/<slug> ───────────────────────────────────────────
 // One closed vocabulary for the whole site. Each entity is a file in
 // content/kg/<type>/<slug>.mdx; materials reference entities through the
-// `entities:` frontmatter field (entity slugs, or sb-ids for people).
+// `entities:` frontmatter field (entity slugs; people by their file slug,
+// e.g. oleksii-matuznyi, resolved to the sb-id by resolveEntityIds).
 // People keep their own loader (lib/kg.ts) and pages (/kg/person/<sb_id>).
 // A hub renders only with `status: published`; drafts exist for tagging and
 // validation but have no page, no sitemap entry and no links.
@@ -80,7 +81,7 @@ export function getAllEntities(): KgEntity[] {
         wikidata: data.wikidata,
         googleKgId: data.googleKgId,
         sameAs: asList(data.sameAs),
-        related: asList(data.related),
+        related: resolveEntityIds(asList(data.related)),
         replacesTag: data.replacesTag,
         image: data.image,
         content,
@@ -171,7 +172,7 @@ export function getTaggedMaterials(): TaggedMaterial[] {
     const root = path.join(contentDirectory, dirName);
     for (const file of walkMdx(root)) {
       const { data, content } = matter(fs.readFileSync(file, "utf8"));
-      const entities = asList(data.entities);
+      const entities = resolveEntityIds(asList(data.entities));
       if (entities.length === 0) continue;
       // Videos publish only on an explicit "published"; everything else hides on "draft".
       if (kind === "video" ? data.status !== "published" : data.status === "draft") continue;

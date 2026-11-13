@@ -80,6 +80,23 @@ export function getAllKgPeople(includeBackend = false): KgPerson[] {
     .sort((a, b) => a.kgId.localeCompare(b.kgId));
 }
 
+let personSlugToKgId: Map<string, string> | null = null;
+
+/** Materials name people in `entities:` by their file slug (oleksii-matuznyi);
+ *  the graph and the pages work with kgId (sb0012). Maps a slug to its kgId and
+ *  passes every other id (entity hubs, legacy sb-ids) through unchanged. */
+export function resolveEntityId(id: string): string {
+  if (!personSlugToKgId) {
+    personSlugToKgId = new Map();
+    for (const p of getAllKgPeople(true)) personSlugToKgId.set(p.slug, p.kgId);
+  }
+  return personSlugToKgId.get(id) ?? id;
+}
+
+export function resolveEntityIds(ids: string[]): string[] {
+  return [...new Set(ids.map(resolveEntityId))];
+}
+
 export function getKgPersonIds(): string[] {
   return getAllKgPeople().map((p) => p.kgId);
 }

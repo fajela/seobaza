@@ -6,8 +6,10 @@
  *    valid status (a published hub also needs a description); slugs are unique across types and never
  *    look like a person sb-id;
  *  - no alias belongs to two entities (the tagger could not tell them apart);
- *  - `related` and every material's `entities:` point only at known ids
- *    (entity slugs or person sb-ids from content/kg/person);
+ *  - `related` and every material's `entities:` point only at known ids:
+ *    entity slugs, or people by their file slug from content/kg/person
+ *    (oleksii-matuznyi). A bare sb-id there is an error: people are named, the
+ *    site resolves the slug to the sb-id itself (lib/kg.ts resolveEntityId);
  *  - a published hub has its own written intro and at least MIN_MATERIALS
  *    published materials, so no hub ships as a bare list of links.
  *
@@ -45,9 +47,15 @@ const errors = [];
 
 // People ids
 const personIds = new Set();
+const personSlugToId = new Map(); // oleksii-matuznyi -> sb0012
+const personIdToSlug = new Map();
 for await (const file of walk(path.join(KG, "person"))) {
   const { data } = matter(await fs.readFile(file, "utf8"));
-  if (data.kgId) personIds.add(String(data.kgId));
+  if (!data.kgId) continue;
+  const slug = path.basename(file, ".mdx");
+  personIds.add(String(data.kgId));
+  personSlugToId.set(slug, String(data.kgId));
+  personIdToSlug.set(String(data.kgId), slug);
 }
 
 // Entities
@@ -74,10 +82,15 @@ for (const type of TYPES) {
   }
 }
 
-const known = (id) => entities.has(id) || personIds.has(id);
+for (const slug of personSlugToId.keys())
+  if (entities.has(slug)) errors.push(`content/kg/person/${slug}.mdx: slug "${slug}" is also an entity slug`);
+
+const known = (id) => entities.has(id) || personSlugToId.has(id);
+const resolve = (id) => personSlugToId.get(id) ?? id;
+const sbHint = (id) => (personIds.has(id) ? ` (people go by name: use "${personIdToSlug.get(id)}")` : "");
 
 for (const [slug, { file, data }] of entities) {
-  for (const r of list(data.related)) if (!known(r)) errors.push(`${rel(file)}: related "${r}" is not a known entity or person`);
+  for (const r of list(data.related)) if (!known(r)) errors.push(`${rel(file)}: related "${r}" is not a known entity or person${sbHint(r)}`);
   if (list(data.related).includes(slug)) errors.push(`${rel(file)}: related points at itself`);
 }
 
@@ -90,9 +103,9 @@ for (const dir of MATERIAL_DIRS) {
     if (ids.length === 0) continue;
     const seen = new Set();
     for (const id of ids) {
-      if (!known(id)) errors.push(`${rel(file)}: entities has unknown id "${id}" (add it to content/kg/ first)`);
-      if (seen.has(id)) errors.push(`${rel(file)}: entities lists "${id}" twice`);
-      seen.add(id);
+      if (!known(id)) errors.push(`${rel(file)}: entities has unknown id "${id}"${sbHint(id) || " (add it to content/kg/ first)"}`);
+      if (seen.has(resolve(id))) errors.push(`${rel(file)}: entities lists "${id}" twice`);
+      seen.add(resolve(id));
     }
     const published = dir === "videos" ? data.status === "published" : data.status !== "draft";
     if (published) for (const id of seen) usage.set(id, (usage.get(id) ?? 0) + 1);
