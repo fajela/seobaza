@@ -96,6 +96,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta name="color-scheme" content="light dark" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -108,6 +109,7 @@ export default function RootLayout({
                     document.documentElement.classList.add('dark');
                     document.documentElement.style.colorScheme = 'dark';
                   } else {
+                    document.documentElement.classList.add('light');
                     document.documentElement.style.colorScheme = 'light';
                   }
                 } catch (e) {}

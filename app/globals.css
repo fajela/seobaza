@@ -16,6 +16,7 @@
     --muted-foreground: 0 0% 45%;
     --border: 0 0% 89%;
     --radius: 0.75rem;
+    color-scheme: light dark;
   }
 
   .dark {
@@ -30,6 +31,29 @@
     --muted: 40 10% 15%;
     --muted-foreground: 0 0% 60%;
     --border: 40 10% 18%;
+    color-scheme: dark;
+  }
+
+  .light {
+    color-scheme: light;
+  }
+
+  /* Без JavaScript на <html> немає ні .light, ні .dark: тоді сайт іде за
+     системною темою. Значення ті самі, що в .dark вище, міняти разом. */
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light):not(.dark) {
+      --background: 40 10% 6%;
+      --foreground: 0 0% 89%;
+      --primary: 212 100% 45%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 40 10% 12%;
+      --secondary-foreground: 0 0% 89%;
+      --accent: 85 65% 60%;
+      --accent-foreground: 0 0% 100%;
+      --muted: 40 10% 15%;
+      --muted-foreground: 0 0% 60%;
+      --border: 40 10% 18%;
+    }
   }
 }
 

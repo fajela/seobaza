@@ -6,7 +6,16 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["class"],
+  // Темні стилі вмикаються двома шляхами: класом .dark (вибір перемикачем)
+  // або системною темою, коли на <html> немає класу .light. Другий шлях
+  // працює і без JavaScript.
+  darkMode: [
+    "variant",
+    [
+      "@media (prefers-color-scheme: dark) { &:not(.light *) }",
+      "&:is(.dark *)",
+    ],
+  ],
   theme: {
     extend: {
       colors: {

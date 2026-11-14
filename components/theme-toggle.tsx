@@ -3,8 +3,13 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+/**
+ * Перемикач теми з двома видимими станами. Зберігаємо вибір, тільки коли він
+ * відрізняється від системної теми. Якщо людина повертає ту саму тему, що й
+ * у системі, сайт знову йде за системним налаштуванням.
+ */
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,16 +19,23 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <button
+        type="button"
         className="p-2 rounded-lg hover:bg-secondary transition-colors"
-        aria-label="Toggle theme"
+        aria-label="Перемкнути тему"
       >
         <div className="w-5 h-5" />
       </button>
     );
   }
 
+  const isDark = resolvedTheme === "dark";
+
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
+    const target = isDark ? "light" : "dark";
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+    const newTheme = target === systemTheme ? "system" : target;
     setTheme(newTheme);
     // Immediately sync to cookie for SSR
     document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
@@ -31,16 +43,18 @@ export function ThemeToggle() {
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
       className="p-2 rounded-lg hover:bg-secondary transition-colors group"
-      aria-label="Toggle theme"
+      aria-label={isDark ? "Увімкнути світлу тему" : "Увімкнути темну тему"}
     >
-      {theme === "dark" ? (
+      {isDark ? (
         <svg
           className="w-5 h-5 text-foreground group-hover:text-accent transition-colors"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -55,6 +69,7 @@ export function ThemeToggle() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
