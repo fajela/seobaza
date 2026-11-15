@@ -535,7 +535,7 @@ export default function Home() {
           </h2>
           <div className="mb-6">
             <p className="text-lg mb-4">
-              <strong>Софія </strong> збирає на розгортання підрозділу,
+              <strong>Софія</strong> збирає на розгортання підрозділу,
               розпорядниця фонду Надія Мелешко:
             </p>
             <blockquote className="pl-4 border-l-4 border-accent italic text-muted-foreground mb-6">
