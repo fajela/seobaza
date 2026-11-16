@@ -534,38 +534,23 @@ export default function Home() {
             SEOшники-волонтери, яким можна задонатити
           </h2>
           <div className="mb-6">
-            <p className="text-lg mb-4">
-              <strong>Софія</strong> збирає на розгортання підрозділу,
-              розпорядниця фонду Надія Мелешко:
+            <p className="text-lg mb-2">
+              ✅ Збір на роту в 411 бригаді Яструби успішно закрили. Дякуємо всім, хто донатив і поширював.
             </p>
-            <blockquote className="pl-4 border-l-4 border-accent italic text-muted-foreground mb-6">
-              Мій однокласник Спейс наразі має потребу в забезпеченні
-              розгортання підрозділу: транспорт, зв&apos;язок, техніка,
-              відновлення втрат, енергорезерв. Загалом на 2 млн гривень. Збір
-              амбітний, але й ми з вами серйозні люди.
-            </blockquote>
-            <div className="flex justify-center mb-4">
-              <iframe
-                src="https://www.instagram.com/p/DdimQ5bDU0B/embed/captioned/"
-                title="Пост Надії Мелешко в Instagram про збір для підрозділу"
-                width="500"
-                height="900"
-                style={{ border: "none", overflow: "hidden", maxWidth: "100%" }}
-                scrolling="no"
-                frameBorder="0"
-                allowFullScreen={true}
-                allow="clipboard-write; encrypted-media; picture-in-picture; web-share"
-              />
-            </div>
-            <p className="text-center text-muted-foreground mb-6">
-              Банка збору:{" "}
+            <p className="text-muted-foreground">
+              Щодо нових зборів пишіть мені в тг{" "}
               <a
-                href="https://send.monobank.ua/jar/8nacjrPTZs" rel="nofollow noopener"
+                href="https://t.me/fajela" rel="nofollow noopener"
                 target="_blank"
                 className="text-primary hover:text-accent underline transition-colors"
               >
-                send.monobank.ua/jar/8nacjrPTZs
+                @fajela
               </a>
+              . Як ішов збір, лишилось{" "}
+              <a href="/zbir" className="text-primary hover:text-accent underline transition-colors">
+                на сторінці збору
+              </a>
+              .
             </p>
           </div>
           <div className="mb-6 p-6 bg-background rounded-xl border-2 border-accent shadow-md">

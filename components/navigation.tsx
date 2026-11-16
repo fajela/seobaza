@@ -104,10 +104,10 @@ export function Navigation() {
               Вакансії
             </NavLink>
             <NavLink
-              href="/zbir"
+              href="/black-friday"
               className="text-sm font-semibold text-accent hover:underline transition-colors"
             >
-              🇺🇦 Збір
+              🖤 Чорна п&apos;ятниця
             </NavLink>
             {/* Про нас + Спонсорам, Контакт, Розсилка */}
             <div className="relative group">
@@ -294,11 +294,11 @@ export function Navigation() {
                 Вакансії
               </NavLink>
               <NavLink
-                href="/zbir"
+                href="/black-friday"
                 className="px-3 py-2 text-sm font-semibold text-accent hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                🇺🇦 Збір
+                🖤 Чорна п&apos;ятниця
               </NavLink>
               <NavLink
                 href="/about"

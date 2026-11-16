@@ -12,7 +12,7 @@ const WITHDRAWALS_URL = "https://linktr.ee/n.meleshko";
 export const metadata = pageMeta({
   title: "Збір на роту 411 бригади Яструби | SEO Baza",
   description:
-    "SEO Baza допомагає зібрати на розгортання роти в 411 бригаді Яструби: транспорт, зв'язок, техніка. Банка monobank, IBAN, звіти про кожну покупку. Долучайтеся.",
+    "Збір SEO Baza на розгортання роти в 411 бригаді Яструби успішно закрили: транспорт, зв'язок, техніка. Звіти про покупки і як написати щодо нових зборів.",
   path: "/zbir",
   image: {
     path: "/images/og/zbir-na-rotu-411-bryhady-yastruby.jpg",
@@ -33,6 +33,22 @@ export default function ZbirPage() {
         <h1 className="text-4xl sm:text-5xl font-display mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
           Збір на роту в 411 бригаді Яструби
         </h1>
+        <div className="rounded-xl border-2 border-accent bg-secondary/30 p-6 mb-8">
+          <p className="text-xl font-bold mb-2">✅ Збір успішно закрили</p>
+          <p>
+            Дякуємо всім, хто донатив і поширював. Щодо нових зборів пишіть
+            Олесі в Telegram{" "}
+            <a
+              href="https://t.me/fajela"
+              target="_blank"
+              rel="nofollow noopener"
+              className="text-accent hover:underline"
+            >
+              @fajela
+            </a>
+            . Нижче опис збору, як він ішов, і звіти.
+          </p>
+        </div>
         <p className="text-lg text-muted-foreground mb-8">
           SEO Baza допомагає збирати донати для роти в 411 бригаді Яструби.
           Рота розгортається і вже виконує спеціальні завдання на Запоріжжі,
@@ -40,26 +56,48 @@ export default function ZbirPage() {
           SEOшниці, яка зараз служить.
         </p>
 
-        <a
-          href={JAR_URL}
-          target="_blank"
-          rel={externalRel(JAR_URL)}
-          className="block w-full text-center rounded-xl bg-accent px-6 py-5 text-xl font-bold text-black hover:opacity-90 transition-opacity mb-4"
-        >
-          Закинути в банку monobank
-        </a>
-        <p className="text-sm text-muted-foreground mb-10">
-          Банка підписана «На нову суперроту». Якщо зручніше переказом, IBAN
-          нижче.
+        <h2 className="text-2xl font-display mb-3">Підсумки: що купили</h2>
+        <p className="mb-4">
+          За звітами Наді, із зібраних грошей роті купили техніку і спорядження
+          на <strong>206 557 гривень</strong>:
+        </p>
+        <ul className="mb-4 space-y-2">
+          {[
+            "2 пари FPV-окулярів, 54 000 грн",
+            "2 оптичні рефлектометри, 48 308 грн",
+            "2 пульти керування FPV-дронів, 27 296 грн",
+            "метал і розхідні матеріали для додаткового захисту двох авто, 23 113 грн",
+            "12 похідних ліжок, 16 310 грн",
+            "2 обігрівачі вебасто, 15 240 грн",
+            "2 тепломаскувальні полотна і 2 антитепловізорні чохли, 11 800 грн",
+            "зарядка для FPV, 10 490 грн",
+          ].map((item) => (
+            <li key={item} className="flex gap-3">
+              <span className="text-accent">→</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mb-10">
+          Звіти з фото до кожної покупки:{" "}
+          <a
+            href={WITHDRAWALS_URL}
+            target="_blank"
+            rel={externalRel(WITHDRAWALS_URL)}
+            className="text-accent hover:underline"
+          >
+            звіти Наді на linktr.ee
+          </a>
+          .
         </p>
 
-        <h2 className="text-2xl font-display mb-3">На що збираємо</h2>
+        <h2 className="text-2xl font-display mb-3">На що збирали</h2>
         <p className="mb-4">
           На розгортання підрозділу: транспорт, зв&apos;язок, техніка,
           відновлення втрат, енергорезерв.
         </p>
 
-        <h2 className="text-2xl font-display mb-3">Реквізити</h2>
+        <h2 className="text-2xl font-display mb-3">Реквізити збору</h2>
         <ul className="mb-10 space-y-2">
           <li className="flex gap-3">
             <span className="text-accent">→</span>
@@ -115,37 +153,6 @@ export default function ZbirPage() {
           Давайте спробуємо зібрати без прожарок.
         </p>
 
-        <h2 className="text-2xl font-display mb-3">Як допомогти</h2>
-        <ul className="mb-10 space-y-2">
-          <li className="flex gap-3">
-            <span className="text-accent">→</span>
-            <span>Закинути в банку, скільки зручно.</span>
-          </li>
-          <li className="flex gap-3">
-            <span className="text-accent">→</span>
-            <span>
-              Переслати цю сторінку колегам або{" "}
-              <a
-                href="https://t.me/SEOBAZA"
-                target="_blank"
-                rel="nofollow noopener"
-                className="text-accent hover:underline"
-              >
-                пост у нашому Telegram
-              </a>
-              .
-            </span>
-          </li>
-        </ul>
-
-        <p className="text-sm text-muted-foreground">
-          Банка стоїть під кожним стрімом на{" "}
-          <a href="/videos" className="text-accent hover:underline">
-            сторінках відео
-          </a>{" "}
-          і в п&apos;ятничних випусках новин. Підсумки збору і куплене
-          дописуватимемо сюди.
-        </p>
       </div>
     </div>
   );
