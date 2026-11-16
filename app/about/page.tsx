@@ -95,7 +95,7 @@ export default function AboutPage() {
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
           <p>
-            SEO Baza — українська спільнота SEO-фахівців. Тут діляться новинами
+            SEO Baza (СЕО База, сеобаза) — українська спільнота SEO-фахівців. Тут діляться новинами
             індустрії, розбирають оновлення Google, обговорюють AI-пошук та
             формати контенту, проводять зустрічі та конференції.
           </p>

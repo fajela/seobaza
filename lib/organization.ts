@@ -10,8 +10,8 @@
  *   WEBSITE_ID  https://seobaza.com.ua/#website        (the site)
  *
  * Every fact here is verified, not assumed:
- *   alternateName  = spellings actually used in the Telegram channel export
- *                    (SEO Baza 1401x, SEO Baza 50x, seobaza 57x, Cyrillic 0x)
+ *   alternateName  = BRAND_ALT_NAMES: Telegram spellings (SEO Baza 1401x,
+ *                    seobaza 57x, SEOBAZA = channel handle) + Cyrillic forms
  *   foundingDate   = first channel post 24.11.2022
  *   logo           = /seobaza.png is 640x640
  *   sameAs         = every URL returns 200 (checked 2026-09-03)
@@ -24,6 +24,21 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 /** Olesia's canonical on-site Person node (same itemID the author page uses). */
 export const FOUNDER_ID = `${SITE_URL}/kg/person/sb0011#person`;
+
+/**
+ * Brand spellings people search with. Knowledge Graph bots are case-sensitive,
+ * so every case variant is listed separately (Olesia, 2026-11-14). The Cyrillic
+ * forms are for people who search without switching the keyboard to English.
+ */
+export const BRAND_ALT_NAMES = [
+  "SEO Baza",
+  "SEOBAZA",
+  "seobaza",
+  "СЕО База",
+  "сео база",
+  "сеобаза",
+  "СЕОБАЗА",
+];
 
 export const ORG_SAME_AS = [
   "https://www.youtube.com/@SEOBAZA",
@@ -53,7 +68,7 @@ export function seoBazaOrganization(lang: OrgLang = "uk") {
     "@type": "Organization",
     "@id": ORG_ID,
     name: "SEO Baza",
-    alternateName: ["SEO Baza", "seobaza"],
+    alternateName: BRAND_ALT_NAMES,
     url: `${SITE_URL}/`,
     logo: {
       "@type": "ImageObject",
@@ -104,7 +119,7 @@ export function seoBazaWebSite() {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     name: "SEO Baza",
-    alternateName: ["SEO Baza", "seobaza"],
+    alternateName: BRAND_ALT_NAMES,
     url: `${SITE_URL}/`,
     description:
       "Ресурс з SEO з новинами, учбовими матеріалами, відео-каналом і телеграм-каналом",
