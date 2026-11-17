@@ -1,5 +1,5 @@
 // Відео, на яке веде анонс; на його власній сторінці анонс не показуємо.
-export const LIVE_VIDEO_SLUG = "seo-osobystoho-brendu";
+export const LIVE_VIDEO_SLUG = "zakhyst-brendu-v-poshuku";
 
 /**
  * Внутрішньоконтентний банер поточного лайву. Один на сторінку, вставляється
@@ -13,14 +13,14 @@ export const LIVE_VIDEO_SLUG = "seo-osobystoho-brendu";
 export function LiveBannerLarge() {
   return (
     <a
-      href="/videos/seo-osobystoho-brendu"
-      aria-label="Запис стріму про SEO особистого бренду, дивитися"
+      href="/videos/zakhyst-brendu-v-poshuku"
+      aria-label="Запис стріму про захист бренду в пошуку, дивитися"
       className="group relative block mb-8 max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border shadow-lg hover:shadow-xl hover:border-accent/50 transition-all duration-300"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/videos/seo-osobystoho-brendu.jpg"
-        alt="Обкладинка стріму SEO Baza SEO особистого бренду з Сашею Хіловою і Олесею Коробкою"
+        src="/images/videos/zakhyst-brendu-v-poshuku.jpg"
+        alt="Обкладинка стріму SEO Baza про захист бренду в пошуку з Сашею Хіловою і Олесею Коробкою"
         className="w-full h-auto object-cover"
         width={1200}
         height={630}
@@ -30,10 +30,10 @@ export function LiveBannerLarge() {
       </span>
       <span className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-5 pt-10 pb-4 text-white">
         <span className="block font-bold text-lg sm:text-xl">
-          SEO особистого бренду: як оптимізувати себе для пошуку і AI
+          Захист бренду в пошуку: паразити, клони і фейкова реклама
         </span>
         <span className="block text-sm text-white/85">
-          Саша Хілова і Олеся Коробка. Сайт власного імені, розмітка для людини і що змінили AI-асистенти. Дивитися →
+          Саша Хілова і Олеся Коробка. Аудит брендової видачі, паразити, клони, фальшиві скарги DMCA і що з цим робити. Дивитися →
         </span>
       </span>
     </a>
@@ -48,11 +48,11 @@ export function LiveBanner() {
       data-nosnippet=""
       className="not-prose my-10 flex flex-col sm:flex-row sm:items-center gap-4 rounded-xl border border-border bg-secondary/30 p-4"
     >
-      <a href="/videos/seo-osobystoho-brendu" className="shrink-0 block w-44 sm:w-52">
+      <a href="/videos/zakhyst-brendu-v-poshuku" className="shrink-0 block w-44 sm:w-52">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/videos/seo-osobystoho-brendu.jpg"
-          alt="Обкладинка стріму SEO Baza SEO особистого бренду з Сашею Хіловою і Олесею Коробкою"
+          src="/images/videos/zakhyst-brendu-v-poshuku.jpg"
+          alt="Обкладинка стріму SEO Baza про захист бренду в пошуку з Сашею Хіловою і Олесею Коробкою"
           className="w-full h-auto rounded-lg border border-border"
           width={1200}
           height={630}
@@ -63,14 +63,14 @@ export function LiveBanner() {
           ▶ Запис стріму
         </p>
         <p className="font-bold text-lg leading-snug m-0">
-          SEO особистого бренду: як оптимізувати себе для пошуку і AI
+          Захист бренду в пошуку: паразити, клони і фейкова реклама
         </p>
         <p className="text-sm text-muted-foreground m-0">
-          Саша Хілова і Олеся Коробка. Сайт власного імені, розмітка для людини і що змінили AI-асистенти.
+          Саша Хілова і Олеся Коробка. Аудит брендової видачі, паразити, клони, фальшиві скарги DMCA і що з цим робити.
         </p>
       </div>
       <a
-        href="/videos/seo-osobystoho-brendu"
+        href="/videos/zakhyst-brendu-v-poshuku"
         className="shrink-0 self-start sm:self-center px-4 py-2 rounded-lg bg-primary text-background text-sm font-medium hover:opacity-90 transition-opacity"
       >
         Дивитися →
