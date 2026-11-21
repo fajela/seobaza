@@ -24,6 +24,7 @@ function formatUkrDate(iso: string): string {
 
 function JobCard({ job }: { job: JobMeta }) {
   const closed = isClosedJob(job);
+  const featured = job.featured && !closed;
   const location = job.remote
     ? "Віддалено" + (job.city ? ` · ${job.city}` : "")
     : [job.city, job.country === "UA" ? "Україна" : job.country]
@@ -36,11 +37,18 @@ function JobCard({ job }: { job: JobMeta }) {
       className={`block group rounded-xl p-6 border transition-all ${
         closed
           ? "border-border bg-muted/20 opacity-70 hover:opacity-100"
+          : featured
+          ? "border-2 border-accent bg-accent/5 shadow-lg shadow-accent/10 hover:shadow-xl hover:shadow-accent/20"
           : "border-border bg-card hover:border-accent/70 hover:shadow-lg hover:shadow-accent/10"
       }`}
     >
       <div className="flex items-start justify-between gap-4">
         <div>
+          {featured && (
+            <span className="inline-block mb-2 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide bg-accent text-accent-foreground rounded-full">
+              Топ-вакансія
+            </span>
+          )}
           <h3 className="text-lg sm:text-xl font-display group-hover:text-accent transition-colors">
             {job.title}
           </h3>

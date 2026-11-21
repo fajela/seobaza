@@ -56,6 +56,8 @@ export interface JobMeta {
   directApply: boolean;
   /** Manual switch to close a job before validThrough. */
   closed: boolean;
+  /** Paid/pinned placement: shown first on /jobs with a highlighted card while open. */
+  featured: boolean;
   salaryMin?: number;
   salaryMax?: number;
   salaryCurrency?: string;
@@ -95,6 +97,7 @@ export function normalizeJob(
       data.identifierValue != null ? String(data.identifierValue) : undefined,
     directApply: (data.directApply as boolean) ?? false,
     closed: (data.closed as boolean) ?? false,
+    featured: (data.featured as boolean) ?? false,
     salaryMin: (data.salaryMin as number) ?? undefined,
     salaryMax: (data.salaryMax as number) ?? undefined,
     salaryCurrency: (data.salaryCurrency as string) ?? undefined,
@@ -127,8 +130,11 @@ export function getAllJobs(): JobMeta[] {
     }
   }
 
-  // Newest first.
-  jobs.sort((a, b) => (a.datePosted < b.datePosted ? 1 : a.datePosted > b.datePosted ? -1 : 0));
+  // Featured first, then newest first.
+  jobs.sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    return a.datePosted < b.datePosted ? 1 : a.datePosted > b.datePosted ? -1 : 0;
+  });
   return jobs;
 }
 
