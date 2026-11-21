@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 
   const { meta } = job;
   const url = `https://seobaza.com.ua/jobs/${company}/${slug}`;
-  const ogImage = "https://seobaza.com.ua/og-image.png";
+  const ogImage = "https://seobaza.com.ua/images/og/seo-vakansii.jpg";
   const title = `${meta.title}: вакансія в ${meta.company} - SEO Baza`;
 
   return {
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
       locale: "uk_UA",
       type: "article",
       publishedTime: meta.datePosted,
-      images: [{ url: ogImage, width: 640, height: 640, alt: "SEO Baza logo" }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `SEO-вакансія ${meta.title} у ${meta.company} на сайті SEO Baza` }],
     },
     twitter: {
       card: "summary_large_image",

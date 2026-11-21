@@ -53,6 +53,13 @@ export async function generateMetadata({
       siteName: "SEO Baza",
       locale: "uk_UA",
       type: "website",
+      images: [{ url: "https://seobaza.com.ua/images/og/seo-vakansii.jpg", width: 1200, height: 630, alt: `SEO-вакансії ${name} на сайті SEO Baza` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://seobaza.com.ua/images/og/seo-vakansii.jpg"],
     },
   };
 }

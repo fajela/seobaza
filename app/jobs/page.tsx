@@ -9,6 +9,10 @@ export const metadata = pageMeta({
   description:
     "Актуальні вакансії для SEOшників від українських компаній і проєктів. Віддалена робота, лінкбілдинг, AI SEO. Знайдіть роботу або додайте свою вакансію!",
   path: "/jobs",
+  image: {
+    path: "/images/og/seo-vakansii.jpg",
+    alt: "SEO-вакансії на SEO Baza: робота для SEO-спеціалістів і лінкбілдерів в Україні",
+  },
 });
 
 function formatUkrDate(iso: string): string {
