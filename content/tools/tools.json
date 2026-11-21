@@ -1182,6 +1182,13 @@
     "description": ""
   },
   {
+    "name": "GEOboom",
+    "url": "https://www.geoboom.io/",
+    "category": "linkbilding",
+    "section": "Інструменти для outreach",
+    "description": "Аутріч під посилання і згадки бренду на сторінках, які вже цитують ChatGPT, Perplexity, Gemini і пошук Google у вашій ніші. Сам відсіює нетематичні сайти, конкурентів і лінкоферми, дає готові поштові скриньки з автоматичними повторними листами й стежить, чи посилання або згадка лишаються на місці. Платний, у закритій беті: перший місяць безкоштовно за запрошенням."
+  },
+  {
     "name": "Just Reach Out",
     "url": "https://justreachout.io/",
     "category": "linkbilding",
