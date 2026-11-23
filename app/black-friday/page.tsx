@@ -1,6 +1,7 @@
 import { externalRel } from "@/lib/own-sites";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { CopyCode } from "@/components/copy-code";
 
 const TITLE = "Чорна п'ятниця 2026 в українському SEO: знижки | SEO Baza";
 const DESCRIPTION =
@@ -135,6 +136,26 @@ const OFFERS_2026 = [
     url: "https://stus.ai/",
     cta: "Спробувати Stus AI",
   },
+  {
+    id: "esputnik",
+    name: "eSputnik",
+    title: "До 25% знижки на рік користування eSputnik",
+    text: "Українська платформа клієнтських даних (CDP) для ритейлу та ecommerce. Знижка до 25% на рік для нових і поточних клієнтів, на всі канали, крім SMS і Viber, за умови оплати в гривні. Розмір знижки покаже форма на сторінці акції.",
+    dates: "20–30 листопада 2026",
+    promo: null,
+    url: "https://get.esputnik.com/bf-akciya-26",
+    cta: "Отримати знижку",
+  },
+  {
+    id: "webpcstudio",
+    name: "webPCstudio",
+    title: "Безкоштовний перехід на PrestaShop 9.2 від webPCstudio",
+    text: "Базовий перехід на PrestaShop 9.2 за 0 грн: оновлення чинного магазину, перенесення каталогу в погодженому обсязі або запуск магазину на основі товарів із маркетплейсу. Обсяг безкоштовних робіт погоджують письмово до старту.",
+    dates: "заявки до 31 грудня 2026",
+    promo: null,
+    url: "https://webpcstudio.com/FreePrestaShopForYourBusiness?utm_source=seobaza&utm_medium=referral&utm_campaign=black_friday_2026&utm_content=prestashop_92_upgrade",
+    cta: "Подати заявку",
+  },
 ];
 
 // Past seasons live on their own archive pages; the offers of each year are
@@ -161,13 +182,12 @@ export default function BlackFridayPage() {
               <p className="mb-3">{o.text}</p>
               <p className="mb-3 text-sm">
                 <strong>Діє:</strong> {o.dates}
-                {o.promo && (
-                  <>
-                    {" · "}
-                    <strong>Промокод:</strong> <code className="px-1.5 py-0.5 rounded bg-background">{o.promo}</code>
-                  </>
-                )}
               </p>
+              {o.promo && (
+                <p className="mb-4 flex flex-wrap items-center gap-2">
+                  <strong>Промокод:</strong> <CopyCode code={o.promo} />
+                </p>
+              )}
               <a
                 href={o.url}
                 target="_blank"
