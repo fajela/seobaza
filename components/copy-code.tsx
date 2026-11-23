@@ -7,14 +7,38 @@ import { useState } from "react";
 export function CopyCode({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
 
+  function done() {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
+  // In-app browsers (Telegram, Instagram) often deny the async Clipboard API,
+  // so fall back to a hidden textarea + execCommand("copy").
+  function fallback() {
+    const ta = document.createElement("textarea");
+    ta.value = code;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, code.length);
+    let ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    if (ok) done();
+  }
+
   function copy() {
-    navigator.clipboard
-      .writeText(code)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1500);
-      })
-      .catch(() => {});
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(code).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
   }
 
   return (
