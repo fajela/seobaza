@@ -156,6 +156,16 @@ const OFFERS_2026 = [
     url: "https://webpcstudio.com/FreePrestaShopForYourBusiness?utm_source=seobaza&utm_medium=referral&utm_campaign=black_friday_2026&utm_content=prestashop_92_upgrade",
     cta: "Подати заявку",
   },
+  {
+    id: "insertlink",
+    name: "INSERT.LINK",
+    title: "30% знижки на пакет із 30 лістиклів від INSERT.LINK",
+    text: "Self-service платформа для лінкбілдингу з API і MCP. Пакет із 30 лістиклів (статей-добірок) на сайтах, які активно сканують AI-боти, щоб бренд потрапляв у відповіді ChatGPT. Економія $1000.",
+    dates: "лише 27 листопада 2026",
+    promo: "SEOBAZA26",
+    url: "https://t.me/insert_link_support",
+    cta: "Написати в Telegram",
+  },
 ];
 
 // Past seasons live on their own archive pages; the offers of each year are
