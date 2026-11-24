@@ -1,5 +1,5 @@
 // Відео, на яке веде анонс; на його власній сторінці анонс не показуємо.
-export const LIVE_VIDEO_SLUG = "zakhyst-brendu-v-poshuku";
+export const LIVE_VIDEO_SLUG = "n8n-dlia-linkbildyngu";
 
 /**
  * Внутрішньоконтентний банер поточного лайву. Один на сторінку, вставляється
@@ -13,27 +13,27 @@ export const LIVE_VIDEO_SLUG = "zakhyst-brendu-v-poshuku";
 export function LiveBannerLarge() {
   return (
     <a
-      href="/videos/zakhyst-brendu-v-poshuku"
-      aria-label="Запис стріму про захист бренду в пошуку, дивитися"
+      href="/videos/n8n-dlia-linkbildyngu"
+      aria-label="Анонс стріму про n8n для лінкбілдингу 25 листопада"
       className="group relative block mb-8 max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border shadow-lg hover:shadow-xl hover:border-accent/50 transition-all duration-300"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/videos/zakhyst-brendu-v-poshuku.jpg"
-        alt="Обкладинка стріму SEO Baza про захист бренду в пошуку з Сашею Хіловою і Олесею Коробкою"
+        src="/images/videos/n8n-dlia-linkbildyngu.jpg"
+        alt="Обкладинка стріму SEO Baza про n8n для лінкбілдингу з Сашею Хіловою і Олесею Коробкою"
         className="w-full h-auto object-cover"
         width={1200}
         height={630}
       />
       <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/70 text-white text-sm font-semibold px-3 py-1.5">
-        ▶ Запис стріму
+        ▶ Стрім 25 листопада о 17:17
       </span>
       <span className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-5 pt-10 pb-4 text-white">
         <span className="block font-bold text-lg sm:text-xl">
-          Захист бренду в пошуку: паразити, клони і фейкова реклама
+          n8n для лінкбілдингу: як зібрати свою автоматизацію з API
         </span>
         <span className="block text-sm text-white/85">
-          Саша Хілова і Олеся Коробка. Аудит брендової видачі, паразити, клони, фальшиві скарги DMCA і що з цим робити. Дивитися →
+          Саша Хілова і Олеся Коробка. Флоу лінкбілдингу в n8n, Ahrefs API і нове API 2.0 від Collaborator. Детальніше →
         </span>
       </span>
     </a>
@@ -48,11 +48,11 @@ export function LiveBanner() {
       data-nosnippet=""
       className="not-prose my-10 flex flex-col sm:flex-row sm:items-center gap-4 rounded-xl border border-border bg-secondary/30 p-4"
     >
-      <a href="/videos/zakhyst-brendu-v-poshuku" className="shrink-0 block w-44 sm:w-52">
+      <a href="/videos/n8n-dlia-linkbildyngu" className="shrink-0 block w-44 sm:w-52">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/videos/zakhyst-brendu-v-poshuku.jpg"
-          alt="Обкладинка стріму SEO Baza про захист бренду в пошуку з Сашею Хіловою і Олесею Коробкою"
+          src="/images/videos/n8n-dlia-linkbildyngu.jpg"
+          alt="Обкладинка стріму SEO Baza про n8n для лінкбілдингу з Сашею Хіловою і Олесею Коробкою"
           className="w-full h-auto rounded-lg border border-border"
           width={1200}
           height={630}
@@ -60,20 +60,20 @@ export function LiveBanner() {
       </a>
       <div className="flex-1">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">
-          ▶ Запис стріму
+          ▶ Стрім 25 листопада о 17:17
         </p>
         <p className="font-bold text-lg leading-snug m-0">
-          Захист бренду в пошуку: паразити, клони і фейкова реклама
+          n8n для лінкбілдингу: як зібрати свою автоматизацію з API
         </p>
         <p className="text-sm text-muted-foreground m-0">
-          Саша Хілова і Олеся Коробка. Аудит брендової видачі, паразити, клони, фальшиві скарги DMCA і що з цим робити.
+          Саша Хілова і Олеся Коробка. Флоу лінкбілдингу в n8n, Ahrefs API і нове API 2.0 від Collaborator.
         </p>
       </div>
       <a
-        href="/videos/zakhyst-brendu-v-poshuku"
+        href="/videos/n8n-dlia-linkbildyngu"
         className="shrink-0 self-start sm:self-center px-4 py-2 rounded-lg bg-primary text-background text-sm font-medium hover:opacity-90 transition-opacity"
       >
-        Дивитися →
+        Детальніше →
       </a>
     </aside>
   );
