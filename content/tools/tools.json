@@ -762,6 +762,19 @@
     "description": "Інструмент для створення релевантного контенту: підбір теми, створення контенту за темою, покращення тексту."
   },
   {
+    "name": "HumanTone",
+    "url": "https://humantone.io/languages/ukrainian/",
+    "category": "semantyka-i-kontent",
+    "section": "Робота з контентом",
+    "description": "Переписує AI-тексти українською та ще 60+ мовами: змінює структуру речень і ритм, а ключові слова й терміни з власних інструкцій лишає без змін. Показує ймовірність AI від 0 до 100, має API і MCP-сервер. 1000 слів безкоштовно, далі від $8 на місяць.",
+    "ua": [
+      "founded-by-ukrainians"
+    ],
+    "uaSources": {
+      "founded-by-ukrainians": "https://dou.ua/users/andrii-balii/"
+    }
+  },
+  {
     "name": "Nightwatch / Ranktrackr",
     "url": "https://app.nightwatch.io/",
     "category": "semantyka-i-kontent",
